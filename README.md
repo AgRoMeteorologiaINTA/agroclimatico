@@ -11,4 +11,4 @@ Las funciones reciben como datos de entrada, los datos disponibles en el [Sistem
 Los objetos devueltos por cada función tienen un método de visualización rápido usando escalas de colores consistentes y una identidad visual apropiada al INTA. 
 
 Finanlmente el paquete cuenta con una plantilla  de RMarkdown para el reporte de índices y estadísticos implementados generada utilizando una interfaz gráfica. 
-Plantilla de reporte con interfaz gráfica (código en repositorio GitHub) . $13.000
+Plantilla de reporte con interfaz gráfica (código en repositorio GitHub).
