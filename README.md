@@ -2,14 +2,16 @@
 
 El paquete {agromet} permite calcular distintos indices y estadísticos asociados climáticos e hidrológicos. 
 
-Cálculo de índices agroclimáticos nacionales
-Se proponen, en primera instancia los siguientes índices, para ser calculados en distintas escalas temporales
+* Cantidad de días secos
+* Deciles
+* Porcentaje de precipitación habitual
+* Anomalía porcentual
+* Índice normalizado de precipitación (SPI)
+* Índice estandarizado de precipitación y evapotranspiración (SPEI)
+* Índice de severidad de sequía de Palmer
+* Índice autocalibrado de severidad de sequía de Palmer (sc-PDSI)
 
-INDICES DE PRECIPITACION; Estos tienen como datos de entrada las lluvias en general y las temperaturas y ETP, otros de ellos.; 
-
-*cantidad de días secos; * Deciles; *Porcentaje de precipitación habitual: *Anomalía porcentual; *Índice normalizado de precipitación (SPI); *Índice estandarizado de precipitación y evapotranspiración (SPEI); *Índice de severidad de sequía de Palmer; *Índice autocalibrado de severidad de sequía de Palmer (sc-PDSI);
-
-
+## Instalación
 
 Podés instalar este paquete corriendo el siguiente comando:
 
