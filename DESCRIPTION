@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-7742-9230")),
       person(given = "Paola",
            family = "Corrales",
-           role = c("cre", "aut"),
+           role = c("aut"),
            email = "paola.corrales@cima.fcen.uba.ar"))
 Description: Más sobre el paquete.
 License: GPL-3
@@ -18,3 +18,7 @@ Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
+Imports: 
+    readr
