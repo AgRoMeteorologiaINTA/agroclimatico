@@ -21,7 +21,7 @@ out <- list()
 for (i in 1:length(archivo)) {
 
    data <- readr::read_fwf(file = archivo,
-                            col_positions = fwf_widths(widths, col_names = colnames_nh),
+                            col_positions = readr::fwf_widths(widths, col_names = colnames_nh),
                             col_types = "icTdddddddddddddddddddddd",
                             na = c("-99.9", "-99"))
 
@@ -31,14 +31,18 @@ for (i in 1:length(archivo)) {
   data$granizo[data$granizo == 9] <- NA
   data$nieve[data$nieve == 9] <- NA
   data$rocio[data$rocio == 9] <- NA
-  data$viento_med <- round(data$viento_med*5/18, digits = 1)
+  data$heliofania[data$heliofania == -9.9] <- NA
+  data$p_vapor[data$p_vapor == -9.9] <- NA
+  data$rad[data$rad == -9.9] <- NA
+  data$etp[data$etp == -9.9] <- NA
+
 
   out[[i]] <- data
 
 }
 
-out %>%
-  rbindlist()
+data.table::rbindlist(out)
+
 }
 
 #' Tabla de metadatos de estaciones NH
