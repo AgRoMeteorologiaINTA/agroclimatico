@@ -22,5 +22,6 @@ Depends:
     R (>= 2.10)
 Imports: 
     readr,
-    data.table
-    scales
+    data.table,
+    scales,
+    scPDSI
