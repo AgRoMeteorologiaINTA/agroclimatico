@@ -8,22 +8,50 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # remotes::install_github("AgRoMeteorologiaINTA/agromet")
 library(agromet)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
 ```
 
 ## Lectura de archivo NH
 
 Asumiendo que los datos de estaciones de la base de datos NH están en una carpeta "datos" dentro del proyecto, la función `leer_nh()` funciona así:
 
-```{r cars}
-summary(cars)
+```{r lectura}
+datos <- leer_nh("datos/NH0011.DAT")
+
+head(datos)
 ```
 
-## Including Plots
+Además la funciónn `metadatos_nh()` devuelve un data frame con los metadatos de las estaciones que se puede utilizar para conocer el nombre y ubicación de las estaciones. 
 
-You can also embed plots, for example:
+## Conteo de días que cumplen con alguna condición
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+Para contar la cantidad de diás con temperatura por encima de un umbral o días con precipitación igual a cero (o básicamente que cualquier variable cumpla con cualquier condición) se utiliza la función `extremos()` [o inserte aquí un mejor nombre].
+
+Por ejemplo si queremos la cantidad de días donde la temperatura máxima fue mayor o igual a 30 grados en toda la serie.
+
+```{r extremos-1}
+datos %>% 
+  summarise(extremos(t_30 = t_max >= 30))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Pero si quisieramos hacer el mismo conteo para cada año:
+
+```{r extremos-2}
+datos %>% 
+  group_by(anio = floor_date(fecha, "year")) %>% 
+  summarise(extremos(t_30 = t_max >= 30))
+```
+
+Esta fucnión también acepta contar cantidad de días según distintos umbrales. De yapa, un gráfico.
+
+```{r extremos-3}
+datos %>% 
+  group_by(anio = floor_date(fecha, "year")) %>% 
+  summarise(extremos(t_30 = t_max >= 30,
+                     t_35 = t_max >= 35)) %>% 
+  ggplot(aes(anio, N)) +
+  geom_line(aes(color = extremo))
+```
+
