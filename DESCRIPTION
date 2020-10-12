@@ -23,4 +23,6 @@ Depends:
 Imports: 
     readr,
     data.table,
-    scales
+    scales,
+    scPDSI
+

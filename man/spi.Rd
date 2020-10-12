@@ -4,16 +4,16 @@
 \alias{spi}
 \title{Calcula el SPI}
 \usage{
-spi(fecha, precipitacion, escalas)
+spi(fecha, precipitacion, escalas, ...)
 }
 \arguments{
 \item{fecha}{Vector de fechas.}
 
 \item{precipitacion}{Vector de precipitacion.}
 
-
 \item{escalas}{Vector numérico con las escalas requeridas}
 
+\item{...}{Argumentos pasados a \link[SPEI:spei]{SPEI::spi}}
 }
 \description{
 Calcula el SPI
