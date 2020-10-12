@@ -55,3 +55,40 @@ datos %>%
   geom_line(aes(color = extremo))
 ```
 
+## SPI
+
+La función `spi` calcula el SPI para distintas escalas:
+
+```{r}
+datos %>% 
+  summarise(spi(fecha, prcp, 1:24)) %>% 
+  head()
+```
+
+La salida se puede graficar faćilmente con ggplot
+
+```{r}
+datos %>% 
+  summarise(spi(fecha, prcp, 1:24)) %>% 
+  ggplot(aes(fecha, escala)) +
+  geom_contour_filled(aes(z = spi, fill = stat(level_mid))) +
+  scale_fill_gradient2()
+```
+
+## Índice de Severidad de Sequía de Palmer
+
+
+`pdsi` computa el PDSI con los coeficientes de Palmer (1965), `pdsi_ac` es la versión autocalibrada.
+
+```{r}
+datos %>% 
+  group_by(fecha = floor_date(fecha, "month")) %>% 
+  summarise(prcp = sum(prcp, na.rm = TRUE),
+            etp = sum(etp, na.rm = TRUE)) %>% 
+  mutate(pdsi_ac = pdsi_ac(prcp, etp),
+         pdsi    = pdsi(prcp, etp)) %>% 
+  ggplot(aes(fecha, pdsi)) +
+  geom_line() +
+  geom_line(aes(y = pdsi_ac), color = "red")
+```
+
