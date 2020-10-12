@@ -1,6 +1,6 @@
 ---
 title: "Ejemplos de uso del paquete {agromet}"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
