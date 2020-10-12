@@ -9,7 +9,7 @@
 spi <- function(fecha, precipitacion, escalas, ...) {
   promedio <- spi <- NULL  # esto es para que no se queje CRAN
   data <- data.table::data.table(fecha = fecha, pp = precipitacion)
-# browser()
+
   # "Completa" los datos (convierte datos faltantes implícitos en explícitos)
   data_full <- data.table::data.table(fecha = seq(min(fecha), max(fecha),
                                                   by = "1 month"))  ##TODO ¿cómo generalizar a cualquier resolución?
@@ -25,9 +25,9 @@ spi <- function(fecha, precipitacion, escalas, ...) {
   data <- data.table::melt(data, id.vars = "fecha",
                    variable.name = "escala",
                    value.name = "spi")
-  data[, escala := as.numeric(escala)]
+  data[, escala := as.numeric(escala)][]
 
-  return(data)
+  return(as.data.frame(data))
 
 }
 

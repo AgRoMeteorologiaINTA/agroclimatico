@@ -9,7 +9,7 @@
 #
 #' @export
 pdsi  <- function(precipitacion, etp, cad = 100) {
-  na.omit(as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cad, sc = FALSE)$X))
+  as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cad, sc = FALSE)$X)[seq_along(precipitacion)]
 }
 
 
@@ -17,5 +17,5 @@ pdsi  <- function(precipitacion, etp, cad = 100) {
 #' @export
 #' @rdname pdsi
 pdsi_ac  <- function(precipitacion, etp, cad = 100) {
-  na.omit(as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cad, sc = TRUE)$X))
+  as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cad, sc = TRUE)$X)[seq_along(precipitacion)]
 }
