@@ -1,0 +1,29 @@
+---
+title: "Ejemplos de uso del paquete {agromet}"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# remotes::install_github("AgRoMeteorologiaINTA/agromet")
+library(agromet)
+```
+
+## Lectura de archivo NH
+
+Asumiendo que los datos de estaciones de la base de datos NH están en una carpeta "datos" dentro del proyecto, la función `leer_nh()` funciona así:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
