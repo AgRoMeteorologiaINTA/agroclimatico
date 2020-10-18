@@ -13,7 +13,7 @@ spi(fecha, precipitacion, escalas, ...)
 
 \item{escalas}{Vector numérico con las escalas requeridas}
 
-\item{...}{Argumentos pasados a \link[SPEI:spei]{SPEI::spi}}
+\item{...}{Argumentos pasados a \link[SPEI:spi]{SPEI::spi}}
 }
 \description{
 Calcula el SPI

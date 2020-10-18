@@ -4,7 +4,16 @@
 \alias{metadatos_nh}
 \title{Tabla de metadatos de estaciones NH}
 \usage{
-metadatos_nh()
+metadatos_nh(codigo = NULL, lat = NULL, lon = NULL)
+}
+\arguments{
+\item{codigo}{caracter o vector de caracteres con los códigos de estadiones
+Por defecto devuelve todas las estaciones.}
+
+\item{lat}{vector numérico con las latitudes límite de la región de interes.}
+
+\item{lon}{vector numérico con las longitudes límite de la región de interes
+(entre -180 y 180).}
 }
 \description{
 Tabla de metadatos de estaciones NH
