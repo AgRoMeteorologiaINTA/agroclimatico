@@ -24,5 +24,7 @@ Imports:
     readr,
     data.table,
     scales,
-    scPDSI
-
+    scPDSI,
+    lmomco,
+    TLMoments,
+    lmom
