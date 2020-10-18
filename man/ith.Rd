@@ -6,12 +6,13 @@
 \usage{
 ith(temperatura, hr)
 }
+\arguments{
+\item{temperatura}{vector numérico con valores (o valor) de temperatura en grados
+centígrados.}
+
+\item{hr}{vector númerico (o valor) de la misma longitud que temperatura con la
+humedad relativa en porcentaje.}
+}
 \description{
 Calcula el índice de temperatura y humedad (ITH)
-}
-\details{
-@param temperatura vector numérico con valores (o valor) de temperatura en grados
-centígrados.
-@param hr vector númerico (o valor) de la misma longitud que temperatura con la
-humedad relativa en porcentaje.
 }

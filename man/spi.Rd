@@ -26,6 +26,11 @@ spi_referencia(fecha, precipitacion)
 
 \item{escalas}{Vector numérico con las escalas requeridas}
 
+\item{referencia}{Serie de precipitación para usar de referencia en el ajuste
+a la distribución teórica como un data.frame con una columna llamada fecha y otra
+precipitación. La función \code{spi_referencia()} es un simple wrapper a \code{data.frame}
+que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.}
+
 \item{distribucion}{Distribución usada para ajustar los datos.}
 
 \item{...}{Argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}

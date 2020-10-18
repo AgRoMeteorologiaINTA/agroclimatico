@@ -26,7 +26,7 @@ spi_core <- function(data, scale, kernel=list(type='rectangular',shift=0),
     stop('Start and end of the reference period must be a numeric vector of length two.')
   }
 
-  if (!is.ts(data)) {
+  if (!stats::is.ts(data)) {
     data <- stats::ts(as.matrix(data), frequency = 12)
   } else {
     data <- stats::ts(as.matrix(data), frequency=stats::frequency(data), start=stats::start(data))

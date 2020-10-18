@@ -28,3 +28,5 @@ Imports:
     lmomco,
     TLMoments,
     lmom
+Suggests: 
+    ggplot2

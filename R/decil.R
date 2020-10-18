@@ -10,7 +10,7 @@
 #'
 #' @export
 decil <- function(precipitacion, pp_referencia = precipitacion, normalizado = FALSE) {
-  deciles <- ecdf(pp_referencia)(precipitacion)*10
+  deciles <- stats::ecdf(pp_referencia)(precipitacion)*10
   if (normalizado) {
     deciles <- (deciles - 5)/10
   }
@@ -26,7 +26,7 @@ decil <- function(precipitacion, pp_referencia = precipitacion, normalizado = FA
 #' @param normalizado Valor lógico para indicar si los deciles se devuelven
 #' normalizados según (porcentaje - 1).
 #'
-#' @example
+#' @export
 porcentaje_normal <- function(precipitacion, pp_referencia = precipitacion, normalizado = FALSE) {
   percent <- precipitacion/mean(pp_referencia)
 

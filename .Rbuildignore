@@ -4,3 +4,8 @@
 ^datos$
 ^README\.Rmd$
 /*_files/
+^ejemplos\.md$
+^ejemplos\.Rmd$
+^ejemplos_files$
+^logoç$
+^logo$

@@ -41,9 +41,7 @@ leer_nh <- function(archivo) {
 
   }
 
-  data.table::rbindlist(out) %>%
-    as.data.frame()
-
+  as.data.frame(data.table::rbindlist(out))
 }
 
 #' Tabla de metadatos de estaciones NH
@@ -76,9 +74,9 @@ metadatos_nh <- function(codigo = NULL, lat = NULL, lon = NULL) {
 
 #' @export
 plot.metadatos_nh <- function(x, ...) {
-
+  lon <- lat <- NULL
   if(!requireNamespace("ggplot2", quietly = TRUE)) {
-    stop('Esta función necesita el paquete ggplot2. Puedes instalarlo con `install.packages("ggplot2")')
+    stop('Esta funci\u00f3n necesita el paquete ggplot2. Puedes instalarlo con `install.packages("ggplot2")')
   }
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
