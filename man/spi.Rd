@@ -2,9 +2,22 @@
 % Please edit documentation in R/spi.R
 \name{spi}
 \alias{spi}
+\alias{spei}
+\alias{spi_referencia}
 \title{Calcula el SPI}
 \usage{
-spi(fecha, precipitacion, escalas, ...)
+spi(
+  fecha,
+  precipitacion,
+  escalas,
+  referencia = spi_referencia(fecha, precipitacion),
+  distribucion = "Gamma",
+  ...
+)
+
+spei(fecha, balance, escalas, distribucion = "log-Logistic", ...)
+
+spi_referencia(fecha, precipitacion)
 }
 \arguments{
 \item{fecha}{Vector de fechas.}
@@ -13,7 +26,11 @@ spi(fecha, precipitacion, escalas, ...)
 
 \item{escalas}{Vector numérico con las escalas requeridas}
 
-\item{...}{Argumentos pasados a \link[SPEI:spi]{SPEI::spi}}
+\item{distribucion}{Distribución usada para ajustar los datos.}
+
+\item{...}{Argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
+
+\item{balance}{Balance entre precipitación y evapotaranspiración potencial.}
 }
 \description{
 Calcula el SPI
