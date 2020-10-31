@@ -27,7 +27,8 @@ decil <- function(precipitacion, pp_referencia = precipitacion, normalizado = FA
 #' normalizados según (porcentaje - 1).
 #'
 #' @export
-porcentaje_normal <- function(precipitacion, pp_referencia = precipitacion, normalizado = FALSE) {
+anomalia_porcentual <- function(precipitacion, pp_referencia = precipitacion,
+                                normalizado = TRUE) {
   percent <- precipitacion/mean(pp_referencia)
 
   if (normalizado) {
