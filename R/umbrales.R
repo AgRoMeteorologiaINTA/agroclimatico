@@ -3,14 +3,14 @@
 #' @param ... Extremos a calcular.
 #'
 #' @export
-extremos <- function(...) {
+umbrales <- function(...) {
   values <- list(...)
 
   datos <- lapply(values, function(x) {
 
     data.frame(N = sum(x, na.rm = TRUE),
                prop = mean(x, na.rm = TRUE),
-               na = sum(is.na(x)))
+               na = mean(is.na(x)))
 
   })
   datos <- do.call(rbind, datos)
