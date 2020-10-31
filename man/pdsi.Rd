@@ -5,16 +5,16 @@
 \alias{pdsi_ac}
 \title{Índice de severidad de sequía de palmer}
 \usage{
-pdsi(precipitacion, etp, cad = 100)
+pdsi(precipitacion, etp, cc = 100)
 
-pdsi_ac(precipitacion, etp, cad = 100)
+pdsi_ac(precipitacion, etp, cc = 100)
 }
 \arguments{
 \item{precipitacion}{Serie de precipitación sin datos faltantes.}
 
 \item{etp}{Serie de evapotranspiración potencial sin datos faltantes.}
 
-\item{cad}{Cantidad de Agua Disponible (en mm).}
+\item{cc}{Capacidad de campo (en mm).}
 }
 \description{
 \code{psdi_ac} calcula el PSDI autocalibrado.
