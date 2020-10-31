@@ -90,7 +90,7 @@ completar_serie <- function(datos, fecha, resolucion) {
   data_full <- data.frame(fecha = seq(min(fecha), max(fecha), by = resolution))
   colnames(data_full)[1] <-  fecha_string
 
-  datos <- merge(datos, data_full, by = fecha_string)
+  datos <- merge(datos, data_full, by = fecha_string, all.y = TRUE)
   datos
 }
 
