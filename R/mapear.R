@@ -1,7 +1,7 @@
 #' @export
 #' @import ggplot2
 mapear <- function(valor, lon, lat, escala = "temperatura",
-                   mapas = c("limítrofes", "argentina", "provincias"),
+                   mapas = c("limitrofes", "argentina", "provincias"),
                    cordillera = FALSE,
                    titulo = NULL,
                    subtitulo = NULL,

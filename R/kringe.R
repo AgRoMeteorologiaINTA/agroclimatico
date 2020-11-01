@@ -8,8 +8,6 @@ kringe <- function(valor, lon, lat, mascara) {
   lats <- seq(bbox[["ymin"]], bbox[["ymax"]], length.out = 100)
 
 
-
-
   points <- expand.grid(lon = lons,
                         lat = lats)
   points_sf <- sf::st_as_sf(points, coords = c("lon", "lat"), crs = 4326)
@@ -18,7 +16,7 @@ kringe <- function(valor, lon, lat, mascara) {
   points <- points[inside, ]
 
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
-  datos <- na.omit(datos)
+  datos <- stats::na.omit(datos)
 
   sp::coordinates(datos) <- ~ lon + lat
   sp::coordinates(points) <- ~ lon + lat

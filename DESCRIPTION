@@ -34,6 +34,7 @@ Imports:
     png,
     grid,
     ggnewscale,
-    tidyr
-Suggests: 
-    ggplot2
+    tidyr,
+    ggplot2,
+    rappdirs,
+    zip
