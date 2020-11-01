@@ -1,20 +1,12 @@
 ## code to prepare `mapas` dataset goes here
 
-mapa_argentina <- rnaturalearth::ne_countries(scale = 50, country = c("argentina", "falkland islands"),
-                                                    returnclass = "sf")
-
-mapa_argentina_provincias <- rnaturalearth::ne_states(country = c("argentina",  "falkland islands"), returnclass = "sf")
-
-mapa_argentina_limitrofes <- rnaturalearth::ne_countries(scale = 50, country = c("argentina", "chile", "uruguay",
-                                                "paraguay", "brazil", "bolivia",
-                                                "falkland islands"),
+mapa_argentina_limitrofes_data <- rnaturalearth::ne_countries(scale = 50, country = c("chile", "uruguay",
+                                                "paraguay", "brazil", "bolivia"),
                                     returnclass = "sf")
 
-usethis::use_data(mapa_argentina, overwrite = TRUE)
-usethis::use_data(mapa_argentina, internal = TRUE, overwrite = TRUE)
+mapa_argentina_limitrofes_data <- sf::st_crop(mapa_argentina_limitrofes_data,
+            xmin = -77, xmax = 0, ymin = -57, ymax = 20)
 
-usethis::use_data(mapa_argentina_provincias, overwrite = TRUE)
-usethis::use_data(mapa_argentina_provincias, overwrite = TRUE, internal = TRUE)
 
-usethis::use_data(mapa_argentina_limitrofes, overwrite = TRUE)
-usethis::use_data(mapa_argentina_limitrofes, overwrite = TRUE, internal = TRUE)
+
+usethis::use_data(mapa_argentina_limitrofes_data, overwrite = TRUE, internal = TRUE)

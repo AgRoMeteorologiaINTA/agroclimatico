@@ -4,10 +4,10 @@
 \alias{leer_nh}
 \title{Lectura de archivos del sistema NH}
 \usage{
-leer_nh(archivo)
+leer_nh(archivos)
 }
 \arguments{
-\item{archivo}{caracter o vector de caracteres con el nombre y ubicación de los
+\item{archivos}{Caracter o vector de caracteres con el nombre y ubicación de los
 archivos a leer}
 }
 \description{

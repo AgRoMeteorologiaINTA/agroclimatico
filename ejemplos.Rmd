@@ -32,14 +32,14 @@ metadatos_nh(codigo = "0011")
 
 ## Conteo de días que cumplen con alguna condición
 
-Para contar la cantidad de diás con temperatura por encima de un umbral o días con precipitación igual a cero (o básicamente que cualquier variable cumpla con cualquier condición) se utiliza la función `extremos()` [o inserte aquí un mejor nombre].
+Para contar la cantidad de diás con temperatura por encima de un umbral o días con precipitación igual a cero (o básicamente que cualquier variable cumpla con cualquier condición) se utiliza la función `umbrales()` [o inserte aquí un mejor nombre].
 
 Por ejemplo si queremos la cantidad de días donde la temperatura máxima fue mayor o igual a 30 grados en toda la serie.
 
 ```{r extremos-1}
 datos %>% 
   group_by(fecha = lubridate::floor_date(fecha, "1 month")) %>% 
-  summarise(extremos(t_30 = t_max >= 30, 
+  summarise(umbrales(t_30 = t_max >= 30, 
                      secos = prcp <= 0.1,
                      t_0  = t_min <= 0,
                      t_15 = t_max >= 15)) %>% 

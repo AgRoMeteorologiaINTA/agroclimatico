@@ -2,10 +2,11 @@
 #'
 #' Lee uno o más archivos
 #'
-#' @param archivo caracter o vector de caracteres con el nombre y ubicación de los
+#' @param archivos Caracter o vector de caracteres con el nombre y ubicación de los
 #' archivos a leer
+#'
 #' @export
-leer_nh <- function(archivo) {
+leer_nh <- function(archivos) {
 
   colnames_nh <- c("codigo", "codigo_nh", "fecha",
                    "t_max", "t_min", "prcp",
@@ -18,9 +19,9 @@ leer_nh <- function(archivo) {
 
   out <- list()
 
-  for (i in 1:length(archivo)) {
+  for (i in 1:length(archivos)) {
 
-    data <- readr::read_fwf(file = archivo,
+    data <- readr::read_fwf(file = archivos[i],
                             col_positions = readr::fwf_widths(widths, col_names = colnames_nh),
                             col_types = "icTdddddddddddddddddddddd",
                             na = c("-99.9", "-99"))
