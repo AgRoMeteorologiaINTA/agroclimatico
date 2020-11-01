@@ -87,11 +87,12 @@ completar_serie <- function(datos, fecha, resolucion) {
   fecha_string <- deparse(substitute(fecha))
   fecha <- datos[[fecha_string]]
 
-  data_full <- data.frame(fecha = seq(min(fecha), max(fecha), by = resolution))
-  colnames(data_full)[1] <-  fecha_string
+  fecha <- seq(min(fecha), max(fecha), by = resolution)
 
-  datos <- merge(datos, data_full, by = fecha_string, all.y = TRUE)
-  datos
+  args <- list(data = datos, fecha = fecha)
+  names(args)[[2]] <- fecha_string
+
+  as.data.frame(do.call(tidyr::complete, args))
 }
 
 resolve_resolucion <- function(resolucion) {
@@ -113,13 +114,6 @@ resolve_resolucion <- function(resolucion) {
   paste(by2[-length(by2)], by2_eng)
 }
 
-
-# Sacado de ggplot2::resolution
-resolution <- function (x) {
-  x <- unique(x)
-
-  min(diff(sort(x)))
-}
 
 
 .datatable.aware <- TRUE

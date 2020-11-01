@@ -9,4 +9,20 @@ mapa_argentina_limitrofes_data <- sf::st_crop(mapa_argentina_limitrofes_data,
 
 
 
-usethis::use_data(mapa_argentina_limitrofes_data, overwrite = TRUE, internal = TRUE)
+argentina <- rnaturalearth::ne_countries(country = "argentina", returnclass = "sf",
+                                         scale = 10)
+
+arg_buffer <- sf::st_buffer(argentina, 0.7)
+arg_buffer_limite <- sf::st_difference(arg_buffer, argentina)
+
+
+
+arg_topo <- metR::GetTopography(-75+360, -50+360, -20, -60, resolution = 1/10)
+arg_topo[, lon := metR::ConvertLongitude(lon)]
+
+
+usethis::use_data(arg_buffer, arg_buffer_limite, mapa_argentina_limitrofes_data,
+                  arg_topo,
+
+
+                  overwrite = TRUE, internal = TRUE)

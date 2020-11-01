@@ -27,6 +27,13 @@ Imports:
     scPDSI,
     lmomco,
     TLMoments,
-    lmom
+    lmom,
+    sf,
+    sp,
+    automap,
+    png,
+    grid,
+    ggnewscale,
+    tidyr
 Suggests: 
     ggplot2
