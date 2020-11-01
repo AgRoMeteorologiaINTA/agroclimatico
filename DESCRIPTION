@@ -37,4 +37,5 @@ Imports:
     tidyr,
     ggplot2,
     rappdirs,
-    zip
+    zip,
+    magrittr

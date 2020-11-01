@@ -9,10 +9,8 @@ olas(fecha, condicion)
 \arguments{
 \item{Vector}{de fechas}
 
-\item{Conficion}{Vector lógico
-
-@export}
+\item{Conficion}{Vector lógico}
 }
 \description{
-Computa olas
+Ignora los datos faltnates!
 }

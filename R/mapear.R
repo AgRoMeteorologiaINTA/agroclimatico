@@ -1,7 +1,7 @@
 #' @export
 #' @import ggplot2
 mapear <- function(valor, lon, lat, escala = "temperatura",
-                   mapas = c("limitrofes", "argentina", "provincias"),
+                   mapas = c("limítrofes", "argentina", "provincias"),
                    cordillera = FALSE,
                    titulo = NULL,
                    subtitulo = NULL,
@@ -63,7 +63,7 @@ mapear <- function(valor, lon, lat, escala = "temperatura",
 }
 
 
-# de metR
+# De metR https://github.com/eliocamp/metR/
 lat_label <- function(lat, north = "\u00B0N", south = "\u00B0S", zero = "\u00B0") {
   lat <- as.numeric(lat)
   newlat <- ifelse(lat < 0, paste0(abs(lat), south), paste0(lat, north))
@@ -80,4 +80,39 @@ lon_label <- function(lon, east = "\u00B0E", west = "\u00B0O", zero = "\u00B0") 
   return(newlon)
 }
 
+ConvertLongitude <- function(lon, group = NULL, from = NULL) {
+  if (all(is.na(lon))) return(lon)
 
+  m <- min(lon, na.rm = TRUE)
+  if (m < -180) stop("lon lower than 180, not a valid longitude")
+
+  M <- max(lon, na.rm = TRUE)
+  if (M > 360) stop("lon greater than 360, not a valid longitude")
+
+  lon360 <- FALSE
+  lon180 <- FALSE
+
+  new.lon <- lon
+  if (is.null(from) || from == 180) {
+    lon180 <- which(lon < 0)
+    new.lon[lon180] <- new.lon[lon180] + 360
+  }
+  if (is.null(from) || from == 360) {
+    lon360 <- which(lon > 180)
+    new.lon[lon360] <- new.lon[lon360] - 360
+  }
+
+  if (!is.null(group)) {
+
+    group.c <- as.character(group)
+    group.c[lon360 | lon180] <- paste0(group.c[lon360 | lon180], "_2")
+
+    if (is.factor(group)) {
+      group.c <- factor(group.c)
+    }
+
+    return(list(lon = new.lon, group = group.c))
+  }
+
+  return(new.lon)
+}
