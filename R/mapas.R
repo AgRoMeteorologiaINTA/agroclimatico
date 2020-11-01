@@ -64,8 +64,18 @@ mapa_departamentos <- function(provincias = NULL) {
 
 #' @export
 #' @rdname mapas
-coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...) {
+coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20),
+                            expand = FALSE, ...) {
   coord_sf(xlim = xlim, ylim = ylim, expand = expand, ...)
+}
+
+#' @export
+#' @rdname mapas
+theme_inta_mapa <- function(...) {
+  list(
+       theme_linedraw(...) ,
+       theme(panel.grid = element_blank(),
+             axis.title = element_blank()))
 }
 
 
