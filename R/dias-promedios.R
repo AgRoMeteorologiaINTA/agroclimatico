@@ -10,7 +10,7 @@ dias_promedios <- function(fechas) {
   data.table::data.table(fecha = fechas) %>%
     .[, .(primer_dia = min(fecha),
           ultimo_dia  = max(fecha)), by = .(data.table::year(fecha))] %>%
-    melt(measure.vars = c("primer_dia", "ultimo_dia")) %>%
+    data.table::melt(measure.vars = c("primer_dia", "ultimo_dia")) %>%
     .[, fecha := as.Date(paste0("1900-",
                         data.table::month(value),
                         "-",
