@@ -14,7 +14,7 @@ leer_nh <- function(archivos) {
                    "nieve", "t_aire_max", "t_aire_min", "t_suelo_max", "t_suelo_min",
                    "heliofania", "heliofania_rel", "p_vapor", "hr", "td", "rocio",
                    "viento_med", "viento_2m", "rad", "etp")
-  widths <- c(1, 4, 8, 5, 5, 5, 1, 1, 1, 1, 1,
+  widths <- c(2, 3, 8, 5, 5, 5, 1, 1, 1, 1, 1,
               5, 5, 5, 5, 4, 3, 4, 3, 5, 1, 3, 5, 4, 4)
 
   out <- list()
@@ -23,10 +23,10 @@ leer_nh <- function(archivos) {
 
     data <- readr::read_fwf(file = archivos[i],
                             col_positions = readr::fwf_widths(widths, col_names = colnames_nh),
-                            col_types = "icTdddddddddddddddddddddd",
+                            col_types = "idTdddddddddddddddddddddd",
                             na = c("-99.9", "-99"))
 
-
+    data$codigo_nh <- formatC(data$codigo_nh, width = 4, flag = "0")
     data$lluvia[data$lluvia == 9] <- NA
     data$llovizna[data$llovizna == 9] <- NA
     data$granizo[data$granizo == 9] <- NA
