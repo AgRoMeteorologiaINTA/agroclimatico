@@ -1,9 +1,9 @@
-#' Transforma precipitación en deciles
+#' Transforma cualquier variable en deciles
 #'
-#' @param precipitacion Vector de observaciones de precipitacion
-#' @param pp_referencia Vector de observacione sprecipitación para usar de
+#' @param variable Vector de observaciones de la variable de interés.
+#' @param variable_referencia Vector de observacione de la variable de interés para usar de
 #' referencia al calcular el valor de los deciles. Por defecto usa todos los
-#' datos.
+#' datos incluidos en el argumento variable.
 #' @param normalizado Valor lógico para indicar si los deciles se devuelven
 #' normalizados según (deciles - 5)/10 para que devuelva valores entre -0.5 y 0.5
 #' en vez de entre 0 y 10.
@@ -17,10 +17,10 @@ decil <- function(precipitacion, pp_referencia = precipitacion, normalizado = FA
   return(deciles)
 }
 
-#' Tranforma precipitación en porcentaje con respecto a la precipitación normal
+#' Tranforma una variable en porcentaje con respecto a sus valores normales.
 #'
-#' @param precipitacion Vector de observaciones de precipitacion
-#' @param pp_referencia Vector de observacione sprecipitación para usar de
+#' @param variable Vector de observaciones de la variable de interés.
+#' @param variable_referencia Vector de observacione de la variable para usar de
 #' referencia al calcular el valor normal. Por defecto usa todos los
 #' datos.
 #' @param normalizado Valor lógico para indicar si los deciles se devuelven
