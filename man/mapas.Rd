@@ -6,6 +6,7 @@
 \alias{mapa_argentina_limitrofes}
 \alias{mapa_departamentos}
 \alias{coord_argentina}
+\alias{theme_inta_mapa}
 \title{Mapas}
 \usage{
 mapa_argentina()
@@ -17,6 +18,8 @@ mapa_argentina_limitrofes()
 mapa_departamentos(provincias = NULL)
 
 coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...)
+
+theme_inta_mapa(...)
 }
 \arguments{
 \item{provincias}{Vector de provincias para filtrar. Si es \code{NULL},
