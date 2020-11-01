@@ -3,20 +3,20 @@
 \name{mapa_argentina}
 \alias{mapa_argentina}
 \alias{mapa_provincias}
-\alias{coord_argentina}
 \alias{mapa_argentina_limitrofes}
 \alias{mapa_departamentos}
+\alias{coord_argentina}
 \title{Mapas}
 \usage{
 mapa_argentina()
 
 mapa_provincias(provincias = NULL, departamentos = FALSE)
 
-coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...)
-
 mapa_argentina_limitrofes()
 
 mapa_departamentos(provincias = NULL)
+
+coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...)
 }
 \arguments{
 \item{provincias}{Vector de provincias para filtrar. Si es \code{NULL},

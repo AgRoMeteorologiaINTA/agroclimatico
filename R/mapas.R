@@ -34,11 +34,7 @@ mapa_provincias <- function(provincias = NULL, departamentos = FALSE) {
 }
 
 
-#' @export
-#' @rdname mapas
-coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...) {
-  coord_sf(xlim = xlim, ylim = ylim, expand = expand, ...)
-}
+
 
 #' @export
 #' @rdname mapas
@@ -66,6 +62,11 @@ mapa_departamentos <- function(provincias = NULL) {
 
 }
 
+#' @export
+#' @rdname mapas
+coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...) {
+  coord_sf(xlim = xlim, ylim = ylim, expand = expand, ...)
+}
 
 
 get_mapa <- function(mapa) {
