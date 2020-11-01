@@ -33,7 +33,7 @@ que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.}
 
 \item{distribucion}{Distribución usada para ajustar los datos.}
 
-\item{...}{Argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
+\item{...}{Argumentos pasados a \link[SPEI:spi]{SPEI::spi}}
 
 \item{balance}{Balance entre precipitación y evapotaranspiración potencial.}
 }

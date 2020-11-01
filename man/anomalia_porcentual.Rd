@@ -2,7 +2,7 @@
 % Please edit documentation in R/decil.R
 \name{anomalia_porcentual}
 \alias{anomalia_porcentual}
-\title{Tranforma precipitación en porcentaje con respecto a la precipitación normal}
+\title{Tranforma una variable en porcentaje con respecto a sus valores normales.}
 \usage{
 anomalia_porcentual(
   precipitacion,
@@ -11,15 +11,15 @@ anomalia_porcentual(
 )
 }
 \arguments{
-\item{precipitacion}{Vector de observaciones de precipitacion}
-
-\item{pp_referencia}{Vector de observacione sprecipitación para usar de
-referencia al calcular el valor normal. Por defecto usa todos los
-datos.}
-
 \item{normalizado}{Valor lógico para indicar si los deciles se devuelven
 normalizados según (porcentaje - 1).}
+
+\item{variable}{Vector de observaciones de la variable de interés.}
+
+\item{variable_referencia}{Vector de observacione de la variable para usar de
+referencia al calcular el valor normal. Por defecto usa todos los
+datos.}
 }
 \description{
-Tranforma precipitación en porcentaje con respecto a la precipitación normal
+Tranforma una variable en porcentaje con respecto a sus valores normales.
 }
