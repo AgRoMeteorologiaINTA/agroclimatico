@@ -81,7 +81,9 @@ plot.metadatos_nh <- function(x, ...) {
   }
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
-    ggplot2::geom_sf(data = mapa_argentina_provincias, inherit.aes = FALSE) +
-    ggplot2::geom_point()
+    ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +
+    ggplot2::geom_point() +
+    theme_inta_mapa() +
+    coord_argentina()
 }
 
