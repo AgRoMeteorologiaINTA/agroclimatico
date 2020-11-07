@@ -1,9 +1,12 @@
-
-
 # Sacado de https://github.com/indecis-eu/SPEI, fork de
 # https://github.com/sbegueria/SPEI que tiene un fix de un error que aparece cuando
 # uno pasa parámetros.
-# Esto se distribuye bajo licencia GNU GPL.
+# El paquete SPEI se distribuye bajo licencia GNU GPL-2.
+# Authors@R: c(
+#   person('Santiago', 'Beguería', role=c('aut','cre'),
+#          email='santiago.begueria@csic.es'),
+#   person(c('Sergio','M.'), 'Vicente-Serrano', role='aut',
+#          email='svicen@ipe.csic.es'))
 spi_core <- function(data, scale, kernel=list(type='rectangular',shift=0),
                  distribution='log-Logistic', fit='ub-pwm', na.rm=FALSE,
                  ref.start=NULL, ref.end=NULL, x=FALSE, params=NULL, ...) {
