@@ -1,5 +1,5 @@
 Package: agromet
-Title: Lo Que Hace El Paquete
+Title: Indices y Estadísticos Climáticos e Hidrológicos
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Elio",
@@ -11,13 +11,17 @@ Authors@R:
            family = "Corrales",
            role = c("aut"),
            email = "paola.corrales@cima.fcen.uba.ar"))
-Description: Más sobre el paquete.
-License: GPL-3
+Description: Conjunto de funciones para calcular índices y estadísticos climáticos 
+    hidrológicos a partir de datos tidy. Incluye una función para graficar resultados 
+    georeferenciados y e información cartográfica.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+URL: https://github.com/AgRoMeteorologiaINTA/agromet
+BugReports: https://github.com/AgRoMeteorologiaINTA/agromet/issues
 Depends: 
     R (>= 2.10)
 Imports: 
