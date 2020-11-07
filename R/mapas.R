@@ -51,7 +51,7 @@ mapa_departamentos <- function(provincias = NULL) {
   if (!is.null(provincias)) {
     prov <- get_mapa(mapas$provincias)
     prov <- prov[prov$nam %in% provincias, ]
-    mapa <- sf::st_intersection(mapa, prov)
+    mapa <- suppressWarnings(sf::st_intersection(mapa, prov))
     mapa <- mapa[, !grepl("\\.1$",  colnames(mapa))]
     mapa <- mapa[, colnames(mapa) != "vlp"]
     mapa <- mapa[sf::st_geometry_type(mapa) != "POINT", ]

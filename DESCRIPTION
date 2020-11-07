@@ -43,3 +43,7 @@ Imports:
     rappdirs,
     zip,
     magrittr
+Suggests: 
+    testthat,
+    dplyr,
+    vdiffr
