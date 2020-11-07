@@ -69,3 +69,9 @@ test_that("pdsi", {
   expect_vector(res <- pdsi(pp, etp))
   expect_length(res, length(pp))
 })
+
+
+test_that("pdsi", {
+  expect_vector(res <- pdsi_ac(pp, etp))
+  expect_length(res, length(pp))
+})

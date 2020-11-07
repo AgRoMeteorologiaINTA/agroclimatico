@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # agromet <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
+[![R build status](https://github.com/AgRoMeteorologiaINTA/agromet/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agromet/actions)
 <!-- badges: end -->
 
 El paquete {agromet} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo `umbrales()` permite contar la cantidad de observaciones que cumplen una determinada condición y `dias_promedios()` devuelve el primer y último día del año promedio de ocurrencia de un evento. 
