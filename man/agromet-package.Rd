@@ -4,11 +4,21 @@
 \name{agromet-package}
 \alias{agromet}
 \alias{agromet-package}
-\title{agromet: Lo Que Hace El Paquete}
+\title{agromet: Indices y Estadísticos Climáticos e Hidrológicos}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Más sobre el paquete.
+Conjunto de funciones para calcular índices y estadísticos climáticos 
+    hidrológicos a partir de datos tidy. Incluye una función para graficar resultados 
+    georeferenciados y e información cartográfica.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/AgRoMeteorologiaINTA/agromet}
+  \item Report bugs at \url{https://github.com/AgRoMeteorologiaINTA/agromet/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Elio Campitelli \email{elio.campitelli@cima.fcen.uba.ar} (\href{https://orcid.org/0000-0002-7742-9230}{ORCID})

@@ -2,21 +2,20 @@
 % Please edit documentation in R/decil.R
 \name{decil}
 \alias{decil}
-\title{Transforma cualquier variable en deciles}
+\alias{anomalia_porcentual}
+\title{Transformaciones de variables}
 \usage{
-decil(precipitacion, pp_referencia = precipitacion, normalizado = FALSE)
+decil(variable, variable_referencia = variable)
+
+anomalia_porcentual(variable, variable_referencia = variable)
 }
 \arguments{
-\item{normalizado}{Valor lógico para indicar si los deciles se devuelven
-normalizados según (deciles - 5)/10 para que devuelva valores entre -0.5 y 0.5
-en vez de entre 0 y 10.}
-
 \item{variable}{Vector de observaciones de la variable de interés.}
 
 \item{variable_referencia}{Vector de observacione de la variable de interés para usar de
-referencia al calcular el valor de los deciles. Por defecto usa todos los
+referencia al calcular la transformación. Por defecto usa todos los
 datos incluidos en el argumento variable.}
 }
 \description{
-Transforma cualquier variable en deciles
+Transformaciones de variables
 }
