@@ -37,26 +37,20 @@ remotes::install_github("AgRoMeteorologiaINTA/agromet")
 
 A continuación se muestra el uso de algunas funciones. Podés encontrar más ejemplos y usos de las funciones en [acá va el link a la viñeta]
 
+Si se quieren utilizar los datos con formato NH se puede utilizar la función `leer_nh()` y opcionalmente acceder a sus metadatos con `metadatos_nh()`.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(agromet)
 library(dplyr)
 
-datos <- system.file("extdata", "NH0011.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+
+datos <- leer_nh(archivo)
 ```
-
-### Mapear 
-
-La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
-
-```{r}
-datos %>% 
-  with(mapear(t_max, lon, lat, cordillera = TRUE,
-              titulo = "Temperatura máxima", fuente = "Fuente: SMN"))
-```
-
 
 ### Días promedio
+
+Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función `dias_promedios()` en el contexto de `summarise()`.
 
 ```{r}
 datos %>% 
@@ -64,6 +58,24 @@ datos %>%
   group_by(codigo_nh) %>% 
   summarise(dias_promedios(fecha))
 ```
+
+
+
+### Mapear 
+
+La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
+
+```{r message=FALSE, warning=FALSE}
+# Genero datos aleatorios 
+set.seed(934)
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1))
+
+datos_aleatorios %>% 
+  with(mapear(pp, lon, lat, cordillera = TRUE,
+              titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+```
+
+
 
 
 ## Cómo contribuir
