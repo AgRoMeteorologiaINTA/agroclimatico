@@ -19,7 +19,7 @@ leer_nh <- function(archivos) {
 
   out <- list()
 
-  for (i in 1:length(archivos)) {
+  for (i in seq_along(archivos)) {
 
     data <- readr::read_fwf(file = archivos[i],
                             col_positions = readr::fwf_widths(widths, col_names = colnames_nh),
