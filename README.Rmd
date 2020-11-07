@@ -49,3 +49,7 @@ remotes::install_github("AgRoMeteorologiaINTA/agromet")
 ## Ejemplo
 
 (nada todavía)
+
+## Código de Conducta
+
+Este proyecto incluye un [Código de Conducta](https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md). Al contribuir en este paquete, aceptás complir con este código.
