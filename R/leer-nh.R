@@ -76,9 +76,6 @@ metadatos_nh <- function(codigo = NULL, lat = NULL, lon = NULL) {
 #' @export
 plot.metadatos_nh <- function(x, ...) {
   lon <- lat <- NULL
-  if(!requireNamespace("ggplot2", quietly = TRUE)) {
-    stop('Esta funci\u00f3n necesita el paquete ggplot2. Puedes instalarlo con `install.packages("ggplot2")')
-  }
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = mapa_argentina_provincias, inherit.aes = FALSE) +
