@@ -5,7 +5,7 @@
 #' @param fechas vector de fechas
 #'
 #' @export
-dias_promedios <- function(fechas) {
+dias_promedio <- function(fechas) {
 
   data.table::data.table(fecha = fechas) %>%
     .[, .(primer_dia = min(fecha),
@@ -19,5 +19,6 @@ dias_promedios <- function(fechas) {
     .[, ":="(dia = data.table::mday(dia_medio),
              mes = data.table::month(dia_medio),
              dia_juliano = data.table::yday(dia_medio))] %>%
-    .[, dia_medio := NULL]
+    .[, dia_medio := NULL] %>%
+    .[]
 }
