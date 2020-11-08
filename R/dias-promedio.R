@@ -1,0 +1,50 @@
+#' Días Promedio
+#'
+#' Calcula el primer y último día del año promedio a partir de una seria de fechas.
+#'
+#' Esta función solo requiere un vector de fechas para calcular el primer y último
+#' día del año en promedio. Si este vector incluye todos los días de muchos años
+#' el resultado será el 1° de enero y el 31 de diciembre. Pero si solo se utilizan
+#' las fechas que cumplen con una determinada condición, por ejemplo aquellos
+#' días donde la temperatura mínima fue menor o igual a 0°C, entonces devuelve
+#' el primer y último día de ocurrencia en promedio para este evento.
+#'
+#' @param fechas vector de fechas
+#'
+#' @return La función devuelve un data frame con 4 variables fijas y variables extras
+#' en el caso de hacer el cálculo para distintos grupos:
+#' * **variable** (caracter) primer_dia o ultimo_dia según corresponda
+#' * **dia** (numérico) día del mes
+#' * **mes** (numérico) mes de ocurrencia
+#' * **dia_juliano** (numérico) día del año
+#'
+#' @examples
+#' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+#' datos <- leer_nh(archivo)
+#'
+#' # Usando la serie completa
+#' dias_promedio(datos$fecha)
+#'
+#' # Filtrando los datos para un determinado evento
+#' datos %>%
+#'   filter(t_min <= 0) %>%
+#'   summarise(dias_promedio(fecha))
+#'
+#' @export
+dias_promedio <- function(fechas) {
+
+  data.table::data.table(fecha = fechas) %>%
+    .[, .(primer_dia = min(fecha),
+          ultimo_dia  = max(fecha)), by = .(data.table::year(fecha))] %>%
+    data.table::melt(measure.vars = c("primer_dia", "ultimo_dia")) %>%
+    .[, fecha := as.Date(paste0("1900-",
+                        data.table::month(value),
+                        "-",
+                        data.table::mday(value)), formar = "%Y-%m-%d")] %>%
+    .[, .(dia_medio = mean.Date(fecha, na.rm = TRUE)), by = variable] %>%
+    .[, ":="(dia = data.table::mday(dia_medio),
+             mes = data.table::month(dia_medio),
+             dia_juliano = data.table::yday(dia_medio))] %>%
+    .[, dia_medio := NULL] %>%
+    .[]
+}

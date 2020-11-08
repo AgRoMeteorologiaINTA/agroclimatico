@@ -40,7 +40,7 @@ Por ejemplo si queremos la cantidad de días donde la temperatura máxima fue ma
 datos %>% 
   group_by(fecha = lubridate::floor_date(fecha, "1 month")) %>% 
   summarise(umbrales(t_30 = t_max >= 30, 
-                     secos = prcp <= 0.1,
+                     secos = precip <= 0.1,
                      t_0  = t_min <= 0,
                      t_15 = t_max >= 15)) %>% 
   filter(lubridate::month(fecha) == 1) %>% 

@@ -2,15 +2,42 @@
 % Please edit documentation in R/olas.R
 \name{olas}
 \alias{olas}
-\title{Computa olas}
+\title{Olas}
 \usage{
 olas(fecha, condicion)
 }
 \arguments{
-\item{Vector}{de fechas}
+\item{fecha}{vector de fechas.}
 
-\item{Conficion}{Vector lógico}
+\item{condicion}{vector lógico.}
+}
+\value{
+Devuelve un data frame con 3 variables fijas y las posibles variables
+asociadas al agrupamiento:
+\itemize{
+\item \strong{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
+\item \strong{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
+\item \strong{longitud} (diferencia de fechas, drtn) duración de la ola
+}
+
+Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.
 }
 \description{
-Ignora los datos faltnates!
+Identifica periodos de persistencia de un evento definido a partir de alguna
+condición lógica, por ejemplo días consecutivos donde la temperatura mínima
+fue igual o menor a 0°C para calcular días acumulados de heladas.
+}
+\details{
+La función es sensible a los datos faltantes, esto quiere decir que si se
+encuentra con un dato faltante la función "corta" el periodo de persistencia.
+Puede utilizarse en el contexto de \code{summarise()} y \code{group_by()} para hacer
+este cálculo por grupos.
+}
+\examples{
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+datos <- leer_nh(archivo)
+
+datos \%>\%
+  summarise(agromet::olas(date, tmax > 20))
+
 }

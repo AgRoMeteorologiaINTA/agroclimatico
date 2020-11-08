@@ -57,20 +57,15 @@ datos <- leer_nh(archivo)
 Si por ejemplo se quiere obtener el día de la primera y última helada en
 promedio, asumiendo que la ocurrencia de helada corresponde a
 temperatura mínima menor a 0°C, se puede utilizar la función
-`dias_promedios()` en el contexto de `summarise()`.
+`dias_promedio()` en el contexto de `summarise()`.
 
 ``` r
 datos %>% 
   filter(t_min <= 0) %>% 
-  group_by(codigo_nh) %>% 
   summarise(dias_promedio(fecha))
-#> `summarise()` regrouping output by 'codigo_nh' (override with `.groups` argument)
-#> # A tibble: 2 x 5
-#> # Groups:   codigo_nh [1]
-#>   codigo_nh variable     dia   mes dia_juliano
-#>   <chr>     <fct>      <int> <int>       <int>
-#> 1 0011      primer_dia    21     5         141
-#> 2 0011      ultimo_dia     7     8         219
+#>     variable dia mes dia_juliano
+#> 1 primer_dia  21   5         141
+#> 2 ultimo_dia   7   8         219
 ```
 
 ### Mapear

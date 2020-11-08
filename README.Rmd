@@ -52,12 +52,11 @@ datos <- leer_nh(archivo)
 
 ### Días promedio
 
-Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función `dias_promedios()` en el contexto de `summarise()`.
+Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función `dias_promedio()` en el contexto de `summarise()`.
 
 ```{r}
 datos %>% 
   filter(t_min <= 0) %>% 
-  group_by(codigo_nh) %>% 
   summarise(dias_promedio(fecha))
 ```
 

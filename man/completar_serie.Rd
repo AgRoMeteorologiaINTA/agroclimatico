@@ -7,18 +7,38 @@
 completar_serie(datos, fecha, resolucion, rango = range(fecha))
 }
 \arguments{
-\item{datos}{Tabla (data.frame, data.table, tibble) a completar.}
+\item{datos}{tabla (data.frame, data.table, tibble) a completar.}
 
-\item{fecha}{Columna de fecha.}
+\item{fecha}{variable de fechas.}
 
-\item{resolucion}{Texto para definir la resolución puede ser
-cualquier valor acpetado por el argumento \code{by} de la función \code{\link[=seq.Date]{seq.Date()}}
-o su traducción al español. Es decir, un valor que contanga "día" (o "dia"),
+\item{resolucion}{texto que define resolución de salida de los datos. Puede ser
+cualquier valor aceptado por el argumento \code{by} de la función \code{\link[=seq.Date]{seq.Date()}}
+o su traducción al español. Es decir, "día" (o "dia"),
 "semana", "mes", "trimestre" o "año", así como los plurales.}
 
-\item{rango}{Un vector cuyo rango define el período a rellenar. Útil si
+\item{rango}{un vector cuyo rango define el período a completar. Es útil si
 se quiere que múltiples grupos de datos tengan el mismo rango de fechas.}
 }
+\value{
+Devuelve un data frame con las mismas variables de origen. La variable
+asociada a las fechas ahora se encuentra completa para la resolución indicada
+y el resto de las variables se completan con NA.
+}
 \description{
-Completa una serie de datos
+La función permite completar una serie de datos temporales definiendo alguna
+resolución disponible. Es compatible con datos agrupados por \code{group_by()}.
+}
+\examples{
+# Datos de prueba completos
+datos <- data.frame(fechas = seq(as.Date("1985-01-01"), as.Date("2015-12-01"),
+                             by = "1 month"),
+                    pp = 1)
+
+set.seed(42)
+datos_perdidos <- sample(nrow(datos), nrow(datos)/10)
+datos$pp[datos_perdidos] <- NA
+datos_incompletos <- na.omit(datos) #Serie de datos a completar
+
+completar_serie(datos_incompletos, fechas, resolucion = "1 mes")
+
 }

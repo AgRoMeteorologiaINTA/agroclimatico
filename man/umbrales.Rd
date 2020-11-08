@@ -2,13 +2,49 @@
 % Please edit documentation in R/umbrales.R
 \name{umbrales}
 \alias{umbrales}
-\title{Calcula extremos}
+\title{Calcula la Ocurrencia de eventos a Partir de Umbrales}
 \usage{
 umbrales(...)
 }
 \arguments{
-\item{...}{Extremos a calcular.}
+\item{...}{umbral o umbrales a calcular utilizando operadores lógicos.}
+}
+\value{
+La función devuelve un data frame con 4 variables fijas junto a posiblesvariables
+asociadas a los agrupamientos.
+
+Variables fijas
+\itemize{
+\item \strong{N} (numérico) ocurrencia del evento
+\item \strong{prop} (numérico) proporción eventos respecto del total de observaciones
+\item \strong{na} (numérico)  proporción de datos faltantes respecto del total de observaciones
+\item \strong{extremo} (caracter) nombre del extremo definido por el usuario
+}
 }
 \description{
-Calcula extremos
+La función \code{umbrales()} permite contar la ocurrencia de eventos definidos a
+partir de uno o más umbrales.
+}
+\details{
+Debe utilizarse en el contexto de \code{summarise()} y opcionalmente \code{group_by()}.
+Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
+}
+\examples{
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+datos <- leer_nh(archivo)
+
+# Sin agrupar devuelve un único valor
+datos \%>\%
+ summarise(umbrales(t_30 = t_max >= 30))
+
+# Si se agrupan los datos devuelve un valor por cada grupo
+datos \%>\%
+  group_by(fecha = lubridate::floor_date(fecha, "1 month")) \%>\%
+  summarise(umbrales(t_30 = t_max >= 30))
+
+# Se pueden calcular varios umbrales al mismo tiempo
+datos \%>\%
+ summarise(umbrales(t_30 = t_max >= 30,
+                    t_0  = t_min <= 0))
+
 }
