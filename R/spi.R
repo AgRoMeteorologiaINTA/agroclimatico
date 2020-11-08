@@ -1,16 +1,40 @@
 #' Calcula el SPI
 #'
-#' @param fecha Vector de fechas.
-#' @param precipitacion Vector de precipitacion.
-#' @param balance Balance entre precipitación y evapotaranspiración potencial.
-#' @param escalas Vector numérico con las escalas requeridas
-#' @param distribucion Distribución usada para ajustar los datos.
-#' @param referencia Serie de precipitación para usar de referencia en el ajuste
+#' Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El `spi` toma valores
+#' de precipitación mientras que el `spei` toma valores del balance entre precipitación y evapotranspiración
+#' potencial. Internamente hacen lo mismo; la única diferencia es la distribución teórica
+#' usada por defecto para ajustar los datos.
+#'
+#' @param fecha vector de fechas.
+#' @param precipitacion vector de precipitacion.
+#' @param balance balance entre precipitación y evapotaranspiración potencial.
+#' @param escalas vector numérico con las escalas requeridas
+#' @param distribucion distribución usada para ajustar los datos.
+#' @param referencia serie de precipitación para usar de referencia en el ajuste
 #' a la distribución teórica como un data.frame con una columna llamada fecha y otra
 #' precipitación. La función `spi_referencia()` es un simple wrapper a `data.frame`
 #' que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.
+#' @param ... argumentos pasados a [SPEI::spi]
 #'
-#' @param ... Argumentos pasados a [SPEI::spi]
+#' @return
+#' Un data.frame con columnas `fecha`, `escala` y `spi` (o `spei`).
+#'
+#' @examples
+#' # datos aleatorios
+#' datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+#' set.seed(42)
+#' datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
+#'
+#' with(datos, spi(fecha, pp, escalas = 1:5))
+#'
+#' # Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
+#' # cambien los valores viejos, hay que usar `referencia`
+#'
+#' nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"), as.Date("2017-12-01"), by = "1 month"))
+#' nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
+#' nuevos_datos <- rbind(datos, nuevos_datos)
+#'
+#' with(nuevos_datos, spi(fecha, pp, escalas = 1:5, referencia = spi_referencia(datos$fecha, datos$pp)))
 #'
 #' @export
 #' @importFrom data.table .BY :=

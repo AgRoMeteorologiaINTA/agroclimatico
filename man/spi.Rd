@@ -20,23 +20,47 @@ spei(fecha, balance, escalas, distribucion = "log-Logistic", ...)
 spi_referencia(fecha, precipitacion)
 }
 \arguments{
-\item{fecha}{Vector de fechas.}
+\item{fecha}{vector de fechas.}
 
-\item{precipitacion}{Vector de precipitacion.}
+\item{precipitacion}{vector de precipitacion.}
 
-\item{escalas}{Vector numérico con las escalas requeridas}
+\item{escalas}{vector numérico con las escalas requeridas}
 
-\item{referencia}{Serie de precipitación para usar de referencia en el ajuste
+\item{referencia}{serie de precipitación para usar de referencia en el ajuste
 a la distribución teórica como un data.frame con una columna llamada fecha y otra
 precipitación. La función \code{spi_referencia()} es un simple wrapper a \code{data.frame}
 que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.}
 
-\item{distribucion}{Distribución usada para ajustar los datos.}
+\item{distribucion}{distribución usada para ajustar los datos.}
 
-\item{...}{Argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
+\item{...}{argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
 
-\item{balance}{Balance entre precipitación y evapotaranspiración potencial.}
+\item{balance}{balance entre precipitación y evapotaranspiración potencial.}
+}
+\value{
+Un data.frame con columnas \code{fecha}, \code{escala} y \code{spi} (o \code{spei}).
 }
 \description{
-Calcula el SPI
+Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El \code{spi} toma valores
+de precipitación mientras que el \code{spei} toma valores del balance entre precipitación y evapotranspiración
+potencial. Internamente hacen lo mismo; la única diferencia es la distribución teórica
+usada por defecto para ajustar los datos.
+}
+\examples{
+# datos aleatorios
+datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+set.seed(42)
+datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
+
+with(datos, spi(fecha, pp, escalas = 1:5))
+
+# Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
+# cambien los valores viejos, hay que usar `referencia`
+
+nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"), as.Date("2017-12-01"), by = "1 month"))
+nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
+nuevos_datos <- rbind(datos, nuevos_datos)
+
+with(nuevos_datos, spi(fecha, pp, escalas = 1:5, referencia = spi_referencia(datos$fecha, datos$pp)))
+
 }
