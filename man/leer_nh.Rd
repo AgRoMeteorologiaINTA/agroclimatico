@@ -2,14 +2,57 @@
 % Please edit documentation in R/leer-nh.R
 \name{leer_nh}
 \alias{leer_nh}
-\title{Lectura de archivos del sistema NH}
+\title{Lectura de Archivos con Formato NH}
 \usage{
 leer_nh(archivos)
 }
 \arguments{
-\item{archivos}{Caracter o vector de caracteres con el nombre y ubicación de los
-archivos a leer}
+\item{archivos}{Caracter o vector de caracteres con nombre y ubicación de los
+archivos a leer.}
+}
+\value{
+Devuelve un data frame con tantas filas como líneas en el o los archivos leidos y
+las 25 variables presentes.
 }
 \description{
-Lee uno o más archivos
+Lee uno o más archivos siempre que mantengan el formato NH de ancho fijo.
+}
+\details{
+La función está preparada para leer datos díarios con el formato NH que incluye
+25 variables:
+\itemize{
+\item \strong{codigo} (caracter)
+\item \strong{codigo_nh} (caracter), variable llave para acceder a los metadatos de estaciones
+\item \strong{fecha} (fecha)
+\item \strong{t_max} (numérico), temperatura máxima en grados centígrados
+\item \strong{t_min} (numérico), temperatura mínima en grados centígrados
+\item \strong{precip} (numérico), precipitación acumulada en milímetros
+\item \strong{lluvia_datos} (numérico), ocurrencia de precipitación 1 indica lluvia
+\item \strong{lluvia} (numérico),  ocurrencia de lluvia
+\item \strong{llovizna} (numérico), ocurrencia de llovizna
+\item \strong{granizo} (numérico), ocurrencia de granizo
+\item \strong{nieve} (numérico), ocurrencia de nieve
+\item \strong{t_aire_max} (numérico), temperatura máxima del aire en grados centígrados
+\item \strong{t_aire_min} (numérico), temperatura mínima del aire en grados centígrados
+\item \strong{t_suelo_max} (numérico), temperatura máxima del suelo en grados centígrados
+\item \strong{t_suelo_min} (numérico), temperatura mínima del suelo en grados centígrados
+\item \strong{heliofania_efec} (numérico), heliofanía efectiva en horas
+\item \strong{heliofania_rel} (numérico), heliofanía relativa en porcentaje
+\item \strong{p_vapor} (numérico), tensión de vapor en hPa
+\item \strong{hr} (numérico), humedad relativa en porcentaje
+\item \strong{td} (numérico), temperatura de rocío en grados centígrados
+\item \strong{rocio} (numérico), ocurrencia de rocío
+\item \strong{viento_10m} (numérico), viento a 10 metros en km/h
+\item \strong{viento_2m} (numérico), viento a 2 metros en km/h
+\item \strong{rad} (numérico), radiación en MJ/m2
+\item \strong{etp} (numérico), evapotranspiración en milímetros
+}
+}
+\examples{
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+datos <- leer_nh(archivo)
+
+}
+\seealso{
+\code{\link[=metadatos_nh]{metadatos_nh()}} devuelve los metadatos de las estaciones meteorológicas.
 }

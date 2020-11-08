@@ -2,19 +2,40 @@
 % Please edit documentation in R/leer-nh.R
 \name{metadatos_nh}
 \alias{metadatos_nh}
-\title{Tabla de metadatos de estaciones NH}
+\title{Tabla de Metadatos de Estaciones NH}
 \usage{
 metadatos_nh(codigo = NULL, lat = NULL, lon = NULL)
 }
 \arguments{
-\item{codigo}{caracter o vector de caracteres con los códigos de estadiones
+\item{codigo}{caracter o vector de caracteres con los códigos de estaciones de interés.
 Por defecto devuelve todas las estaciones.}
 
-\item{lat}{vector numérico con las latitudes límite de la región de interes.}
+\item{lat}{vector numérico con las latitudes límite de la región de interés.}
 
-\item{lon}{vector numérico con las longitudes límite de la región de interes
+\item{lon}{vector numérico con las longitudes límite de la región de interés
 (entre -180 y 180).}
 }
 \description{
-Tabla de metadatos de estaciones NH
+Devuelve los metadatos de estaciones incluyendo el código único, ubicación (latitud y
+longitud) y el nombre.
+}
+\details{
+Esta función por defecto devuelve la lista completa de estaciones pero alternativamente
+se puede devolver estaciones espećificar a partir de sus códigos o todas las estaciones
+incluidas en una región. Además incluye un método plot para visualizar rápidamente
+la ubicación de las estaciones.
+}
+\examples{
+# listado completo de estaciones
+metadatos_nh()
+
+# listado de estaciones específicas
+metadatos_nh(codigo = c("0001", "0011"))
+
+# listados de estaciones en una región
+metadatos_nh(lat = c(-30, -20), lon = c(-65, -55))
+
+# gráfico
+plot(metadatos_nh())
+
 }
