@@ -1,12 +1,25 @@
-#' Índice de severidad de sequía de palmer
+#' Índice de Severidad de Sequía de Palmer
 #'
-#' `psdi_ac` calcula el PSDI autocalibrado.
+#' Usa [scPDSI::pdsi] para calcular el Indice de Severidad de Sequia de Palmer.
+#' `psdi_ac` calcula la versión autocalibrada.
 #'
-#' @param precipitacion Serie de precipitación sin datos faltantes.
-#' @param etp Serie de evapotranspiración potencial sin datos faltantes.
-#' @param cc Capacidad de campo (en mm).
-#
-#
+#' @param precipitacion serie de precipitación sin datos faltantes.
+#' @param etp serie de evapotranspiración potencial sin datos faltantes.
+#' @param cc capacidad de campo (en mm).
+#'
+#' @return
+#' Un vector de la misma longitud que `precipitacion` con el PSDI correspondiente a cada caso.
+#'
+#' @examples
+#' # datos aleatorios
+#' datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+#' set.seed(42)
+#' datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
+#' datos$etp <- rgamma(nrow(datos), shape = 1, scale = 3)
+#'
+#' datos$pdsi_ac <- with(datos, pdsi(pp, etp))
+#'
+#'
 #' @export
 pdsi  <- function(precipitacion, etp, cc = 100) {
   as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cc, sc = FALSE)$X)[seq_along(precipitacion)]
