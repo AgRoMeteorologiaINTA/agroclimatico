@@ -63,7 +63,7 @@ temperatura mínima menor a 0°C, se puede utilizar la función
 datos %>% 
   filter(t_min <= 0) %>% 
   group_by(codigo_nh) %>% 
-  summarise(dias_promedios(fecha))
+  summarise(dias_promedio(fecha))
 #> `summarise()` regrouping output by 'codigo_nh' (override with `.groups` argument)
 #> # A tibble: 2 x 5
 #> # Groups:   codigo_nh [1]
@@ -84,7 +84,7 @@ la variable a graficar.
 ``` r
 # Genero datos aleatorios 
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1))
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
 
 datos_aleatorios %>% 
   with(mapear(pp, lon, lat, cordillera = TRUE,

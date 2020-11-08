@@ -58,7 +58,7 @@ Si por ejemplo se quiere obtener el día de la primera y última helada en prome
 datos %>% 
   filter(t_min <= 0) %>% 
   group_by(codigo_nh) %>% 
-  summarise(dias_promedios(fecha))
+  summarise(dias_promedio(fecha))
 ```
 
 
@@ -70,7 +70,7 @@ La función `mapear()` grafica una variable dada en puntos discretos e irregular
 ```{r message=FALSE, warning=FALSE}
 # Genero datos aleatorios 
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1))
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
 
 datos_aleatorios %>% 
   with(mapear(pp, lon, lat, cordillera = TRUE,
