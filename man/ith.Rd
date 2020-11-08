@@ -35,6 +35,7 @@ ith(temperatura = 23, hr = 65)
 archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
 datos <- leer_nh(archivo)
 
+library(dplyr)
 datos \%>\%
   mutate(ith = ith(t_max, hr))
 

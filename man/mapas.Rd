@@ -17,7 +17,7 @@ mapa_argentina_limitrofes()
 
 mapa_departamentos(provincias = NULL)
 
-coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), expand = FALSE, ...)
+coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), ...)
 
 theme_inta_mapa(...)
 }
@@ -26,6 +26,10 @@ theme_inta_mapa(...)
 no filtra.}
 
 \item{departamentos}{Lógico indicando si dibujar los departamenteos o no.}
+
+\item{xlim, ylim}{límites en longitud y latitud.}
+
+\item{...}{otros argumentos que se pasan a \code{\link[ggplot2:ggsf]{ggplot2::coord_sf()}} o \code{\link[ggplot2:ggtheme]{ggplot2::theme_linedraw()}}.}
 }
 \description{
 Mapas

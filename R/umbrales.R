@@ -21,6 +21,7 @@
 #' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
 #' datos <- leer_nh(archivo)
 #'
+#' library(dplyr)
 #' # Sin agrupar devuelve un único valor
 #' datos %>%
 #'  summarise(umbrales(t_30 = t_max >= 30))
@@ -39,7 +40,7 @@
 umbrales <- function(...) {
   values <- list(...)
   if (length(values) == 0) {
-    stop("Ningún extremo definido.")
+    stop("Ning\u00fan extremo definido.")
   }
 
   datos <- lapply(values, function(x) {

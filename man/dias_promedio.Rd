@@ -38,6 +38,7 @@ datos <- leer_nh(archivo)
 dias_promedio(datos$fecha)
 
 # Filtrando los datos para un determinado evento
+library(dplyr)
 datos \%>\%
   filter(t_min <= 0) \%>\%
   summarise(dias_promedio(fecha))

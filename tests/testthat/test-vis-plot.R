@@ -8,10 +8,10 @@ context("plots")
 
 
 
-test_that("plots tiran warnings si ggplot2 no está instalado", {
-  expect_error(
-    with_mock(requireNamespace = function(...) return(FALSE),
-              plot(metadatos_nh())),
-    "Esta función necesita el paquete ggplot2")
-
-})
+# test_that("plots tiran warnings si ggplot2 no está instalado", {
+#   expect_error(
+#     with_mock(requireNamespace = function(...) return(FALSE),
+#               plot(metadatos_nh())),
+#     "Esta función necesita el paquete ggplot2")
+#
+# })

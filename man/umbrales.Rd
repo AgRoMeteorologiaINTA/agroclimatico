@@ -33,6 +33,7 @@ Esto permite calcular distintos umbrales y obtener resultados para distintos gru
 archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
 datos <- leer_nh(archivo)
 
+library(dplyr)
 # Sin agrupar devuelve un único valor
 datos \%>\%
  summarise(umbrales(t_30 = t_max >= 30))

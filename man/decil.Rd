@@ -5,14 +5,14 @@
 \alias{anomalia_porcentual}
 \title{Transformaciones de variables}
 \usage{
-decil(variable, variable_referencia = variable)
+decil(variable, referencia = variable)
 
-anomalia_porcentual(variable, variable_referencia = variable)
+anomalia_porcentual(variable, referencia = variable)
 }
 \arguments{
 \item{variable}{Vector de observaciones de la variable de interés.}
 
-\item{variable_referencia}{Vector de observacione de la variable de interés para usar de
+\item{referencia}{Vector de observacione de la variable de interés para usar de
 referencia al calcular la transformación. Por defecto usa todos los
 datos incluidos en el argumento variable.}
 }

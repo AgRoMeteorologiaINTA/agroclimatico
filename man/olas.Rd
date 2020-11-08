@@ -37,7 +37,8 @@ este cálculo por grupos.
 archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
 datos <- leer_nh(archivo)
 
+library(dplyr)
 datos \%>\%
-  summarise(agromet::olas(date, tmax > 20))
+  summarise(olas(fecha, t_max > 20))
 
 }

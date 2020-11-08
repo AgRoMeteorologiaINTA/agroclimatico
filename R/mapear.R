@@ -12,7 +12,7 @@
 #' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
 #' pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
 #' indicando el valor mínimo desde donde empezar a pintar.
-#' @param titulo,subsitulo,fuente texto para usar como título, subtítulo y
+#' @param titulo,subtitulo,fuente texto para usar como título, subtítulo y
 #' epígrafe.
 #'
 #' @return
@@ -24,7 +24,8 @@
 #'
 #' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
 #'                               paleta = paleta_precipitacion,
-#'                               titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+#'                               titulo = "Precipitación aleatoria",
+#'                               fuente = "Fuente: datos de ejemplo"))
 #'
 #' @export
 #' @import ggplot2
@@ -35,10 +36,8 @@ mapear <- function(valor, lon, lat,
                    cordillera = FALSE,
                    titulo = NULL,
                    subtitulo = NULL,
-                   fuente = NULL
-
-) {
-
+                   fuente = NULL) {
+  h <- level_mid <- var1.pred <- NULL
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
   campo <- kringe(valor, lon, lat)
 
@@ -110,6 +109,7 @@ mapear <- function(valor, lon, lat,
 #' @param palette Paleta a usar. Una función que recibe un parámetro (el número de colores
 #' deseados) y devuelve un vector con colores.
 #' @param n El número de colores deseados
+#' @param ... otros argumentos que se padan a [ggplot2::scale_fill_manual()] o [ggplot2::discrete_scale()].
 #'
 #' @export
 scale_fill_precipitacion_d <- function(name = waiver(), breaks = waiver(), drop = !is.vector(breaks),
@@ -122,8 +122,8 @@ scale_fill_precipitacion_d <- function(name = waiver(), breaks = waiver(), drop 
   if (is.vector(breaks)) {
     scale_fill_manual(name = name,
                       drop = FALSE,
-                      values = setNames(palette(length(breaks)),
-                                        breaks), ...
+                      values = stats::setNames(palette(length(breaks)),
+                                               breaks), ...
     )
   } else {
     discrete_scale("fill",
@@ -144,7 +144,7 @@ breaks_precipitacion <- function() c(0, 10, 20, 30, 40, 50, 60, 70, Inf)
 
 #' @export
 #' @rdname scale_fill_precipitacion_d
-paleta_precipitacion <- function(n) colorRampPalette(colores_precipitacion)(n)
+paleta_precipitacion <- function(n) grDevices::colorRampPalette(colores_precipitacion)(n)
 
 
 colores_precipitacion <- c(rgb(209/255, 227/255, 31/255),

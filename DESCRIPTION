@@ -14,7 +14,7 @@ Authors@R:
 Description: Conjunto de funciones para calcular índices y estadísticos climáticos 
     hidrológicos a partir de datos tidy. Incluye una función para graficar resultados 
     georeferenciados y e información cartográfica.
-License: GPL-3
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 Language: es
 LazyData: true
@@ -46,4 +46,5 @@ Imports:
 Suggests: 
     testthat,
     dplyr,
-    vdiffr
+    vdiffr,
+    lubridate

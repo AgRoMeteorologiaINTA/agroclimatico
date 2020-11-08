@@ -8,7 +8,7 @@ test_that("deciles", {
   d <- decil(ref)
 
   expect_length(d, N)
-  d2 <- decil(c(ref, x), variable_referencia = ref)
+  d2 <- decil(c(ref, x), referencia = ref)
   expect_equal(d2[seq_len(N)], d)
 })
 
@@ -18,7 +18,7 @@ test_that("percentiles", {
   d <- anomalia_porcentual(ref)
   expect_length(d, N)
 
-  d2 <- anomalia_porcentual(c(ref, x), variable_referencia = ref)
+  d2 <- anomalia_porcentual(c(ref, x), referencia = ref)
   expect_equal(d2[seq_len(N)], d)
 })
 

@@ -20,7 +20,8 @@ pdsi_ac(precipitacion, etp, cc = 100)
 Un vector de la misma longitud que \code{precipitacion} con el PSDI correspondiente a cada caso.
 }
 \description{
-\code{psdi_ac} calcula el PSDI autocalibrado.
+Usa \link[scPDSI:pdsi]{scPDSI::pdsi} para calcular el Indice de Severidad de Sequia de Palmer.
+\code{psdi_ac} calcula la versión autocalibrada.
 }
 \examples{
 # datos aleatorios

@@ -57,10 +57,12 @@ with(datos, spi(fecha, pp, escalas = 1:5))
 # Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
 # cambien los valores viejos, hay que usar `referencia`
 
-nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"), as.Date("2017-12-01"), by = "1 month"))
+nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"),
+                                       as.Date("2017-12-01"), by = "1 month"))
 nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
 nuevos_datos <- rbind(datos, nuevos_datos)
 
-with(nuevos_datos, spi(fecha, pp, escalas = 1:5, referencia = spi_referencia(datos$fecha, datos$pp)))
+with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
+                       referencia = spi_referencia(datos$fecha, datos$pp)))
 
 }

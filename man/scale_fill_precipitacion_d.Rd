@@ -29,6 +29,8 @@ presentes en los datos.}
 \item{palette}{Paleta a usar. Una función que recibe un parámetro (el número de colores
 deseados) y devuelve un vector con colores.}
 
+\item{...}{otros argumentos que se padan a \code{\link[ggplot2:scale_manual]{ggplot2::scale_fill_manual()}} o \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
+
 \item{n}{El número de colores deseados}
 }
 \description{

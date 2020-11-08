@@ -26,12 +26,14 @@
 #' dias_promedio(datos$fecha)
 #'
 #' # Filtrando los datos para un determinado evento
+#' library(dplyr)
 #' datos %>%
 #'   filter(t_min <= 0) %>%
 #'   summarise(dias_promedio(fecha))
 #'
 #' @export
 dias_promedio <- function(fechas) {
+  fecha <- value <- variable <- dia_medio <- . <- NULL
 
   data.table::data.table(fecha = fechas) %>%
     .[, .(primer_dia = min(fecha),

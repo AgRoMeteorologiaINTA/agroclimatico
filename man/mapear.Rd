@@ -31,7 +31,7 @@ la coordillera (donde el kriging es particularmente problemático). Si es \code{
 pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
 indicando el valor mínimo desde donde empezar a pintar.}
 
-\item{titulo, subsitulo, fuente}{texto para usar como título, subtítulo y
+\item{titulo, subtitulo, fuente}{texto para usar como título, subtítulo y
 epígrafe.}
 }
 \value{
@@ -47,6 +47,7 @@ datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()),
 
 with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
                               paleta = paleta_precipitacion,
-                              titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+                              titulo = "Precipitación aleatoria",
+                              fuente = "Fuente: datos de ejemplo"))
 
 }
