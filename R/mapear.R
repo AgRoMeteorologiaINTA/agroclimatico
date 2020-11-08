@@ -1,9 +1,37 @@
+#' Grafica variables en Argentina
+#'
+#' Dadas mediciones de una veriable en puntos ubicados en Argentina,
+#' interpola a el resto del territorio usando kriging y grafica con contornos
+#'
+#' @param valor vector con los valores medidos.
+#' @param lon,lat vectores de ubicación en longitud y latitud.
+#' @param breaks valores donde graficar los contornos. Si es`NULL` hace 10 contornos.
+#' @param paleta paleta de colores a usar. Tiene que ser una función que reciba un número
+#' y devuelva esa cantidad de colores. Por ejemplo [paleta_precipitacion()].
+#' @param cordillera lógico indicando si hay que tapar los datos donde está
+#' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
+#' pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
+#' indicando el valor mínimo desde donde empezar a pintar.
+#' @param titulo,subsitulo,fuente texto para usar como título, subtítulo y
+#' epígrafe.
+#'
+#' @return
+#' Un objeto ggplot2.
+#'
+#' @examples
+#' set.seed(934)
+#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
+#'
+#' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
+#'                               paleta = paleta_precipitacion,
+#'                               titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+#'
 #' @export
 #' @import ggplot2
 mapear <- function(valor, lon, lat,
                    breaks = NULL,
-                   paleta = "viridis",
-                   mapas = c("limítrofes", "argentina", "provincias"),
+                   paleta = scales::viridis_pal(),
+                   # mapas = c("limítrofes", "argentina", "provincias"),
                    cordillera = FALSE,
                    titulo = NULL,
                    subtitulo = NULL,
@@ -45,18 +73,8 @@ mapear <- function(valor, lon, lat,
 
   guide_fill <- guide_colorsteps(barheight = grid::unit(.3, "npc"), show.limits = TRUE)
 
-
-
-  if (is.character(paleta)  && paleta == "viridis") {
-    escala <- scale_fill_viridis_d(deparse(substitute(valor)),
-                                   breaks = if (is.null(breaks_labs)) waiver() else breaks_labs,,
-                                   drop = is.vector(breaks_labs),
-                                   guide = guide_fill)
-  } else {
-    escala <- scale_fill_precipitacion_d(name = deparse(substitute(valor)), breaks = breaks_labs,
-                                         guide = guide_fill, palette = paleta)
-  }
-
+  escala <- scale_fill_precipitacion_d(name = deparse(substitute(valor)), breaks = breaks_labs,
+                                       guide = guide_fill, palette = paleta)
 
   # browser()
   ggplot(campo, aes(lon, lat)) +
