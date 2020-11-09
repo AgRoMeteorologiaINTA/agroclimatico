@@ -45,13 +45,13 @@
 #' @export
 leer_nh <- function(archivos) {
 
-  colnames_nh <- c("codigo", "codigo_nh", "fecha",
+  colnames_nh <- c("codigo", "codigo_nh", "anio", "mes", "dia",
                    "t_max", "t_min", "precip",
                    "lluvia_datos", "lluvia", "llovizna", "granizo",
                    "nieve", "t_aire_max", "t_aire_min", "t_suelo_max", "t_suelo_min",
                    "heliofania_efec", "heliofania_rel", "p_vapor", "hr", "td", "rocio",
                    "viento_10m", "viento_2m", "rad", "etp")
-  widths <- c(2, 3, 8, 5, 5, 5, 1, 1, 1, 1, 1,
+  widths <- c(2, 3, 4, 2, 2, 5, 5, 5, 1, 1, 1, 1, 1,
               5, 5, 5, 5, 4, 3, 4, 3, 5, 1, 3, 5, 4, 4)
 
   out <- list()
@@ -60,10 +60,14 @@ leer_nh <- function(archivos) {
 
     data <- readr::read_fwf(file = archivos[i],
                             col_positions = readr::fwf_widths(widths, col_names = colnames_nh),
-                            col_types = "idTdddddddddddddddddddddd",
+                            col_types = "idddddddddddddddddddddddddd",
                             na = c("-99.9", "-99"))
 
     data$codigo_nh <- formatC(data$codigo_nh, width = 4, flag = "0")
+    data$fecha <- as.Date(paste0(data$anio, "-", data$mes, "-", data$dia))
+    data$anio <- NULL
+    data$mes <- NULL
+    data$dia <- NULL
     data$lluvia[data$lluvia == 9] <- NA
     data$llovizna[data$llovizna == 9] <- NA
     data$granizo[data$granizo == 9] <- NA
@@ -75,7 +79,7 @@ leer_nh <- function(archivos) {
     data$etp[data$etp == -9.9] <- NA
 
 
-    out[[i]] <- data
+    out[[i]] <- data[, c(1:2, 25, 3:24)]
 
   }
 
