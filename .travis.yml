@@ -7,3 +7,7 @@ addons:
     packages:
       - libudunits2-dev
       - libgdal-dev
+
+
+after_success:
+  - Rscript -e 'covr::codecov()'

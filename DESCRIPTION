@@ -46,4 +46,5 @@ Suggests:
     testthat,
     dplyr,
     vdiffr,
-    lubridate
+    lubridate,
+    covr

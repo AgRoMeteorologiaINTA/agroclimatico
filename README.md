@@ -9,6 +9,8 @@
 status](https://github.com/AgRoMeteorologiaINTA/agromet/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agromet/actions)
 [![Travis build
 status](https://travis-ci.org/AgRoMeteorologiaINTA/agromet.svg?branch=master)](https://travis-ci.org/AgRoMeteorologiaINTA/agromet)
+[![Codecov test
+coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master)
 <!-- badges: end -->
 
 El paquete {agromet} incluye una serie de funciones para calcular
