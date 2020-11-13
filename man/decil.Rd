@@ -5,16 +5,19 @@
 \alias{anomalia_porcentual}
 \title{Transformaciones de variables}
 \usage{
-decil(variable, referencia = variable)
+decil(variable, referencia = rep(TRUE, length(variable)))
 
-anomalia_porcentual(variable, referencia = variable)
+anomalia_porcentual(variable, referencia = rep(TRUE, length(variable)))
 }
 \arguments{
-\item{variable}{Vector de observaciones de la variable de interés.}
+\item{variable}{vector de observaciones de la variable de interés.}
 
-\item{referencia}{Vector de observacione de la variable de interés para usar de
-referencia al calcular la transformación. Por defecto usa todos los
-datos incluidos en el argumento variable.}
+\item{referencia}{serie de precipitación para usar de referencia en el ajuste
+a la distribución teórica. Puede ser:
+\itemize{
+\item vector lógico que se usará para filtrar los datos de entrada.
+\item vector numérico de observaciones.
+}}
 }
 \description{
 Transformaciones de variables

@@ -66,7 +66,13 @@ nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"),
 nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
 nuevos_datos <- rbind(datos, nuevos_datos)
 
+# Usando un vector lógico
+with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
+                       referencia = data.table::year(fecha) < 2016))
+
+# O un data.frame
 with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
                        referencia = spi_referencia(datos$fecha, datos$pp)))
+
 
 }
