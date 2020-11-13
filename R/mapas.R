@@ -97,6 +97,7 @@ descargar_mapa <- function(mapa) {
   dir <- tempdir()
   file <- file.path(dir, "shape.zip")
   utils::download.file(mapa$url, file)
+  dir.create(file.path(dir, "uncompress"), showWarnings = FALSE)
   zip::unzip(file, exdir = file.path(dir, "uncompress"))
   sf <- sf::read_sf(file.path(dir, "uncompress", mapa$file))
   dir <- dir_mapas()
