@@ -95,14 +95,14 @@ get_mapa <- function(mapa) {
 
 descargar_mapa <- function(mapa) {
   dir <- tempdir()
-  file <- file.path(dir, "shape.zip")
+  file <- normalizePath(file.path(dir, "shape.zip"), mustWork = FALSE)
   utils::download.file(mapa$url, file)
-  dir.create(file.path(dir, "uncompress"), showWarnings = FALSE)
-  utils::unzip(file, exdir = normalizePath(file.path(dir, "uncompress")))
-  sf <- sf::read_sf(normalizePath(file.path(dir, "uncompress", mapa$file)))
+  dir <- normalizePath(file.path(dir, "uncompress"), mustWork = FALSE)
+  utils::unzip(file, exdir = dir)
+  sf <- sf::read_sf(normalizePath(file.path(dir, mapa$file), mustWork = FALSE))
   dir <- dir_mapas()
 
-  saveRDS(sf, file.path(dir, mapa$rds))
+  saveRDS(sf, normalizePath(file.path(dir, mapa$rds), mustWork = FALSE))
 }
 
 borrar_cache <- function() {
@@ -112,7 +112,7 @@ borrar_cache <- function() {
 
 
 dir_mapas <- function() {
-  dir <- file.path(rappdirs::user_data_dir("agromet", "inta"), "mapas")
+  dir <- normalizePath(file.path(rappdirs::user_data_dir("agromet", "inta"), "mapas"), mustWork = FALSE)
   dir.create(dir, showWarnings = FALSE, recursive = TRUE)
   dir
 }
