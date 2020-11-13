@@ -41,7 +41,6 @@ Imports:
     tidyr,
     ggplot2,
     rappdirs,
-    zip,
     magrittr
 Suggests: 
     testthat,
