@@ -96,7 +96,7 @@ get_mapa <- function(mapa) {
 descargar_mapa <- function(mapa) {
   dir <- tempdir()
   file <- normalizePath(file.path(dir, "shape.zip"), mustWork = FALSE)
-  utils::download.file(mapa$url, file)
+  utils::download.file(mapa$url, file, mode = "wb")
   dir <- normalizePath(file.path(dir, "uncompress"), mustWork = FALSE)
   utils::unzip(file, exdir = dir)
   sf <- sf::read_sf(normalizePath(file.path(dir, mapa$file), mustWork = FALSE))
