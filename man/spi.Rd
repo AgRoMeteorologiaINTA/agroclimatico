@@ -10,7 +10,7 @@ spi(
   fecha,
   precipitacion,
   escalas,
-  referencia = spi_referencia(fecha, precipitacion),
+  referencia = rep(TRUE, length(fecha)),
   distribucion = "Gamma",
   ...
 )
@@ -27,9 +27,13 @@ spi_referencia(fecha, precipitacion)
 \item{escalas}{vector numérico con las escalas requeridas}
 
 \item{referencia}{serie de precipitación para usar de referencia en el ajuste
-a la distribución teórica como un data.frame con una columna llamada fecha y otra
-precipitación. La función \code{spi_referencia()} es un simple wrapper a \code{data.frame}
-que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.}
+a la distribución teórica. Puede ser:
+\itemize{
+\item vector lógico o numérico que se usará para filtrar los datos de entrada.
+\item un \code{data.frame} con columna \code{fecha} y \code{precipitacion}. La función
+\code{spi_referencia()} es un simple wrapper a \code{data.frame} que le pone el nombre
+correcto a las variables.
+}}
 
 \item{distribucion}{distribución usada para ajustar los datos.}
 

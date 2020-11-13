@@ -33,6 +33,15 @@ test_that("sp(e)i considera el período de referenica", {
   old <- SPI2[SPI2$fecha <= max(data$fecha), ]
   rownames(old) <- seq_len(nrow(old))
   expect_equal(old, SPI)
+
+  SPI2 <- with(data2, spi(fecha, pp, escalas, referencia = fecha <= max(data$fecha)))
+
+  old <- SPI2[SPI2$fecha <= max(data$fecha), ]
+  rownames(old) <- seq_len(nrow(old))
+  expect_equal(old, SPI)
+
+
+
 })
 
 set.seed(42)

@@ -11,9 +11,11 @@
 #' @param escalas vector numérico con las escalas requeridas
 #' @param distribucion distribución usada para ajustar los datos.
 #' @param referencia serie de precipitación para usar de referencia en el ajuste
-#' a la distribución teórica como un data.frame con una columna llamada fecha y otra
-#' precipitación. La función `spi_referencia()` es un simple wrapper a `data.frame`
-#' que le pone el nombre correcto a las variables. Por defecto, usa toda la serie.
+#' a la distribución teórica. Puede ser:
+#' * vector lógico o numérico que se usará para filtrar los datos de entrada.
+#' * un `data.frame` con columna `fecha` y `precipitacion`. La función
+#' `spi_referencia()` es un simple wrapper a `data.frame` que le pone el nombre
+#'  correcto a las variables.
 #' @param ... argumentos pasados a [SPEI::spi]
 #'
 #' @return
@@ -35,12 +37,18 @@
 #' nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
 #' nuevos_datos <- rbind(datos, nuevos_datos)
 #'
+#' # Usando un vector lógico
+#' with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
+#'                        referencia = data.table::year(fecha) < 2016))
+#'
+#' # O un data.frame
 #' with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
 #'                        referencia = spi_referencia(datos$fecha, datos$pp)))
 #'
+#'
 #' @export
 #' @importFrom data.table .BY :=
-spi <- function(fecha, precipitacion, escalas, referencia = spi_referencia(fecha, precipitacion),
+spi <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fecha)),
                 distribucion = "Gamma", ...) {
   . <- pp <- escala <- month <- NULL
 
@@ -53,6 +61,12 @@ spi <- function(fecha, precipitacion, escalas, referencia = spi_referencia(fecha
   data[, escala := as.numeric(as.character(escala))][]
 
   # Hace lo mismo con la serie de referencia
+  if (is.vector(referencia)) {
+    referencia <- data.table::data.table(fecha = fecha[referencia],
+                                         precipitacion = precipitacion[referencia])
+
+  }
+
   referencia <- data.table::as.data.table(completar_serie(referencia, fecha, "1 mes"))
   referencia[, as.character(escalas) := data.table::frollmean(precipitacion, escalas)]
   referencia[, precipitacion := NULL]
@@ -64,7 +78,7 @@ spi <- function(fecha, precipitacion, escalas, referencia = spi_referencia(fecha
   # Como el resultado son arrays, está metido en una lista.
   params <- referencia[, .(params = .(spi_params(precipitacion, scale = 1, na.rm = TRUE,
                                                  distribucion = distribucion, ...))),
-                     by = .(escala, month = data.table::month(fecha))]
+                       by = .(escala, month = data.table::month(fecha))]
 
   # Calcula el SPI usando los parámetros.
   data[, spi := spi_core(stats::ts(precipitacion, frequency = 1), scale = 1, na.rm = TRUE,
