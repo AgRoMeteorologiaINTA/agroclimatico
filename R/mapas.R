@@ -1,8 +1,37 @@
 #' Mapas
 #'
-#' @param provincias Vector de provincias para filtrar. Si es `NULL`,
-#' no filtra.
-#' @param departamentos Lógico indicando si dibujar los departamenteos o no.
+#' Mapas de Argentina, sus provincias, departamentos y paises limítrofes. Los
+#' mapas de Argentina, las provincias y departamentos surgen del repositorio
+#' público del [Instituto Geográfico Nacional](https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG),
+#' mientas que el mapa de países limítrofes es parte del repositorio
+#' [Natural Earth](https://www.naturalearthdata.com/).
+#'
+#' @param provincias vector de caracteres con los nombres de provincias a filtrar.
+#' Si es `NULL`, devuelve todas las provincias de Argentina.
+#' @param departamentos lógico. Si es `TRUE` grafica los departamentos.
+#'
+#' @return Devuelve una tibble con las variables necesarias para generar un mapa
+#' utilizando [ggplot2] y [sf].
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' # Solo Argentina
+#' ggplot(mapa_argentina()) +
+#'   geom_sf()
+#'
+#' # Argentina y sus provincias
+#' ggplot(mapa_provincias()) +
+#'   geom_sf()
+#'
+#' # Algunas provincias
+#' ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"))) +
+#'   geom_sf()
+#'
+##' # Algunas provincias y sus departamentos
+#' ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"),
+#'                        departamentos = TRUE)) +
+#'   geom_sf()
 #'
 #' @export
 #' @rdname mapas
@@ -61,7 +90,6 @@ mapa_departamentos <- function(provincias = NULL) {
 
 
 }
-
 
 get_mapa <- function(mapa) {
   file <- file.path(dir_mapas(), mapa$rds)

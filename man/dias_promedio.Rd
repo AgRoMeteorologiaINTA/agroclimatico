@@ -10,13 +10,13 @@ dias_promedio(fechas)
 \item{fechas}{vector de fechas}
 }
 \value{
-La función devuelve un data frame con 4 variables fijas y variables extras
+La función devuelve un data.frame con 4 variables fijas y variables extras
 en el caso de hacer el cálculo para distintos grupos:
 \itemize{
-\item \strong{variable} (caracter) primer_dia o ultimo_dia según corresponda
-\item \strong{dia} (numérico) día del mes
-\item \strong{mes} (numérico) mes de ocurrencia
-\item \strong{dia_juliano} (numérico) día del año
+\item \code{variable} (caracter) primer_dia o ultimo_dia según corresponda
+\item \code{dia} (numérico) día del mes
+\item \code{mes} (numérico) mes de ocurrencia
+\item \code{dia_juliano} (numérico) día del año
 }
 }
 \description{

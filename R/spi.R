@@ -13,13 +13,16 @@
 #' @param referencia serie de precipitación para usar de referencia en el ajuste
 #' a la distribución teórica. Puede ser:
 #' * vector lógico o numérico que se usará para filtrar los datos de entrada.
-#' * un `data.frame` con columna `fecha` y `precipitacion`. La función
-#' `spi_referencia()` es un simple wrapper a `data.frame` que le pone el nombre
+#' * un data frame con columna `fecha` y `precipitacion`. La función
+#' `spi_referencia()` es un simple wrapper a `data.frame()` que le pone el nombre
 #'  correcto a las variables.
 #' @param ... argumentos pasados a [SPEI::spi]
 #'
 #' @return
-#' Un data.frame con columnas `fecha`, `escala` y `spi` (o `spei`).
+#' Un data.frame con columnas
+#' * `fecha` (fecha)
+#' * `escala` (numérico) definidas en el argumento de entrada
+#' * `spi` o `spei` (numérico)
 #'
 #' @examples
 #' # datos aleatorios

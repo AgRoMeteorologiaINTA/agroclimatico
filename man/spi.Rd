@@ -30,19 +30,24 @@ spi_referencia(fecha, precipitacion)
 a la distribución teórica. Puede ser:
 \itemize{
 \item vector lógico o numérico que se usará para filtrar los datos de entrada.
-\item un \code{data.frame} con columna \code{fecha} y \code{precipitacion}. La función
-\code{spi_referencia()} es un simple wrapper a \code{data.frame} que le pone el nombre
+\item un data frame con columna \code{fecha} y \code{precipitacion}. La función
+\code{spi_referencia()} es un simple wrapper a \code{data.frame()} que le pone el nombre
 correcto a las variables.
 }}
 
 \item{distribucion}{distribución usada para ajustar los datos.}
 
-\item{...}{argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
+\item{...}{argumentos pasados a \link[SPEI:spi]{SPEI::spi}}
 
 \item{balance}{balance entre precipitación y evapotaranspiración potencial.}
 }
 \value{
-Un data.frame con columnas \code{fecha}, \code{escala} y \code{spi} (o \code{spei}).
+Un data.frame con columnas
+\itemize{
+\item \code{fecha} (fecha)
+\item \code{escala} (numérico) definidas en el argumento de entrada
+\item \code{spi} o \code{spei} (numérico)
+}
 }
 \description{
 Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El \code{spi} toma valores

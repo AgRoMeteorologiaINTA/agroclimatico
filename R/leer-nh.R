@@ -4,36 +4,36 @@
 #'
 #' La función está preparada para leer datos díarios con el formato NH que incluye
 #' 25 variables:
-#' * **codigo** (caracter)
-#' * **codigo_nh** (caracter), variable llave para acceder a los metadatos de estaciones
-#' * **fecha** (fecha)
-#' * **t_max** (numérico), temperatura máxima en grados centígrados
-#' * **t_min** (numérico), temperatura mínima en grados centígrados
-#' * **precip** (numérico), precipitación acumulada en milímetros
-#' * **lluvia_datos** (numérico), ocurrencia de precipitación 1 indica lluvia
-#' * **lluvia** (numérico),  ocurrencia de lluvia
-#' * **llovizna** (numérico), ocurrencia de llovizna
-#' * **granizo** (numérico), ocurrencia de granizo
-#' * **nieve** (numérico), ocurrencia de nieve
-#' * **t_aire_max** (numérico), temperatura máxima del aire en grados centígrados
-#' * **t_aire_min** (numérico), temperatura mínima del aire en grados centígrados
-#' * **t_suelo_max** (numérico), temperatura máxima del suelo en grados centígrados
-#' * **t_suelo_min** (numérico), temperatura mínima del suelo en grados centígrados
-#' * **heliofania_efec** (numérico), heliofanía efectiva en horas
-#' * **heliofania_rel** (numérico), heliofanía relativa en porcentaje
-#' * **p_vapor** (numérico), tensión de vapor en hPa
-#' * **hr** (numérico), humedad relativa en porcentaje
-#' * **td** (numérico), temperatura de rocío en grados centígrados
-#' * **rocio** (numérico), ocurrencia de rocío
-#' * **viento_10m** (numérico), viento a 10 metros en km/h
-#' * **viento_2m** (numérico), viento a 2 metros en km/h
-#' * **rad** (numérico), radiación en MJ/m2
-#' * **etp** (numérico), evapotranspiración en milímetros
+#' * `codigo` (caracter)
+#' * `codigo_nh` (caracter), variable llave para acceder a los metadatos de estaciones
+#' * `fecha` (fecha)
+#' * `t_max` (numérico), temperatura máxima en grados centígrados
+#' * `t_min` (numérico), temperatura mínima en grados centígrados
+#' * `precip` (numérico), precipitación acumulada en milímetros
+#' * `lluvia_datos` (numérico), ocurrencia de precipitación 1 indica lluvia
+#' * `lluvia` (numérico),  ocurrencia de lluvia
+#' * `llovizna` (numérico), ocurrencia de llovizna
+#' * `granizo` (numérico), ocurrencia de granizo
+#' * `nieve` (numérico), ocurrencia de nieve
+#' * `t_aire_max` (numérico), temperatura máxima del aire en grados centígrados
+#' * `t_aire_min` (numérico), temperatura mínima del aire en grados centígrados
+#' * `t_suelo_max` (numérico), temperatura máxima del suelo en grados centígrados
+#' * `t_suelo_min` (numérico), temperatura mínima del suelo en grados centígrados
+#' * `heliofania_efec` (numérico), heliofanía efectiva en horas
+#' * `heliofania_rel` (numérico), heliofanía relativa en porcentaje
+#' * `p_vapor` (numérico), tensión de vapor en hPa
+#' * `hr` (numérico), humedad relativa en porcentaje
+#' * `td` (numérico), temperatura de rocío en grados centígrados
+#' * `rocio` (numérico), ocurrencia de rocío
+#' * `viento_10m` (numérico), viento a 10 metros en km/h
+#' * `viento_2m` (numérico), viento a 2 metros en km/h
+#' * `rad` (numérico), radiación en MJ/m2
+#' * `etp` (numérico), evapotranspiración en milímetros
 #'
 #' @param archivos Caracter o vector de caracteres con nombre y ubicación de los
 #' archivos a leer.
 #'
-#' @return Devuelve un data frame con tantas filas como líneas en el o los archivos leidos y
+#' @return Devuelve un data.frame con tantas filas como líneas en el o los archivos leidos y
 #' las 25 variables presentes.
 #'
 #' @examples

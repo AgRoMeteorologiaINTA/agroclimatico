@@ -10,15 +10,14 @@ umbrales(...)
 \item{...}{umbral o umbrales a calcular utilizando operadores lógicos.}
 }
 \value{
-La función devuelve un data frame con 4 variables fijas junto a posiblesvariables
-asociadas a los agrupamientos.
+La función devuelve un data.frame con 4 variables fijas junto a
+posibles variables asociadas a los agrupamientos.
 
 Variables fijas
 \itemize{
-\item \strong{N} (numérico) ocurrencia del evento
-\item \strong{prop} (numérico) proporción eventos respecto del total de observaciones
-\item \strong{na} (numérico)  proporción de datos faltantes respecto del total de observaciones
-\item \strong{extremo} (caracter) nombre del extremo definido por el usuario
+\item \verb{N`` (numérico) ocurrencia del evento *}prop` (numérico) proporción eventos respecto del total de observaciones
+\item \code{na} (numérico)  proporción de datos faltantes respecto del total de observaciones
+\item \code{extremo} (caracter) nombre del extremo definido por el usuario
 }
 }
 \description{
@@ -26,7 +25,7 @@ La función \code{umbrales()} permite contar la ocurrencia de eventos definidos 
 partir de uno o más umbrales.
 }
 \details{
-Debe utilizarse en el contexto de \code{summarise()} y opcionalmente \code{group_by()}.
+Debe utilizarse en el contexto de \code{\link[=summarise]{summarise()}} y opcionalmente \code{\link[=group_by]{group_by()}}.
 Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
 }
 \examples{

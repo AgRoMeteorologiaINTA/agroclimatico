@@ -3,22 +3,55 @@
 \name{decil}
 \alias{decil}
 \alias{anomalia_porcentual}
-\title{Transformaciones de variables}
+\title{Transformaciones estadísticas de variables}
 \usage{
 decil(variable, referencia = rep(TRUE, length(variable)))
 
-anomalia_porcentual(variable, referencia = rep(TRUE, length(variable)))
+anomalia_porcentual(
+  variable,
+  referencia = rep(TRUE, length(variable)),
+  na.rm = FALSE
+)
 }
 \arguments{
 \item{variable}{vector de observaciones de la variable de interés.}
 
-\item{referencia}{serie de precipitación para usar de referencia en el ajuste
+\item{referencia}{serie de observaciones para usar de referencia en el ajuste
 a la distribución teórica. Puede ser:
 \itemize{
 \item vector lógico que se usará para filtrar los datos de entrada.
 \item vector numérico de observaciones.
+\item la serie completa (opción por defecto).
 }}
+
+\item{na.rm}{lógico. Define si se utilizan o no valores faltantes en el cálculo
+de la anomalía porcentual.}
+}
+\value{
+Devuelve un data.frame con el valor del decil o la anomalía porcentual
+según sea el caso. Es compatible con \code{\link[=group_by]{group_by()}} y \code{\link[=mutate]{mutate()}}.
 }
 \description{
-Transformaciones de variables
+Las funciones \code{decil()} y \code{anomalia_porcentual()} devuelven estos estadísticos
+para alguna variable dado un periodo de referencia especificado.
+}
+\examples{
+library(dplyr)
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+datos <- leer_nh(archivo)
+
+# Deciles de precipitación usando como referencia la serie completa
+datos \%>\%
+  mutate(deciles = decil(precip))
+
+# Deciles mensuales
+datos \%>\%
+  group_by(mes = lubridate::month(fecha)) \%>\%
+  mutate(deciles = decil(precip))
+
+# Definiendo un periodo de referencia
+datos \%>\%
+  mutate(deciles = decil(precip,
+                         referencia = lubridate::year(fecha) <= 1958))
+
 }
