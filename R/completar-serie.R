@@ -1,7 +1,7 @@
-#' Completa una serie de datos
+#' Completa una Serie de Datos
 #'
 #' La función permite completar una serie de datos temporales definiendo alguna
-#' resolución disponible. Es compatible con datos agrupados por `group_by()`.
+#' resolución disponible. Es compatible con datos agrupados por [group_by()].
 #'
 #' @param datos tabla (data.frame, data.table, tibble) a completar.
 #' @param fecha variable de fechas.
@@ -12,7 +12,7 @@
 #' @param rango un vector cuyo rango define el período a completar. Es útil si
 #' se quiere que múltiples grupos de datos tengan el mismo rango de fechas.
 #'
-#' @return Devuelve un data frame con las mismas variables de origen. La variable
+#' @return Devuelve un data.frame con las mismas variables de origen. La variable
 #' asociada a las fechas ahora se encuentra completa para la resolución indicada
 #' y el resto de las variables se completan con NA.
 #'

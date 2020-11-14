@@ -11,7 +11,7 @@ leer_nh(archivos)
 archivos a leer.}
 }
 \value{
-Devuelve un data frame con tantas filas como líneas en el o los archivos leidos y
+Devuelve un data.frame con tantas filas como líneas en el o los archivos leidos y
 las 25 variables presentes.
 }
 \description{
@@ -21,31 +21,31 @@ Lee uno o más archivos siempre que mantengan el formato NH de ancho fijo.
 La función está preparada para leer datos díarios con el formato NH que incluye
 25 variables:
 \itemize{
-\item \strong{codigo} (caracter)
-\item \strong{codigo_nh} (caracter), variable llave para acceder a los metadatos de estaciones
-\item \strong{fecha} (fecha)
-\item \strong{t_max} (numérico), temperatura máxima en grados centígrados
-\item \strong{t_min} (numérico), temperatura mínima en grados centígrados
-\item \strong{precip} (numérico), precipitación acumulada en milímetros
-\item \strong{lluvia_datos} (numérico), ocurrencia de precipitación 1 indica lluvia
-\item \strong{lluvia} (numérico),  ocurrencia de lluvia
-\item \strong{llovizna} (numérico), ocurrencia de llovizna
-\item \strong{granizo} (numérico), ocurrencia de granizo
-\item \strong{nieve} (numérico), ocurrencia de nieve
-\item \strong{t_aire_max} (numérico), temperatura máxima del aire en grados centígrados
-\item \strong{t_aire_min} (numérico), temperatura mínima del aire en grados centígrados
-\item \strong{t_suelo_max} (numérico), temperatura máxima del suelo en grados centígrados
-\item \strong{t_suelo_min} (numérico), temperatura mínima del suelo en grados centígrados
-\item \strong{heliofania_efec} (numérico), heliofanía efectiva en horas
-\item \strong{heliofania_rel} (numérico), heliofanía relativa en porcentaje
-\item \strong{p_vapor} (numérico), tensión de vapor en hPa
-\item \strong{hr} (numérico), humedad relativa en porcentaje
-\item \strong{td} (numérico), temperatura de rocío en grados centígrados
-\item \strong{rocio} (numérico), ocurrencia de rocío
-\item \strong{viento_10m} (numérico), viento a 10 metros en km/h
-\item \strong{viento_2m} (numérico), viento a 2 metros en km/h
-\item \strong{rad} (numérico), radiación en MJ/m2
-\item \strong{etp} (numérico), evapotranspiración en milímetros
+\item \code{codigo} (caracter)
+\item \code{codigo_nh} (caracter), variable llave para acceder a los metadatos de estaciones
+\item \code{fecha} (fecha)
+\item \code{t_max} (numérico), temperatura máxima en grados centígrados
+\item \code{t_min} (numérico), temperatura mínima en grados centígrados
+\item \code{precip} (numérico), precipitación acumulada en milímetros
+\item \code{lluvia_datos} (numérico), ocurrencia de precipitación 1 indica lluvia
+\item \code{lluvia} (numérico),  ocurrencia de lluvia
+\item \code{llovizna} (numérico), ocurrencia de llovizna
+\item \code{granizo} (numérico), ocurrencia de granizo
+\item \code{nieve} (numérico), ocurrencia de nieve
+\item \code{t_aire_max} (numérico), temperatura máxima del aire en grados centígrados
+\item \code{t_aire_min} (numérico), temperatura mínima del aire en grados centígrados
+\item \code{t_suelo_max} (numérico), temperatura máxima del suelo en grados centígrados
+\item \code{t_suelo_min} (numérico), temperatura mínima del suelo en grados centígrados
+\item \code{heliofania_efec} (numérico), heliofanía efectiva en horas
+\item \code{heliofania_rel} (numérico), heliofanía relativa en porcentaje
+\item \code{p_vapor} (numérico), tensión de vapor en hPa
+\item \code{hr} (numérico), humedad relativa en porcentaje
+\item \code{td} (numérico), temperatura de rocío en grados centígrados
+\item \code{rocio} (numérico), ocurrencia de rocío
+\item \code{viento_10m} (numérico), viento a 10 metros en km/h
+\item \code{viento_2m} (numérico), viento a 2 metros en km/h
+\item \code{rad} (numérico), radiación en MJ/m2
+\item \code{etp} (numérico), evapotranspiración en milímetros
 }
 }
 \examples{

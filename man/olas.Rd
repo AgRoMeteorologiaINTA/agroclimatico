@@ -12,12 +12,12 @@ olas(fecha, condicion)
 \item{condicion}{vector lógico.}
 }
 \value{
-Devuelve un data frame con 3 variables fijas y las posibles variables
+Devuelve un data.frame con 3 variables fijas y las posibles variables
 asociadas al agrupamiento:
 \itemize{
-\item \strong{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
-\item \strong{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
-\item \strong{longitud} (diferencia de fechas, drtn) duración de la ola
+\item \code{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
+\item \code{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
+\item \code{longitud} (diferencia de fechas, drtn) duración de la ola
 }
 
 Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.
@@ -30,7 +30,7 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.
 \details{
 La función es sensible a los datos faltantes, esto quiere decir que si se
 encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de \code{summarise()} y \code{group_by()} para hacer
+Puede utilizarse en el contexto de \code{\link[=summarise]{summarise()}} y \code{\link[=group_by]{group_by()}} para hacer
 este cálculo por grupos.
 }
 \examples{

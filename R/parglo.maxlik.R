@@ -1,4 +1,12 @@
-
+# Sacado de https://github.com/indecis-eu/SPEI, fork de
+# https://github.com/sbegueria/SPEI que tiene un fix de un error que aparece cuando
+# uno pasa parámetros.
+# El paquete SPEI se distribuye bajo licencia GNU GPL-2.
+# Authors@R: c(
+#   person('Santiago', 'Beguería', role=c('aut','cre'),
+#          email='santiago.begueria@csic.es'),
+#   person(c('Sergio','M.'), 'Vicente-Serrano', role='aut',
+#          email='svicen@ipe.csic.es'))
 parglo.maxlik <- function(x,ini) {
 	# generalized logistic log-likelihood function
 	glo.loglik <- function(theta,x){

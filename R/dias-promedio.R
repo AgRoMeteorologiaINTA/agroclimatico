@@ -11,12 +11,12 @@
 #'
 #' @param fechas vector de fechas
 #'
-#' @return La función devuelve un data frame con 4 variables fijas y variables extras
+#' @return La función devuelve un data.frame con 4 variables fijas y variables extras
 #' en el caso de hacer el cálculo para distintos grupos:
-#' * **variable** (caracter) primer_dia o ultimo_dia según corresponda
-#' * **dia** (numérico) día del mes
-#' * **mes** (numérico) mes de ocurrencia
-#' * **dia_juliano** (numérico) día del año
+#' * `variable` (caracter) primer_dia o ultimo_dia según corresponda
+#' * `dia` (numérico) día del mes
+#' * `mes` (numérico) mes de ocurrencia
+#' * `dia_juliano` (numérico) día del año
 #'
 #' @examples
 #' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")

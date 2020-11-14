@@ -2,7 +2,7 @@
 % Please edit documentation in R/completar-serie.R
 \name{completar_serie}
 \alias{completar_serie}
-\title{Completa una serie de datos}
+\title{Completa una Serie de Datos}
 \usage{
 completar_serie(datos, fecha, resolucion, rango = range(fecha))
 }
@@ -20,13 +20,13 @@ o su traducción al español. Es decir, "día" (o "dia"),
 se quiere que múltiples grupos de datos tengan el mismo rango de fechas.}
 }
 \value{
-Devuelve un data frame con las mismas variables de origen. La variable
+Devuelve un data.frame con las mismas variables de origen. La variable
 asociada a las fechas ahora se encuentra completa para la resolución indicada
 y el resto de las variables se completan con NA.
 }
 \description{
 La función permite completar una serie de datos temporales definiendo alguna
-resolución disponible. Es compatible con datos agrupados por \code{group_by()}.
+resolución disponible. Es compatible con datos agrupados por \code{\link[=group_by]{group_by()}}.
 }
 \examples{
 # Datos de prueba completos

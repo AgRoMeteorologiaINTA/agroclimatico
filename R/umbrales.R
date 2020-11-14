@@ -3,19 +3,19 @@
 #' La función `umbrales()` permite contar la ocurrencia de eventos definidos a
 #' partir de uno o más umbrales.
 #'
-#' Debe utilizarse en el contexto de `summarise()` y opcionalmente `group_by()`.
+#' Debe utilizarse en el contexto de [summarise()] y opcionalmente [group_by()].
 #' Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
 #'
 #' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #'
-#' @return La función devuelve un data frame con 4 variables fijas junto a posiblesvariables
-#' asociadas a los agrupamientos.
+#' @return La función devuelve un data.frame con 4 variables fijas junto a
+#' posibles variables asociadas a los agrupamientos.
 #'
 #' Variables fijas
-#' * **N** (numérico) ocurrencia del evento
-#' * **prop** (numérico) proporción eventos respecto del total de observaciones
-#' * **na** (numérico)  proporción de datos faltantes respecto del total de observaciones
-#' * **extremo** (caracter) nombre del extremo definido por el usuario
+#' * `N`` (numérico) ocurrencia del evento
+#' *`prop` (numérico) proporción eventos respecto del total de observaciones
+#' * `na` (numérico)  proporción de datos faltantes respecto del total de observaciones
+#' * `extremo` (caracter) nombre del extremo definido por el usuario
 #'
 #' @examples
 #' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
