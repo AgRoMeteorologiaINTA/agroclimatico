@@ -5,8 +5,6 @@
 \alias{mapa_provincias}
 \alias{mapa_argentina_limitrofes}
 \alias{mapa_departamentos}
-\alias{coord_argentina}
-\alias{theme_inta_mapa}
 \title{Mapas}
 \usage{
 mapa_argentina()
@@ -16,21 +14,42 @@ mapa_provincias(provincias = NULL, departamentos = FALSE)
 mapa_argentina_limitrofes()
 
 mapa_departamentos(provincias = NULL)
-
-coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), ...)
-
-theme_inta_mapa(...)
 }
 \arguments{
-\item{provincias}{Vector de provincias para filtrar. Si es \code{NULL},
-no filtra.}
+\item{provincias}{vector de caracteres con los nombres de provincias a filtrar.
+Si es \code{NULL}, devuelve todas las provincias de Argentina.}
 
-\item{departamentos}{Lógico indicando si dibujar los departamenteos o no.}
-
-\item{xlim, ylim}{límites en longitud y latitud.}
-
-\item{...}{otros argumentos que se pasan a \code{\link[ggplot2:ggsf]{ggplot2::coord_sf()}} o \code{\link[ggplot2:ggtheme]{ggplot2::theme_linedraw()}}.}
+\item{departamentos}{lógico. Si es \code{TRUE} grafica los departamentos.}
+}
+\value{
+Devuelve una tibble con las variables necesarias para generar un mapa
+utilizando \link{ggplot2} y \link{sf}.
 }
 \description{
-Mapas
+Mapas de Argentina, sus provincias, departamentos y paises limítrofes. Los
+mapas de Argentina, las provincias y departamentos surgen del repositorio
+público del \href{https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG}{Instituto Geográfico Nacional},
+mientas que el mapa de países limítrofes es parte del repositorio
+\href{https://www.naturalearthdata.com/}{Natural Earth}.
+}
+\examples{
+library(ggplot2)
+
+# Solo Argentina
+ggplot(mapa_argentina()) +
+  geom_sf()
+
+# Argentina y sus provincias
+ggplot(mapa_provincias()) +
+  geom_sf()
+
+# Algunas provincias
+ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"))) +
+  geom_sf()
+
+# Algunas provincias y sus departamentos
+ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"),
+                       departamentos = TRUE)) +
+  geom_sf()
+
 }
