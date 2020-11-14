@@ -62,24 +62,6 @@ mapa_departamentos <- function(provincias = NULL) {
 
 }
 
-#' @param xlim,ylim límites en longitud y latitud.
-#' @param ... otros argumentos que se pasan a [ggplot2::coord_sf()] o [ggplot2::theme_linedraw()].
-#'
-#' @export
-#' @rdname mapas
-coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), ...) {
-  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, ...)
-}
-
-#' @export
-#' @rdname mapas
-theme_inta_mapa <- function(...) {
-  list(
-       theme_linedraw(...) ,
-       theme(panel.grid = element_blank(),
-             axis.title = element_blank()))
-}
-
 
 get_mapa <- function(mapa) {
   file <- file.path(dir_mapas(), mapa$rds)

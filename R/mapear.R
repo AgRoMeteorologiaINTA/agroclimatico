@@ -6,7 +6,7 @@
 #' @param valor vector con los valores medidos.
 #' @param lon,lat vectores de ubicación en longitud y latitud.
 #' @param breaks valores donde graficar los contornos. Si es`NULL` hace 10 contornos.
-#' @param paleta paleta de colores a usar. Tiene que ser una función que reciba un número
+#' @param escala paleta de colores a usar. Tiene que ser una función que reciba un número
 #' y devuelva esa cantidad de colores. Por ejemplo [paleta_precipitacion()].
 #' @param cordillera lógico indicando si hay que tapar los datos donde está
 #' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
@@ -14,24 +14,27 @@
 #' indicando el valor mínimo desde donde empezar a pintar.
 #' @param titulo,subtitulo,fuente texto para usar como título, subtítulo y
 #' epígrafe.
+#' @param xlim,ylim límites en longitud y latitud.
+#' @param ... otros argumentos que se pasan a [ggplot2::coord_sf()] o [ggplot2::theme_linedraw()].
+#'
 #'
 #' @return
 #' Un objeto ggplot2.
 #'
 #' @examples
 #' set.seed(934)
-#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
+#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5)*10)
 #'
 #' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
-#'                               paleta = paleta_precipitacion,
+#'                               escala = escala_pp_diaria,
 #'                               titulo = "Precipitación aleatoria",
 #'                               fuente = "Fuente: datos de ejemplo"))
 #'
 #' @export
 #' @import ggplot2
 mapear <- function(valor, lon, lat,
-                   breaks = NULL,
-                   paleta = scales::viridis_pal(),
+                   breaks = waiver(),
+                   escala = scales::viridis_pal(),
                    # mapas = c("limítrofes", "argentina", "provincias"),
                    cordillera = FALSE,
                    titulo = NULL,
@@ -60,26 +63,42 @@ mapear <- function(valor, lon, lat,
   } else {
     cordillera <- NULL
   }
-  # browser()
-  #
-  #
 
-  if (is.vector(breaks)) {
-    breaks_labs <- paste0("(", breaks[-length(breaks)], ", ", breaks[2:length(breaks)], "]")
-  } else {
-    breaks_labs <- breaks
+  if (inherits(breaks, "waiver")) {
+    if (is.list(escala)) {
+      breaks <- escala[["niveles"]]
+    } else {
+      breaks <- compute_breaks(range(campo$var1.pred, na.rm = TRUE))
+    }
   }
 
-  guide_fill <- guide_colorsteps(barheight = grid::unit(.3, "npc"), show.limits = TRUE)
+  breaks_mid <- breaks[-length(breaks)] + diff(breaks)/2
 
-  escala <- scale_fill_precipitacion_d(name = deparse(substitute(valor)), breaks = breaks_labs,
-                                       guide = guide_fill, palette = paleta)
+  digits <- floor(log10(abs(breaks))) + 1
+  digits <- max(digits[is.finite(digits)])
+  breaks_labs <- trimws(format(breaks, digits = digits))
+  breaks_labs <- paste0("(", breaks_labs[-length(breaks_labs)], ", ",
+                        breaks_labs[2:length(breaks_labs)], "]")
 
-  # browser()
+
+
+  if (is.list(escala)) {
+    palette <- escala$paleta
+  } else {
+    palette <- escala
+  }
+
+  guide_fill <- guide_colorsteps(barheight = grid::unit(.35, "npc"), show.limits = FALSE)
+
   ggplot(campo, aes(lon, lat)) +
-    geom_contour_filled(aes(z = var1.pred), breaks = breaks) +
+    geom_contour_filled(aes(z = var1.pred),
+                        breaks = breaks) +
     geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
-    escala +
+    scale_fill_manual(name = deparse(substitute(valor)),
+                      guide = guide_fill,
+                      values = setNames(palette(length(breaks_mid)),
+                                        breaks_labs),
+                      drop = FALSE) +
     cordillera +
     geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
     geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
@@ -100,62 +119,50 @@ mapear <- function(valor, lon, lat,
 
 }
 
-#' Escalas para precipitacion
-#'
-#' @param name Nombre de la escala.
-#' @param breaks Cortes o valores de la escala.
-#' @param drop Lógico que indica si se muestran todos los valores o sólo los
-#' presentes en los datos.
-#' @param palette Paleta a usar. Una función que recibe un parámetro (el número de colores
-#' deseados) y devuelve un vector con colores.
-#' @param n El número de colores deseados
-#' @param ... otros argumentos que se padan a [ggplot2::scale_fill_manual()] o [ggplot2::discrete_scale()].
-#'
+
+
 #' @export
-scale_fill_precipitacion_d <- function(name = waiver(), breaks = waiver(), drop = !is.vector(breaks),
-                                       palette = paleta_precipitacion, ...) {
-  if (is.character(palette)) {
-    palette <- match.fun(paste0("paleta_", palette))
-
-  }
-
-  if (is.vector(breaks)) {
-    scale_fill_manual(name = name,
-                      drop = FALSE,
-                      values = stats::setNames(palette(length(breaks)),
-                                               breaks), ...
-    )
-  } else {
-    discrete_scale("fill",
-                   name = name,
-                   scale_name = "precipitacion",
-                   palette = palette,
-                   breaks = if (is.null(breaks)) waiver() else breaks,
-                   drop = drop,
-                   ...)
-  }
-
-
+#' @rdname mapear
+coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), ...) {
+  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, ...)
 }
 
 #' @export
-#' @rdname scale_fill_precipitacion_d
-breaks_precipitacion <- function() c(0, 10, 20, 30, 40, 50, 60, 70, Inf)
+#' @rdname mapear
+theme_inta_mapa <- function(...) {
+  list(
+    theme_linedraw(...) ,
+    theme(panel.grid = element_blank(),
+          axis.title = element_blank()))
+}
 
-#' @export
-#' @rdname scale_fill_precipitacion_d
-paleta_precipitacion <- function(n) grDevices::colorRampPalette(colores_precipitacion)(n)
 
-
-colores_precipitacion <- c(rgb(209/255, 227/255, 31/255),
-                           rgb(78/255, 195/255, 106/255),
-                           rgb(32/255, 147/255, 140/255),
-                           rgb(72/255, 23/255, 105/255),
-                           rgb(172/255, 3/255, 94/255),
-                           rgb(218/255, 63/255, 245/255),
-                           rgb(173/255, 129/255, 252/255),
-                           rgb(141/255, 172/255, 255/255))
-
+# From ggplot2
+compute_breaks <- function (z_range, bins = NULL, binwidth = NULL, breaks = NULL)  {
+  if (!is.null(breaks)) {
+    return(breaks)
+  }
+  if (is.null(bins) && is.null(binwidth)) {
+    breaks <- pretty(z_range, 10)
+    return(breaks)
+  }
+  if (!is.null(bins)) {
+    accuracy <- signif(diff(z_range), 1)/10
+    z_range[1] <- floor(z_range[1]/accuracy) * accuracy
+    z_range[2] <- ceiling(z_range[2]/accuracy) * accuracy
+    if (bins == 1) {
+      return(z_range)
+    }
+    binwidth <- diff(z_range)/(bins - 1)
+    breaks <- scales::fullseq(z_range, binwidth)
+    if (length(breaks) < bins + 1) {
+      binwidth <- diff(z_range)/bins
+      breaks <- scales::fullseq(z_range, binwidth)
+    }
+    return(breaks)
+  }
+  scales::fullseq(z_range, binwidth)
+}
 
 
 # De metR https://github.com/eliocamp/metR/

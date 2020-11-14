@@ -1,0 +1,18 @@
+LVL3
+'Level Flags LColor LStyle LWidth FVersion FFGColor FBGColor FPattern OffsetX OffsetY ScaleX ScaleY Angle Coverage
+-10 0 "Black" "Invisible" 0 1 "White" "R14 G14 B14 A0" "Solid" 0 0 1 1 0 0
+0 0 "Black" "Invisible" 0 1 "White" "R14 G14 B14 A0" "Solid" 0 0 1 1 0 0
+0.1 0 "Black" "Invisible" 0 1 "Pale Yellow" "R14 G14 B14 A0" "Solid" 0 0 1 1 0 0
+2 1 "Black" "Solid" 0 1 "Light Yellow" "R14 G14 B14 A0" "Solid" 0 0 1 1 0 0
+5 1 "Black" "Solid" 0 1 "R220 G220 B67 A255" "R21 G21 B21 A0" "Solid" 0 0 1 1 0 0
+10 1 "Black" "Solid" 0 1 "Ghost Green" "R31 G31 B31 A0" "Solid" 0 0 1 1 0 0
+20 0 "Black" "Solid" 0 1 "Mint Green" "R63 G63 B63 A0" "Solid" 0 0 1 1 0 0
+30 1 "Black" "Solid" 0 1 "Light Green" "R116 G116 B116 A0" "Solid" 0 0 1 1 0 0
+40 1 "Black" "Solid" 0 1 "Kentucky Green" "R170 G170 B170 A0" "Solid" 0 0 1 1 0 0
+50 1 "Black" "Solid" 0 1 "Ice Blue" "R223 G223 B223 A0" "Solid" 0 0 1 1 0 0
+75 1 "Black" "Solid" 0 1 "Powder Blue" "R239 G239 B239 A0" "Solid" 0 0 1 1 0 0
+100 1 "Black" "Solid" 0 1 "Pastel Blue" "R241 G241 B241 A0" "Solid" 0 0 1 1 0 0
+200 1 "Black" "Solid" 0 1 "Electric Blue" "R243 G243 B243 A0" "Solid" 0 0 1 1 0 0
+300 1 "Black" "Solid" 0 1 "R77 G102 B204 A255" "R245 G245 B245 A0" "Solid" 0 0 1 1 0 0
+400 1 "Black" "Solid" 0 1 "R64 G102 B179 A255" "R246 G246 B246 A0" "Solid" 0 0 1 1 0 0
+500 1 "Black" "Solid" 0 1 "Navy Blue" "R247 G247 B247 A0" "Solid" 0 0 1 1 0 0

@@ -5,8 +5,6 @@
 \alias{mapa_provincias}
 \alias{mapa_argentina_limitrofes}
 \alias{mapa_departamentos}
-\alias{coord_argentina}
-\alias{theme_inta_mapa}
 \title{Mapas}
 \usage{
 mapa_argentina()
@@ -16,20 +14,12 @@ mapa_provincias(provincias = NULL, departamentos = FALSE)
 mapa_argentina_limitrofes()
 
 mapa_departamentos(provincias = NULL)
-
-coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), ...)
-
-theme_inta_mapa(...)
 }
 \arguments{
 \item{provincias}{Vector de provincias para filtrar. Si es \code{NULL},
 no filtra.}
 
 \item{departamentos}{Lógico indicando si dibujar los departamenteos o no.}
-
-\item{xlim, ylim}{límites en longitud y latitud.}
-
-\item{...}{otros argumentos que se pasan a \code{\link[ggplot2:ggsf]{ggplot2::coord_sf()}} o \code{\link[ggplot2:ggtheme]{ggplot2::theme_linedraw()}}.}
 }
 \description{
 Mapas

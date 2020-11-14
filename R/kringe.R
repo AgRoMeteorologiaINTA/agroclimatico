@@ -1,5 +1,5 @@
 
-kringe <- function(valor, lon, lat, mascara) {
+kringe <- function(valor, lon, lat) {
   frame <- arg_buffer
   bbox <- sf::st_bbox(frame)
 

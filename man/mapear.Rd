@@ -2,19 +2,25 @@
 % Please edit documentation in R/mapear.R
 \name{mapear}
 \alias{mapear}
+\alias{coord_argentina}
+\alias{theme_inta_mapa}
 \title{Grafica variables en Argentina}
 \usage{
 mapear(
   valor,
   lon,
   lat,
-  breaks = NULL,
-  paleta = scales::viridis_pal(),
+  breaks = waiver(),
+  escala = scales::viridis_pal(),
   cordillera = FALSE,
   titulo = NULL,
   subtitulo = NULL,
   fuente = NULL
 )
+
+coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), ...)
+
+theme_inta_mapa(...)
 }
 \arguments{
 \item{valor}{vector con los valores medidos.}
@@ -23,7 +29,7 @@ mapear(
 
 \item{breaks}{valores donde graficar los contornos. Si es\code{NULL} hace 10 contornos.}
 
-\item{paleta}{paleta de colores a usar. Tiene que ser una función que reciba un número
+\item{escala}{paleta de colores a usar. Tiene que ser una función que reciba un número
 y devuelva esa cantidad de colores. Por ejemplo \code{\link[=paleta_precipitacion]{paleta_precipitacion()}}.}
 
 \item{cordillera}{lógico indicando si hay que tapar los datos donde está
@@ -33,6 +39,10 @@ indicando el valor mínimo desde donde empezar a pintar.}
 
 \item{titulo, subtitulo, fuente}{texto para usar como título, subtítulo y
 epígrafe.}
+
+\item{xlim, ylim}{límites en longitud y latitud.}
+
+\item{...}{otros argumentos que se pasan a \code{\link[ggplot2:ggsf]{ggplot2::coord_sf()}} o \code{\link[ggplot2:ggtheme]{ggplot2::theme_linedraw()}}.}
 }
 \value{
 Un objeto ggplot2.
@@ -43,10 +53,10 @@ interpola a el resto del territorio usando kriging y grafica con contornos
 }
 \examples{
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5)*10)
 
 with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
-                              paleta = paleta_precipitacion,
+                              escala = escala_pp_diaria,
                               titulo = "Precipitación aleatoria",
                               fuente = "Fuente: datos de ejemplo"))
 

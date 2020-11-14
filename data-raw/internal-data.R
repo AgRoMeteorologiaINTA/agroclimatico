@@ -34,6 +34,23 @@ estaciones_nh <- readr::read_fwf(file = "data-raw/LISTA.DAT",
 
 
 
+
+# De http://surferhelp.goldensoftware.com/topics/colors.htm?Highlight=colors
+surfer_definition <- readLines("data-raw/surfer_colors")
+surfer_definition <- surfer_definition[vapply(surfer_definition, nchar, 1) > 0]
+
+
+colors <- strsplit(surfer_definition, "=")
+
+surfer_names <- vapply(colors, function(x) x[[1]], "char")
+
+surfer_colors <- vapply(colors, function(x) x[[2]], "char") %>%
+  strsplit(" ") %>%
+  vapply(function(x) rgb(x[1], x[2], x[3], x[4], maxColorValue = 255), "char") %>%
+  setNames(surfer_names)
+
+
+
 usethis::use_data(arg_buffer, arg_buffer_limite, mapa_argentina_limitrofes_data,
-                  arg_topo,estaciones_nh,
+                  arg_topo,estaciones_nh, surfer_colors,
                   overwrite = TRUE, internal = TRUE)
