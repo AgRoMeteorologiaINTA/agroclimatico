@@ -32,7 +32,7 @@ estaciones_nh <- readr::read_fwf(file = "data-raw/LISTA.DAT",
   dplyr::select(codigo_nh, nombre, lat, lon) %>%
   as.data.frame()
 
-
+attr(estaciones_nh, "problems") <- NULL
 
 
 # De http://surferhelp.goldensoftware.com/topics/colors.htm?Highlight=colors
