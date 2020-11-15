@@ -117,7 +117,6 @@ leer_nh <- function(archivos) {
 #'
 #' @export
 metadatos_nh <- function(codigo = NULL, lat = NULL, lon = NULL) {
-
   data <- estaciones_nh
 
   if (!is.null(codigo)) {
@@ -131,6 +130,8 @@ metadatos_nh <- function(codigo = NULL, lat = NULL, lon = NULL) {
   if (!is.null(lon)) {
     data <- data[data.table::between(data$lon, lon[1], lon[2]), ]
   }
+
+  rownames(data) <- NULL
   class(data) <- c("metadatos_nh", class(data))
   return(data)
 }
