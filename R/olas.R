@@ -10,10 +10,12 @@
 #' este cálculo por grupos.
 #'
 #' @param fecha vector de fechas.
-#' @param condicion vector lógico.
+#' @param ... mbral o umbrales a calcular utilizando operadores lógicos.
 #'
 #' @return Devuelve un data.frame con 3 variables fijas y las posibles variables
 #' asociadas al agrupamiento:
+#' * `ola` (caracter) nombre de la ola definido por el usuario
+#' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
 #' * `inicio` (fecha) fecha de inicio de la ola o periodo de persistencia
 #' * `fin` (fecha) fecha de finalización de la ola o periodo de persistencia
 #' * `longitud` (diferencia de fechas, drtn) duración de la ola
@@ -26,10 +28,22 @@
 #'
 #' library(dplyr)
 #' datos %>%
-#'   summarise(olas(fecha, t_max > 20))
+#'   summarise(olas(fecha, calor = t_max > 20, frio = t_min <= 0))
 #'
 #' @export
-olas <- function(fecha, condicion) {
+olas <- function(fecha, ...) {
+  condiciones <- list(...)
+  names <- paste0("V", seq_along(condiciones))
+  if (is.null(names(condiciones))) {
+    names(condiciones) <- names
+  } else {
+    names(condiciones)[names(condiciones) == ""] <- names[names(condiciones) == ""]
+  }
+
+  data.table::rbindlist(lapply(condiciones, computar_olas, fecha = fecha), idcol = "ola")
+}
+
+computar_olas <- function(fecha, condicion) {
   ola <- rle(condicion)
 
   fin <- fecha[cumsum(ola$lengths)]

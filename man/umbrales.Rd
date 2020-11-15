@@ -15,9 +15,10 @@ posibles variables asociadas a los agrupamientos.
 
 Variables fijas
 \itemize{
+\item \code{extremo} (caracter) nombre del extremo definido por el usuario
+(si los argumentos de \code{...} no tienen nombre, se usa \code{V1}, \code{V2}, etc...)
 \item \verb{N`` (numérico) ocurrencia del evento *}prop` (numérico) proporción eventos respecto del total de observaciones
 \item \code{na} (numérico)  proporción de datos faltantes respecto del total de observaciones
-\item \code{extremo} (caracter) nombre del extremo definido por el usuario
 }
 }
 \description{

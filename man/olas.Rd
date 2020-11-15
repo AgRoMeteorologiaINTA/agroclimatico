@@ -4,17 +4,19 @@
 \alias{olas}
 \title{Olas}
 \usage{
-olas(fecha, condicion)
+olas(fecha, ...)
 }
 \arguments{
 \item{fecha}{vector de fechas.}
 
-\item{condicion}{vector lógico.}
+\item{...}{mbral o umbrales a calcular utilizando operadores lógicos.}
 }
 \value{
 Devuelve un data.frame con 3 variables fijas y las posibles variables
 asociadas al agrupamiento:
 \itemize{
+\item \code{ola} (caracter) nombre de la ola definido por el usuario
+(si los argumentos de \code{...} no tienen nombre, se usa \code{V1}, \code{V2}, etc...)
 \item \code{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
 \item \code{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
 \item \code{longitud} (diferencia de fechas, drtn) duración de la ola
@@ -39,6 +41,6 @@ datos <- leer_nh(archivo)
 
 library(dplyr)
 datos \%>\%
-  summarise(olas(fecha, t_max > 20))
+  summarise(olas(fecha, calor = t_max > 20, frio = t_min <= 0))
 
 }

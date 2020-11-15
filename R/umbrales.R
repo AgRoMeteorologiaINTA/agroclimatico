@@ -12,10 +12,11 @@
 #' posibles variables asociadas a los agrupamientos.
 #'
 #' Variables fijas
+#' * `extremo` (caracter) nombre del extremo definido por el usuario
+#' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
 #' * `N`` (numérico) ocurrencia del evento
 #' *`prop` (numérico) proporción eventos respecto del total de observaciones
 #' * `na` (numérico)  proporción de datos faltantes respecto del total de observaciones
-#' * `extremo` (caracter) nombre del extremo definido por el usuario
 #'
 #' @examples
 #' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
