@@ -45,8 +45,11 @@ umbrales <- function(...) {
 
   datos <- lapply(values, function(x) {
     prop <- mean(x, na.rm = TRUE)
+    N <-  sum(x, na.rm = TRUE)
+
+    N <- ifelse(is.finite(prop), N, NA_integer_)
     prop <- ifelse(is.finite(prop), prop, NA_real_)
-    data.frame(N = sum(x, na.rm = TRUE),
+    data.frame(N = N,
                prop = prop,
                na = mean(is.na(x)))
 
