@@ -1,0 +1,4 @@
+name: agromet_informe
+description: >
+   Plantilla para informe INTA
+create_dir: FALSE
