@@ -2,9 +2,9 @@
 % Please edit documentation in R/informes.R
 \name{agromet_informe}
 \alias{agromet_informe}
-\title{Formatos de salida para Informes}
+\title{Formato de salida para Informes}
 \usage{
-agromet_informe(..., toc = TRUE)
+agromet_informe(...)
 }
 \arguments{
 \item{...}{cualquier argumento que requiera \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
