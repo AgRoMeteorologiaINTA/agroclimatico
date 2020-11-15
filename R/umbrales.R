@@ -63,6 +63,7 @@ umbrales <- function(...) {
     names <- names(values)
   }
   datos$extremo <- names
+  datos <- datos[, c(4, 1, 2, 3)]  # que "extremo" sea la primera
   rownames(datos) <- NULL
   datos
 }
