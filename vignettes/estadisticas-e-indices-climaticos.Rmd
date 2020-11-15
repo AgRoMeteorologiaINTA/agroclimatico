@@ -1,0 +1,277 @@
+---
+title: "Estadísticas e índices climáticos"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{estadisticas-e-indices-climaticos}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+collapse = TRUE,
+comment = "#>",
+message = FALSE,
+warning = FALSE,
+fig.width = 7
+)
+```
+
+```{r setup}
+library(agromet)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+```
+
+## Lectura de datos y metadatos
+
+La función `leer_nh()` importa datos en el formato .DAT usado por el INTA en las estaciones NH. 
+
+```{r}
+archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+datos <- leer_nh(archivo)
+head(datos)
+```
+
+Los metadatos de estas estaciones se ven usando `metadatos_nh()`, que devuelve un data frame con el código de cada estación, el nombre y su localización. 
+
+```{r}
+head(metadatos_nh())
+```
+
+
+La función permite filtrar datos según su código, un rango de longitud, o latitud.
+
+```{r}
+head(metadatos_nh(lat = c(-40, -30)))
+```
+
+```{r}
+head(metadatos_nh(lon = c(-75, -71)))
+```
+
+El data frame devuelto puede plotearse rápidamente para ver la ubicación de las estaciones. 
+
+```{r}
+plot(metadatos_nh(lon = c(-75, -71)))
+```
+
+## Análisis de la precipitación
+
+
+
+```{r}
+datos_mensuales <- NH0011 %>% 
+  group_by(fecha = lubridate::round_date(fecha, "month")) %>% 
+  summarise(precip = mean(precip, na.rm = TRUE),
+            etp = mean(etp, na.rm = TRUE))
+
+head(datos_mensuales)
+```
+
+
+
+### Anomalía porcentual
+
+Una primera aproximacion es calcular cuánto se desvía la precipitación cada mes de su valor típico en procentaje.
+
+```{r}
+datos_mensuales <- datos_mensuales %>% 
+  group_by(mes = month(fecha)) %>% 
+  mutate(anomalia = anomalia_porcentual(precip, na.rm = TRUE))
+
+head(datos_mensuales)
+```
+
+Valores cercanos a cero implican que la precipitación de ese mes fue similar a su valor promedio. 1 indica que llovió el doble de lo normal, mientras que -0.5 significa que en ese mes llovió la mitad de lo que suele llover. 
+
+Si la idea es usar esta medición para monitoreo, es importante fijar el período de referencia sobre el cual se calcula la precipitación media. De otra forma, a medida que se recolectan más datos, los promedios van a variar y con ellos los valores calculados. Entonces, para asegurarse de que los datos futuros no modifiquen los percentiles pasados, se puede especificar el período de referencia con el argumento `referencia`. Por ejemplo, este código devuelve el desvío de cada mes con respecto a la media anterior a 1980. 
+
+```{r}
+datos_mensuales <- datos_mensuales %>% 
+  group_by(mes = month(fecha)) %>% 
+  mutate(anomalia = anomalia_porcentual(precip, na.rm = TRUE, referencia = year(fecha) < 1980)) %>% 
+  ungroup()
+```
+
+`referencia` también puede ser un vector numérico de precipitación. Esto es útil si se calcula el valor de referencia a parte y luego sólo se leen los nuevos datos. 
+
+Otras funciones de agromet tienen este argumento, así que para mantener este período fijo, se puede crear una nueva columna. 
+
+```{r}
+datos_mensuales <- datos_mensuales %>% 
+  mutate(referencia = year(fecha) < 1980)
+
+head(datos_mensuales)
+```
+
+### Deciles
+
+Otor indicador que puede analizarse es el decil al que pertenece la precipitación de cada mes. 
+
+```{r}
+datos_mensuales <- datos_mensuales %>% 
+  group_by(mes = month(fecha)) %>% 
+  mutate(decil = decil(precip, referencia = referencia)) %>% 
+  ungroup()
+
+head(datos_mensuales)
+```
+
+En este caso, si un mes cae en el decil 5, significa que la mitad de los meses (en el período de referencia) tiene menor precipitación. 
+
+
+
+### Índice de intensidad de sequía de Palmer
+
+Un indicador de sequía muy utilizado es el PDSI (Palmer Drought Severity Index) que además de la precipitación, tiene en cuenta la evapotranspiración potencial (etp) y la capacidad de carga (cc) del suelo. agromet provee una función `pdsi()` que computa el PSDI usando los coeficientes originales de Palmer y una función `pdsi_ac()` que usa la version autocalibrada.
+
+```{r}
+datos_mensuales <- datos_mensuales %>%
+  mutate(pdsi = pdsi_ac(precip, etp, cc = 100))
+
+head(datos_mensuales)
+```
+
+```{r}
+ggplot(datos_mensuales, aes(fecha, pdsi)) +
+  geom_line()
+```
+
+
+
+
+## Índice Estandarizado de Precipitación
+
+A diferencia de los otros índices en el Índice Estandarizado de Precipitación, a cada observación le puede corresponder más de un valor (uno por cada escala) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `summarise()`.
+
+
+
+```{r}
+spi <- datos_mensuales %>% 
+  summarise(spi(fecha, precip, escalas = 1:12, referencia = referencia))
+
+head(spi)
+```
+
+Para seguir la serie temporal en una escala en particular, primero hay que filtrarla (o calcular el spi sólo para esa escala)
+
+```{r}
+ggplot(filter(spi, escala == 3), aes(fecha, spi)) +
+  geom_line()
+```
+
+Para visualizar todas las escalas computadas, se puede usar `geom_contour_filled()`
+
+
+```{r}
+ggplot(spi, aes(fecha, escala)) +
+  geom_contour_filled(aes(z = spi, fill = after_stat(level_mid))) +
+  scale_fill_gradient2()
+```
+
+## Análisis de extremos
+
+
+
+```{r}
+extremos <- NH0011 %>% 
+  group_by(anio = year(fecha)) %>% 
+  summarise(umbrales(helada = t_min <= 0,
+                     mucho_calor = t_max >= 35))
+head(extremos)
+```
+
+El resultado es un data frame con columnas `extremo` (el nombre del extremo), `N` (número de observaciones para las cuales se dio el extremo), `prop` (proporción de observaciones) y `na` (proporción de valores faltantes),
+
+Una posible visualización de la candidad de días con heladas y calor sofocante podría ser esta:
+
+```{r}
+extremos %>% 
+  ggplot(aes(anio, prop*365)) +
+  geom_line() +
+  geom_smooth(method = "glm", method.args = list(family = "quasipoisson")) +
+  facet_wrap(~extremo, scales = "free")
+```
+
+Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltanes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Ësta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
+
+```{r}
+compelta <- NH0011 %>% 
+  group_by(codigo_nh) %>% 
+  completar_serie(fecha, "1 dia")
+```
+
+
+
+## Dia promedio de inicio y fin
+
+Para las heladas, es importante saber el día promedio en el que se da la primera y la última helada, para eso se puede usar la función `dias_promedio()`:
+
+```{r}
+NH0011 %>% 
+  filter(t_min <= 0) %>%          # filtrar sólo los días donde hay heladas.
+  summarise(dias_promedio(fecha))
+```
+La primera helada se da, en promedio, el 25 de junio y la úĺtima el 31 de julio.
+
+
+### Persistencia 
+
+Un dato importante para cualquier extremo es la longitud de días consecutivos con el extremo. La función `olas` (olas de calor, olas de frío) divide una serie de fechas en eventos de observaciones consecutivas donde se se da una condición lógica. 
+
+```{r}
+olas_de_temperatura <- NH0011 %>% 
+  summarise(olas(fecha, 
+                 mucho_calor = t_max > 35, 
+                 helada = t_min <= 0))
+
+head(olas_de_temperatura)
+```
+
+Nuevamente, se podría visualizar el cambio en la longitud promedio de las olas de calor y de olas de heladas de esta forma: 
+
+```{r}
+olas_de_temperatura %>% 
+  group_by(ola, anio = year(inicio)) %>% 
+  summarise(longitud = mean(longitud)) %>% 
+  ggplot(aes(anio, longitud)) +
+  geom_line() +
+  geom_smooth(method = "glm", method.args = list(family = "quasipoisson")) +
+  facet_wrap(~ola, scales = "free") 
+```
+
+## Mapas
+
+Si se tienen observaciones en estaciones, la función `mapear()` genera un mapa de contornos llenos con el mapa de Argentina, países limítrofes y logo del INTA. 
+
+```{r}
+set.seed(934)
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+```
+
+```{r}
+with(datos_aleatorios, mapear(pp, lon, lat))
+```
+
+Con el argumento `escala` se puede definir la escala de colores y, opcionalmente, los niveles en los niveles a graficar. Esto permite tener mapas consistentes. El paquete viene con una serie de escalas ya definidas (ver ?escalas) y la función `leer_surfer()` que permite generar estas escalas a partir de los archivos .lvl que usa el programa Surfer. 
+
+
+```{r}
+with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE))
+```
+
+El argumento `cordillera` controla si se va a pintar de gris las regiones de altura, donde el kriging que se usa para interpolar los datos entre los puntos observados posiblemente sea aún menos válido que en el resto del territorio. 
+
+Finalmente, los argumentos `titulo`, `subtitulo` y `fuente` permiten agregar información extra.
+
+```{r}
+with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE,
+                              titulo = "Precipitación", 
+                              subtitulo = "Para algún día",
+                              fuente = "Fuente: rgamma"))
+```
+
+Como `mapear()` devuelve un objeto de ggplot2, se puede seguir customizando con cualquier función de ese paquete.
