@@ -111,7 +111,7 @@ descargar_mapa <- function(mapa) {
   utils::unzip(file, exdir = dir)
   sf <- sf::read_sf(normalizePath(file.path(dir, mapa$file), mustWork = FALSE))
   dir <- dir_mapas()
-
+  sf::st_crs(sf) <- 4326
   saveRDS(sf, normalizePath(file.path(dir, mapa$rds), mustWork = FALSE))
 }
 
