@@ -36,19 +36,19 @@ test_that("umbrales", {
 
   expect_error(umbrales(), "Ningún extremo definido.")
   expect_s3_class(cuenta, "data.frame")
-  expect_equal(colnames(cuenta), c("N", "prop", "na", "extremo"))
+  expect_equal(colnames(cuenta), c("extremo", "N", "prop", "na"))
 
-  expect_equal(umbrales(frio = datos$t_aire_min > 10), data.frame(N = 0,
-                                                           prop = NA_real_,
-                                                           na = 1,
-                                                           extremo = "frio"))
+  expect_equal(umbrales(frio = datos$t_aire_min > 10), data.frame(extremo = "frio",
+                                                                  N = NA_integer_,
+                                                                  prop = NA_real_,
+                                                                  na = 1))
 })
 
 
 
 test_that("olas", {
   expect_s3_class(calor <- olas(datos$fecha, datos$t_max > 17), "data.frame")
-  expect_equal(colnames(calor), c("inicio", "fin", "longitud"))
+  expect_equal(colnames(calor), c("ola", "inicio", "fin", "longitud"))
   expect_equal(nrow(olas(datos$fecha, datos$t_max > 47)), 0)
 
 })
