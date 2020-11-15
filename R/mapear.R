@@ -23,10 +23,10 @@
 #'
 #' @examples
 #' set.seed(934)
-#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5)*10)
+#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
 #'
 #' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
-#'                               escala = escala_pp_diaria,
+#'                               escala = escala_pp_mensual,
 #'                               titulo = "Precipitación aleatoria",
 #'                               fuente = "Fuente: datos de ejemplo"))
 #'
@@ -35,7 +35,6 @@
 mapear <- function(valor, lon, lat,
                    breaks = waiver(),
                    escala = scales::viridis_pal(),
-                   # mapas = c("limítrofes", "argentina", "provincias"),
                    cordillera = FALSE,
                    titulo = NULL,
                    subtitulo = NULL,
@@ -74,14 +73,6 @@ mapear <- function(valor, lon, lat,
 
   breaks_mid <- breaks[-length(breaks)] + diff(breaks)/2
 
-  digits <- floor(log10(abs(breaks))) + 1
-  digits <- max(digits[is.finite(digits)])
-  breaks_labs <- trimws(format(breaks, digits = digits))
-  breaks_labs <- paste0("(", breaks_labs[-length(breaks_labs)], ", ",
-                        breaks_labs[2:length(breaks_labs)], "]")
-
-
-
   if (is.list(escala)) {
     palette <- escala$paleta
   } else {
@@ -96,8 +87,7 @@ mapear <- function(valor, lon, lat,
     geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
     scale_fill_manual(name = deparse(substitute(valor)),
                       guide = guide_fill,
-                      values = stats::setNames(palette(length(breaks_mid)),
-                                        breaks_labs),
+                      values = palette(length(breaks_mid)),
                       drop = FALSE) +
     cordillera +
     geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
