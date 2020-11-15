@@ -13,7 +13,7 @@
 #' de la anomalía porcentual.
 #'
 #' @return Devuelve un data.frame con el valor del decil o la anomalía porcentual
-#' según sea el caso. Es compatible con [group_by()] y [mutate()].
+#' según sea el caso. Es compatible con [dplyr::group_by()] y [dplyr::mutate()].
 #'
 #' @examples
 #' library(dplyr)

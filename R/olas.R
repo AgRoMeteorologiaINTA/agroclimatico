@@ -6,7 +6,7 @@
 #'
 #' La función es sensible a los datos faltantes, esto quiere decir que si se
 #' encuentra con un dato faltante la función "corta" el periodo de persistencia.
-#' Puede utilizarse en el contexto de [summarise()] y [group_by()] para hacer
+#' Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()] para hacer
 #' este cálculo por grupos.
 #'
 #' @param fecha vector de fechas.

@@ -1,7 +1,7 @@
 #' Completa una Serie de Datos
 #'
 #' La función permite completar una serie de datos temporales definiendo alguna
-#' resolución disponible. Es compatible con datos agrupados por [group_by()].
+#' resolución disponible. Es compatible con datos agrupados por [dplyr::group_by()].
 #'
 #' @param datos tabla (data.frame, data.table, tibble) a completar.
 #' @param fecha variable de fechas.

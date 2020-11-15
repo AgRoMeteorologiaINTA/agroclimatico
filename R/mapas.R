@@ -17,21 +17,21 @@
 #' library(ggplot2)
 #'
 #' # Solo Argentina
-#' ggplot(mapa_argentina()) +
-#'   geom_sf()
+#' ggplot() +
+#'   geom_sf(data = mapa_argentina())
 #'
 #' # Argentina y sus provincias
-#' ggplot(mapa_provincias()) +
-#'   geom_sf()
+#' ggplot() +
+#'   geom_sf(data = mapa_provincias())
 #'
 #' # Algunas provincias
-#' ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"))) +
-#'   geom_sf()
+#' ggplot() +
+#'   geom_sf(data = mapa_provincias(provincias = c("La Pampa", "Córdoba")))
 #'
-##' # Algunas provincias y sus departamentos
-#' ggplot(mapa_provincias(provincias = c("La Pampa", "Buenos Aires", "Córdoba"),
-#'                        departamentos = TRUE)) +
-#'   geom_sf()
+#' # Algunas provincias y sus departamentos
+#' ggplot() +
+#'   geom_sf(data = mapa_provincias(provincias = c("La Pampa", "Córdoba"),
+#'                                  departamentos = TRUE))
 #'
 #' @export
 #' @rdname mapas

@@ -1,7 +1,7 @@
 #' Escalas para precipitacion
 #'
 #' @param escala escala de colores. Puede ser
-#' * una lista con elementos `niveles` y `paleta` (ver `[leer_surfer()]` y [escalas]).
+#' * una lista con elementos `niveles` y `paleta` (ver `[leer_surfer()]` y [escala_temp_min]).
 #' * una función que toma un entero `n` y devuelve
 #' un vector de caracter con `n` colores interpolados a partir de los colores
 #' de la escala.)

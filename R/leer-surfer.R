@@ -39,7 +39,7 @@ leer_surfer <- function(archivo, color = c("primario", "secundario")) {
                    "LVL1" = 1,
                    "LVL2" = 2,
                    "LVL3" = 3,
-                   stop("El archivo no es un archivo de nivel surfer válido"))
+                   stop("El archivo no es un archivo de nivel surfer v/u00e1lido"))
 
 
   level <- utils::read.delim(archivo, header = format != 1, sep = " ", skip = 1)

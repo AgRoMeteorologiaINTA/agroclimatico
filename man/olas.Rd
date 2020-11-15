@@ -30,7 +30,7 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.
 \details{
 La función es sensible a los datos faltantes, esto quiere decir que si se
 encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de \code{\link[=summarise]{summarise()}} y \code{\link[=group_by]{group_by()}} para hacer
+Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y \code{\link[dplyr:group_by]{dplyr::group_by()}} para hacer
 este cálculo por grupos.
 }
 \examples{

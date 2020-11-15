@@ -24,7 +24,7 @@ scale_color_inta(
 \arguments{
 \item{escala}{escala de colores. Puede ser
 \itemize{
-\item una lista con elementos \code{niveles} y \code{paleta} (ver \verb{[leer_surfer()]} y \link{escalas}).
+\item una lista con elementos \code{niveles} y \code{paleta} (ver \verb{[leer_surfer()]} y \link{escala_temp_min}).
 \item una función que toma un entero \code{n} y devuelve
 un vector de caracter con \code{n} colores interpolados a partir de los colores
 de la escala.)

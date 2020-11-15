@@ -3,7 +3,7 @@
 #' La función `umbrales()` permite contar la ocurrencia de eventos definidos a
 #' partir de uno o más umbrales.
 #'
-#' Debe utilizarse en el contexto de [summarise()] y opcionalmente [group_by()].
+#' Debe utilizarse en el contexto de [dplyr::summarise()] y opcionalmente [dplyr::group_by()].
 #' Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
 #'
 #' @param ... umbral o umbrales a calcular utilizando operadores lógicos.

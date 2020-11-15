@@ -7,7 +7,7 @@
 #' @param lon,lat vectores de ubicación en longitud y latitud.
 #' @param breaks valores donde graficar los contornos. Si es`NULL` hace 10 contornos.
 #' @param escala paleta de colores a usar. Tiene que ser una función que reciba un número
-#' y devuelva esa cantidad de colores. Por ejemplo [paleta_precipitacion()].
+#' y devuelva esa cantidad de colores. Por ejemplo [escala_temp_min].
 #' @param cordillera lógico indicando si hay que tapar los datos donde está
 #' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
 #' pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
@@ -96,7 +96,7 @@ mapear <- function(valor, lon, lat,
     geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
     scale_fill_manual(name = deparse(substitute(valor)),
                       guide = guide_fill,
-                      values = setNames(palette(length(breaks_mid)),
+                      values = stats::setNames(palette(length(breaks_mid)),
                                         breaks_labs),
                       drop = FALSE) +
     cordillera +

@@ -29,7 +29,7 @@ de la anomalía porcentual.}
 }
 \value{
 Devuelve un data.frame con el valor del decil o la anomalía porcentual
-según sea el caso. Es compatible con \code{\link[=group_by]{group_by()}} y \code{\link[=mutate]{mutate()}}.
+según sea el caso. Es compatible con \code{\link[dplyr:group_by]{dplyr::group_by()}} y \code{\link[dplyr:mutate]{dplyr::mutate()}}.
 }
 \description{
 Las funciones \code{decil()} y \code{anomalia_porcentual()} devuelven estos estadísticos

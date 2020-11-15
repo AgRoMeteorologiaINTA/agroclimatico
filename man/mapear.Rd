@@ -30,7 +30,7 @@ theme_inta_mapa(...)
 \item{breaks}{valores donde graficar los contornos. Si es\code{NULL} hace 10 contornos.}
 
 \item{escala}{paleta de colores a usar. Tiene que ser una función que reciba un número
-y devuelva esa cantidad de colores. Por ejemplo \code{\link[=paleta_precipitacion]{paleta_precipitacion()}}.}
+y devuelva esa cantidad de colores. Por ejemplo \link{escala_temp_min}.}
 
 \item{cordillera}{lógico indicando si hay que tapar los datos donde está
 la coordillera (donde el kriging es particularmente problemático). Si es \code{TRUE}

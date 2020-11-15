@@ -26,7 +26,7 @@ y el resto de las variables se completan con NA.
 }
 \description{
 La función permite completar una serie de datos temporales definiendo alguna
-resolución disponible. Es compatible con datos agrupados por \code{\link[=group_by]{group_by()}}.
+resolución disponible. Es compatible con datos agrupados por \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \examples{
 # Datos de prueba completos

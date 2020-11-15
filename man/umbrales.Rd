@@ -25,7 +25,7 @@ La función \code{umbrales()} permite contar la ocurrencia de eventos definidos 
 partir de uno o más umbrales.
 }
 \details{
-Debe utilizarse en el contexto de \code{\link[=summarise]{summarise()}} y opcionalmente \code{\link[=group_by]{group_by()}}.
+Debe utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y opcionalmente \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
 }
 \examples{
