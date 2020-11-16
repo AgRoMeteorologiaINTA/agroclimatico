@@ -128,6 +128,7 @@ theme_inta_mapa <- function(...) {
 
 
 # From ggplot2
+#nocov start
 compute_breaks <- function (z_range, bins = NULL, binwidth = NULL, breaks = NULL)  {
   if (!is.null(breaks)) {
     return(breaks)
@@ -153,6 +154,7 @@ compute_breaks <- function (z_range, bins = NULL, binwidth = NULL, breaks = NULL
   }
   scales::fullseq(z_range, binwidth)
 }
+
 
 
 # De metR https://github.com/eliocamp/metR/
@@ -201,3 +203,4 @@ ConvertLongitude <- function(lon, group = NULL, from = NULL) {
 
   return(new.lon)
 }
+#nocov end
