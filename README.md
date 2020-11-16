@@ -7,8 +7,6 @@
 
 [![R build
 status](https://github.com/AgRoMeteorologiaINTA/agromet/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agromet/actions)
-[![Travis build
-status](https://travis-ci.org/AgRoMeteorologiaINTA/agromet.svg?branch=master)](https://travis-ci.org/AgRoMeteorologiaINTA/agromet)
 [![Codecov test
 coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master)
 <!-- badges: end -->
@@ -33,13 +31,17 @@ Para instalar la versión de desarrollo desde
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("AgRoMeteorologiaINTA/agromet")
+remotes::install_github("AgRoMeteorologiaINTA/agromet", build_vignettes = TRUE)
 ```
 
 ## Ejemplos
 
 A continuación se muestra el uso de algunas funciones. Podés encontrar
-más ejemplos y usos de las funciones en \[acá va el link a la viñeta\]
+más ejemplos y usos en la viñeta, con
+
+``` r
+vignette("estadisticas-e-indices-climaticos", "agromet")
+```
 
 Si se quieren utilizar los datos con formato NH se puede utilizar la
 función `leer_nh()` y opcionalmente acceder a sus metadatos con
