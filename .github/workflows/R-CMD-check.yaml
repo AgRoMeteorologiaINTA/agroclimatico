@@ -85,6 +85,5 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: matrix.os == "ubuntu-20.04" & matrix.r == "release"
         run: 'covr::codecov(type = "all")'
         shell: Rscript {0}
