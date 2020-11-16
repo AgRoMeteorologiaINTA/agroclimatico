@@ -147,3 +147,4 @@ plot.metadatos_nh <- function(x, ...) {
     coord_argentina()
 }
 
+
