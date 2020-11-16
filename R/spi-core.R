@@ -176,22 +176,3 @@ spi_params <- function(pp, ...)  {
   spi_core(stats::ts(pp, frequency = 1), ...)$coefficients
 }
 
-
-
-spi_fit <- function(pp, ref,...) {
-  browser()
-  pp <- stats::ts(pp, frequency = 1)
-  ref <- stats::ts(ref, frequency = 1)
-
-  coefficients <- spi_core(ref, scale = 1, na.rm = TRUE)$coefficients
-  names <- dimnames(coefficients)
-
-  coefficients <- array(rep(coefficients[, 1,1], 12), dim = c(dim(coefficients)[1], 1, 12))
-
-  dimnames(coefficients) <- names
-
-  a <- spi_core(pp, params = coefficients, scale = 1, na.rm = TRUE)
-
-  a
-
-}
