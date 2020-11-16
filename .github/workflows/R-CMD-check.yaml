@@ -85,6 +85,6 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: runner.os != 'Windows'
+        if: runner.os == 'Linux'
         run: 'covr::codecov(type = "all")'
         shell: Rscript {0}
