@@ -51,6 +51,20 @@ surfer_colors <- vapply(colors, function(x) x[[2]], "char") %>%
 
 
 
-usethis::use_data(arg_buffer, arg_buffer_limite, mapa_argentina_limitrofes_data,
+frame <- arg_buffer
+bbox <- sf::st_bbox(frame)
+
+
+lons <- seq(bbox[["xmin"]], bbox[["xmax"]], length.out = 100)
+lats <- seq(bbox[["ymin"]], bbox[["ymax"]], length.out = 100)
+
+
+points <- expand.grid(lon = lons,
+                      lat = lats)
+points_sf <- sf::st_as_sf(points, coords = c("lon", "lat"), crs = 4326)
+inside <-  lengths(suppressMessages(sf::st_intersects(points_sf, frame))) != 0
+arg_grid <- points[inside, ]
+
+usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitrofes_data,
                   arg_topo,estaciones_nh, surfer_colors,
                   overwrite = TRUE, internal = TRUE)

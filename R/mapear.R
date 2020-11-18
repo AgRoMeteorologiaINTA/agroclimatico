@@ -41,7 +41,7 @@ mapear <- function(valor, lon, lat,
                    fuente = NULL) {
   h <- level_mid <- var1.pred <- NULL
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
-  campo <- kringe(valor, lon, lat)
+  sink <- utils::capture.output(campo <- suppressWarnings(kringe(valor, lon, lat)))
 
   logo <- png::readPNG(system.file("logo.png", package = "agromet"))
   logoGrob <- grid::rasterGrob(logo, interpolate = TRUE)
