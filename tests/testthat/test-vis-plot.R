@@ -2,6 +2,9 @@ library(vdiffr)
 
 context("plots")
 
+
+skip_if(Sys.info()[["sysname"]] == "Linux")
+
 test_that("plot metadatos, functiona", {
   expect_doppelganger("metadatos-nh", plot(metadatos_nh()))
 })
