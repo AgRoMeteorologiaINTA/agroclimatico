@@ -10,12 +10,17 @@ mapa_argentina_limitrofes_data <- sf::st_crop(mapa_argentina_limitrofes_data,
 
 
 
-argentina <- rnaturalearth::ne_countries(country = "argentina", returnclass = "sf",
+argentina_provincias <- rnaturalearth::ne_states(country = c("argentina", "falkland islands"),
+                                                 returnclass = "sf")
+
+argentina <- rnaturalearth::ne_countries(country = c("argentina"), returnclass = "sf",
                                          scale = 10)
 
 arg_buffer <- sf::st_buffer(argentina, 0.7)
 arg_buffer_limite <- sf::st_difference(arg_buffer, argentina)
 
+argentina <- rnaturalearth::ne_countries(country = c("argentina", "falkland islands"), returnclass = "sf",
+                                         scale = 10)
 
 
 arg_topo <- metR::GetTopography(-75+360, -50+360, -20, -60, resolution = 1/10)
@@ -65,6 +70,8 @@ points_sf <- sf::st_as_sf(points, coords = c("lon", "lat"), crs = 4326)
 inside <-  lengths(suppressMessages(sf::st_intersects(points_sf, frame))) != 0
 arg_grid <- points[inside, ]
 
+argentina_provincias <- argentina_provincias[, c("name", "geometry")]
+
 usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitrofes_data,
-                  arg_topo,estaciones_nh, surfer_colors,
+                  arg_topo, estaciones_nh, surfer_colors, argentina, argentina_provincias,
                   overwrite = TRUE, internal = TRUE)

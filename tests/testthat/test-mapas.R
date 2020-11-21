@@ -27,7 +27,7 @@ sink <- lapply(mapas_fun, test_mapa)
 test_that("mapa_provincias filtra", {
   provs <- c("Chaco", "Formosa")
   mapa <- mapa_provincias(provs)
-  expect_equal(mapa$nam, provs)
+  expect_equal(sort(mapa$name), sort(provs))
 
   mapa2 <- mapa_provincias(provs, departamentos = TRUE)
   expect_equal(mapa2[1:2, ], mapa)

@@ -36,22 +36,22 @@
 #' @export
 #' @rdname mapas
 mapa_argentina <- function() {
-  get_mapa(mapas$pais)
+  argentina
 }
 
 #' @export
 #' @rdname mapas
 mapa_provincias <- function(provincias = NULL, departamentos = FALSE) {
-  mapa <- get_mapa(mapas$provincias)
+  mapa <- argentina_provincias
 
   if (!is.null(provincias)) {
-    no_hay <- !(provincias %in% unique(mapa$nam))
+    no_hay <- !(provincias %in% unique(mapa$name))
     if (any(no_hay)) {
       stop("La(s) provincia(s) ", paste(provincias[no_hay], collapse = " "),
            " no se encontraron entre la lista de posibles provincias:\n",
            paste0(unique(mapa$nam), collapse = ", "))
     }
-    mapa <- mapa[mapa$nam %in% provincias, ]
+    mapa <- mapa[mapa$name %in% provincias, ]
   }
 
   if (departamentos) {
@@ -74,15 +74,14 @@ mapa_argentina_limitrofes <- function() {
 #' @export
 #' @rdname mapas
 mapa_departamentos <- function(provincias = NULL) {
-
   mapa <- get_mapa(mapas$depto)
-
+  mapa <- mapa[, c("gid", "geometry")]
+  colnames(mapa) <- c("name", "geometry")
   if (!is.null(provincias)) {
-    prov <- get_mapa(mapas$provincias)
-    prov <- prov[prov$nam %in% provincias, ]
-    mapa <- suppressWarnings(sf::st_intersection(mapa, prov))
+    prov <- argentina_provincias
+    prov <- prov[prov$name %in% provincias, ]
+    mapa <- suppressWarnings(suppressMessages(sf::st_intersection(mapa, prov)))
     mapa <- mapa[, !grepl("\\.1$",  colnames(mapa))]
-    mapa <- mapa[, colnames(mapa) != "vlp"]
     mapa <- mapa[sf::st_geometry_type(mapa) != "POINT", ]
   }
 

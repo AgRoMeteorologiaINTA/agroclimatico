@@ -2,16 +2,47 @@ library(vdiffr)
 
 context("plots")
 
-# test_that("plot metadatos, functiona", {
-#   expect_doppelganger("metadatos-nh", plot(metadatos_nh()))
-# })
+test_that("plot metadatos, functiona", {
+  expect_doppelganger("metadatos-nh", plot(metadatos_nh()))
+})
 
 
+set.seed(934)
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
 
-# test_that("plots tiran warnings si ggplot2 no está instalado", {
-#   expect_error(
-#     with_mock(requireNamespace = function(...) return(FALSE),
-#               plot(metadatos_nh())),
-#     "Esta función necesita el paquete ggplot2")
-#
-# })
+test_that("mapear", {
+  expect_doppelganger("mapear-default",
+  with(datos_aleatorios, mapear(pp, lon, lat))
+  )
+
+
+  expect_doppelganger("mapear-cordillera",
+                      with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE))
+  )
+
+  expect_doppelganger("mapear-cordillera-2000",
+                      with(datos_aleatorios, mapear(pp, lon, lat, cordillera = 2000))
+  )
+
+  expect_doppelganger("mapear-escala",
+                      with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria))
+                      )
+  expect_doppelganger("mapear-breaks",
+                      with(datos_aleatorios, mapear(pp, lon, lat, breaks = escala_pp_diaria$niveles))
+  )
+
+  expect_doppelganger("mapear-breaks-escala",
+                      with(datos_aleatorios, mapear(pp, lon, lat,
+                                                    breaks = escala_pp_diaria$niveles,
+                                                    escala = escala_pp_diaria$paleta
+                                                    ))
+  )
+
+  expect_doppelganger("mapear-detalles",
+                      with(datos_aleatorios, mapear(pp, lon, lat,titulo = "Título",
+                                                    subtitulo = "Subtítulo",
+                                                    fuente = "Fuente"))
+  )
+
+})
+
