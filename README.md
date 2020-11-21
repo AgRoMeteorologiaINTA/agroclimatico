@@ -88,7 +88,6 @@ datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()),
 datos_aleatorios %>% 
   with(mapear(pp, lon, lat, cordillera = TRUE,
               titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
-#> [using ordinary kriging]
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

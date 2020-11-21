@@ -66,7 +66,6 @@ datos %>%
 ```
 
 
-
 ### Mapear 
 
 La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
