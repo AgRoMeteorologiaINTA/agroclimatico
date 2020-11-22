@@ -49,7 +49,7 @@ La función está preparada para leer datos díarios con el formato NH que inclu
 }
 }
 \examples{
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
 datos <- leer_nh(archivo)
 
 }

@@ -2,7 +2,7 @@
 title: "Estadísticas e índices climáticos"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{estadisticas-e-indices-climaticos}
+  %\VignetteIndexEntry{Estadísticas e índices climáticos}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,7 +30,7 @@ library(lubridate)
 La función `leer_nh()` importa datos en el formato .DAT usado por el INTA en las estaciones NH. 
 
 ```{r}
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
 datos <- leer_nh(archivo)
 head(datos)
 ```
@@ -63,7 +63,7 @@ plot(metadatos_nh(lon = c(-75, -71)))
 
 
 ```{r}
-datos_mensuales <- NH0011 %>% 
+datos_mensuales <- NH0358 %>% 
   group_by(fecha = lubridate::round_date(fecha, "month")) %>% 
   summarise(precip = mean(precip, na.rm = TRUE),
             etp = mean(etp, na.rm = TRUE))
@@ -177,10 +177,10 @@ ggplot(spi, aes(fecha, escala)) +
 
 
 ```{r}
-extremos <- NH0011 %>% 
+extremos <- NH0358 %>% 
   group_by(anio = year(fecha)) %>% 
   summarise(umbrales(helada = t_min <= 0,
-                     mucho_calor = t_max >= 35))
+                     mucho_calor = t_max >= 25))
 head(extremos)
 ```
 
@@ -199,7 +199,7 @@ extremos %>%
 Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltanes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Ësta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
 
 ```{r}
-compelta <- NH0011 %>% 
+completa <- NH0358 %>% 
   group_by(codigo_nh) %>% 
   completar_serie(fecha, "1 dia")
 ```
@@ -211,11 +211,11 @@ compelta <- NH0011 %>%
 Para las heladas, es importante saber el día promedio en el que se da la primera y la última helada, para eso se puede usar la función `dias_promedio()`:
 
 ```{r}
-NH0011 %>% 
+NH0358 %>% 
   filter(t_min <= 0) %>%          # filtrar sólo los días donde hay heladas.
   summarise(dias_promedio(fecha))
 ```
-La primera helada se da, en promedio, el 25 de junio y la úĺtima el 31 de julio.
+La primera helada se da, en promedio, el 25 de junio y la úĺtima el 30 de agosto.
 
 
 ### Persistencia 
@@ -223,9 +223,9 @@ La primera helada se da, en promedio, el 25 de junio y la úĺtima el 31 de juli
 Un dato importante para cualquier extremo es la longitud de días consecutivos con el extremo. La función `olas` (olas de calor, olas de frío) divide una serie de fechas en eventos de observaciones consecutivas donde se se da una condición lógica. 
 
 ```{r}
-olas_de_temperatura <- NH0011 %>% 
+olas_de_temperatura <- NH0358 %>% 
   summarise(olas(fecha, 
-                 mucho_calor = t_max > 35, 
+                 mucho_calor = t_max >= 25, 
                  helada = t_min <= 0))
 
 head(olas_de_temperatura)

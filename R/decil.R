@@ -17,20 +17,19 @@
 #'
 #' @examples
 #' library(dplyr)
-#' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-#' datos <- leer_nh(archivo)
+#' data(NH0358)
 #'
 #' # Deciles de precipitación usando como referencia la serie completa
-#' datos %>%
+#' NH0358 %>%
 #'   mutate(deciles = decil(precip))
 #'
 #' # Deciles mensuales
-#' datos %>%
+#' NH0358 %>%
 #'   group_by(mes = lubridate::month(fecha)) %>%
 #'   mutate(deciles = decil(precip))
 #'
 #' # Definiendo un periodo de referencia
-#' datos %>%
+#' NH0358 %>%
 #'   mutate(deciles = decil(precip,
 #'                          referencia = lubridate::year(fecha) <= 1958))
 #'
