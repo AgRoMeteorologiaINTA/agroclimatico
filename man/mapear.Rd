@@ -13,6 +13,7 @@ mapear(
   breaks = waiver(),
   escala = scales::viridis_pal(),
   cordillera = FALSE,
+  variable = NULL,
   titulo = NULL,
   subtitulo = NULL,
   fuente = NULL
@@ -37,8 +38,8 @@ la coordillera (donde el kriging es particularmente problemático). Si es \code{
 pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
 indicando el valor mínimo desde donde empezar a pintar.}
 
-\item{titulo, subtitulo, fuente}{texto para usar como título, subtítulo y
-epígrafe.}
+\item{titulo, subtitulo, fuente, variable}{texto para usar como título, subtítulo,
+epígrafe y nombre de la guía.}
 
 \item{xlim, ylim}{límites en longitud y latitud.}
 
@@ -57,6 +58,7 @@ datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()),
 
 with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
                               escala = escala_pp_diaria,
+                              variable = "mm",
                               titulo = "Precipitación aleatoria",
                               fuente = "Fuente: datos de ejemplo"))
 

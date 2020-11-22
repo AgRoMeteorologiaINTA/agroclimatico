@@ -2,8 +2,8 @@ library(vdiffr)
 
 context("plots")
 
-
-skip_if(Sys.info()[["sysname"]] == "Linux")
+# Saltea los tests en CI en linux (fallan por alguna razón en github actions)
+skip_if(Sys.info()[["sysname"]] == "Linux" & isTRUE(as.logical(Sys.getenv("CI"))))
 
 test_that("plot metadatos, functiona", {
   expect_doppelganger("metadatos-nh", plot(metadatos_nh()))
@@ -43,9 +43,13 @@ test_that("mapear", {
 
   expect_doppelganger("mapear-detalles",
                       with(datos_aleatorios, mapear(pp, lon, lat,titulo = "Título",
+                                                    variable = "mm",
                                                     subtitulo = "Subtítulo",
                                                     fuente = "Fuente"))
   )
+
+
+
 
 })
 

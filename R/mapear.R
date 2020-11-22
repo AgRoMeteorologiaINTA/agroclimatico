@@ -12,8 +12,8 @@
 #' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
 #' pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
 #' indicando el valor mínimo desde donde empezar a pintar.
-#' @param titulo,subtitulo,fuente texto para usar como título, subtítulo y
-#' epígrafe.
+#' @param titulo,subtitulo,fuente,variable texto para usar como título, subtítulo,
+#' epígrafe y nombre de la guía.
 #' @param xlim,ylim límites en longitud y latitud.
 #' @param ... otros argumentos que se pasan a [ggplot2::coord_sf()] o [ggplot2::theme_linedraw()].
 #'
@@ -27,6 +27,7 @@
 #'
 #' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
 #'                               escala = escala_pp_diaria,
+#'                               variable = "mm",
 #'                               titulo = "Precipitación aleatoria",
 #'                               fuente = "Fuente: datos de ejemplo"))
 #'
@@ -36,6 +37,7 @@ mapear <- function(valor, lon, lat,
                    breaks = waiver(),
                    escala = scales::viridis_pal(),
                    cordillera = FALSE,
+                   variable = NULL,
                    titulo = NULL,
                    subtitulo = NULL,
                    fuente = NULL) {
@@ -79,13 +81,19 @@ mapear <- function(valor, lon, lat,
     palette <- escala
   }
 
-  guide_fill <- guide_colorsteps(barheight = grid::unit(.35, "npc"), show.limits = FALSE)
+  guide_fill <- guide_colorsteps(barheight = grid::unit(.30, "npc"),
+                                 barwidth = grid::unit(.015, "npc"),
+                                 show.limits = FALSE)
+
+  if (is.null(variable)) {
+    variable <- deparse(substitute(valor))
+  }
 
   ggplot(campo, aes(lon, lat)) +
     geom_contour_filled(aes(z = var1.pred),
                         breaks = breaks) +
     geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
-    scale_fill_manual(name = deparse(substitute(valor)),
+    scale_fill_manual(name = variable,
                       guide = guide_fill,
                       values = palette(length(breaks_mid)),
                       drop = FALSE) +
