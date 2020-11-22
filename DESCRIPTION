@@ -51,7 +51,8 @@ Imports:
     tidyr,
     ggplot2,
     rappdirs,
-    magrittr
+    magrittr,
+    kableExtra
 Suggests: 
     testthat,
     dplyr,

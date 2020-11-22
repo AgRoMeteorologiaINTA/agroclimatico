@@ -53,9 +53,11 @@ $endif$
 
 \ifxetex
   \usepackage{polyglossia}
-  \setmainlanguage{$mainlang$}
+  \setmainlanguage{spanish}
+  \gappto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \else
-  \usepackage[shorthands=off,spanish,$lang$]{babel}
+  \usepackage[shorthands=off,spanish,es-tabla,$lang$]{babel}
+  \renewcommand{\spanishtablename}{Tabla}
 \fi
 
 $if(natbib)$
@@ -164,6 +166,7 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+\usepackage{subfig}
 \begin{document}
 
 $if(titulo)$

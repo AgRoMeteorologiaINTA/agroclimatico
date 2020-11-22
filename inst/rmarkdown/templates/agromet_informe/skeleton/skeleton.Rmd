@@ -11,16 +11,18 @@ output:
   agromet::agromet_informe:
     toc: true
     toc_depth: 3
+    latex_engine: "xelatex"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-	echo = TRUE,
-	message = FALSE,
-	warning = FALSE
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
 )
-library(agromet)
-library(tidyverse)
+library(agromet)    # Indices y Estadísticos Climáticos e Hidrológicos
+library(tidyverse)  # Easily Install and Load the 'Tidyverse'
+library(kableExtra)
 ```
 
 ## Evolución de as condiciones meteorológicas 
@@ -30,37 +32,57 @@ A continuación se muestra el uso de algunas funciones. Podés encontrar más ej
 Si se quieren utilizar los datos con formato NH se puede utilizar la función `leer_nh()` y opcionalmente acceder a sus metadatos con `metadatos_nh()`.
 
 ```{r lectura}
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
 
 datos <- leer_nh(archivo)
 ```
 
-### Días promedio
-
-Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función `dias_promedio()` en el contexto de `summarise()`.
-
-```{r}
-datos %>% 
-  filter(t_min <= 0) %>% 
-  summarise(dias_promedio(fecha))
-```
-
-
 
 ### Mapear 
 
-La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
-
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, out.width="45%", fig.align='center', fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
 # Genero datos aleatorios 
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), 
-                               pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+datos_aleatorios <- metadatos_nh() %>% 
+  mutate(t_max = rnorm(n(), mean = (lat - min(lat)) + 10, sd = 10),
+         t_min = rnorm(n(), mean = (lat - min(lat)), sd = 10))
 
 datos_aleatorios %>% 
-  with(mapear(pp, lon, lat, cordillera = TRUE,
-              titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+  with(mapear(t_max, lon, lat, cordillera = TRUE,
+              escala = escala_temp_max,
+              variable = "ºC",
+              fuente = "Fuente: datos de ejemplo"))
+
+datos_aleatorios %>% 
+  with(mapear(t_min, lon, lat, cordillera = TRUE,
+              escala = escala_temp_min,
+              variable = "ºC", fuente = "Fuente: datos de ejemplo"))
 ```
 
+
+La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
+
+
+
+\begin{minipage}{.5\textwidth}
+```{r}
+datos_aleatorios %>% 
+  slice_max(t_max, n = 10) %>% 
+  select(nombre, t_max) %>% 
+  kable_inta(caption = "Extremos de temperatura máxima",
+             col.names = c("Ciudad", "Tempreatura Máxima (ºC)")) %>% 
+  kable_styling(latex_options = "scale_down")
+```
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+```{r}
+datos_aleatorios %>% 
+  slice_min(t_min, n = 10) %>% 
+  select(nombre, t_min) %>% 
+  kable_inta(col.names = c("Ciudad", "Tempreatura Mínima (ºC)"),
+             caption = "Extremos de temperatura mínima") %>% 
+  kable_styling(latex_options = "scale_down")
+```
+\end{minipage}
 
 

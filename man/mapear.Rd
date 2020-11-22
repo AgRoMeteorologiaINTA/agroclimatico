@@ -54,7 +54,8 @@ interpola a el resto del territorio usando kriging y grafica con contornos
 }
 \examples{
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+datos_aleatorios <- data.frame(metadatos_nh(),
+                               pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
 
 with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
                               escala = escala_pp_diaria,

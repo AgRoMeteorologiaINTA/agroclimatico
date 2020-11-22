@@ -23,7 +23,8 @@
 #'
 #' @examples
 #' set.seed(934)
-#' datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+#' datos_aleatorios <- data.frame(metadatos_nh(),
+#'                                pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
 #'
 #' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
 #'                               escala = escala_pp_diaria,
@@ -81,7 +82,7 @@ mapear <- function(valor, lon, lat,
     palette <- escala
   }
 
-  guide_fill <- guide_colorsteps(barheight = grid::unit(.30, "npc"),
+  guide_fill <- guide_colorsteps(barheight = grid::unit(.35, "npc"),
                                  barwidth = grid::unit(.015, "npc"),
                                  show.limits = FALSE)
 
@@ -107,9 +108,11 @@ mapear <- function(valor, lon, lat,
     annotation_custom(logoGrob, xmin = -55, xmax = -50, ymin = -23.5, ymax = -20.5) +
 
     scale_x_continuous(labels = lon_label) +
+    scale_y_continuous(labels = lat_label) +
     coord_argentina() +
     theme_inta_mapa() +
-    theme(legend.position = c(0.85, 0.25)) +
+    theme(legend.position = c(0.85, 0.3), legend.text = element_text(size = 7),
+          legend.background = element_blank()) +
     labs(title = titulo,
          subtitle = subtitulo,
          caption = fuente)
@@ -166,6 +169,13 @@ compute_breaks <- function (z_range, bins = NULL, binwidth = NULL, breaks = NULL
 
 
 # De metR https://github.com/eliocamp/metR/
+lat_label <- function(lat, north = "\u00B0N", south = "\u00B0S", zero = "\u00B0") {
+  lat <- as.numeric(lat)
+  newlat <- ifelse(lat < 0, paste0(abs(lat), south), paste0(lat, north))
+  newlat[lat == 0 & !is.na(lat)] <- paste0(lat[lat == 0 & !is.na(lat)], zero)
+  return(newlat)
+}
+
 lon_label <- function(lon, east = "\u00B0E", west = "\u00B0O", zero = "\u00B0") {
   lon <- as.numeric(lon)
   lon <- ifelse(lon > 180, ConvertLongitude(lon), lon)
