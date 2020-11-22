@@ -28,15 +28,13 @@ que se encuentra expuesto el animal. Para bovinos se categoriza como:
 Calcula el índice de temperatura y humedad (ITH)
 }
 \examples{
-
 ith(temperatura = 23, hr = 65)
 
-# En el contexto de mutate
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-datos <- leer_nh(archivo)
+data(NH0358)
 
+# En el contexto de mutate
 library(dplyr)
-datos \%>\%
+NH0358 \%>\%
   mutate(ith = ith(t_max, hr))
 
 }

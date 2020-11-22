@@ -21,11 +21,18 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Elio Campitelli \email{elio.campitelli@cima.fcen.uba.ar} (\href{https://orcid.org/0000-0002-7742-9230}{ORCID})
+\strong{Maintainer}: Yanina Bellini Saibene \email{yabellini@gmail.com} [contributor]
 
 Authors:
 \itemize{
+  \item Elio Campitelli \email{elio.campitelli@cima.fcen.uba.ar} (\href{https://orcid.org/0000-0002-7742-9230}{ORCID})
   \item Paola Corrales \email{paola.corrales@cima.fcen.uba.ar}
+  \item Natalia Gattinoni \email{ngattinoni@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item  INTA [copyright holder]
 }
 
 }

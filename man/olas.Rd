@@ -36,11 +36,10 @@ Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise
 este cálculo por grupos.
 }
 \examples{
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-datos <- leer_nh(archivo)
+data(NH0358)
 
 library(dplyr)
-datos \%>\%
+NH0358 \%>\%
   summarise(olas(fecha, calor = t_max > 20, frio = t_min <= 0))
 
 }

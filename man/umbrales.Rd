@@ -30,21 +30,19 @@ Debe utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise(
 Esto permite calcular distintos umbrales y obtener resultados para distintos grupos.
 }
 \examples{
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-datos <- leer_nh(archivo)
-
+data(NH0358)
 library(dplyr)
 # Sin agrupar devuelve un único valor
-datos \%>\%
+NH0358 \%>\%
  summarise(umbrales(t_30 = t_max >= 30))
 
 # Si se agrupan los datos devuelve un valor por cada grupo
-datos \%>\%
+NH0358 \%>\%
   group_by(fecha = lubridate::floor_date(fecha, "1 month")) \%>\%
   summarise(umbrales(t_30 = t_max >= 30))
 
 # Se pueden calcular varios umbrales al mismo tiempo
-datos \%>\%
+NH0358 \%>\%
  summarise(umbrales(t_30 = t_max >= 30,
                     t_0  = t_min <= 0))
 

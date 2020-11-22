@@ -23,11 +23,10 @@
 #' Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.
 #'
 #' @examples
-#' archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-#' datos <- leer_nh(archivo)
+#' data(NH0358)
 #'
 #' library(dplyr)
-#' datos %>%
+#' NH0358 %>%
 #'   summarise(olas(fecha, calor = t_max > 20, frio = t_min <= 0))
 #'
 #' @export

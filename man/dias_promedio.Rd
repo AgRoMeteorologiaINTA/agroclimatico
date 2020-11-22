@@ -31,15 +31,14 @@ días donde la temperatura mínima fue menor o igual a 0°C, entonces devuelve
 el primer y último día de ocurrencia en promedio para este evento.
 }
 \examples{
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
-datos <- leer_nh(archivo)
+data(NH0358)
 
 # Usando la serie completa
-dias_promedio(datos$fecha)
+dias_promedio(NH0358$fecha)
 
 # Filtrando los datos para un determinado evento
 library(dplyr)
-datos \%>\%
+NH0358 \%>\%
   filter(t_min <= 0) \%>\%
   summarise(dias_promedio(fecha))
 
