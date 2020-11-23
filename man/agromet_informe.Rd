@@ -4,10 +4,12 @@
 \alias{agromet_informe}
 \title{Formato de salida para Informes}
 \usage{
-agromet_informe(...)
+agromet_informe(..., latex_engine = "xelatex")
 }
 \arguments{
 \item{...}{cualquier argumento que requiera \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
+
+\item{latex_engine}{Caracter con el compilador de latex a usar.}
 }
 \description{
 Los formatos utilizan como base \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}} y una plantilla

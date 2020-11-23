@@ -4,12 +4,14 @@
 #' específica de LaTex.
 #'
 #' @param ... cualquier argumento que requiera [rmarkdown::pdf_document()].
+#' @param latex_engine Caracter con el compilador de latex a usar.
+#'
 #'
 #' @export
-agromet_informe <- function(...) {
-  rmarkdown::pdf_document(...,
+agromet_informe <- function(..., latex_engine = "xelatex") {
+  rmarkdown::pdf_document(..., latex_engine = latex_engine,
                           template = system.file("rmarkdown", "templates",
-                                                 "agromet_informe", "skeleton",
+                                                 "agromet_informe", "resources",
                                                  'template.tex', package = "agromet")
   )
 }
