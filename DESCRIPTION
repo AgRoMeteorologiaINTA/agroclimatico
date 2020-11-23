@@ -6,7 +6,7 @@ Authors@R:
            family = "Bellini Saibene",
            role = c("cre", "ctb"),
            email = "yabellini@gmail.com"),
-           person(given = "Elio",
+      person(given = "Elio",
            family = "Campitelli",
            role = c("aut"),
            email = "elio.campitelli@cima.fcen.uba.ar",
