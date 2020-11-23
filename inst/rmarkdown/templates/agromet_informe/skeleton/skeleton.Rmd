@@ -14,7 +14,6 @@ output:
   agromet::agromet_informe:
     toc: true
     toc_depth: 3
-    keep_tex: true
 ---
 
 ```{r setup, include=FALSE}
@@ -45,7 +44,7 @@ datos <- leer_nh(archivo)
 
 ### Mapear 
 
-```{r out.width="45%", fig.align='center', fig.pos="H", fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
+```{r temperaturas, out.width="45%", fig.align='center', fig.pos="H", fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
 # Genero datos aleatorios 
 set.seed(934)
 datos_aleatorios <- metadatos_nh() %>% 
