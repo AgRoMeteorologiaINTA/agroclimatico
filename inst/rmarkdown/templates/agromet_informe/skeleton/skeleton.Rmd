@@ -5,7 +5,9 @@ isbn: "ISSN 1853-4902"
 fecha: "`r Sys.Date()`"
 volumen: 1
 numero: 1
-contacto: "inta"
+contacto: 
+  - "Instituto de Clima y agua - INTA Castelra: climayagua.inta.gob.ar "
+  - "Consultas o sugerencias: iclimayagua.infclima@inta.gov.ar"
 resumen: "Resumen muy resumido"
 encabezado: "Instituto de Clima y Agua"
 logo_izquierdo: "imagenes/logo-inta.png"
@@ -22,7 +24,8 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   fig.path = "figuras/",
-  dev = "png"
+  dpi = 300,
+  dev = c("pdf", "png")
 )
 library(agromet)   
 library(tidyverse) 

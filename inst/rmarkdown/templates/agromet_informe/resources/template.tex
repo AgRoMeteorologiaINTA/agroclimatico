@@ -154,6 +154,7 @@ $endif$
 \lhead{\includegraphics[height=1cm]{$logo_izquierdo$}}
 \chead{$titulo_corto$\\$isbn$}
 \rhead{\includegraphics[height=1cm]{$logo_derecho$}}
+\cfoot{$fecha$}
 
 }
 
@@ -222,7 +223,7 @@ $endif$
 \begin{center}
 \noindent\textbf{Contacto}
 
-$contacto$
+$for(contacto)$$contacto$$sep$\\$endfor$
 \end{center}
 
 \newpage
