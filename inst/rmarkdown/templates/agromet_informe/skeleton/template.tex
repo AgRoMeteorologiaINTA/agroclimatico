@@ -48,7 +48,7 @@ $endif$
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 
-\usepackage[margin=2cm,$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+\usepackage[margin=2cm,bottom=3cm$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 
 
 \ifxetex
@@ -141,26 +141,44 @@ $endif$
 
 \title{
 \noindent
-\textbf{$titulo$}  \\
-$subtitulo$ \\
-\normalsize Vol. $volumen$ N\textdegree $numero$ \\
-Fecha: $fecha$
+\textbf{$titulo$}  
 }
 \date{\vspace{-5ex}}
 
-% Encabezado y pie de página
-$if(encabezado)$
+% Encabezado y pie de página de la primera página
 \usepackage{fancyhdr}
+\fancypagestyle{firststyle}{
 \setlength\headheight{34pt}
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\includegraphics[height=1cm]{$logo$}}
-\lhead{$encabezado$}
+\lhead{\includegraphics[height=1cm]{$logo_izquierdo$}}
+\chead{$titulo_corto$\\$isbn$}
+\rhead{\includegraphics[height=1cm]{$logo_derecho$}}
+
+}
+
+
+% Encabezado y pie de página del resto
+
+\setlength\headheight{34pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Vol. $volumen$ -- N\textdegree $numero$}
+\rhead{$fecha$}
+\lfoot{\includegraphics[height=1cm]{$logo_izquierdo$}}
 \rfoot{Pág. \thepage}
+
+
 
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{1pt}
-$endif$
+
+% Save standard definitions
+\let\HeadRule\headrule
+\let\FootRule\footrule
+% Add color to standard definitions.
+\renewcommand\headrule{\color{cyan}\HeadRule}
+\renewcommand\footrule{\textcolor{cyan}{\FootRule}}
 
 $for(header-includes)$
 $header-includes$
@@ -171,7 +189,7 @@ $endfor$
 
 $if(titulo)$
 \maketitle
-\thispagestyle{fancy}
+\thispagestyle{firststyle}
 $endif$
 
 $if(resumen)$

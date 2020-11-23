@@ -1,12 +1,14 @@
 ---
 titulo: "Título"
-subtitulo: "Subtítulo"
+titulo_corto: "Título corto"
+isbn: ISSN 1853-4902
 fecha: "`r Sys.Date()`"
 volumen: 1
 numero: 1
 resumen: "Resumen muy resumido"
 encabezado: "Instituto de Clima y Agua"
-logo: "logo.png"
+logo_izquierdo: "logo.png"
+logo_derecho: "logo.png"
 output: 
   agromet::agromet_informe:
     toc: true
