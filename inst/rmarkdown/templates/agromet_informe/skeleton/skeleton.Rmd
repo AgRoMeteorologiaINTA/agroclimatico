@@ -10,8 +10,8 @@ contacto:
   - "Consultas o sugerencias: iclimayagua.infclima@inta.gov.ar"
 resumen: "Resumen muy resumido"
 encabezado: "Instituto de Clima y Agua"
-logo_izquierdo: "imagenes/logo-inta.png"
-logo_derecho: "imagenes/logo-clima-y-agua.png"
+logo_izquierdo: "imagenes/logo-inta.jpg"
+logo_derecho: "imagenes/logo-clima-y-agua.jpg"
 output: 
   agromet::agromet_informe:
     toc: true
