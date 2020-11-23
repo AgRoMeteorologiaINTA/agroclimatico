@@ -88,5 +88,5 @@ jobs:
 
       - name: Test coverage
         if: runner.os == 'Linux'
-        run: 'covr::package_coverage(type = "none", code = "testthat::test_package(".", reporter = testthat::JunitReporter$new(file = "test-results.xml"))")'
+        run: 'covr::package_coverage(type = "none", code = "testthat::test_package(\".\", reporter = testthat::JunitReporter$new(file = \"test-results.xml\"))")'
         shell: Rscript {0}
