@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - master
+      - dev
   pull_request:
     branches:
       - main
       - master
+      - dev
 
 name: R-CMD-check
 
@@ -23,9 +25,9 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: 'release'}
-         # - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: macOS-latest,   r: 'release'}
+          - {os: ubuntu-20.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -85,6 +87,6 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: runner.os == 'Windows'
-        run: 'covr::codecov(type = "all")'
+        if: runner.os == 'Linux'
+        run: 'covr::package_coverage(type = "none", code = "testthat::test_package(".", reporter = testthat::JunitReporter$new(file = "test-results.xml"))")'
         shell: Rscript {0}
