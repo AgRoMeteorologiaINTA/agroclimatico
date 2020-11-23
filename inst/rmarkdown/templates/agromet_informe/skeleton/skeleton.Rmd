@@ -1,29 +1,32 @@
 ---
 titulo: "Título"
 titulo_corto: "Título corto"
-isbn: ISSN 1853-4902
+isbn: "ISSN 1853-4902"
 fecha: "`r Sys.Date()`"
 volumen: 1
 numero: 1
+contacto: "inta"
 resumen: "Resumen muy resumido"
 encabezado: "Instituto de Clima y Agua"
-logo_izquierdo: "logo.png"
-logo_derecho: "logo.png"
+logo_izquierdo: "imagenes/logo-inta.png"
+logo_derecho: "imagenes/logo-clima-y-agua.png"
 output: 
   agromet::agromet_informe:
     toc: true
     toc_depth: 3
-    latex_engine: "xelatex"
+    keep_tex: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = FALSE,
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  fig.path = "figuras/",
+  dev = "png"
 )
-library(agromet)    # Indices y Estadísticos Climáticos e Hidrológicos
-library(tidyverse)  # Easily Install and Load the 'Tidyverse'
+library(agromet)   
+library(tidyverse) 
 library(kableExtra)
 ```
 
@@ -42,7 +45,7 @@ datos <- leer_nh(archivo)
 
 ### Mapear 
 
-```{r message=FALSE, warning=FALSE, out.width="45%", fig.align='center', fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
+```{r out.width="45%", fig.align='center', fig.pos="H", fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
 # Genero datos aleatorios 
 set.seed(934)
 datos_aleatorios <- metadatos_nh() %>% 

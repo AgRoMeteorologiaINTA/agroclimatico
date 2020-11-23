@@ -48,7 +48,7 @@ $endif$
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 
-\usepackage[margin=2cm,bottom=3cm$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+\usepackage[margin=2cm,bottom=3.5cm$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 
 
 \ifxetex
@@ -161,6 +161,7 @@ $endif$
 % Encabezado y pie de página del resto
 
 \setlength\headheight{34pt}
+\setlength\footskip{50pt}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{Vol. $volumen$ -- N\textdegree $numero$}
@@ -170,8 +171,8 @@ $endif$
 
 
 
-\renewcommand{\headrulewidth}{1pt}
-\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{2pt}
 
 % Save standard definitions
 \let\HeadRule\headrule
@@ -192,11 +193,17 @@ $if(titulo)$
 \thispagestyle{firststyle}
 $endif$
 
+\noindent\textcolor{cyan}{\rule{\textwidth}{1pt}}
+    
+
 $if(resumen)$
 \begin{abstract}
 $resumen$
 \end{abstract}
 $endif$
+
+\newpage
+
 
 $for(include-before)$
 $include-before$
@@ -209,14 +216,16 @@ $if(toc)$
 \tableofcontents
 }
 $endif$
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
 
+\mbox{}
+\vfill
+\begin{center}
+\noindent\textbf{Contacto}
 
+$contacto$
+\end{center}
+
+\newpage
 
 $body$
 
