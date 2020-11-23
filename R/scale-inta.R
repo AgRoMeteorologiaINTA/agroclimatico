@@ -36,6 +36,8 @@ scale_inta <- function(aes, escala, name = waiver(), breaks = waiver(), drop = w
       breaks  <- escala[["niveles"]]
     }
 
+  } else {
+    palette <- escala
   }
 
   if (inherits(drop, "waiver")) {
@@ -47,19 +49,12 @@ scale_inta <- function(aes, escala, name = waiver(), breaks = waiver(), drop = w
 
   }
   if (is.vector(breaks)) {
-    fun <- match.fun(paste0("scale_", aes, "_manual"))
-    # From https://stackoverflow.com/questions/47190693/count-the-number-of-integer-digits
-    digits <- floor(log10(abs(breaks))) + 1
-    digits <- max(digits[is.finite(digits)])
-    breaks_labs <- trimws(format(breaks, digits = digits))
-    breaks_labs <- paste0("(", breaks_labs[-length(breaks_labs)], ", ",
-                          breaks_labs[2:length(breaks_labs)], "]")
+    manual_scale <- match.fun(paste0("scale_", aes, "_manual"))
+    manual_scale(name = name,
+                 drop = drop,
+                 values = palette(length(breaks)),
+                 ...)
 
-    fun(name = name,
-        drop = drop,
-        values = stats::setNames(palette(length(breaks_labs)),
-                                 breaks_labs), ...
-    )
   } else {
     discrete_scale(aes,
                    name = name,

@@ -94,9 +94,10 @@ mapear <- function(valor, lon, lat,
     geom_contour_filled(aes(z = var1.pred),
                         breaks = breaks) +
     geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
-    scale_fill_manual(name = variable,
+    scale_fill_inta(name = variable,
+                    escala = palette,
                       guide = guide_fill,
-                      values = palette(length(breaks_mid)),
+                      breaks = breaks_mid,
                       drop = FALSE) +
     cordillera +
     geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
