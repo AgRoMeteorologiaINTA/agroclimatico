@@ -7,6 +7,7 @@
 #          email='santiago.begueria@csic.es'),
 #   person(c('Sergio','M.'), 'Vicente-Serrano', role='aut',
 #          email='svicen@ipe.csic.es'))
+# nocov start
 parglo.maxlik <- function(x,ini) {
 	# generalized logistic log-likelihood function
 	glo.loglik <- function(theta,x){
@@ -31,3 +32,4 @@ parglo.maxlik <- function(x,ini) {
 		source='parglo.loglik',value=o$value,count=o$count,
 		conv=o$convergence,msg=o$message))
 }
+# nocov end

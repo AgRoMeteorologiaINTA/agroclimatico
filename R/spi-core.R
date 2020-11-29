@@ -7,6 +7,7 @@
 #          email='santiago.begueria@csic.es'),
 #   person(c('Sergio','M.'), 'Vicente-Serrano', role='aut',
 #          email='svicen@ipe.csic.es'))
+# nocov start
 spi_core <- function(data, scale, kernel=list(type='rectangular',shift=0),
                  distribution='log-Logistic', fit='ub-pwm', na.rm=FALSE,
                  ref.start=NULL, ref.end=NULL, x=FALSE, params=NULL, ...) {
@@ -171,7 +172,7 @@ spi_core <- function(data, scale, kernel=list(type='rectangular',shift=0),
   return(z)
 }
 
-
+# nocov end
 spi_params <- function(pp, ...)  {
   spi_core(stats::ts(pp, frequency = 1), ...)$coefficients
 }
