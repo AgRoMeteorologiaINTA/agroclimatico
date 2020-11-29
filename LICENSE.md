@@ -260,7 +260,7 @@ modificado y dando una fecha pertinente.
 bajo esta Licencia y cualquier otra condición añadida bajo la
 sección 7. Este requerimiento modifica los requerimientos de la
 sección 4 de “mantener intactos todos los avisos”.
-* **c)**Usted debe licenciar la obra entera, como una unidad, bajo esta
+* **c)** Usted debe licenciar la obra entera, como una unidad, bajo esta
 Licencia para cualquier persona que esté en posesión de una copia.
 Esta Licencia se aplicará por consiguiente, junto con cualquier
 término aplicable adicional de la sección 7, a la totalidad de la
@@ -689,8 +689,10 @@ exclusión de garantía; y cada fichero debe tener al menos la línea de
 “derechos de autor (“copyright”)” y un puntero a donde se pueda encontrar
 la anotación completa.
 
+
 <una línea para dar el nombre del programa y una breve idea de lo que hace>
 Copyright (C) 2020 AgroMet INTA
+
 
 Este programa es software libre: puede redistribuirlo y/o modificarlo
 bajo los términos de la Licencia Pública General de GNU publicada por la 
@@ -712,6 +714,7 @@ Si el programa es interactivo, haga que muestre un breve aviso como el
 siguiente cuando se inicie en modo interactivo:
 
 agromet Copyright (C) 2020 AgroMet INTA
+
 Este programa se ofrece SIN GARANTÍA ALGUNA; escriba `show w' para
 consultar los detalles. Este programa es software libre, y usted puede
 redistribuirlo bajo ciertas condiciones; escriba `show c' para más

@@ -1,6 +1,6 @@
-## code to prepare `NH0011.DAT` dataset goes here
+## code to prepare `NH0358.DAT` dataset goes here
 
 
-NH0011 <- agromet::leer_nh("datos/NH0011.DAT")
+NH0358 <- agromet::leer_nh("data-raw/NH0358.DAT")
 
-usethis::use_data(NH0011, overwrite = TRUE)
+usethis::use_data(NH0358, overwrite = TRUE)

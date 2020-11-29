@@ -51,7 +51,7 @@ función `leer_nh()` y opcionalmente acceder a sus metadatos con
 library(agromet)
 library(dplyr)
 
-archivo <- system.file("extdata", "NH0011.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
 
 datos <- leer_nh(archivo)
 ```
@@ -68,8 +68,8 @@ datos %>%
   filter(t_min <= 0) %>% 
   summarise(dias_promedio(fecha))
 #>     variable dia mes dia_juliano
-#> 1 primer_dia  21   5         141
-#> 2 ultimo_dia   7   8         219
+#> 1 primer_dia  15   5         135
+#> 2 ultimo_dia  13   9         256
 ```
 
 ### Mapear
@@ -83,11 +83,13 @@ la variable a graficar.
 ``` r
 # Genero datos aleatorios 
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 1, scale = 5))
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
 
 datos_aleatorios %>% 
   with(mapear(pp, lon, lat, cordillera = TRUE,
-              titulo = "Precipitación aleatoria", fuente = "Fuente: datos de ejemplo"))
+              escala = escala_pp_diaria,
+              titulo = "Precipitación aleatoria", 
+              fuente = "Fuente: datos de ejemplo"))
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

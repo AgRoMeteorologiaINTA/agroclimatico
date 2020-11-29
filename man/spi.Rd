@@ -37,7 +37,7 @@ correcto a las variables.
 
 \item{distribucion}{distribución usada para ajustar los datos.}
 
-\item{...}{argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
+\item{...}{argumentos pasados a \link[SPEI:spi]{SPEI::spi}}
 
 \item{balance}{balance entre precipitación y evapotaranspiración potencial.}
 }
