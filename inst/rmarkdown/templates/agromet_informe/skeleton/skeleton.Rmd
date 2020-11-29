@@ -8,10 +8,10 @@ numero: 1
 contacto: 
   - "Instituto de Clima y agua - INTA Castelra: climayagua.inta.gob.ar "
   - "Consultas o sugerencias: iclimayagua.infclima@inta.gov.ar"
-resumen: "Resumen muy resumido"
+resumen: true
 encabezado: "Instituto de Clima y Agua"
-logo_izquierdo: "imagenes/logo-inta.png"
-logo_derecho: "imagenes/logo-clima-y-agua.png"
+logo_izquierdo: "imagenes/logo-inta.jpg"
+logo_derecho: "imagenes/logo-clima-y-agua.jpg"
 knit: agromet::knitr_agromet
 output: 
   agromet::agromet_informe:
@@ -37,12 +37,11 @@ library(kableExtra)
 
 ## Resumen
 
-Este es el resumen
+Esta es la primera sección. Si la opción de yaml `resumen` es `true`, entonces esta sección va a aparecer en la primera página. 
 
 ```{r, fig.cap = "persion2", fig.height = 4, fig.pos="H"}
 plot(pressure)
 ```
-
 
 
 ## Evolución de as condiciones meteorológicas 
