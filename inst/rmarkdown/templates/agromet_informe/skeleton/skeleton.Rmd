@@ -12,9 +12,11 @@ resumen: "Resumen muy resumido"
 encabezado: "Instituto de Clima y Agua"
 logo_izquierdo: "imagenes/logo-inta.png"
 logo_derecho: "imagenes/logo-clima-y-agua.png"
+knit: agromet::knitr_agromet
 output: 
   agromet::agromet_informe:
     toc: true
+    keep_tex: false
     toc_depth: 3
 ---
 
@@ -25,12 +27,23 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.path = "figuras/",
   dpi = 300,
+  out.extra = "",
   dev = c("pdf", "png")
 )
 library(agromet)   
 library(tidyverse) 
 library(kableExtra)
 ```
+
+## Resumen
+
+Este es el resumen
+
+```{r, fig.cap = "persion2", fig.height = 4, fig.pos="H"}
+plot(pressure)
+```
+
+
 
 ## Evolución de as condiciones meteorológicas 
 
