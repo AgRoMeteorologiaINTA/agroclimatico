@@ -8,16 +8,14 @@ numero: 1
 contacto: 
   - "Instituto de Clima y agua - INTA Castelra: climayagua.inta.gob.ar "
   - "Consultas o sugerencias: iclimayagua.infclima@inta.gov.ar"
-resumen: true
 encabezado: "Instituto de Clima y Agua"
 logo_izquierdo: "imagenes/logo-inta.jpg"
 logo_derecho: "imagenes/logo-clima-y-agua.jpg"
-knit: agromet::knitr_agromet
 output: 
   agromet::agromet_informe:
     toc: true
-    keep_tex: false
     toc_depth: 3
+    pandoc_args: ["--lua-filter=filters/abstract-to-meta.lua"]
 ---
 
 ```{r setup, include=FALSE}
@@ -35,31 +33,35 @@ library(tidyverse)
 library(kableExtra)
 ```
 
-## Resumen
 
-Esta es la primera sección. Si la opción de yaml `resumen` es `true`, entonces esta sección va a aparecer en la primera página. 
-
-```{r, fig.cap = "persion2", fig.height = 4, fig.pos="H"}
-plot(pressure)
-```
-
-
-## Evolución de as condiciones meteorológicas 
-
-A continuación se muestra el uso de algunas funciones. Podés encontrar más ejemplos y usos de las funciones en [acá va el link a la viñeta]
-
-Si se quieren utilizar los datos con formato NH se puede utilizar la función `leer_nh()` y opcionalmente acceder a sus metadatos con `metadatos_nh()`.
-
-```{r lectura}
+```{r lectura-datos}
 archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
 
 datos <- leer_nh(archivo)
 ```
 
 
-### Mapear 
+# Abstract
 
-```{r temperaturas, out.width="45%", fig.align='center', fig.pos="H", fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
+Este es el resumen. Para que aparezca en la primera página tiene que ser una sección que se llame "Abstract". No hace falta que sea la primera sección, puede estar en cualquier parte del documento. 
+
+Puede contener múltiples párrafos y cualquier otra salida, incluyendo tablas y figuras.
+
+```{r, fig.cap = "Figura de ejemplo", fig.height = 4, fig.pos="H"}
+ggplot(datos, aes(fecha, t_max)) + 
+  geom_line()
+```
+
+
+# Secciones
+
+Las secciones se definen con '# ' (importante el espacio) y las sub-secciones y sub-sub-secciones con más numerales. 
+
+## Figuras
+
+Para agregar figuras, simplemente escribir código que genera gráficos. El epígrafe se define con la opción de chunk `fig.cap`, la alineación con `fig.align`. Para hacer múltiples sub-figuras, hacer un chunk que genere varios gráficos y poner las opciones `fig.show="hold"` y definir los sub-epígrafes con `fig.subcap`. 
+
+```{r temperaturas, fig.align='center', fig.pos="H", fig.show="hold", fig.subcap=c("Temperatura máxima", "Temperatura mínima"), fig.cap = "Temperatura"}
 # Genero datos aleatorios 
 set.seed(934)
 datos_aleatorios <- metadatos_nh() %>% 
@@ -78,12 +80,12 @@ datos_aleatorios %>%
               variable = "ºC", fuente = "Fuente: datos de ejemplo"))
 ```
 
+## Tablas
 
-La función `mapear()` grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.
+Para hacer tablas con estilo INTA, usar la función `kable_inta()`. Para poner varias tablas una al lado de la otra, hay que agergarles `kable_styling(latex_options = "scale_down")` (del paquete kableExtra) y ponerlas dentro de una `minipage` usando código de LaTeX así:
 
 
-
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.5\textwidth}  
 ```{r}
 datos_aleatorios %>% 
   slice_max(t_max, n = 10) %>% 
@@ -105,3 +107,4 @@ datos_aleatorios %>%
 \end{minipage}
 
 
+Es **muy importante** que no haya líneas entre `\end{minipage}` y `\begin{minipage}`. 
