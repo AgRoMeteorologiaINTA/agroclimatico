@@ -85,8 +85,3 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-
-      - name: Test coverage
-        if: runner.os == 'Linux'
-        run: 'covr::package_coverage(type = "none", code = "testthat::test_package(\".\", reporter = testthat::JunitReporter$new(file = \"test-results.xml\"))")'
-        shell: Rscript {0}
