@@ -89,7 +89,7 @@ Para hacer tablas con estilo INTA, usar la función `kable_inta()`. Para poner v
 ```{r}
 datos_aleatorios %>% 
   slice_max(t_max, n = 10) %>% 
-  select(nombre, t_max) %>% 
+  select(estacion, t_max) %>% 
   kable_inta(caption = "Extremos de temperatura máxima",
              col.names = c("Ciudad", "Tempreatura Máxima (ºC)")) %>% 
   kable_styling(latex_options = "scale_down")
@@ -99,7 +99,7 @@ datos_aleatorios %>%
 ```{r}
 datos_aleatorios %>% 
   slice_min(t_min, n = 10) %>% 
-  select(nombre, t_min) %>% 
+  select(estacion, t_min) %>% 
   kable_inta(col.names = c("Ciudad", "Tempreatura Mínima (ºC)"),
              caption = "Extremos de temperatura mínima") %>% 
   kable_styling(latex_options = "scale_down")
