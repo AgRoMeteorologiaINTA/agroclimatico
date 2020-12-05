@@ -11,11 +11,13 @@ test_that("plot metadatos, functiona", {
 
 
 set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
+datos_aleatorios <- data.frame(datos_aleatorios,
+                               pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*25)
 
 test_that("mapear", {
   expect_doppelganger("mapear-default",
-  with(datos_aleatorios, mapear(pp, lon, lat))
+                      with(datos_aleatorios, mapear(pp, lon, lat))
   )
 
 
@@ -29,7 +31,7 @@ test_that("mapear", {
 
   expect_doppelganger("mapear-escala",
                       with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria))
-                      )
+  )
   expect_doppelganger("mapear-breaks",
                       with(datos_aleatorios, mapear(pp, lon, lat, breaks = escala_pp_diaria$niveles))
   )
@@ -38,7 +40,7 @@ test_that("mapear", {
                       with(datos_aleatorios, mapear(pp, lon, lat,
                                                     breaks = escala_pp_diaria$niveles,
                                                     escala = escala_pp_diaria$paleta
-                                                    ))
+                      ))
   )
 
   expect_doppelganger("mapear-detalles",
@@ -50,6 +52,7 @@ test_that("mapear", {
 
 
 
-
 })
+
+
 

@@ -2,9 +2,9 @@
 
 
 escala_pp_mensual <- agromet::leer_surfer("inst/extdata/escala_pp_mensual.lvl")
-escala_pp_mensual <- list(niveles = escala_pp_mensual$niveles[-1],
-                          colores = escala_pp_mensual$colores[-1],
-                          paleta = colorRampPalette(escala_pp_mensual$colores[-1]))
+escala_pp_mensual <- list(niveles = escala_pp_mensual$niveles[-c(1:2)],
+                          colores = escala_pp_mensual$colores[-c(1:2)],
+                          paleta = colorRampPalette(escala_pp_mensual$colores[-c(1:2)]))
 
 escala_temp_max <- agromet::leer_surfer("inst/extdata/escala_temp_max.lvl")
 escala_temp_min <- agromet::leer_surfer("inst/extdata/escala_temp_min.lvl")
