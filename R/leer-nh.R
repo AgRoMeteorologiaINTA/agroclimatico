@@ -151,7 +151,7 @@ metadatos_nh <- function(codigo = NULL, provincia = NULL, organismo = NULL, lat 
 
 #' @export
 plot.metadatos_nh <- function(x, ...) {
-  lon <- lat <- NULL
+  organismo <- lon <- lat <- NULL
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +

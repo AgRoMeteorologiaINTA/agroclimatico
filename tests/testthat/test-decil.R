@@ -38,7 +38,7 @@ test_that("umbrales", {
   expect_s3_class(cuenta, "data.frame")
   expect_equal(colnames(cuenta), c("extremo", "N", "prop", "na"))
 
-  expect_equal(umbrales(frio = datos$t_aire_min > 10), data.frame(extremo = "frio",
+  expect_equal(umbrales(frio = datos$t_min_5cm > 10), data.frame(extremo = "frio",
                                                                   N = NA_integer_,
                                                                   prop = NA_real_,
                                                                   na = 1))
