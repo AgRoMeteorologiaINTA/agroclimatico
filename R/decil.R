@@ -24,12 +24,15 @@
 #'   mutate(deciles = decil(precip))
 #'
 #' # Deciles mensuales
-#' NH0358 %>%
-#'   group_by(mes = lubridate::month(fecha)) %>%
+#' precip_mensual <- NH0358 %>%
+#'   group_by(fecha = lubridate::floor_date(fecha)) %>%
+#'   summarise(precip = mean(precip, na.rm = TRUE))
+#'
+#' precip_mensual %>%
 #'   mutate(deciles = decil(precip))
 #'
 #' # Definiendo un periodo de referencia
-#' NH0358 %>%
+#' precip_mensual %>%
 #'   mutate(deciles = decil(precip,
 #'                          referencia = lubridate::year(fecha) <= 1958))
 #'
