@@ -29,16 +29,13 @@ arg_topo[, lon := metR::ConvertLongitude(lon)]
 
 ## code to prepare `estaciones_nh` dataset goes here
 
-col_metadatos_nh <- c("n", "codigo_nh", "ext", "nombre", "lat", "lon", "tmp")
+col_metadatos_nh <- c("codigo_nh", "estacion", "provincia", "organismo", "lat", "lon", "altura")
 
-estaciones_nh <- readr::read_fwf(file = "data-raw/LISTA.DAT",
-                                 readr::fwf_widths(widths = c(2, 4, 5, 31, 9, 9, 7),
-                                                   col_names = col_metadatos_nh)) %>%
-  dplyr::select(codigo_nh, nombre, lat, lon) %>%
-  as.data.frame()
+estaciones_nh <- as.data.frame(data.table::fread(file = "data-raw/LISTADO_SMN-INTA.csv",
+                                                 col.names = col_metadatos_nh))
+estaciones_nh$codigo_nh <- gsub(".DAT", "", estaciones_nh$codigo_nh, fixed = TRUE)
 
-attr(estaciones_nh, "problems") <- NULL
-
+estaciones_nh$codigo_nh <- gsub("NH", "", estaciones_nh$codigo_nh)
 
 # De http://surferhelp.goldensoftware.com/topics/colors.htm?Highlight=colors
 surfer_definition <- readLines("data-raw/surfer_colors")

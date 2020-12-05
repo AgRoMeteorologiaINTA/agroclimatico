@@ -1,0 +1,156 @@
+CODIGO.NH,ESTACION,PROVINCIA,ORGANISMO,LATITUD,LONGITUD,ALTURA
+NH0446.DAT,Anguil,La Pampa,INTA,-36.5,-63.98,165
+NH0196.DAT,Azul,Buenos Aires, SMN,-36.75,-59.83,132
+NH0221.DAT,Bahía Blanca,Buenos Aires, SMN,-38.73,-62.17,83
+NH0400.DAT,Balcarce,Buenos Aires,INTA,-37.75,-58.3,130
+NH0323.DAT,Bariloche,Río Negro, SMN,-41.15,-71.17,840
+NH0216.DAT,Barrow,Buenos Aires,INTA,-38.32,-60.25,120
+NH0067.DAT,Bella Vista,Corrientes,INTA,-28.43,-58.92,70
+NH0008.DAT,Benito Juárez,Buenos Aires, SMN,-37.72,-59.78,207
+NH0189.DAT,Bolívar,Buenos Aires, SMN,-36.25,-61.1,93
+NH0343.DAT,Bordenave,Buenos Aires,INTA,-37.85,-63.02,212
+NH0997.DAT,Canals ,Córdoba, INTA,-33.57,-62.88,
+NH0358.DAT,Castelar,Buenos Aires,INTA,-34.67,-58.65,22
+NH0988.DAT,"Castelli,J.J.",Chaco,INTA,-25.45,-60.63,
+NH0044.DAT,Catamarca,Catamarca, SMN,-28.6,-65.77,454
+NH0081.DAT,Ceres,Santa Fe, SMN,-29.88,-61.95,88
+NH0423.DAT,Cerro Azul,Misiones,INTA,-27.65,-55.43,270
+NH0226.DAT,Cipolleti-I,Río Negro,SMN,-38.95,-67.98,265
+NH0163.DAT,Cipolleti ,Río Negro, SMN,-38.95,-67.97,265
+NH0487.DAT,Colonia Benítez,Chaco,INTA,-27.42,-58.93,54
+NH0270.DAT,Comodoro Rivadavia,Chubut, SMN,-45.78,-67.5,46
+NH0497.DAT,Conc. del Uruguay,Entre Ríos,INTA,-32.48,-58.23,21
+NH0477.DAT,Concordia,Entre Ríos, SMN,-31.3,-58.02,38
+NH0496.DAT,Concordia,Entre Ríos,INTA,-31.36,-58.12,48
+NH0100.DAT,Córdoba,Córdoba, SMN,-31.32,-64.22,474
+NH0105.DAT,Córdoba-Obs,Córdoba, SMN,-31.4,-64.18,425
+NH0204.DAT,Coronel Suárez,Buenos Aires, SMN,-37.5,-61.95,234
+NH0390.DAT,Coronel Pringles ,Buenos Aires,SMN,-38.02,-61.33,247
+NH0470.DAT,Corrientes,Corrientes, SMN,-27.47,-58.82,62
+NH0080.DAT,Curuzu Cuatia,Corrientes, SMN,-29.78,-57.98,73
+NH0454.DAT,Chacras de Coria ,Mendoza, SMN,-32.98,-68.87,921
+NH0476.DAT,Chamical ,La Rioja, SMN,-30.37,-66.28,461
+NH0525.DAT,Chapelco ,Neuquén, SMN,-40.08,-71.13,779
+NH0102.DAT,Chepes ,La Rioja, SMN,-31.33,-66.6,658
+NH0031.DAT,Chilecito ,La Rioja, SMN,-29.17,-67.5,945
+NH0190.DAT,Dolores ,Buenos Aires, SMN,-36.35,-57.73,9
+NH0478.DAT,Don Torcuato ,Buenos Aires, SMN,-34.48,-58.62,4
+NH0158.DAT,El Bolsón ,Río Negro, SMN,-41.97,-71.52,337
+NH0350.DAT,El Bolsón ,Río Negro, SMN,-41.93,-71.55,310
+NH0464.DAT,El Colorado,Formosa,INTA,-26.3,-59.37,78
+NH0552.DAT,El Trebol ,Santa Fe, SMN,-32.25,-61.38,96
+NH0571.DAT,El Calafate ,Santa Cruz, SMN,-50.27,-72.05,204
+NH0159.DAT,El Palomar ,Buenos Aires, SMN,-34.6,-58.6,12
+NH0303.DAT,Esquel ,Chubut, SMN,-42.9,-71.35,787
+NH0166.DAT,Ezeiza ,Buenos Aires, SMN,-34.82,-58.53,20
+NH0444.DAT,Famaillá,Tucumán,INTA,-27.05,-65.42,363
+NH0483.DAT,Formosa ,Formosa, SMN,-26.2,-58.23,60
+NH0334.DAT,General Pico ,La Pampa, SMN,-35.7,-63.75,145
+NH0038.DAT,General Villegas,Buenos Aires,INTA,-34.92,-62.73,117
+NH0283.DAT,Gobernador Gregores ,Santa Cruz, SMN,-48.78,-70.17,357
+NH0134.DAT,Gualeguaychú,Entre Ríos, SMN,-33.02,-58.52,21
+NH0421.DAT,Hilario Ascasubi,Buenos Aires,INTA,-39.38,-62.62,22
+NH0353.DAT,Iguazú,Misiones, SMN,-25.73,-54.47,270
+NH0500.DAT,Jujuy,Jujuy, SMN,-24.38,-65.08,905
+NH0543.DAT,Jujuy-UN,Jujuy,SMN,-24.17,-65.18,1302
+NH0453.DAT,Junín ,Buenos Aires, SMN,-34.55,-60.92,81
+NH0148.DAT,Laboulaye,Córdoba, SMN,-34.13,-63.37,137
+NH0442.DAT,La Consulta ,Mendoza, INTA,-33.73,-69.12,940
+NH0550.DAT,La María ,Santiago del Estero, INTA,-28.23,-64.15,169
+NH0450.DAT,La Plata ,Buenos Aires, SMN,-34.97,-57.9,19
+NH0001.DAT,La Quiaca ,Jujuy, SMN,-22.1,-65.6,3459
+NH0077.DAT,La Rioja ,La Rioja, SMN,-29.38,-66.82,429
+NH0416.DAT,Las Breñas ,Chaco,INTA,-27.08,-61.12,102
+NH0186.DAT,Las Flores ,Buenos Aires, SMN,-36.03,-59.1,33
+NH0011.DAT,Las Lomitas,Formosa, SMN,-24.7,-60.58,130
+NH0910.DAT,Las Rosas ,Santa Fe,INTA,-32.48,-61.57,
+NH0179.DAT,Malargüe,Mendoza, SMN,-35.5,-69.58,1425
+NH0438.DAT,Manfredi,Córdoba,INTA,-31.82,-63.77,292
+NH0248.DAT,Maquinchao ,Río Negro, SMN,-41.25,-68.73,888
+NH0369.DAT,Marcos Juárez ,Córdoba,SMN,-32.7,-62.15,114
+NH0502.DAT,Marcos Juárez,Córdoba,INTA,-32.68,-62.12,110
+NH0524.DAT,Mariano Moreno,Buenos Aires,SMN,-34.33,-58.49,8
+NH0210.DAT,Mar del Plata,Buenos Aires, SMN,-37.93,-57.58,21
+NH0131.DAT,Mendoza,Mendoza, SMN,-32.83,-68.78,705
+NH0132.DAT,Mendoza-obs,Mendoza,SMN,-32.88,-68.85,827
+NH0498.DAT,Mercedes,Corrientes,INTA,-29.17,-58.02,100
+NH0165.DAT,Merlo,Buenos Aires,SMN,-34.41,-58.44,36
+NH0021.DAT,Metán ,Salta, SMN,-25.48,-64.8,855
+NH0087.DAT,Monte Caseros,Corrientes, SMN,-30.27,-57.65,54
+NH0164.DAT,Morón ,Buenos Aires, SMN,-34.67,-58.63,24
+NH0441.DAT,Necochea,Buenos Aires,SMN,-38.48,-58.86,32
+NH0227.DAT,Neuquén ,Neuquén, SMN,-38.95,-68.13,271
+NH0178.DAT,Nueve de Julio,Buenos Aires, SMN,-35.45,-60.88,76
+NH0057.DAT,Oberá,Corrientes, SMN,-27.48,-55.13,343
+NH0531.DAT,Olavarría,Buenos Aires, SMN,-36.88,-60.22,166
+NH0472.DAT,Oliveros,Santa Fe,INTA,-32.55,-60.85,26
+NH0339.DAT,Orán,Salta, SMN,-23.15,-64.32,357
+NH0113.DAT,Paraná,Entre Ríos, SMN,-31.78,-60.48,78
+NH0114.DAT,Paraná,Entre Ríos,INTA,-31.83,-60.52,110
+NH0307.DAT,Paso de Indios ,Chubut, SMN,-43.82,-68.88,460
+NH0346.DAT,Paso de los Libres,Corrientes, SMN,-29.68,-57.15,70
+NH0456.DAT,Pehuajó,Buenos Aires, SMN,-35.87,-61.9,87
+NH0145.DAT,Pergamino,Buenos Aires,INTA,-33.93,-60.55,65
+NH0272.DAT,Perito Moreno ,Santa Cruz, SMN,-46.52,-71.02,429
+NH0206.DAT,Pigüé,Buenos Aires, SMN,-37.6,-62.38,304
+NH0111.DAT,Pilar,Córdoba, SMN,-31.67,-63.88,338
+NH0362.DAT,Posadas,Misiones, SMN,-27.37,-55.97,133
+NH0280.DAT,Puerto Deseado,Santa Cruz, SMN,-47.73,-65.92,80
+NH0177.DAT,Punta Indio ,Buenos Aires, SMN,-35.37,-57.28,22
+NH0098.DAT,Rafaela,Santa Fe,INTA,-31.18,-61.55,100
+NH0309.DAT,Reconquista,Santa Fe, SMN,-29.18,-59.7,53
+NH0437.DAT,Reconquista,Santa Fe,INTA,-29.25,-59.73,42
+NH0489.DAT,Resistencia,Chaco, SMN,-27.45,-59.05,52
+NH0229.DAT,Río Colorado,Río Negro, SMN,-39.02,-64.08,79
+NH0138.DAT,Río Cuarto,Córdoba, SMN,-33.12,-64.23,421
+NH0293.DAT,Río Gallegos,Santa Cruz,SMN,-51.62,-69.28,20
+NH0296.DAT,Río Grande,Tierra del Fuego, SMN,-53.8,-67.75,22
+NH0458.DAT,Río Hondo,Santiago del Estero,SMN,-27.29,-64.56,280
+NH0006.DAT,Rivadavia,Salta, SMN,-24.17,-62.9,205
+NH0034.DAT,P. Roque Saenz Peña,Chaco, SMN,-26.82,-60.45,92
+NH0415.DAT,P. Roque Saenz Peña,Chaco,INTA,-26.87,-60.45,90
+NH0133.DAT,Rosario,Santa Fe, SMN,-32.92,-60.78,25
+NH0012.DAT,Salta,Salta, SMN,-24.85,-65.48,1221
+NH0241.DAT,San Antonio Oeste,Río Negro, SMN,-40.73,-64.95,7
+NH0143.DAT,San Carlos ,Mendoza, SMN,-33.77,-69.03,940
+NH0553.DAT,San Fernando ,Buenos Aires, SMN,-34.45,-58.58,3
+NH0495.DAT,San Juan,San Juan, SMN,-31.57,-68.42,598
+NH0445.DAT,San Juan ,San Juan,INTA,-31.37,-68.32,618
+NH0285.DAT,San Julian ,Santa Cruz, SMN,-49.32,-67.75,29
+NH0139.DAT,San Luis,San Luis, SMN,-33.27,-66.35,713
+NH0370.DAT,San Martin-Mza.,Mendoza, SMN,-33.08,-68.42,653
+NH0154.DAT,San Miguel ,Buenos Aires, SMN,-34.55,-58.73,26
+NH0492.DAT,San Pedro,Buenos Aires,INTA,-33.68,-59.68,28
+NH0325.DAT,San Rafael ,Mendoza, SMN,-34.58,-68.4,748
+NH0289.DAT,Santa Cruz ,Santa Cruz, SMN,-50.02,-68.57,113
+NH0192.DAT,Santa Rosa,La Pampa, SMN,-36.57,-64.27,191
+NH0572.DAT,Santa Rosa de Conlara ,San Luis, SMN,-32.67,-65.32,620
+NH0547.DAT,Santa Teresita ,Buenos Aires, SMN,-36.55,-56.7,
+NH0062.DAT,Santiago del Estero,Santiago del Estero, SMN,-27.77,-64.3,199
+NH0451.DAT,Sauce Viejo,Santa Fe, SMN,-31.7,-60.82,18
+NH0311.DAT,Tandil,Buenos Aires, SMN,-37.23,-59.25,175
+NH0326.DAT,Tartagal,Salta, SMN,-22.65,-63.82,450
+NH0065.DAT,Tinogasta ,Catamarca, SMN,-28.07,-67.57,1201
+NH0558.DAT,Tolhuin ,Tierra del Fuego, SMN,-54.53,-67.22,105
+NH0258.DAT,Trelew ,Chubut, SMN,-43.2,-65.26,43
+NH0185.DAT,Trenque Lauquen ,Buenos Aires, SMN,-35.97,-62.74,95
+NH0490.DAT,Tres Arroyos,Buenos Aires, SMN,-38.33,-60.25,115
+NH0017.DAT,Tucumán,Tucumán, SMN,-26.85,-65.1,450
+NH0298.DAT,Ushuaia,Tierra del Fuego, SMN,-54.8,-68.32,14
+NH0308.DAT,Uspallata ,Mendoza, SMN,-32.6,-69.33,1891
+NH0551.DAT,Venado Tuerto,Santa Fe, SMN,-33.75,-61.95,65
+NH0188.DAT,Victorica ,La Pampa, SMN,-36.22,-65.43,312
+NH0501.DAT,Viedma,Río Negro, SMN,-40.85,-63.02,7
+NH0117.DAT,Villa Dolores,Córdoba, SMN,-31.95,-65.13,569
+NH0013.DAT,Villa Gesell ,Buenos Aires, SMN,-37.25,-57,9
+NH0082.DAT,V.Maria del Río Seco,Córdoba, SMN,-29.9,-63.68,341
+NH0439.DAT,Villa Mercedes,San Luis,INTA,-33.72,-65.48,515
+NH0156.DAT,V.Ortuzar,Buenos Aires, SMN,-34.58,-58.48,25
+NH0335.DAT,Villa Reynolds,San Luis, SMN,-33.73,-65.38,486
+NH0522.DAT,Yaciretá ,Corrientes, SMN,-27.57,-56.68,72
+NH0046.DAT,Zavalla-Univ.,Santa Fe,INTA,-33.02,-60.88,50
+NH0075.DAT,Mercedes,Corrientes, SMN,-29.23,-58.08,107
+NH0573.DAT,Rafaela,Santa Fe, SMN,-31.27,-61.5,99
+NH0574.DAT,Sunchales ,Santa Fe, SMN,-30.97,-61.33,92
+NH0989.DAT,Capilla del Monte ,Córdoba, INTA,-30.87,-64.55,
+NH0332.DAT,Buenos Aires,Buenos Aires,SMN,-34.57,-58.42,6

@@ -4,11 +4,16 @@
 \alias{metadatos_nh}
 \title{Tabla de Metadatos de Estaciones NH}
 \usage{
-metadatos_nh(codigo = NULL, lat = NULL, lon = NULL)
+metadatos_nh(
+  codigo = NULL,
+  provincia = NULL,
+  organismo = NULL,
+  lat = NULL,
+  lon = NULL
+)
 }
 \arguments{
-\item{codigo}{caracter o vector de caracteres con los códigos de estaciones de interés.
-Por defecto devuelve todas las estaciones.}
+\item{codigo, provincia, organismo}{caracter o vector de caracteres para filtrar según código de estación, provincia o provincia.}
 
 \item{lat}{vector numérico con las latitudes límite de la región de interés.}
 
@@ -31,6 +36,12 @@ metadatos_nh()
 
 # listado de estaciones específicas
 metadatos_nh(codigo = c("0001", "0011"))
+
+# Filtrar por provincias
+metadatos_nh(provincia = c("La Pampa", "Catamarca"))
+
+# Filtrar por organismo
+metadatos_nh(organismo = "INTA")
 
 # listados de estaciones en una región
 metadatos_nh(lat = c(-30, -20), lon = c(-65, -55))

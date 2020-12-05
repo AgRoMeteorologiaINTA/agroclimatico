@@ -30,5 +30,10 @@ test_that("metadatos_nh devuelve metadatos filtrados", {
                   "data.frame")
   expect_equal(unique(metadatos$codigo_nh), codigos)
 
-  })
+  provincias <- sort(c("Córdoba", "La Pampa"))
+  expect_equal(sort(unique(metadatos_nh(provincia = provincias)$provincia)), provincias)
+
+
+  expect_equal(unique(metadatos_nh(organismo = "INTA")$organismo), "INTA")
+})
 

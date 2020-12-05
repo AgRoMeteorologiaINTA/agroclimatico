@@ -15,10 +15,10 @@
 #' * `llovizna` (numérico), ocurrencia de llovizna
 #' * `granizo` (numérico), ocurrencia de granizo
 #' * `nieve` (numérico), ocurrencia de nieve
-#' * `t_aire_max` (numérico), temperatura máxima del aire en grados centígrados
-#' * `t_aire_min` (numérico), temperatura mínima del aire en grados centígrados
-#' * `t_suelo_max` (numérico), temperatura máxima del suelo en grados centígrados
-#' * `t_suelo_min` (numérico), temperatura mínima del suelo en grados centígrados
+#' * `t_min_5cm` (numérico), temperatura mínima a intemperie a 5cm en grados centígrados
+#' * `t_min_50cm` (numérico), temperatura mínima a intemperie a 50cm en grados centígrados
+#' * `t_suelo_5cm` (numérico), temperatura media del suelo a 5cm en grados centígrados
+#' * `t_suelo_10cm` (numérico), temperatura media del suelo a 10cm en grados centígrados
 #' * `heliofania_efec` (numérico), heliofanía efectiva en horas
 #' * `heliofania_rel` (numérico), heliofanía relativa en porcentaje
 #' * `p_vapor` (numérico), tensión de vapor en hPa
@@ -48,7 +48,7 @@ leer_nh <- function(archivos) {
   colnames_nh <- c("codigo", "codigo_nh", "anio", "mes", "dia",
                    "t_max", "t_min", "precip",
                    "lluvia_datos", "lluvia", "llovizna", "granizo",
-                   "nieve", "t_aire_max", "t_aire_min", "t_suelo_max", "t_suelo_min",
+                   "nieve", "t_min_5cm", "t_min_50cm", "t_suelo_5cm", "t_suelo_10cm",
                    "heliofania_efec", "heliofania_rel", "p_vapor", "hr", "td", "rocio",
                    "viento_10m", "viento_2m", "rad", "etp")
   widths <- c(2, 3, 4, 2, 2, 5, 5, 5, 1, 1, 1, 1, 1,
@@ -96,8 +96,7 @@ leer_nh <- function(archivos) {
 #' incluidas en una región. Además incluye un método plot para visualizar rápidamente
 #' la ubicación de las estaciones.
 #'
-#' @param codigo caracter o vector de caracteres con los códigos de estaciones de interés.
-#' Por defecto devuelve todas las estaciones.
+#' @param codigo,provincia,organismo caracter o vector de caracteres para filtrar según código de estación, provincia o provincia.
 #' @param lat vector numérico con las latitudes límite de la región de interés.
 #' @param lon vector numérico con las longitudes límite de la región de interés
 #' (entre -180 y 180).
@@ -109,6 +108,12 @@ leer_nh <- function(archivos) {
 #' # listado de estaciones específicas
 #' metadatos_nh(codigo = c("0001", "0011"))
 #'
+#' # Filtrar por provincias
+#' metadatos_nh(provincia = c("La Pampa", "Catamarca"))
+#'
+#' # Filtrar por organismo
+#' metadatos_nh(organismo = "INTA")
+#'
 #' # listados de estaciones en una región
 #' metadatos_nh(lat = c(-30, -20), lon = c(-65, -55))
 #'
@@ -116,11 +121,19 @@ leer_nh <- function(archivos) {
 #' plot(metadatos_nh())
 #'
 #' @export
-metadatos_nh <- function(codigo = NULL, lat = NULL, lon = NULL) {
+metadatos_nh <- function(codigo = NULL, provincia = NULL, organismo = NULL, lat = NULL, lon = NULL) {
   data <- estaciones_nh
 
   if (!is.null(codigo)) {
     data <- data[data$codigo_nh %in% codigo, ]
+  }
+
+  if (!is.null(provincia)) {
+    data <- data[data$provincia %in% provincia, ]
+  }
+
+  if (!is.null(organismo)) {
+    data <- data[data$organismo %in% organismo, ]
   }
 
   if (!is.null(lat)) {
@@ -142,7 +155,8 @@ plot.metadatos_nh <- function(x, ...) {
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +
-    ggplot2::geom_point() +
+    ggplot2::geom_point(aes(color = organismo)) +
+    ggplot2::scale_color_brewer(palette = "Dark2") +
     theme_inta_mapa() +
     coord_argentina()
 }

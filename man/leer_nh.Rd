@@ -32,10 +32,10 @@ La función está preparada para leer datos díarios con el formato NH que inclu
 \item \code{llovizna} (numérico), ocurrencia de llovizna
 \item \code{granizo} (numérico), ocurrencia de granizo
 \item \code{nieve} (numérico), ocurrencia de nieve
-\item \code{t_aire_max} (numérico), temperatura máxima del aire en grados centígrados
-\item \code{t_aire_min} (numérico), temperatura mínima del aire en grados centígrados
-\item \code{t_suelo_max} (numérico), temperatura máxima del suelo en grados centígrados
-\item \code{t_suelo_min} (numérico), temperatura mínima del suelo en grados centígrados
+\item \code{t_min_5cm} (numérico), temperatura mínima a intemperie a 5cm en grados centígrados
+\item \code{t_min_50cm} (numérico), temperatura mínima a intemperie a 50cm en grados centígrados
+\item \code{t_suelo_5cm} (numérico), temperatura media del suelo a 5cm en grados centígrados
+\item \code{t_suelo_10cm} (numérico), temperatura media del suelo a 10cm en grados centígrados
 \item \code{heliofania_efec} (numérico), heliofanía efectiva en horas
 \item \code{heliofania_rel} (numérico), heliofanía relativa en porcentaje
 \item \code{p_vapor} (numérico), tensión de vapor en hPa
