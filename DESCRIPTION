@@ -1,5 +1,5 @@
 Package: agromet
-Title: Indices y Estadísticos Climáticos e Hidrológicos
+Title: Índices y Estadísticos Climáticos e Hidrológicos
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Yanina",
