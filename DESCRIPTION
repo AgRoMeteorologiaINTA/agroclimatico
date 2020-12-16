@@ -18,7 +18,7 @@ Authors@R:
       person(given = "Natalia",
            family = "Gattinoni",
            role = c("aut"),
-           email = "ngattinoni@gmail.com"),           
+           email = "gattinoni.natalia@inta.gob.ar"),           
       person(family = "INTA",
            role = c("cph")))
 Description: Conjunto de funciones para calcular índices y estadísticos climáticos 
