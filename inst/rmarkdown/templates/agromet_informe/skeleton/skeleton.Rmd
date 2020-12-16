@@ -6,7 +6,7 @@ fecha: "`r Sys.Date()`"
 volumen: 1
 numero: 1
 contacto: 
-  - "Instituto de Clima y agua - INTA Castelra: climayagua.inta.gob.ar "
+  - "Instituto de Clima y Agua - INTA Castelar: climayagua.inta.gob.ar "
   - "Consultas o sugerencias: iclimayagua.infclima@inta.gov.ar"
 encabezado: "Instituto de Clima y Agua"
 logo_izquierdo: "imagenes/logo-inta.jpg"
