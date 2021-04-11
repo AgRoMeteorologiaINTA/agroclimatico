@@ -27,9 +27,9 @@ utilizando \link{ggplot2} y \link{sf}.
 }
 \description{
 Mapas de Argentina, sus provincias, departamentos y paises limítrofes. Los
-mapas de Argentina, las provincias y departamentos surgen del repositorio
+mapas de departamentos surgen del repositorio
 público del \href{https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG}{Instituto Geográfico Nacional},
-mientas que el mapa de países limítrofes es parte del repositorio
+mientas que el mapa de países limítrofes, Argentina y sus provincias son parte del repositorio
 \href{https://www.naturalearthdata.com/}{Natural Earth}.
 }
 \examples{

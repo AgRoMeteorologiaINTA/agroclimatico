@@ -1,9 +1,9 @@
 #' Mapas
 #'
 #' Mapas de Argentina, sus provincias, departamentos y paises limítrofes. Los
-#' mapas de Argentina, las provincias y departamentos surgen del repositorio
+#' mapas de departamentos surgen del repositorio
 #' público del [Instituto Geográfico Nacional](https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG),
-#' mientas que el mapa de países limítrofes es parte del repositorio
+#' mientas que el mapa de países limítrofes, Argentina y sus provincias son parte del repositorio
 #' [Natural Earth](https://www.naturalearthdata.com/).
 #'
 #' @param provincias vector de caracteres con los nombres de provincias a filtrar.

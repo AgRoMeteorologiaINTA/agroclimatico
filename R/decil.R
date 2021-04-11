@@ -25,8 +25,8 @@
 #'
 #' # Deciles mensuales
 #' precip_mensual <- NH0358 %>%
-#'   group_by(fecha = lubridate::floor_date(fecha)) %>%
-#'   summarise(precip = mean(precip, na.rm = TRUE))
+#'   group_by(fecha = lubridate::floor_date(fecha, "month")) %>%
+#'   summarise(precip = sum(precip, na.rm = TRUE))
 #'
 #' precip_mensual %>%
 #'   mutate(deciles = decil(precip))
