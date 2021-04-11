@@ -12,11 +12,10 @@ coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet/branch/master/graph
 <!-- badges: end -->
 
 El paquete {agromet} incluye una serie de funciones para calcular
-índices y estadísticos climáticos e hidrológicos a partir de datos
-tidy. Por ejemplo `umbrales()` permite contar la cantidad de
-observaciones que cumplen una determinada condición y `dias_promedios()`
-devuelve el primer y último día del año promedio de ocurrencia de un
-evento.
+índices y estadísticos climáticos e hidrológicos a partir de datos tidy.
+Por ejemplo `umbrales()` permite contar la cantidad de observaciones que
+cumplen una determinada condición y `dias_promedios()` devuelve el
+primer y último día del año promedio de ocurrencia de un evento.
 
 Otras funciones como `spi()` funcionan como wrappers de funciones de
 otros paquetes y que buscan ser compatibles con el manejo de datos tidy.

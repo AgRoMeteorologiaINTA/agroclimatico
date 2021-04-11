@@ -4,7 +4,7 @@
 \name{agromet-package}
 \alias{agromet}
 \alias{agromet-package}
-\title{agromet: Indices y Estadísticos Climáticos e Hidrológicos}
+\title{agromet: Índices y Estadísticos Climáticos e Hidrológicos}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
@@ -27,7 +27,7 @@ Authors:
 \itemize{
   \item Elio Campitelli \email{elio.campitelli@cima.fcen.uba.ar} (\href{https://orcid.org/0000-0002-7742-9230}{ORCID})
   \item Paola Corrales \email{paola.corrales@cima.fcen.uba.ar}
-  \item Natalia Gattinoni \email{ngattinoni@gmail.com}
+  \item Natalia Gattinoni \email{gattinoni.natalia@inta.gob.ar}
 }
 
 Other contributors:
