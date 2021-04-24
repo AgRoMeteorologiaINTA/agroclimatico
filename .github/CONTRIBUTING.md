@@ -29,8 +29,6 @@ Si encontraste un error, por favor, crea un issue que ilustre el error con un ej
 
 * Para los cambios de cara al usuario, añade una descripción en la parte superior de `NEWS.md` (es decir, justo debajo del primer encabezado). Sigue el estilo descripto en <https://style.tidyverse.org/news.html>.
 
-Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
-
 ### Estilo de código
 
 * El nuevo código debe seguir la [guía de estilo] tidyverse (https://style.tidyverse.org). 
