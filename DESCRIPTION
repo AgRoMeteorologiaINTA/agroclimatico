@@ -38,7 +38,6 @@ Imports:
     readr,
     data.table,
     scales,
-    scPDSI,
     lmomco,
     TLMoments,
     lmom,
@@ -61,5 +60,6 @@ Suggests:
     lubridate,
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    scPDSI
 VignetteBuilder: knitr

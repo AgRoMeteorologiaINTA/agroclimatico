@@ -1,4 +1,4 @@
-#' Índice de Severidad de Sequía de Palmer
+  #' Índice de Severidad de Sequía de Palmer
 #'
 #' Usa [scPDSI::pdsi] para calcular el Indice de Severidad de Sequia de Palmer.
 #' `psdi_ac()` calcula la versión autocalibrada.
@@ -22,6 +22,11 @@
 #'
 #' @export
 pdsi  <- function(precipitacion, etp, cc = 100) {
+
+  if(!requireNamespace("scPDSI", quietly = TRUE)) {
+    stop('para correr esta función necesitas el paquete scPDSI. Podés instalarlo con remotes::install_github("Sibada/scPDSI")')
+  }
+
   missing <- !is.finite(precipitacion) | !is.finite(etp)
   precipitacion[missing] <- NA
   etp[missing] <- NA
@@ -34,6 +39,11 @@ pdsi  <- function(precipitacion, etp, cc = 100) {
 #' @export
 #' @rdname pdsi
 pdsi_ac  <- function(precipitacion, etp, cc = 100) {
+
+  if(!requireNamespace("scPDSI", quietly = TRUE)) {
+    stop('para correr esta función necesitas el paquete scPDSI. Podés instalarlo con remotes::install_github("Sibada/scPDSI")')
+  }
+
   missing <- !is.finite(precipitacion) | !is.finite(etp)
   precipitacion[missing] <- NA
   etp[missing] <- NA
