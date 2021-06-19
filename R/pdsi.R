@@ -24,7 +24,7 @@
 pdsi  <- function(precipitacion, etp, cc = 100) {
 
   if(!requireNamespace("scPDSI", quietly = TRUE)) {
-    stop('para correr esta función necesitas el paquete scPDSI. Podés instalarlo con remotes::install_github("Sibada/scPDSI")')
+    stop("'pdsi' necesita el paquete scPDSI. Pod\u00E9s instalarlo con: \nremotes::install_github(\"Sibada/scPDSI\")")
   }
 
   missing <- !is.finite(precipitacion) | !is.finite(etp)
@@ -41,7 +41,7 @@ pdsi  <- function(precipitacion, etp, cc = 100) {
 pdsi_ac  <- function(precipitacion, etp, cc = 100) {
 
   if(!requireNamespace("scPDSI", quietly = TRUE)) {
-    stop('para correr esta función necesitas el paquete scPDSI. Podés instalarlo con remotes::install_github("Sibada/scPDSI")')
+    stop("'pdsi_ac' necesita el paquete scPDSI. Pod\u00E9s instalarlo con: \nremotes::install_github(\"Sibada/scPDSI\")")
   }
 
   missing <- !is.finite(precipitacion) | !is.finite(etp)

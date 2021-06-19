@@ -130,17 +130,17 @@ dir_mapas <- function() {
 
 mapas <- list(
   pais = list(
-    url = "http://ramsac.ign.gob.ar/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/pais/shp",
+    url = "https://dnsg.ign.gob.ar/apps/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/pais/shp",
     file = "pais.shp",
     rds = "pais.Rds"
   ),
   provincias = list(
-    url = "http://ramsac.ign.gob.ar/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/provincia/shp",
+    url = "https://dnsg.ign.gob.ar/apps/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/provincia/shp",
     file = "provincia.shp",
     rds = "provincias.Rds"
   ),
   depto = list(
-    url = "http://ramsac.ign.gob.ar/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/linea_de_limite_070110/shp",
+    url = "https://dnsg.ign.gob.ar/apps/api/v1/capas-sig/Geodesia+y+demarcaci%C3%B3n/L%C3%ADmites/linea_de_limite_070110/shp",
     file = "linea_de_limite_070110.shp",
     rds = "departamentos.Rds"
   )
