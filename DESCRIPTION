@@ -63,3 +63,4 @@ Suggests:
     rmarkdown,
     scPDSI
 VignetteBuilder: knitr
+Remotes: Sibada/scPDSI
