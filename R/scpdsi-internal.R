@@ -1,3 +1,14 @@
+# Sacado de https://github.com/Sibada/scPDSI, que no está en CRAN.
+# El paquete scPDSI se distribuye bajo licencia GNU GPL-2.
+# Authors@R: c(
+# Authors@R: c(person("Ruida", "Zhong", email = "zrd2017@163.com", role = c("aut", "cre")),
+#              person("Xiaohong", "Chen", email = "eescxh@mail.sysu.edu.cn", role = c("aut", "ctb")),
+#              person("Zhaoli", "Wang", email = "wangzhl@scut.edu.cn", role = c("aut", "ctb")),
+#              person("Chengguang", "Lai", email = "laichg@scut.edu.cn", role = c("aut", "ctb")),
+#              person("Steve", "Goddard", role = c("ctb")),
+#              person("Nathan", "Wells", role = c("ctb")),
+#              person("Mike", "Hayes", role = c("ctb")))ç
+#
 # Computation of the conventional Palmer Drought Severity Index (PDSI)
 # and Self-calibrating Palmer Drought Severity Index (scPDSI).
 
