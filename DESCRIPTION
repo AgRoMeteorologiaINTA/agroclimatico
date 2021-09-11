@@ -52,7 +52,8 @@ Imports:
     rappdirs,
     magrittr,
     kableExtra,
-    callr
+    callr,
+    Rcpp (>= 0.12.0)
 Suggests: 
     testthat,
     dplyr,
@@ -60,7 +61,6 @@ Suggests:
     lubridate,
     covr,
     knitr,
-    rmarkdown,
-    scPDSI
+    rmarkdown
 VignetteBuilder: knitr
-Remotes: Sibada/scPDSI
+LinkingTo: Rcpp

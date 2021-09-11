@@ -22,16 +22,11 @@
 #'
 #' @export
 pdsi  <- function(precipitacion, etp, cc = 100) {
-
-  if(!requireNamespace("scPDSI", quietly = TRUE)) {
-    stop("'pdsi' necesita el paquete scPDSI. Pod\u00E9s instalarlo con: \nremotes::install_github(\"Sibada/scPDSI\")")
-  }
-
   missing <- !is.finite(precipitacion) | !is.finite(etp)
   precipitacion[missing] <- NA
   etp[missing] <- NA
 
-  as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cc, sc = FALSE)$X)[seq_along(precipitacion)]
+  as.vector(pdsi_internal(precipitacion, etp, AWC = cc, sc = FALSE)$X)[seq_along(precipitacion)]
 }
 
 
@@ -39,14 +34,9 @@ pdsi  <- function(precipitacion, etp, cc = 100) {
 #' @export
 #' @rdname pdsi
 pdsi_ac  <- function(precipitacion, etp, cc = 100) {
-
-  if(!requireNamespace("scPDSI", quietly = TRUE)) {
-    stop("'pdsi_ac' necesita el paquete scPDSI. Pod\u00E9s instalarlo con: \nremotes::install_github(\"Sibada/scPDSI\")")
-  }
-
   missing <- !is.finite(precipitacion) | !is.finite(etp)
   precipitacion[missing] <- NA
   etp[missing] <- NA
 
-  as.vector(scPDSI::pdsi(precipitacion, etp, AWC = cc, sc = TRUE)$X)[seq_along(precipitacion)]
+  as.vector(pdsi_internal(precipitacion, etp, AWC = cc, sc = TRUE)$X)[seq_along(precipitacion)]
 }
