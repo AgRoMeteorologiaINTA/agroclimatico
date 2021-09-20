@@ -1,26 +1,23 @@
 ## code to prepare `mapas` dataset goes here
 library(magrittr)
-old <- sf::sf_use_s2(FALSE)
+
 mapa_argentina_limitrofes_data <- rnaturalearth::ne_countries(scale = 50, country = c("chile", "uruguay",
                                                 "paraguay", "brazil", "bolivia"),
                                     returnclass = "sf")
 
 mapa_argentina_limitrofes_data <- sf::st_crop(mapa_argentina_limitrofes_data,
             xmin = -77, xmax = 0, ymin = -57, ymax = 20)
-
-mapa_argentina_limitrofes_data <- mapa_argentina_limitrofes_data[, c("name",  "geometry")]
-mapa_argentina_limitrofes_data$name <- enc2utf8(mapa_argentina_limitrofes_data$name)
+mapa_argentina_limitrofes_data <- mapa_argentina_limitrofes_data[, c("name", "geometry")]
 
 
 argentina_provincias <- rnaturalearth::ne_states(country = c("argentina", "falkland islands"),
                                                  returnclass = "sf")
-argentina_provincias <- argentina_provincias[, c("name", "longitude", "latitude", "geometry")]
-argentina_provincias$name <- enc2utf8(argentina_provincias$name)
+argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 
 argentina <- rnaturalearth::ne_countries(country = c("argentina"), returnclass = "sf",
                                          scale = 10)
-argentina <- argentina[, c("name", "geometry")]
 
+argentina <- argentina[, c("name", "geometry")]
 arg_buffer <- sf::st_buffer(argentina, 0.7)
 arg_buffer_limite <- sf::st_difference(arg_buffer, argentina)
 
@@ -77,4 +74,3 @@ argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitrofes_data,
                   arg_topo, estaciones_nh, surfer_colors, argentina, argentina_provincias,
                   overwrite = TRUE, internal = TRUE)
-sf::sf_use_s2(old)
