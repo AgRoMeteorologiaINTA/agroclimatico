@@ -101,11 +101,11 @@ mapear <- function(valor, lon, lat,
                       breaks = breaks_mid,
                       drop = FALSE) +
     cordillera +
-    geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
-    geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
-            inherit.aes = FALSE) +
-    geom_sf(data = mapa_argentina_limitrofes(), fill = "gray90",
-            color = "black", size= 0.2, inherit.aes = FALSE) +
+    # geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
+    # geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
+    #         inherit.aes = FALSE) +
+    # geom_sf(data = mapa_argentina_limitrofes(), fill = "gray90",
+    #         color = "black", size= 0.2, inherit.aes = FALSE) +
     geom_point(data = datos, size = 0.2) +
     annotation_custom(logoGrob, xmin = -55, xmax = -50, ymin = -23.5, ymax = -20.5) +
 
