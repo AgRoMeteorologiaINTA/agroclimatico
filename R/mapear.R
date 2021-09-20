@@ -101,17 +101,17 @@ mapear <- function(valor, lon, lat,
                       breaks = breaks_mid,
                       drop = FALSE) +
     cordillera +
-    # geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
-    # geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
-    #         inherit.aes = FALSE) +
-    # geom_sf(data = mapa_argentina_limitrofes(), fill = "gray90",
-    #         color = "black", size= 0.2, inherit.aes = FALSE) +
+    geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
+    geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
+            inherit.aes = FALSE) +
+    geom_sf(data = mapa_argentina_limitrofes(), fill = "gray90",
+            color = "black", size= 0.2, inherit.aes = FALSE) +
     geom_point(data = datos, size = 0.2) +
     annotation_custom(logoGrob, xmin = -55, xmax = -50, ymin = -23.5, ymax = -20.5) +
 
     scale_x_continuous(labels = lon_label) +
     scale_y_continuous(labels = lat_label) +
-    coord_argentina() +
+    # coord_argentina() +
     theme_inta_mapa() +
     theme(legend.position = c(0.85, 0.3), legend.text = element_text(size = 7),
           legend.background = element_blank()) +
@@ -126,8 +126,8 @@ mapear <- function(valor, lon, lat,
 
 #' @export
 #' @rdname mapear
-coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), ...) {
-  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, ...)
+coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), lims_method = "box", ...) {
+  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, lims_method = lims_method, ...)
 }
 
 #' @export
