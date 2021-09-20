@@ -152,7 +152,8 @@ metadatos_nh <- function(codigo = NULL, provincia = NULL, organismo = NULL, lat 
 #' @export
 plot.metadatos_nh <- function(x, ...) {
   organismo <- lon <- lat <- NULL
-
+  old <- use_s2(FALSE)
+  on.exit(use_s2(old))
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +
     ggplot2::geom_point(aes(color = organismo)) +
@@ -162,3 +163,7 @@ plot.metadatos_nh <- function(x, ...) {
 }
 
 
+use_s2 <- function(use_s2) {
+  sink <- capture.output(old <- sf::sf_use_s2(use_s2 = use_s2))
+  old
+}
