@@ -154,7 +154,7 @@ plot.metadatos_nh <- function(x, ...) {
   organismo <- lon <- lat <- NULL
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
-    # ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +
+    ggplot2::geom_sf(data = mapa_provincias(), inherit.aes = FALSE) +
     ggplot2::geom_point(aes(color = organismo)) +
     ggplot2::scale_color_brewer(palette = "Dark2") +
     theme_inta_mapa() +
