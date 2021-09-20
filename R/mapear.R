@@ -126,8 +126,8 @@ mapear <- function(valor, lon, lat,
 
 #' @export
 #' @rdname mapear
-coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), lims_method = "box", ...) {
-  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, lims_method = lims_method, ...)
+coord_argentina <- function(xlim = c(-77, -50), ylim = c(-57, -20), ...) {
+  coord_sf(xlim = xlim, ylim = ylim, expand = TRUE, ...)
 }
 
 #' @export
