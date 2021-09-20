@@ -1,5 +1,5 @@
 # Sacado de https://github.com/Sibada/scPDSI, que no está en CRAN.
-# El paquete scPDSI se distribuye bajo licencia GNU GPL-2.
+# El paquete scPDSI se distribuye bajo licencia GNU GPL-3.
 # Authors@R: c(
 # Authors@R: c(person("Ruida", "Zhong", email = "zrd2017@163.com", role = c("aut", "cre")),
 #              person("Xiaohong", "Chen", email = "eescxh@mail.sysu.edu.cn", role = c("aut", "ctb")),

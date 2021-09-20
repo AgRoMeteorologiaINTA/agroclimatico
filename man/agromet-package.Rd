@@ -33,6 +33,8 @@ Authors:
 Other contributors:
 \itemize{
   \item  INTA [copyright holder]
+  \item Ruida Zhong [copyright holder]
+  \item Santiago Beguería [copyright holder]
 }
 
 }

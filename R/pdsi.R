@@ -1,4 +1,4 @@
-  #' Índice de Severidad de Sequía de Palmer
+#' Índice de Severidad de Sequía de Palmer
 #'
 #' Usa [scPDSI::pdsi] para calcular el Indice de Severidad de Sequia de Palmer.
 #' `psdi_ac()` calcula la versión autocalibrada.
