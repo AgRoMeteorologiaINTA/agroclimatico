@@ -90,8 +90,7 @@ mapear <- function(valor, lon, lat,
   if (is.null(variable)) {
     variable <- deparse(substitute(valor))
   }
-  old <- use_s2(FALSE)
-  on.exit(use_s2(old))
+
   ggplot(campo, aes(lon, lat)) +
     geom_contour_filled(aes(z = var1.pred),
                         breaks = breaks) +
