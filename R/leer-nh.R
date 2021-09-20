@@ -155,14 +155,21 @@ plot.metadatos_nh <- function(x, ...) {
   prov <- mapa_provincias()
   prov$name <- NULL
 
+
   sf::st_crs(prov) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+
+  sink <- capture.output(old <- sf::sf_use_s2(FALSE))
+  on.exit(sf::sf_use_s2(old))
 
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = prov, inherit.aes = FALSE) +
     ggplot2::geom_point(ggplot2::aes(color = organismo)) +
     ggplot2::scale_color_brewer(palette = "Dark2") +
     theme_inta_mapa() +
-    coord_argentina()
+    # coord_argentina() +
+    NULL
+
 }
+
 
 
