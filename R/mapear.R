@@ -111,7 +111,7 @@ mapear <- function(valor, lon, lat,
 
     scale_x_continuous(labels = lon_label) +
     scale_y_continuous(labels = lat_label) +
-    # coord_argentina() +
+    coord_argentina() +
     theme_inta_mapa() +
     theme(legend.position = c(0.85, 0.3), legend.text = element_text(size = 7),
           legend.background = element_blank()) +
