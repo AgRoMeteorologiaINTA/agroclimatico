@@ -155,6 +155,8 @@ plot.metadatos_nh <- function(x, ...) {
   prov <- mapa_provincias()
   prov$name <- NULL
 
+  sf::st_crs(prov) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+
   ggplot2::ggplot(x, ggplot2::aes(lon, lat)) +
     ggplot2::geom_sf(data = prov, inherit.aes = FALSE) +
     ggplot2::geom_point(ggplot2::aes(color = organismo)) +
