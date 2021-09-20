@@ -14,7 +14,9 @@ argentina_provincias <- rnaturalearth::ne_states(country = c("argentina", "falkl
                                                  returnclass = "sf")
 argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 
-argentina_provincias$name <- stringi::stri_trans_general(argentina_provincias$name, "latin-ascii")
+# argentina_provincias$name <- stringi::stri_trans_general(argentina_provincias$name, "latin-ascii")
+
+argentina_provincias$name <- enc2utf8(argentina_provincias$name)
 
 argentina <- rnaturalearth::ne_countries(country = c("argentina"), returnclass = "sf",
                                          scale = 10)
