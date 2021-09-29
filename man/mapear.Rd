@@ -53,6 +53,7 @@ Dadas mediciones de una veriable en puntos ubicados en Argentina,
 interpola a el resto del territorio usando kriging y grafica con contornos
 }
 \examples{
+\dontrun{
 set.seed(934)
 datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
 datos_aleatorios <- data.frame(datos_aleatorios,
@@ -63,5 +64,6 @@ with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
                               variable = "mm",
                               titulo = "Precipitación aleatoria",
                               fuente = "Fuente: datos de ejemplo"))
+}
 
 }

@@ -22,6 +22,7 @@
 #' Un objeto ggplot2.
 #'
 #' @examples
+#' \dontrun{
 #' set.seed(934)
 #' datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
 #' datos_aleatorios <- data.frame(datos_aleatorios,
@@ -32,6 +33,7 @@
 #'                               variable = "mm",
 #'                               titulo = "Precipitación aleatoria",
 #'                               fuente = "Fuente: datos de ejemplo"))
+#' }
 #'
 #' @export
 #' @import ggplot2
