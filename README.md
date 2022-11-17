@@ -81,8 +81,8 @@ la variable a graficar.
 
 ``` r
 # Genero datos aleatorios 
-set.seed(934)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*25)
+set.seed(496)
+datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*70)
 
 datos_aleatorios %>% 
   with(mapear(pp, lon, lat, cordillera = TRUE,

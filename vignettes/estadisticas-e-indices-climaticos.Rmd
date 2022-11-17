@@ -248,9 +248,9 @@ olas_de_temperatura %>%
 Si se tienen observaciones en estaciones, la función `mapear()` genera un mapa de contornos llenos con el mapa de Argentina, países limítrofes y logo del INTA. 
 
 ```{r}
-set.seed(934)
-datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
-datos_aleatorios <- data.frame(datos_aleatorios, pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*25)
+set.seed(496)
+datos_aleatorios <- subset(metadatos_nh())
+datos_aleatorios <- data.frame(datos_aleatorios, pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*70)
 ```
 
 ```{r}
