@@ -8,9 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Conjunto de funciones para calcular índices y estadísticos climáticos 
-    hidrológicos a partir de datos tidy. Incluye una función para graficar resultados 
-    georeferenciados y e información cartográfica.
+Conjunto de funciones para calcular índices y estadísticos climáticos hidrológicos a partir de datos tidy. Incluye una función para graficar resultados georeferenciados y e información cartográfica.
 }
 \seealso{
 Useful links:
