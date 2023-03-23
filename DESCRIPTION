@@ -55,7 +55,8 @@ Imports:
     rappdirs,
     magrittr,
     kableExtra,
-    Rcpp (>= 0.12.0)
+    Rcpp (>= 0.12.0),
+    cli
 Suggests: 
     testthat,
     dplyr,
