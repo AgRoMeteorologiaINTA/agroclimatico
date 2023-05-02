@@ -32,6 +32,6 @@ test_that("mapa_provincias filtra", {
   mapa2 <- mapa_provincias(provs, departamentos = TRUE)
   expect_equal(mapa2[1:2, ], mapa)
 
-  expect_error(mapa_provincias(c("Chaco", "CABA")), "CABA no se encontraron")
+  expect_error(mapa_provincias(c("Chaco", "CABA")), "no se encontraron entre la lista de posibles provincias.")
 
 })
