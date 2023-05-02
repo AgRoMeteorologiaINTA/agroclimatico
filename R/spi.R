@@ -52,7 +52,7 @@
 #' @export
 #' @importFrom data.table .BY :=
 spi <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fecha)),
-                distribucion = "Gamma", ...) {
+                    distribucion = "Gamma", ...) {
   . <- pp <- escala <- month <- NULL
 
   # Le da formato a los datos y calculando las medias móviles (acumuladas)
@@ -80,13 +80,14 @@ spi <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fec
   # Fitea los parámetros de la distribución para cada mes y escala
   # Como el resultado son arrays, está metido en una lista.
   params <- referencia[, .(params = .(spi_params(precipitacion, scale = 1, na.rm = TRUE,
-                                                 distribucion = distribucion, ...))),
+                                                 distribution = distribucion, ...))),
                        by = .(escala, month = data.table::month(fecha))]
 
   # Calcula el SPI usando los parámetros.
-  data[, spi := spi_core(stats::ts(precipitacion, frequency = 1), scale = 1, na.rm = TRUE,
-                         distribucion = distribucion,
-                         params = params[escala == .BY$escala & month == .BY$month]$params[[1]], ...)$fitted,
+  data[, spi := SPEI::spi(stats::ts(precipitacion, frequency = 1), scale = 1, na.rm = TRUE,
+                          distribution = distribucion,
+                          params = params[escala == .BY$escala & month == .BY$month]$params[[1]],
+                          verbose =  FALSE, ...)$fitted,
        by = .(escala, month = data.table::month(fecha))]
   data[, spi := as.vector(spi)]
   data[, precipitacion := NULL]
@@ -114,5 +115,8 @@ spi_referencia <- function(fecha, precipitacion) {
   data.frame(fecha = fecha, precipitacion = precipitacion)
 }
 
+spi_params <- function(pp, ...)  {
+  SPEI::spi(stats::ts(pp, frequency = 1), verbose =  FALSE, ...)$coefficients
+}
 
 .datatable.aware <- TRUE
