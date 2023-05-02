@@ -56,7 +56,8 @@ Imports:
     magrittr,
     kableExtra,
     Rcpp (>= 0.12.0),
-    cli
+    cli,
+    SPEI (>= 1.8.1)
 Suggests: 
     testthat,
     dplyr,
