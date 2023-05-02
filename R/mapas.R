@@ -47,9 +47,9 @@ mapa_provincias <- function(provincias = NULL, departamentos = FALSE) {
   if (!is.null(provincias)) {
     no_hay <- !(provincias %in% unique(mapa$name))
     if (any(no_hay)) {
-      stop("La(s) provincia(s) ", paste(provincias[no_hay], collapse = " "),
-           " no se encontraron entre la lista de posibles provincias:\n",
-           paste0(unique(mapa$nam), collapse = ", "))
+      cli::cli_abort(c("La(s) provincia(s) ", paste(provincias[no_hay], collapse = " "),
+                       " no se encontraron entre la lista de posibles provincias.",
+                     "i" = "Las provincias disponibles son:", paste0(unique(mapa$name), collapse = ", ")))
     }
     mapa <- mapa[mapa$name %in% provincias, ]
   }
@@ -94,7 +94,7 @@ get_mapa <- function(mapa) {
   file <- file.path(dir_mapas(), mapa$rds)
 
   if (!file.exists(file)) {
-    message("Descargando mapa")
+    cli::cli_inform("Descargando mapa...")
     descargar_mapa(mapa)
   }
 
@@ -125,7 +125,6 @@ dir_mapas <- function() {
   dir.create(dir, showWarnings = FALSE, recursive = TRUE)
   dir
 }
-
 
 
 mapas <- list(
