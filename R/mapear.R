@@ -61,7 +61,7 @@ mapear <- function(valor, lon, lat,
     }
     cordillera <- list(
       ggnewscale::new_scale_fill(),
-      geom_contour_filled(data = arg_topo, aes(z = h, fill = stat(level_mid)),
+      geom_contour_filled(data = arg_topo, aes(z = h, fill = after_stat(level_mid)),
                           breaks = breaks_cords),
       scale_fill_gradient(low = "#E2E6E6", high = "#7E7E7E", guide = "none",
                           oob = scales::squish))
@@ -96,7 +96,7 @@ mapear <- function(valor, lon, lat,
   ggplot(campo, aes(lon, lat)) +
     geom_contour_filled(aes(z = var1.pred),
                         breaks = breaks) +
-    geom_contour(aes(z = var1.pred), color = "gray20", size = 0.2, breaks = breaks) +
+    geom_contour(aes(z = var1.pred), color = "gray20", linewidth = 0.2, breaks = breaks) +
     scale_fill_inta(name = variable,
                     escala = palette,
                       guide = guide_fill,
@@ -104,10 +104,10 @@ mapear <- function(valor, lon, lat,
                       drop = FALSE) +
     cordillera +
     geom_sf(data = arg_buffer_limite, fill = "white", color = NA, inherit.aes = FALSE) +
-    geom_sf(data = mapa_provincias(), fill = NA, color = "black", size = 0.2,
+    geom_sf(data = mapa_provincias(), fill = NA, color = "black", linewidth = 0.2,
             inherit.aes = FALSE) +
     geom_sf(data = mapa_argentina_limitrofes(), fill = "gray90",
-            color = "black", size= 0.2, inherit.aes = FALSE) +
+            color = "black", linewidth = 0.2, inherit.aes = FALSE) +
     geom_point(data = datos, size = 0.2) +
     annotation_custom(logoGrob, xmin = -55, xmax = -50, ymin = -23.5, ymax = -20.5) +
 
