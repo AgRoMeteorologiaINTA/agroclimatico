@@ -189,14 +189,17 @@ lon_label <- function(lon, east = "\u00B0E", west = "\u00B0O", zero = "\u00B0") 
   return(newlon)
 }
 
+# De metR https://github.com/eliocamp/metR/
 ConvertLongitude <- function(lon, group = NULL, from = NULL) {
   if (all(is.na(lon))) return(lon)
 
   m <- min(lon, na.rm = TRUE)
-  if (m < -180) stop("lon lower than 180, not a valid longitude")
+  if (m < -180) cli::cli_abort(c("Longitud no válida.",
+                                 "i" = "La longitud debe ser mayor a 180 grados."))
 
   M <- max(lon, na.rm = TRUE)
-  if (M > 360) stop("lon greater than 360, not a valid longitude")
+  if (M > 360) cli::cli_abort(c("Longitud no válida.",
+                                "i" = "La longitud debe ser menor a 360 grados."))
 
   lon360 <- FALSE
   lon180 <- FALSE
