@@ -40,7 +40,7 @@ umbrales <- function(...) {
   values <- list(...)
   if (length(values) == 0) {
     cli::cli_abort(c("Ning\u00fan extremo definido.",
-                   "i" = "Intenta aplicando un operador lógico a tu variable."))
+                   "i" = "Intenta aplicando un operador l\u00f3gico a tu variable"))
   }
 
   datos <- lapply(values, function(x) {
