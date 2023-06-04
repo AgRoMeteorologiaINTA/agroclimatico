@@ -45,6 +45,7 @@ mapear <- function(valor, lon, lat,
                    titulo = NULL,
                    subtitulo = NULL,
                    fuente = NULL) {
+
   h <- level_mid <- var1.pred <- NULL
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
   sink <- utils::capture.output(campo <- suppressWarnings(kringe(valor, lon, lat)))
@@ -194,11 +195,11 @@ ConvertLongitude <- function(lon, group = NULL, from = NULL) {
   if (all(is.na(lon))) return(lon)
 
   m <- min(lon, na.rm = TRUE)
-  if (m < -180) cli::cli_abort(c("Longitud no válida.",
+  if (m < -180) cli::cli_abort(c("Longitud no v\u00e1lida.",
                                  "i" = "La longitud debe ser mayor a 180 grados."))
 
   M <- max(lon, na.rm = TRUE)
-  if (M > 360) cli::cli_abort(c("Longitud no válida.",
+  if (M > 360) cli::cli_abort(c("Longitud no v\u00e1lida.",
                                 "i" = "La longitud debe ser menor a 360 grados."))
 
   lon360 <- FALSE
