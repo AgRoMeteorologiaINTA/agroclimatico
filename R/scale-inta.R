@@ -15,6 +15,18 @@
 #'
 #' @return objeto ggproto compatible con ggplot2.
 #'
+#' @examples
+#' \dontrun{
+#' library(ggplot2)
+#' set.seed(496)
+#' datos_aleatorios <- subset(metadatos_nh())
+#' datos_aleatorios <- data.frame(datos_aleatorios,
+#' pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*70)
+#'
+#' ggplot(datos_aleatorios, aes(lon, lat)) +
+#' geom_contour(aes(z = pp, fill = after_stat(level))) +
+#' scale_fill_inta(escala = escala_pp_diaria)
+#' }
 #'
 #' @rdname scale_inta
 #' @export

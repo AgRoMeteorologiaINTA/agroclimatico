@@ -8,18 +8,17 @@
 #'
 #' @return tabla, objeto kbl.
 #'
-#' @example
+#' @examples
 #'
 #' # Genero datos aleatorios
 #' set.seed(934)
-#' datos_aleatorios <- metadatos_nh() %>%
-#'  mutate(t_max = rnorm(n(), mean = (lat - min(lat)) + 10, sd = 10)
+#' datos_aleatorios <- metadatos_nh()
 #'
 #' datos_aleatorios %>%
-#'  slice_max(t_max, n = 10) %>%
-#'  select(estacion, t_max) %>%
-#'  kable_inta(caption = "Extremos de temperatura máxima",
-#'            col.names = c("Ciudad", "Tempreatura Máxima (ºC)")) %>%
+#'  head() %>%
+#'  select("codigo_nh", "estacion") %>%
+#'  kable_inta(caption = "Ejemplo",
+#'            col.names = c("Código", "Estación)) %>%
 #'  kable_styling(latex_options = "scale_down")
 #'
 #' @export

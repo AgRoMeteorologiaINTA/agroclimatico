@@ -18,3 +18,9 @@ documento compilado.
 Los formatos utilizan como base \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}} y una plantilla
 específica de LaTex.
 }
+\examples{
+\dontrun{
+agromet_informe("Informe.Rmd")
+}
+
+}

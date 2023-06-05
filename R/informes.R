@@ -8,12 +8,10 @@
 #'
 #' @return documento compilado.
 #'
-#' @example
-#' ## Not run:
-#'
+#' @examples
+#' \dontrun{
 #' agromet_informe("Informe.Rmd")
-#'
-#' ## End(Not run)
+#'}
 #'
 #' @export
 agromet_informe <- function(..., latex_engine = "xelatex") {
