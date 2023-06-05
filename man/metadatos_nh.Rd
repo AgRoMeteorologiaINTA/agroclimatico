@@ -13,12 +13,15 @@ metadatos_nh(
 )
 }
 \arguments{
-\item{codigo, provincia, organismo}{caracter o vector de caracteres para filtrar según código de estación, provincia o provincia.}
+\item{codigo, provincia, organismo}{carácter o vector de caracteres para filtrar según código de estación, provincia o provincia.}
 
 \item{lat}{vector numérico con las latitudes límite de la región de interés.}
 
 \item{lon}{vector numérico con las longitudes límite de la región de interés
 (entre -180 y 180).}
+}
+\value{
+data.frame con los metadatos de las estaciones.
 }
 \description{
 Devuelve los metadatos de estaciones incluyendo el código único, ubicación (latitud y
@@ -26,7 +29,7 @@ longitud) y el nombre.
 }
 \details{
 Esta función por defecto devuelve la lista completa de estaciones pero alternativamente
-se puede devolver estaciones espećificar a partir de sus códigos o todas las estaciones
+se puede devolver estaciones especificar a partir de sus códigos o todas las estaciones
 incluidas en una región. Además incluye un método plot para visualizar rápidamente
 la ubicación de las estaciones.
 }

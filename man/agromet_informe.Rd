@@ -11,6 +11,9 @@ agromet_informe(..., latex_engine = "xelatex")
 
 \item{latex_engine}{Caracter con el compilador de latex a usar.}
 }
+\value{
+documento compilado.
+}
 \description{
 Los formatos utilizan como base \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}} y una plantilla
 específica de LaTex.

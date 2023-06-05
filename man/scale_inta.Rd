@@ -41,6 +41,9 @@ presentes en los datos. Por defecto, es \code{FALSE} si la escala define los niv
 
 \item{...}{otros argumentos que se padan a \code{\link[ggplot2:scale_manual]{ggplot2::scale_fill_manual()}} o \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
 }
+\value{
+objeto ggproto compatible con ggplot2.
+}
 \description{
 Escalas para precipitacion
 }

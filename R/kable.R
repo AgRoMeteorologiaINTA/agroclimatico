@@ -6,7 +6,21 @@
 #' @param x Una tabla.
 #' @param ... Otros argumentos que se pasan a [kableExtra::kbl()]
 #'
+#' @return tabla, objeto kbl.
 #'
+#' @example
+#'
+#' # Genero datos aleatorios
+#' set.seed(934)
+#' datos_aleatorios <- metadatos_nh() %>%
+#'  mutate(t_max = rnorm(n(), mean = (lat - min(lat)) + 10, sd = 10)
+#'
+#' datos_aleatorios %>%
+#'  slice_max(t_max, n = 10) %>%
+#'  select(estacion, t_max) %>%
+#'  kable_inta(caption = "Extremos de temperatura máxima",
+#'            col.names = c("Ciudad", "Tempreatura Máxima (ºC)")) %>%
+#'  kable_styling(latex_options = "scale_down")
 #'
 #' @export
 kable_inta <- function(x, ...) {

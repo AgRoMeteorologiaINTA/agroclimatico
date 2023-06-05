@@ -11,6 +11,9 @@ kable_inta(x, ...)
 
 \item{...}{Otros argumentos que se pasan a \code{\link[kableExtra:kbl]{kableExtra::kbl()}}}
 }
+\value{
+tabla, objeto kbl.
+}
 \description{
 Llama a \code{\link[kableExtra:kbl]{kableExtra::kbl()}} con defaults apropiados para que siga el estilo
 INTA.

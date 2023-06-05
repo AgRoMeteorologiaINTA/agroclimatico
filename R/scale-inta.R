@@ -13,6 +13,8 @@
 #' `breaks` o `escala`.
 #' @param ... otros argumentos que se padan a [ggplot2::scale_fill_manual()] o [ggplot2::discrete_scale()].
 #'
+#' @return objeto ggproto compatible con ggplot2.
+#'
 #'
 #' @rdname scale_inta
 #' @export
@@ -29,7 +31,7 @@ scale_color_inta <- function(escala, name = waiver(), breaks = waiver(), drop = 
 
 
 scale_inta <- function(aes, escala, name = waiver(), breaks = waiver(), drop = waiver(), ...) {
-  # browser()
+
   if (is.list(escala)) {
     palette <- escala[["paleta"]]
     if (inherits(breaks, "waiver")) {
