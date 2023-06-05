@@ -7,7 +7,7 @@
 #              person("Chengguang", "Lai", email = "laichg@scut.edu.cn", role = c("aut", "ctb")),
 #              person("Steve", "Goddard", role = c("ctb")),
 #              person("Nathan", "Wells", role = c("ctb")),
-#              person("Mike", "Hayes", role = c("ctb")))ç
+#              person("Mike", "Hayes", role = c("ctb")))
 #
 # Computation of the conventional Palmer Drought Severity Index (PDSI)
 # and Self-calibrating Palmer Drought Severity Index (scPDSI).
@@ -16,31 +16,10 @@
 #' @importFrom Rcpp sourceCpp
 NULL
 
-.onLoad <- function(libname, pkgname) {
-  ops <- options()
-  pdsi.ops <- list(
-    # Calculating the conventional PDSI
-    # Duration factors
-    PDSI.p = 0.897,
-    PDSI.q = 1/3,
-
-    # Coefficients of climate characteristic
-    PDSI.coe.K1.1 = 1.5,
-    PDSI.coe.K1.2 = 2.8,
-    PDSI.coe.K1.3 = 0.5,
-
-    PDSI.coe.K2 = 17.67
-  )
-
-  toset <- !(names(pdsi.ops) %in% names(ops))
-  if(any(toset)) {
-    options(pdsi.ops[toset])
-  }
-}
 
 #' @importFrom stats ts
 pdsi_internal <- function(P, PE, AWC = 100, start = NULL, end = NULL, cal_start = NULL, cal_end = NULL,
-                 sc = TRUE) {
+                 sc = TRUE, coefficients = pdsi_coeficientes()) {
 
   freq <- 12
 
@@ -51,14 +30,12 @@ pdsi_internal <- function(P, PE, AWC = 100, start = NULL, end = NULL, cal_start 
   if(is.null(cal_end)) cal_end <- end
 
   res <- C_pdsi(P, PE, AWC, start, end, cal_start, cal_end, sc,
-                getOption("PDSI.coe.K1.1"),
-                getOption("PDSI.coe.K1.2"),
-                getOption("PDSI.coe.K1.3"),
-                getOption("PDSI.coe.K2"),
-                getOption("PDSI.p"),
-                getOption("PDSI.q"))
-
-  #names(res) <- c("inter.vars", "clim.coes", "calib.coes")
+                coefficients$K1.1,
+                coefficients$K1.2,
+                coefficients$K1.3,
+                coefficients$K2,
+                coefficients$p,
+                coefficients$q)
 
   inter.vars <- res[[1]]
   clim.coes <- res[[2]]

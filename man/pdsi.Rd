@@ -3,11 +3,21 @@
 \name{pdsi}
 \alias{pdsi}
 \alias{pdsi_ac}
+\alias{pdsi_coeficientes}
 \title{Índice de Severidad de Sequía de Palmer}
 \usage{
-pdsi(precipitacion, etp, cc = 100)
+pdsi(precipitacion, etp, cc = 100, coeficientes = pdsi_coeficientes())
 
-pdsi_ac(precipitacion, etp, cc = 100)
+pdsi_ac(precipitacion, etp, cc = 100, coeficientes = pdsi_coeficientes())
+
+pdsi_coeficientes(
+  p = 0.897,
+  q = 1/3,
+  K1.1 = 1.5,
+  K1.2 = 2.8,
+  K1.3 = 0.5,
+  K2 = 17.67
+)
 }
 \arguments{
 \item{precipitacion}{serie de precipitación sin datos faltantes.}
@@ -15,13 +25,29 @@ pdsi_ac(precipitacion, etp, cc = 100)
 \item{etp}{serie de evapotranspiración potencial sin datos faltantes.}
 
 \item{cc}{capacidad de campo (en mm).}
+
+\item{coeficientes}{list de coeficientes que devuelve \code{pdsi_coeficientes()}}
+
+\item{p, q}{factores de duración}
+
+\item{K1.1, K1.2, K1.3, K2}{coeficientes de características climáticas}
 }
 \value{
 Un vector de la misma longitud que \code{precipitacion} con el PSDI correspondiente a cada caso.
 }
 \description{
-Calcula el Indice de Severidad de Sequia de Palmer.
+Calcula el Indice de Severidad de Sequía de Palmer.
 \code{psdi_ac()} calcula la versión autocalibrada.
+}
+\details{
+El Índice de Severidad de Sequía de Palmer, propuesto por Palmer (1965) es usado como indicador para
+cuantificar las condiciones de sequía a largo plazo. El el cálculo usa constantes definidas empíricamente,
+originalmente utilizando datos meteorológicos de Kansas y de Iowa en Estados Unidos. Estas constantes no
+representan necesariamente cualquier región del planeta por lo que puede ser redefinidas para el cálculo
+del índice usando la función \code{pdsi_coeficientes()}.
+
+Alternativamente, Wells et al. (2004) propuso el Indice de Severidad de Sequía de Palmer Autocalibrado
+que tiene la capacidad de ajustar las constantes empíricas durante el cálculo del indice.
 }
 \examples{
 # datos aleatorios

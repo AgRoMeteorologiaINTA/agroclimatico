@@ -10,5 +10,10 @@ datos$etp <- rgamma(nrow(datos), shape = 1, scale = 3)
 test_that("pdsi funciona", {
   expect_error(with(datos, pdsi(pp, etp)), NA)
   expect_error(with(datos, pdsi_ac(pp, etp)), NA)
+  expect_equal(
+
+    with(datos, pdsi(pp, etp)),
+    with(datos, pdsi(pp, etp, coeficientes = pdsi_coeficientes(p = 0.897)))
+  )
 })
 
