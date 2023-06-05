@@ -43,6 +43,7 @@ test_that("mapear", {
                       ))
   )
 
+
   expect_doppelganger("mapear-detalles",
                       with(datos_aleatorios, mapear(pp, lon, lat,titulo = "Título",
                                                     variable = "mm",
