@@ -6,7 +6,7 @@
 //#include <stdio.h>
 #include <ctype.h>
 
-
+// # nocov start
 //=============================================================================
 //pdsi.cpp              University of Nebraska - Lincoln            Jul 15 2003
 //=============================================================================
@@ -237,6 +237,7 @@ pdsi::~pdsi() {
 // returns 0 if the file doesn't have enough data
 // reutrns 1 if the file is okay
 //-----------------------------------------------------------------------------
+
 int pdsi::check_input(FILE *in){
   float temp;
   int count = 0;
@@ -4864,3 +4865,4 @@ int create_dir(char *path) {
   return 0;
 }
 
+// # nocov end
