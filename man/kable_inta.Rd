@@ -18,3 +18,17 @@ tabla, objeto kbl.
 Llama a \code{\link[kableExtra:kbl]{kableExtra::kbl()}} con defaults apropiados para que siga el estilo
 INTA.
 }
+\examples{
+
+library(dplyr)
+library(kableExtra)
+metadatos <- metadatos_nh()
+
+metadatos \%>\%
+ head() \%>\%
+ select(codigo_nh, estacion) \%>\%
+ kable_inta(caption = "Ejemplo",
+           col.names = c("Código", "Estación")) \%>\%
+ kable_styling(latex_options = "scale_down")
+
+}

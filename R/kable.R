@@ -10,15 +10,15 @@
 #'
 #' @examples
 #'
-#' # Genero datos aleatorios
-#' set.seed(934)
-#' datos_aleatorios <- metadatos_nh()
+#' library(dplyr)
+#' library(kableExtra)
+#' metadatos <- metadatos_nh()
 #'
-#' datos_aleatorios %>%
+#' metadatos %>%
 #'  head() %>%
-#'  select("codigo_nh", "estacion") %>%
+#'  select(codigo_nh, estacion) %>%
 #'  kable_inta(caption = "Ejemplo",
-#'            col.names = c("Código", "Estación)) %>%
+#'            col.names = c("Código", "Estación")) %>%
 #'  kable_styling(latex_options = "scale_down")
 #'
 #' @export
