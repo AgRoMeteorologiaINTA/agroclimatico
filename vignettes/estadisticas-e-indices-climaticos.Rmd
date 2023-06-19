@@ -65,7 +65,7 @@ plot(metadatos_nh(lon = c(-75, -71)))
 ```{r}
 datos_mensuales <- NH0358 %>% 
   group_by(fecha = lubridate::round_date(fecha, "month")) %>% 
-  summarise(precip = mean(precip, na.rm = TRUE),
+  reframe(precip = mean(precip, na.rm = TRUE),
             etp = mean(etp, na.rm = TRUE))
 
 head(datos_mensuales)
@@ -145,13 +145,13 @@ ggplot(datos_mensuales, aes(fecha, pdsi)) +
 
 ## Índice Estandarizado de Precipitación
 
-A diferencia de los otros índices en el Índice Estandarizado de Precipitación, a cada observación le puede corresponder más de un valor (uno por cada escala) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `summarise()`.
+A diferencia de los otros índices en el Índice Estandarizado de Precipitación, a cada observación le puede corresponder más de un valor (uno por cada escala) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `reframe()`.
 
 
 
 ```{r}
 spi <- datos_mensuales %>% 
-  summarise(spi(fecha, precip, escalas = 1:12, referencia = referencia))
+  reframe(spi(fecha, precip, escalas = 1:12, referencia = referencia))
 
 head(spi)
 ```
@@ -179,7 +179,7 @@ ggplot(spi, aes(fecha, escala)) +
 ```{r}
 extremos <- NH0358 %>% 
   group_by(anio = year(fecha)) %>% 
-  summarise(umbrales(helada = t_min <= 0,
+  reframe(umbrales(helada = t_min <= 0,
                      mucho_calor = t_max >= 25))
 head(extremos)
 ```
@@ -213,7 +213,7 @@ Para las heladas, es importante saber el día promedio en el que se da la primer
 ```{r}
 NH0358 %>% 
   filter(t_min <= 0) %>%          # filtrar sólo los días donde hay heladas.
-  summarise(dias_promedio(fecha))
+  reframe(dias_promedio(fecha))
 ```
 La primera helada se da, en promedio, el 25 de junio y la úĺtima el 30 de agosto.
 
@@ -224,7 +224,7 @@ Un dato importante para cualquier extremo es la longitud de días consecutivos c
 
 ```{r}
 olas_de_temperatura <- NH0358 %>% 
-  summarise(olas(fecha, 
+  reframe(olas(fecha, 
                  mucho_calor = t_max >= 25, 
                  helada = t_min <= 0))
 
