@@ -17,11 +17,11 @@ un vector de caracter con \code{n} colores interpolados a partir de los colores
 de la escala.
 }
 
+An object of class \code{list} of length 3.
 
+An object of class \code{list} of length 3.
 
-
-
-
+An object of class \code{list} of length 3.
 }
 \usage{
 escala_temp_min

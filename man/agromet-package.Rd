@@ -6,7 +6,7 @@
 \alias{agromet-package}
 \title{agromet: Índices y Estadísticos Climáticos e Hidrológicos}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Conjunto de funciones para calcular índices y estadísticos climáticos hidrológicos a partir de datos tidy. Incluye una función para graficar resultados georeferenciados y e información cartográfica.
 }
@@ -19,20 +19,19 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Yanina Bellini Saibene \email{yabellini@gmail.com} [contributor]
+\strong{Maintainer}: Paola Corrales \email{paola.corrales@cima.fcen.uba.ar}
 
 Authors:
 \itemize{
   \item Elio Campitelli \email{elio.campitelli@cima.fcen.uba.ar} (\href{https://orcid.org/0000-0002-7742-9230}{ORCID})
-  \item Paola Corrales \email{paola.corrales@cima.fcen.uba.ar}
   \item Natalia Gattinoni \email{gattinoni.natalia@inta.gob.ar}
 }
 
 Other contributors:
 \itemize{
+  \item Yanina Bellini Saibene \email{yabellini@gmail.com} [contributor]
   \item  INTA [copyright holder]
   \item Ruida Zhong [copyright holder]
-  \item Santiago Beguería [copyright holder]
 }
 
 }
