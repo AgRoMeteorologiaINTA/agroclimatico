@@ -13,15 +13,15 @@
 #' @rdname escalas
 "escala_temp_min"
 
-#' @format
+#' @format NULL
 #' @rdname escalas
 "escala_temp_max"
 
-#' @format
+#' @format NULL
 #' @rdname escalas
 "escala_pp_mensual"
 
-#' @format
+#' @format NULL
 #' @rdname escalas
 "escala_pp_diaria"
 

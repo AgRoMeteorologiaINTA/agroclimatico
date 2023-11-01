@@ -14,6 +14,7 @@ Conjunto de funciones para calcular índices y estadísticos climáticos hidrol�
 Useful links:
 \itemize{
   \item \url{https://github.com/AgRoMeteorologiaINTA/agromet}
+  \item \url{https://agrometeorologiainta.github.io/agromet/}
   \item Report bugs at \url{https://github.com/AgRoMeteorologiaINTA/agromet/issues}
 }
 
