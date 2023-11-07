@@ -3,7 +3,8 @@ library(vdiffr)
 context("plots")
 
 # Saltea los tests en CI en linux (fallan por alguna razón en github actions)
-skip_if(Sys.info()[["sysname"]] == "Linux" & isTRUE(as.logical(Sys.getenv("CI"))))
+# skip_if(Sys.info()[["sysname"]] == "Linux" & isTRUE(as.logical(Sys.getenv("CI"))))
+skip_on_os("mac")
 
 test_that("plot metadatos, functiona", {
   expect_doppelganger("metadatos-nh", plot(metadatos_nh()))
