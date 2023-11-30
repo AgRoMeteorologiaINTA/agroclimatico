@@ -31,10 +31,13 @@
     <loc>https://agrometeorologiainta.github.io/agromet/index.html</loc>
   </url>
   <url>
+    <loc>https://agrometeorologiainta.github.io/agromet/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://agrometeorologiainta.github.io/agromet/reference/NH0358.html</loc>
   </url>
   <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/agromet-package.html</loc>
+    <loc>https://agrometeorologiainta.github.io/agromet/reference/agroclimr-package.html</loc>
   </url>
   <url>
     <loc>https://agrometeorologiainta.github.io/agromet/reference/agromet_informe.html</loc>
