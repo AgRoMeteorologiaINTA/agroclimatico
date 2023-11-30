@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // C_pdsi
 List C_pdsi(NumericVector P, NumericVector PE, double AWC, int s_yr, int e_yr, int calib_s_yr, int calib_e_yr, bool sc, double K1_1, double K1_2, double K1_3, double K2, double p, double q);
-RcppExport SEXP _agromet_C_pdsi(SEXP PSEXP, SEXP PESEXP, SEXP AWCSEXP, SEXP s_yrSEXP, SEXP e_yrSEXP, SEXP calib_s_yrSEXP, SEXP calib_e_yrSEXP, SEXP scSEXP, SEXP K1_1SEXP, SEXP K1_2SEXP, SEXP K1_3SEXP, SEXP K2SEXP, SEXP pSEXP, SEXP qSEXP) {
+RcppExport SEXP _agroclimr_C_pdsi(SEXP PSEXP, SEXP PESEXP, SEXP AWCSEXP, SEXP s_yrSEXP, SEXP e_yrSEXP, SEXP calib_s_yrSEXP, SEXP calib_e_yrSEXP, SEXP scSEXP, SEXP K1_1SEXP, SEXP K1_2SEXP, SEXP K1_3SEXP, SEXP K2SEXP, SEXP pSEXP, SEXP qSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,11 +36,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_agromet_C_pdsi", (DL_FUNC) &_agromet_C_pdsi, 14},
+    {"_agroclimr_C_pdsi", (DL_FUNC) &_agroclimr_C_pdsi, 14},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_agromet(DllInfo *dll) {
+RcppExport void R_init_agroclimr(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

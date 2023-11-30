@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# agromet <img src='man/figures/logo.png' align="right" height="139" />
+# agroclimr <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/AgRoMeteorologiaINTA/agromet/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agromet/actions)
+status](https://github.com/AgRoMeteorologiaINTA/agroclimr/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimr/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master)
+coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr?branch=master)
 <!-- badges: end -->
 
-El paquete {agromet} incluye una serie de funciones para calcular
+El paquete {agroclimr} incluye una serie de funciones para calcular
 índices y estadísticos climáticos e hidrológicos a partir de datos tidy.
 Por ejemplo `umbrales()` permite contar la cantidad de observaciones que
 cumplen una determinada condición y `dias_promedios()` devuelve el
@@ -30,7 +30,7 @@ Para instalar la versión de desarrollo desde
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("AgRoMeteorologiaINTA/agromet", build_vignettes = TRUE)
+remotes::install_github("AgRoMeteorologiaINTA/agroclimr", build_vignettes = TRUE)
 ```
 
 ## Ejemplos
@@ -39,7 +39,7 @@ A continuación se muestra el uso de algunas funciones. Podés encontrar
 más ejemplos y usos en la viñeta, con
 
 ``` r
-vignette("estadisticas-e-indices-climaticos", "agromet")
+vignette("estadisticas-e-indices-climaticos", "agroclimr")
 ```
 
 Si se quieren utilizar los datos con formato NH se puede utilizar la
@@ -47,10 +47,10 @@ función `leer_nh()` y opcionalmente acceder a sus metadatos con
 `metadatos_nh()`.
 
 ``` r
-library(agromet)
+library(agroclimr)
 library(dplyr)
 
-archivo <- system.file("extdata", "NH0358.DAT", package = "agromet")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
 
 datos <- leer_nh(archivo)
 ```
@@ -66,6 +66,13 @@ temperatura mínima menor a 0°C, se puede utilizar la función
 datos %>% 
   filter(t_min <= 0) %>% 
   summarise(dias_promedio(fecha))
+#> Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+#> dplyr 1.1.0.
+#> ℹ Please use `reframe()` instead.
+#> ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
+#>   always returns an ungrouped data frame and adjust accordingly.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
 #>     variable dia mes dia_juliano
 #> 1 primer_dia  15   5         135
 #> 2 ultimo_dia  13   9         256
@@ -96,6 +103,6 @@ datos_aleatorios %>%
 ## Cómo contribuir
 
 Para contribuir con este paquete podés leer la siguiente [guía para
-contribuir](https://github.com/AgRoMeteorologiaINTA/agromet/blob/master/.github/CONTRIBUTING.md).
+contribuir](https://github.com/AgRoMeteorologiaINTA/agroclimr/blob/master/.github/CONTRIBUTING.md).
 Te pedimos también que revises nuestro [Código de
 Conducta](https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md).
