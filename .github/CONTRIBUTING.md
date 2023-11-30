@@ -1,6 +1,6 @@
-# Contribuir a agromet
+# Contribuir a agroclimr
 
-Este documento es una guía para proponer un cambio en Agromet. 
+Este documento es una guía para proponer un cambio en agroclimr. 
 Para obtener información más detallada sobre cómo contribuir a este, y otros paquetes ordenados, por favor revisa la 
 [**guía de contribución al desarrollo**](https://rstd.io/tidy-contrib). 
 
@@ -17,7 +17,7 @@ Si encontraste un error, por favor, crea un issue que ilustre el error con un ej
 
 ### Proceso de Pull requests
 
-* Crea un fork del paquete y clonalo en tu computadora. Si nunca hicistes esto, te recomendamos que uses `usethis::create_from_github("AgRoMeteorologiaINTA/agromet", fork = TRUE)`.
+* Crea un fork del paquete y clonalo en tu computadora. Si nunca hicistes esto, te recomendamos que uses `usethis::create_from_github("AgRoMeteorologiaINTA/agroclimr", fork = TRUE)`.
 
 * Instala todas las dependencias de desarrollo con `devtools::install_dev_deps()`, y luego asegúrate de que el paquete pase el chequeo R CMD ejecutando `devtools::check()`. 
     Si el chequeo R CMD no pasa completamente, es una buena idea pedir ayuda antes de continuar. 

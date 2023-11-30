@@ -691,7 +691,7 @@ la anotación completa.
 
 
 <una línea para dar el nombre del programa y una breve idea de lo que hace>
-Copyright (C) 2020 AgroMet INTA
+Copyright (C) 2020 agroclimr INTA
 
 
 Este programa es software libre: puede redistribuirlo y/o modificarlo
@@ -713,7 +713,7 @@ ordinario.
 Si el programa es interactivo, haga que muestre un breve aviso como el
 siguiente cuando se inicie en modo interactivo:
 
-agromet Copyright (C) 2020 AgroMet INTA
+agroclimr Copyright (C) 2020 agroclimr INTA
 
 Este programa se ofrece SIN GARANTÍA ALGUNA; escriba `show w' para
 consultar los detalles. Este programa es software libre, y usted puede

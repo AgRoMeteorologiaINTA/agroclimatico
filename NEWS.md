@@ -1,3 +1,3 @@
-# agroclimr 1.0.0
+# agroclimr 1.0.0 (30/11/2023)
 
-* Initial CRAN submission.
+* Cambia el nombre del paquete de agromet a agroclimr
