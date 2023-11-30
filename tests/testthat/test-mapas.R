@@ -2,7 +2,7 @@
 skip_if_offline()
 
 # Para testear también que descargue el mapa correctamente
-agromet:::borrar_cache()
+agroclimr:::borrar_cache()
 
 test_mapa <- function(mapa_fun) {
 

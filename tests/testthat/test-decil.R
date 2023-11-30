@@ -27,7 +27,7 @@ test_that("ith", {
   expect_vector(ith(temperatura = runif(100, 10, 30), hr =  runif(100, 0, 100)))
 })
 
-file <- system.file("extdata", "NH0358.DAT", package = "agromet")
+file <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
 datos <- leer_nh(file)
 test_that("umbrales", {
   expect_warning(cuenta <- umbrales(datos$t_max > 17,

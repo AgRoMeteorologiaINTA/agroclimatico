@@ -50,7 +50,7 @@ mapear <- function(valor, lon, lat,
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
   sink <- utils::capture.output(campo <- suppressWarnings(kringe(valor, lon, lat)))
 
-  logo <- png::readPNG(system.file("logo.png", package = "agromet"))
+  logo <- png::readPNG(system.file("logo.png", package = "agroclimr"))
   logoGrob <- grid::rasterGrob(logo, interpolate = TRUE)
 
 

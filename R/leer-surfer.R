@@ -18,7 +18,7 @@
 #' de la escala.
 #'
 #' @examples
-#' escala <- system.file("extdata", "escala_pp_mensual.lvl", package = "agromet")
+#' escala <- system.file("extdata", "escala_pp_mensual.lvl", package = "agroclimr")
 #'
 #' escala_pp_mensual <- leer_surfer(escala)
 #'

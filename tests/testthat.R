@@ -1,4 +1,4 @@
 library(testthat)
-library(agromet)
+library(agroclimr)
 
-test_check("agromet")
+test_check("agroclimr")

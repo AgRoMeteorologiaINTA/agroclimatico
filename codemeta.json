@@ -1,11 +1,11 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
-  "identifier": "agromet",
+  "identifier": "agroclimr",
   "description": "Conjunto de funciones para calcular índices y estadísticos climáticos hidrológicos a partir de datos tidy. Incluye una función para graficar resultados georeferenciados y e información cartográfica.",
-  "name": "agromet: Índices y Estadísticos Climáticos e Hidrológicos",
-  "codeRepository": "https://github.com/AgRoMeteorologiaINTA/agromet",
-  "issueTracker": "https://github.com/AgRoMeteorologiaINTA/agromet/issues",
+  "name": "agroclimr: Índices y Estadísticos Climáticos e Hidrológicos",
+  "codeRepository": "https://github.com/AgRoMeteorologiaINTA/agroclimr",
+  "issueTracker": "https://github.com/AgRoMeteorologiaINTA/agroclimr/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -362,7 +362,7 @@
     "SystemRequirements": null
   },
   "fileSize": "10606.073KB",
-  "readme": "https://github.com/AgRoMeteorologiaINTA/agromet/blob/master/README.md",
-  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agromet/actions", "https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master"],
+  "readme": "https://github.com/AgRoMeteorologiaINTA/agroclimr/blob/master/README.md",
+  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agroclimr/actions", "https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master"],
   "keywords": ["agrometeo", "meteorologia"]
 }
