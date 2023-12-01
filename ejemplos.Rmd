@@ -69,11 +69,11 @@ datos %>%
 
 ## SPI
 
-La función `spi` calcula el SPI para distintas escalas:
+La función `spi_indice()` calcula el SPI para distintas escalas:
 
 ```{r}
 datos %>% 
-  summarise(spi(fecha, prcp, 1:24)) %>% 
+  summarise(spi_indice(fecha, prcp, 1:24)) %>% 
   head()
 ```
 
@@ -85,7 +85,7 @@ referencia <- datos %>%
   summarise(spi_referencia(fecha, prcp))
 
 datos %>% 
-  summarise(spi(fecha, prcp, 1:24, 
+  summarise(spi_indice(fecha, prcp, 1:24, 
                 referencia = referencia)) %>% 
   ggplot(aes(fecha, escala)) +
   geom_contour_filled(aes(z = spi, fill = stat(level_mid))) +

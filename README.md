@@ -42,8 +42,10 @@ más ejemplos y usos en la viñeta, con
 vignette("estadisticas-e-indices-climaticos", "agroclimr")
 ```
 
-Si se quieren utilizar los datos con formato NH se puede utilizar la
-función `leer_nh()` y opcionalmente acceder a sus metadatos con
+Si se quieren utilizar los datos con formato NH (archivos con columnas
+de ancho fijo usado por el INTA para distribuir los datos de las
+estaciones meteorológicas de su red) se puede utilizar la función
+`leer_nh()` y opcionalmente acceder a sus metadatos con
 `metadatos_nh()`.
 
 ``` r

@@ -27,7 +27,7 @@ library(lubridate)
 
 ## Lectura de datos y metadatos
 
-La función `leer_nh()` importa datos en el formato .DAT usado por el INTA en las estaciones NH. 
+La función `leer_nh()` importa datos en el formato .DAT (columnas de ancho fijo) usado por el INTA para distribuir los datos de las estaciones meteorológicas de su red. A continuación se muestra un ejemplo con datos de prueba.
 
 ```{r}
 archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
@@ -151,7 +151,7 @@ A diferencia de los otros índices en el Índice Estandarizado de Precipitación
 
 ```{r}
 spi <- datos_mensuales %>% 
-  reframe(spi(fecha, precip, escalas = 1:12, referencia = referencia))
+  reframe(spi_indice(fecha, precip, escalas = 1:12, referencia = referencia))
 
 head(spi)
 ```
