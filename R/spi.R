@@ -1,7 +1,7 @@
 #' Calcula el SPI
 #'
-#' Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El `spi` toma valores
-#' de precipitación mientras que el `spei` toma valores del balance entre precipitación y evapotranspiración
+#' Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El `spi_indice` toma valores
+#' de precipitación mientras que el `spei_indice` toma valores del balance entre precipitación y evapotranspiración
 #' potencial. Internamente hacen lo mismo; la única diferencia es la distribución teórica
 #' usada por defecto para ajustar los datos.
 #'
@@ -30,7 +30,7 @@
 #' set.seed(42)
 #' datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
 #'
-#' with(datos, spi(fecha, pp, escalas = 1:5))
+#' with(datos, spi_indice(fecha, pp, escalas = 1:5))
 #'
 #' # Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
 #' # cambien los valores viejos, hay que usar `referencia`
@@ -41,19 +41,19 @@
 #' nuevos_datos <- rbind(datos, nuevos_datos)
 #'
 #' # Usando un vector lógico
-#' with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
+#' with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
 #'                        referencia = data.table::year(fecha) < 2016))
 #'
 #' # O un data.frame
-#' with(nuevos_datos, spi(fecha, pp, escalas = 1:5,
+#' with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
 #'                        referencia = spi_referencia(datos$fecha, datos$pp)))
 #'
 #'
 #' @export
 #' @importFrom data.table .BY :=
-spi <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fecha)),
+spi_indice <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fecha)),
                     distribucion = "Gamma", ...) {
-  . <- pp <- escala <- month <- NULL
+  . <- pp <- escala <- month <- spi <- NULL
 
   # Le da formato a los datos y calculando las medias móviles (acumuladas)
   data <- data.table::as.data.table(completar_serie(data.frame(fecha = fecha, precipitacion = precipitacion),
@@ -101,16 +101,16 @@ spi <- function(fecha, precipitacion, escalas, referencia = rep(TRUE, length(fec
 
 
 #' @export
-#' @rdname spi
-spei <- function(fecha, balance, escalas, distribucion = "log-Logistic", ...) {
-  data <- spi(fecha = fecha, precipitacion = balance, escalas = escalas, distribucion = distribucion, ...)
+#' @rdname spi_indice
+spei_indice <- function(fecha, balance, escalas, distribucion = "log-Logistic", ...) {
+  data <- spi_indice(fecha = fecha, precipitacion = balance, escalas = escalas, distribucion = distribucion, ...)
 
   data.table::setnames(data, c("fecha", "spi"), c(deparse(substitute(fecha)), "spei"))
   return(data)
 }
 
 #' @export
-#' @rdname spi
+#' @rdname spi_indice
 spi_referencia <- function(fecha, precipitacion) {
   data.frame(fecha = fecha, precipitacion = precipitacion)
 }
