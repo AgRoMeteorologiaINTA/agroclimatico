@@ -15,11 +15,11 @@ escalas <- 1:12
 data2 <- rbind(data, data2)
 
 test_that("sp(e)i calcula s(e)ip", {
-  expect_s3_class(SPI <<- with(data, spi(fecha, pp, escalas)), "data.frame")
+  expect_s3_class(SPI <<- with(data, spi_indice(fecha, pp, escalas)), "data.frame")
   expect_known_value(SPI, "SPI1")
 
-  SPEI <- with(data, spei(fecha, pp, escalas))
-  SPEI2 <- with(data, spi(fecha, pp, escalas, distribucion = "log-Logistic"))
+  SPEI <- with(data, spei_indice(fecha, pp, escalas))
+  SPEI2 <- with(data, spi_indice(fecha, pp, escalas, distribucion = "log-Logistic"))
   colnames(SPEI2)[colnames(SPEI2) == "spi"] <- "spei"
 
   expect_equal(SPEI, SPEI2)
@@ -28,13 +28,13 @@ test_that("sp(e)i calcula s(e)ip", {
 
 test_that("sp(e)i considera el período de referenica", {
   # SPI <- with(data, spi(fecha, pp, escalas))
-  SPI2 <- with(data2, spi(fecha, pp, escalas, referencia = spi_referencia(data$fecha, data$pp)))
+  SPI2 <- with(data2, spi_indice(fecha, pp, escalas, referencia = spi_referencia(data$fecha, data$pp)))
 
   old <- SPI2[SPI2$fecha <= max(data$fecha), ]
   rownames(old) <- seq_len(nrow(old))
   expect_equal(old, SPI)
 
-  SPI2 <- with(data2, spi(fecha, pp, escalas, referencia = fecha <= max(data$fecha)))
+  SPI2 <- with(data2, spi_indice(fecha, pp, escalas, referencia = fecha <= max(data$fecha)))
 
   old <- SPI2[SPI2$fecha <= max(data$fecha), ]
   rownames(old) <- seq_len(nrow(old))
@@ -51,7 +51,7 @@ data_missing <- data2[!missing]
 
 test_that("sp(e)i funciona con datos faltantes", {
 
-  expect_error(SPI <- with(data_missing, spi(fecha, pp, escalas)), NA)
+  expect_error(SPI <- with(data_missing, spi_indice(fecha, pp, escalas)), NA)
 
   fechas_missing <- data2[missing, ]$fecha
 
