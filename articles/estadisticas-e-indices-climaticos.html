@@ -97,7 +97,9 @@
 <h2 id="lectura-de-datos-y-metadatos">Lectura de datos y metadatos<a class="anchor" aria-label="anchor" href="#lectura-de-datos-y-metadatos"></a>
 </h2>
 <p>La función <code><a href="../reference/leer_nh.html">leer_nh()</a></code> importa datos en el formato .DAT
-usado por el INTA en las estaciones NH.</p>
+(columnas de ancho fijo) usado por el INTA para distribuir los datos de
+las estaciones meteorológicas de su red. A continuación se muestra un
+ejemplo con datos de prueba.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">archivo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"NH0358.DAT"</span>, package <span class="op">=</span> <span class="st">"agroclimr"</span><span class="op">)</span></span>
 <span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/leer_nh.html">leer_nh</a></span><span class="op">(</span><span class="va">archivo</span><span class="op">)</span></span>
@@ -301,7 +303,7 @@ sin datos faltanes implícitos). Por lo tanto, en vez de usarla con
 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, se usa con <code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spi</span> <span class="op">&lt;-</span> <span class="va">datos_mensuales</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/spi.html">spi</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">precip</span>, escalas <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, referencia <span class="op">=</span> <span class="va">referencia</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/spi_indice.html">spi_indice</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">precip</span>, escalas <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, referencia <span class="op">=</span> <span class="va">referencia</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">spi</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>

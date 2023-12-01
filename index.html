@@ -85,7 +85,7 @@
 <!-- badges: start -->
 
 <p>El paquete {agroclimr} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo <code><a href="reference/umbrales.html">umbrales()</a></code> permite contar la cantidad de observaciones que cumplen una determinada condición y <code>dias_promedios()</code> devuelve el primer y último día del año promedio de ocurrencia de un evento.</p>
-<p>Otras funciones como <code><a href="reference/spi.html">spi()</a></code> funcionan como wrappers de funciones de otros paquetes y que buscan ser compatibles con el manejo de datos tidy.</p>
+<p>Otras funciones como <code>spi()</code> funcionan como wrappers de funciones de otros paquetes y que buscan ser compatibles con el manejo de datos tidy.</p>
 <p>Finalmente el paquete incluye una función de graficado de datos georeferenciados <code><a href="reference/mapear.html">mapear()</a></code> con el estilo y logo propios de INTA.</p>
 <div class="section level2">
 <h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
@@ -101,7 +101,7 @@
 <p>A continuación se muestra el uso de algunas funciones. Podés encontrar más ejemplos y usos en la viñeta, con</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"estadisticas-e-indices-climaticos"</span>, <span class="st">"agroclimr"</span><span class="op">)</span></span></code></pre></div>
-<p>Si se quieren utilizar los datos con formato NH se puede utilizar la función <code><a href="reference/leer_nh.html">leer_nh()</a></code> y opcionalmente acceder a sus metadatos con <code><a href="reference/metadatos_nh.html">metadatos_nh()</a></code>.</p>
+<p>Si se quieren utilizar los datos con formato NH (archivos con columnas de ancho fijo usado por el INTA para distribuir los datos de las estaciones meteorológicas de su red) se puede utilizar la función <code><a href="reference/leer_nh.html">leer_nh()</a></code> y opcionalmente acceder a sus metadatos con <code><a href="reference/metadatos_nh.html">metadatos_nh()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AgRoMeteorologiaINTA/agroclimr" class="external-link">agroclimr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>

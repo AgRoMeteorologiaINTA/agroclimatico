@@ -131,7 +131,7 @@
 <p>La función <code>spi</code> calcula el SPI para distintas escalas:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu"><a href="reference/spi.html">spi</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">prcp</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu">spi</span><span class="op">(</span><span class="va">fecha</span>, <span class="va">prcp</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">##        fecha escala       spi</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 1956-04-01      1 0.4887764</span></span>
@@ -143,7 +143,7 @@
 <p>La salida se puede graficar faćilmente con ggplot</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu"><a href="reference/spi.html">spi</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">prcp</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu">spi</span><span class="op">(</span><span class="va">fecha</span>, <span class="va">prcp</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">fecha</span>, <span class="va">escala</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_contour_filled</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>z <span class="op">=</span> <span class="va">spi</span>, fill <span class="op">=</span> <span class="fu">stat</span><span class="op">(</span><span class="va">level_mid</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_gradient2</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
