@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# agroclimr <img src='man/figures/logo.png' align="right" height="139" />
+# agroclimatico <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/AgRoMeteorologiaINTA/agroclimr/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimr/actions)
+status](https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr?branch=master)
+coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master)
 <!-- badges: end -->
 
-El paquete {agroclimr} incluye una serie de funciones para calcular
+El paquete {agroclimatico} incluye una serie de funciones para calcular
 índices y estadísticos climáticos e hidrológicos a partir de datos tidy.
 Por ejemplo `umbrales()` permite contar la cantidad de observaciones que
 cumplen una determinada condición y `dias_promedios()` devuelve el
@@ -30,7 +30,7 @@ Para instalar la versión de desarrollo desde
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("AgRoMeteorologiaINTA/agroclimr", build_vignettes = TRUE)
+remotes::install_github("AgRoMeteorologiaINTA/agroclimatico", build_vignettes = TRUE)
 ```
 
 ## Ejemplos
@@ -39,7 +39,7 @@ A continuación se muestra el uso de algunas funciones. Podés encontrar
 más ejemplos y usos en la viñeta, con
 
 ``` r
-vignette("estadisticas-e-indices-climaticos", "agroclimr")
+vignette("estadisticas-e-indices-climaticos", "agroclimatico")
 ```
 
 Si se quieren utilizar los datos con formato NH (archivos con columnas
@@ -49,10 +49,10 @@ estaciones meteorológicas de su red) se puede utilizar la función
 `metadatos_nh()`.
 
 ``` r
-library(agroclimr)
+library(agroclimatico)
 library(dplyr)
 
-archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimatico")
 
 datos <- leer_nh(archivo)
 ```
@@ -105,6 +105,6 @@ datos_aleatorios %>%
 ## Cómo contribuir
 
 Para contribuir con este paquete podés leer la siguiente [guía para
-contribuir](https://github.com/AgRoMeteorologiaINTA/agroclimr/blob/master/.github/CONTRIBUTING.md).
+contribuir](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/.github/CONTRIBUTING.md).
 Te pedimos también que revises nuestro [Código de
 Conducta](https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md).

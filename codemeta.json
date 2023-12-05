@@ -362,7 +362,7 @@
     "SystemRequirements": null
   },
   "fileSize": "10606.073KB",
-  "readme": "https://github.com/AgRoMeteorologiaINTA/agroclimr/blob/master/README.md",
-  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agroclimr/actions", "https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master"],
+  "readme": "https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/README.md",
+  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions", "https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master"],
   "keywords": ["agrometeo", "meteorologia"]
 }

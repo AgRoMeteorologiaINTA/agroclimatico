@@ -29,7 +29,7 @@ Lee archivos en el formato "Level File Format" de Surfer
 (ver http://surferhelp.goldensoftware.com/topics/level_file_format.htm).
 }
 \examples{
-escala <- system.file("extdata", "escala_pp_mensual.lvl", package = "agroclimr")
+escala <- system.file("extdata", "escala_pp_mensual.lvl", package = "agroclimatico")
 
 escala_pp_mensual <- leer_surfer(escala)
 
