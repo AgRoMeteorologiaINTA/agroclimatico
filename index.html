@@ -8,7 +8,7 @@
 <meta name="description" content="Conjunto de funciones para calcular índices y estadísticos climáticos 
     hidrológicos a partir de datos tidy. Incluye una función para graficar resultados 
     georeferenciados y e información cartográfica.">
-<title>Índices y Estadísticos Climáticos e Hidrológicos • agroclimr</title>
+<title>Índices y Estadísticos Climáticos e Hidrológicos • agroclimatico</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -35,7 +35,7 @@
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
-    <a class="navbar-brand me-2" href="index.html">agroclimr</a>
+    <a class="navbar-brand me-2" href="index.html">agroclimatico</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
@@ -65,7 +65,7 @@
 
       <ul class="navbar-nav">
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/AgRoMeteorologiaINTA/agroclimr/" aria-label="github">
+  <a class="external-link nav-link" href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -79,12 +79,12 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="agroclimr-">agroclimr <a class="anchor" aria-label="anchor" href="#agroclimr-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="agroclimatico-">agroclimatico <a class="anchor" aria-label="anchor" href="#agroclimatico-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
-<p>El paquete {agroclimr} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo <code><a href="reference/umbrales.html">umbrales()</a></code> permite contar la cantidad de observaciones que cumplen una determinada condición y <code>dias_promedios()</code> devuelve el primer y último día del año promedio de ocurrencia de un evento.</p>
+<p>El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo <code><a href="reference/umbrales.html">umbrales()</a></code> permite contar la cantidad de observaciones que cumplen una determinada condición y <code>dias_promedios()</code> devuelve el primer y último día del año promedio de ocurrencia de un evento.</p>
 <p>Otras funciones como <code>spi()</code> funcionan como wrappers de funciones de otros paquetes y que buscan ser compatibles con el manejo de datos tidy.</p>
 <p>Finalmente el paquete incluye una función de graficado de datos georeferenciados <code><a href="reference/mapear.html">mapear()</a></code> con el estilo y logo propios de INTA.</p>
 <div class="section level2">
@@ -93,20 +93,20 @@
 <p>Para instalar la versión de desarrollo desde <a href="https://github.com/" class="external-link">GitHub</a>, usá:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"AgRoMeteorologiaINTA/agroclimr"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"AgRoMeteorologiaINTA/agroclimatico"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ejemplos">Ejemplos<a class="anchor" aria-label="anchor" href="#ejemplos"></a>
 </h2>
 <p>A continuación se muestra el uso de algunas funciones. Podés encontrar más ejemplos y usos en la viñeta, con</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"estadisticas-e-indices-climaticos"</span>, <span class="st">"agroclimr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"estadisticas-e-indices-climaticos"</span>, <span class="st">"agroclimatico"</span><span class="op">)</span></span></code></pre></div>
 <p>Si se quieren utilizar los datos con formato NH (archivos con columnas de ancho fijo usado por el INTA para distribuir los datos de las estaciones meteorológicas de su red) se puede utilizar la función <code><a href="reference/leer_nh.html">leer_nh()</a></code> y opcionalmente acceder a sus metadatos con <code><a href="reference/metadatos_nh.html">metadatos_nh()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AgRoMeteorologiaINTA/agroclimr" class="external-link">agroclimr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico" class="external-link">agroclimatico</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">archivo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"NH0358.DAT"</span>, package <span class="op">=</span> <span class="st">"agroclimr"</span><span class="op">)</span></span>
+<span><span class="va">archivo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"NH0358.DAT"</span>, package <span class="op">=</span> <span class="st">"agroclimatico"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/leer_nh.html">leer_nh</a></span><span class="op">(</span><span class="va">archivo</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
@@ -148,14 +148,14 @@
 <div class="section level2">
 <h2 id="cómo-contribuir">Cómo contribuir<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-contribuir"></a>
 </h2>
-<p>Para contribuir con este paquete podés leer la siguiente <a href="https://github.com/AgRoMeteorologiaINTA/agroclimr/blob/master/.github/CONTRIBUTING.md" class="external-link">guía para contribuir</a>. Te pedimos también que revises nuestro <a href="https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md" class="external-link">Código de Conducta</a>.</p>
+<p>Para contribuir con este paquete podés leer la siguiente <a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/.github/CONTRIBUTING.md" class="external-link">guía para contribuir</a>. Te pedimos también que revises nuestro <a href="https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md" class="external-link">Código de Conducta</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="enlaces">
 <h2 data-toc-skip>Enlaces</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimr/" class="external-link">Ir al código fuente</a></li>
-<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimr/issues" class="external-link">Informar de un problema</a></li>
+<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/" class="external-link">Ir al código fuente</a></li>
+<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/issues" class="external-link">Informar de un problema</a></li>
 </ul>
 </div>
 
@@ -178,7 +178,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Cómo citar agroclimr</a></li>
+<li><a href="authors.html#citation">Cómo citar agroclimatico</a></li>
 </ul>
 </div>
 
@@ -195,8 +195,8 @@
 <div class="estado-de-desarrollo">
 <h2 data-toc-skip>Estado de desarrollo</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimr/actions" class="external-link"><img src="https://github.com/AgRoMeteorologiaINTA/agroclimr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr?branch=master" class="external-link"><img src="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions" class="external-link"><img src="https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master" class="external-link"><img src="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
