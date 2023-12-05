@@ -12,7 +12,7 @@ encabezado: "Instituto de Clima y Agua"
 logo_izquierdo: "imagenes/logo-inta.jpg"
 logo_derecho: "imagenes/logo-clima-y-agua.jpg"
 output: 
-  agroclimr::agromet_informe:
+  agroclimatico::agromet_informe:
     toc: true
     toc_depth: 3
     pandoc_args: ["--lua-filter=filters/abstract-to-meta.lua"]
@@ -28,14 +28,14 @@ knitr::opts_chunk$set(
   out.extra = "",
   dev = c("pdf", "png")
 )
-library(agroclimr)   
+library(agroclimatico)   
 library(tidyverse) 
 library(kableExtra)
 ```
 
 
 ```{r lectura-datos}
-archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimatico")
 
 datos <- leer_nh(archivo)
 ```

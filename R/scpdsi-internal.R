@@ -12,7 +12,7 @@
 # Computation of the conventional Palmer Drought Severity Index (PDSI)
 # and Self-calibrating Palmer Drought Severity Index (scPDSI).
 
-#' @useDynLib agroclimr
+#' @useDynLib agroclimatico
 #' @importFrom Rcpp sourceCpp
 NULL
 

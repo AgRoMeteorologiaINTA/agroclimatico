@@ -18,7 +18,7 @@ fig.width = 7
 ```
 
 ```{r setup}
-library(agroclimr)
+library(agroclimatico)
 library(magrittr)
 library(dplyr)
 library(ggplot2)
@@ -30,7 +30,7 @@ library(lubridate)
 La función `leer_nh()` importa datos en el formato .DAT (columnas de ancho fijo) usado por el INTA para distribuir los datos de las estaciones meteorológicas de su red. A continuación se muestra un ejemplo con datos de prueba.
 
 ```{r}
-archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
+archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimatico")
 datos <- leer_nh(archivo)
 head(datos)
 ```
@@ -98,7 +98,7 @@ datos_mensuales <- datos_mensuales %>%
 
 `referencia` también puede ser un vector numérico de precipitación. Esto es útil si se calcula el valor de referencia a parte y luego sólo se leen los nuevos datos. 
 
-Otras funciones de agroclimr tienen este argumento, así que para mantener este período fijo, se puede crear una nueva columna. 
+Otras funciones de agroclimatico tienen este argumento, así que para mantener este período fijo, se puede crear una nueva columna. 
 
 ```{r}
 datos_mensuales <- datos_mensuales %>% 
@@ -126,7 +126,7 @@ En este caso, si un mes cae en el decil 5, significa que la mitad de los meses (
 
 ### Índice de intensidad de sequía de Palmer
 
-Un indicador de sequía muy utilizado es el PDSI (Palmer Drought Severity Index) que además de la precipitación, tiene en cuenta la evapotranspiración potencial (etp) y la capacidad de carga (cc) del suelo. agroclimr provee una función `pdsi()` que computa el PSDI usando los coeficientes originales de Palmer y una función `pdsi_ac()` que usa la version autocalibrada.
+Un indicador de sequía muy utilizado es el PDSI (Palmer Drought Severity Index) que además de la precipitación, tiene en cuenta la evapotranspiración potencial (etp) y la capacidad de carga (cc) del suelo. agroclimatico provee una función `pdsi()` que computa el PSDI usando los coeficientes originales de Palmer y una función `pdsi_ac()` que usa la version autocalibrada.
 
 ```{r}
 datos_mensuales <- datos_mensuales %>%

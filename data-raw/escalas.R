@@ -1,13 +1,13 @@
 ## code to prepare `escala_pp_mensual` dataset goes here
 
 
-escala_pp_mensual <- agroclimr::leer_surfer("inst/extdata/escala_pp_mensual.lvl")
+escala_pp_mensual <- agroclimatico::leer_surfer("inst/extdata/escala_pp_mensual.lvl")
 escala_pp_mensual <- list(niveles = escala_pp_mensual$niveles[-c(1:2)],
                           colores = escala_pp_mensual$colores[-c(1:2)],
                           paleta = colorRampPalette(escala_pp_mensual$colores[-c(1:2)]))
 
-escala_temp_max <- agroclimr::leer_surfer("inst/extdata/escala_temp_max.lvl")
-escala_temp_min <- agroclimr::leer_surfer("inst/extdata/escala_temp_min.lvl")
+escala_temp_max <- agroclimatico::leer_surfer("inst/extdata/escala_temp_max.lvl")
+escala_temp_min <- agroclimatico::leer_surfer("inst/extdata/escala_temp_min.lvl")
 
 colores_precipitacion <- c(rgb(209/255, 227/255, 31/255),
                            rgb(78/255, 195/255, 106/255),

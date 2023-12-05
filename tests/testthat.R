@@ -1,4 +1,4 @@
 library(testthat)
-library(agroclimr)
+library(agroclimatico)
 
-test_check("agroclimr")
+test_check("agroclimatico")

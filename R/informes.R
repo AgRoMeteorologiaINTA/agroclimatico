@@ -18,6 +18,6 @@ agromet_informe <- function(..., latex_engine = "xelatex") {
   rmarkdown::pdf_document(..., latex_engine = latex_engine,
                           template = system.file("rmarkdown", "templates",
                                                  "agromet_informe", "resources",
-                                                 'template.tex', package = "agroclimr")
+                                                 'template.tex', package = "agroclimatico")
   )
 }

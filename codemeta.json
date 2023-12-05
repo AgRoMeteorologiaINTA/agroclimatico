@@ -1,11 +1,11 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
-  "identifier": "agroclimr",
+  "identifier": "agroclimatico",
   "description": "Conjunto de funciones para calcular índices y estadísticos climáticos hidrológicos a partir de datos tidy. Incluye una función para graficar resultados georeferenciados y e información cartográfica.",
-  "name": "agroclimr: Índices y Estadísticos Climáticos e Hidrológicos",
-  "codeRepository": "https://github.com/AgRoMeteorologiaINTA/agroclimr",
-  "issueTracker": "https://github.com/AgRoMeteorologiaINTA/agroclimr/issues",
+  "name": "agroclimatico: Índices y Estadísticos Climáticos e Hidrológicos",
+  "codeRepository": "https://github.com/AgRoMeteorologiaINTA/agroclimatico",
+  "issueTracker": "https://github.com/AgRoMeteorologiaINTA/agroclimatico/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.0.0.9000",
   "programmingLanguage": {

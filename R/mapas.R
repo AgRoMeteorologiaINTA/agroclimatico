@@ -121,7 +121,7 @@ borrar_cache <- function() {
 
 
 dir_mapas <- function() {
-  dir <- normalizePath(file.path(rappdirs::user_data_dir("agroclimr", "inta"), "mapas"), mustWork = FALSE)
+  dir <- normalizePath(file.path(rappdirs::user_data_dir("agroclimatico", "inta"), "mapas"), mustWork = FALSE)
   dir.create(dir, showWarnings = FALSE, recursive = TRUE)
   dir
 }

@@ -1,13 +1,13 @@
 ---
-title: "Ejemplos de uso del paquete {agroclimr}"
+title: "Ejemplos de uso del paquete {agroclimatico}"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-# remotes::install_github("AgRoMeteorologiaINTA/agroclimr")
-library(agroclimr)
+# remotes::install_github("AgRoMeteorologiaINTA/agroclimatico")
+library(agroclimatico)
 library(dplyr)
 library(lubridate)
 library(ggplot2)

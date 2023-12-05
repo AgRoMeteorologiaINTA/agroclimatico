@@ -37,7 +37,7 @@
 #' las 25 variables presentes.
 #'
 #' @examples
-#' archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimr")
+#' archivo <- system.file("extdata", "NH0358.DAT", package = "agroclimatico")
 #' datos <- leer_nh(archivo)
 #'
 #' @seealso [metadatos_nh()] devuelve los metadatos de las estaciones meteorológicas.
