@@ -112,18 +112,11 @@
 <div class="section level3">
 <h3 id="días-promedio">Días promedio<a class="anchor" aria-label="anchor" href="#d%C3%ADas-promedio"></a>
 </h3>
-<p>Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función <code><a href="reference/dias_promedio.html">dias_promedio()</a></code> en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code>.</p>
+<p>Si por ejemplo se quiere obtener el día de la primera y última helada en promedio, asumiendo que la ocurrencia de helada corresponde a temperatura mínima menor a 0°C, se puede utilizar la función <code><a href="reference/dias_promedio.html">dias_promedio()</a></code> en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="reference/dias_promedio.html">dias_promedio</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
-<span><span class="co">#&gt; dplyr 1.1.0.</span></span>
-<span><span class="co">#&gt; ℹ Please use `reframe()` instead.</span></span>
-<span><span class="co">#&gt; ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`</span></span>
-<span><span class="co">#&gt;   always returns an ungrouped data frame and adjust accordingly.</span></span>
-<span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span>
-<span><span class="co">#&gt; generated.</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="reference/dias_promedio.html">dias_promedio</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     variable dia mes dia_juliano</span></span>
 <span><span class="co">#&gt; 1 primer_dia  15   5         135</span></span>
 <span><span class="co">#&gt; 2 ultimo_dia  13   9         256</span></span></code></pre></div>
