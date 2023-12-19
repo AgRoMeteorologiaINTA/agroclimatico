@@ -62,19 +62,12 @@ datos <- leer_nh(archivo)
 Si por ejemplo se quiere obtener el día de la primera y última helada en
 promedio, asumiendo que la ocurrencia de helada corresponde a
 temperatura mínima menor a 0°C, se puede utilizar la función
-`dias_promedio()` en el contexto de `summarise()`.
+`dias_promedio()` en el contexto de `reframe()`.
 
 ``` r
 datos %>% 
   filter(t_min <= 0) %>% 
-  summarise(dias_promedio(fecha))
-#> Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-#> dplyr 1.1.0.
-#> ℹ Please use `reframe()` instead.
-#> ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-#>   always returns an ungrouped data frame and adjust accordingly.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
+  reframe(dias_promedio(fecha))
 #>     variable dia mes dia_juliano
 #> 1 primer_dia  15   5         135
 #> 2 ultimo_dia  13   9         256
