@@ -9,6 +9,8 @@
 status](https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci/software-review/issues/599)
 <!-- badges: end -->
 
 El paquete {agroclimatico} incluye una serie de funciones para calcular
