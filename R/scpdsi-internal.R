@@ -23,7 +23,7 @@ pdsi_internal <- function(P, PE, AWC = 100, start = NULL, end = NULL, cal_start 
 
   freq <- 12
 
-  if(is.null(start)) start <-  1;
+  if(is.null(start)) start <-  1
   if(is.null(end)) end <- start + ceiling(length(P)/freq) - 1
 
   if(is.null(cal_start)) cal_start <- start
