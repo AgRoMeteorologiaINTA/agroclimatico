@@ -422,6 +422,7 @@
 <text x='406.13' y='555.33' text-anchor='middle' style='font-size: 8.80px; font-family: sans;' textLength='20.16px' lengthAdjust='spacingAndGlyphs'>60°O</text>
 <text x='454.80' y='555.33' text-anchor='middle' style='font-size: 8.80px; font-family: sans;' textLength='20.16px' lengthAdjust='spacingAndGlyphs'>55°O</text>
 <text x='503.47' y='555.33' text-anchor='middle' style='font-size: 8.80px; font-family: sans;' textLength='20.16px' lengthAdjust='spacingAndGlyphs'>50°O</text>
+<text x='461.21' y='292.72' style='font-size: 11.00px; font-family: sans;' textLength='18.33px' lengthAdjust='spacingAndGlyphs'>mm</text>
 <rect x='461.21' y='486.54' width='10.80' height='14.40' style='stroke-width: 0.75; stroke: none; fill: #440154;' />
 <rect x='461.21' y='472.14' width='10.80' height='14.40' style='stroke-width: 0.75; stroke: none; fill: #481D6F;' />
 <rect x='461.21' y='457.74' width='10.80' height='14.40' style='stroke-width: 0.75; stroke: none; fill: #453581;' />
@@ -449,7 +450,6 @@
 <text x='477.49' y='344.95' style='font-size: 7.00px; font-family: sans;' textLength='7.79px' lengthAdjust='spacingAndGlyphs'>55</text>
 <text x='477.49' y='330.55' style='font-size: 7.00px; font-family: sans;' textLength='7.79px' lengthAdjust='spacingAndGlyphs'>60</text>
 <text x='477.49' y='316.15' style='font-size: 7.00px; font-family: sans;' textLength='7.79px' lengthAdjust='spacingAndGlyphs'>65</text>
-<text x='461.21' y='292.72' style='font-size: 11.00px; font-family: sans;' textLength='18.33px' lengthAdjust='spacingAndGlyphs'>mm</text>
 <text x='227.51' y='30.35' style='font-size: 11.00px; font-family: sans;' textLength='43.42px' lengthAdjust='spacingAndGlyphs'>Subtítulo</text>
 <text x='227.51' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='33.01px' lengthAdjust='spacingAndGlyphs'>Título</text>
 <text x='516.61' y='568.69' text-anchor='end' style='font-size: 8.80px; font-family: sans;' textLength='27.40px' lengthAdjust='spacingAndGlyphs'>Fuente</text>
