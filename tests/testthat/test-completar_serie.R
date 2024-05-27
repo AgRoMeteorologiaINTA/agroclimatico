@@ -1,7 +1,7 @@
 data <- data.table::CJ(estacion = letters[1:4],
                        fechas = seq(as.Date("1985-01-01"),
-                                  as.Date("2015-12-01"),
-                                  by = "1 month"), sorted = FALSE)
+                                    as.Date("2015-12-01"),
+                                    by = "1 month"), sorted = FALSE)
 data$values <- 1
 set.seed(42)
 missing <- sample(nrow(data), nrow(data)/10)
@@ -19,5 +19,15 @@ test_that("completar_serie agrega todos los datos faltnates", {
   data_new <- data.table::as.data.table(completar_serie(grouped, fechas, "1 mes", rango = range(data$fechas)))
   expect_equal(data, data_new)
 
+})
 
+test_that("funciona sin número", {
+
+  expect_equal(completar_serie(datos = implicit,
+                               fecha = fechas,
+                               resolucion = "día"),
+               completar_serie(datos = implicit,
+                               fecha = fechas,
+                               resolucion = "1 día")
+  )
 })

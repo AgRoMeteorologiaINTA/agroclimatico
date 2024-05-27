@@ -62,6 +62,11 @@ resolve_resolucion <- function(resolucion) {
   valid <- pmatch(by2[length(by2)], spanish)
   by2_eng <- english[valid]
 
-  paste(by2[-length(by2)], by2_eng)
+  number <- by2[-length(by2)]
+  if (length(number) != 0) {
+    return(paste(by2[-length(by2)], by2_eng))
+  }
+
+  return(by2_eng)
 }
 
