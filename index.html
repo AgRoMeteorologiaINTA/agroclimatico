@@ -80,9 +80,9 @@
 </div>
 <!-- badges: start -->
 
-<p>El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo <code><a href="reference/umbrales.html">umbrales()</a></code> permite contar la cantidad de observaciones que cumplen una determinada condición y <code>dias_promedios()</code> devuelve el primer y último día del año promedio de ocurrencia de un evento.</p>
-<p>Otras funciones como <code>spi()</code> funcionan como wrappers de funciones de otros paquetes y que buscan ser compatibles con el manejo de datos tidy.</p>
-<p>Finalmente el paquete incluye una función de graficado de datos georeferenciados <code><a href="reference/mapear.html">mapear()</a></code> con el estilo y logo propios de INTA.</p>
+<p>El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo <code><a href="reference/umbrales.html">umbrales()</a></code> permite contar la cantidad de observaciones que cumplen una determinada condición y <code><a href="reference/dias_promedio.html">dias_promedio()</a></code> devuelve el primer y último día del año promedio de ocurrencia de un evento.</p>
+<p>Otras funciones como <code><a href="reference/spi_indice.html">spi_indice()</a></code> funcionan como wrappers de funciones de otros paquetes y buscan ser compatibles con el manejo de datos <a href="https://es.r4ds.hadley.nz/12-tidy.html" class="external-link"><em>tidy</em></a> usando por ejemplo los verbos de dplyr.</p>
+<p>Finalmente el paquete incluye una función de graficado de datos georeferenciados <code><a href="reference/mapear.html">mapear()</a></code> con el estilo y logo propios de <a href="https://www.argentina.gob.ar/inta" class="external-link">Instituto Nacional de Tecnología Agropecuaria</a> (INTA). Como complementos el paquete también provee mapas de Argentina a nivel nacional, provincial y por departamentos que se pueden usar en el contexto de ggplot para graficar variables meteorológicas e índices agroclimáticos.</p>
 <div class="section level2">
 <h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
 </h2>
@@ -122,15 +122,15 @@
 </h3>
 <p>La función <code><a href="reference/mapear.html">mapear()</a></code> grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Genero datos aleatorios </span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">496</span><span class="op">)</span></span>
-<span><span class="va">datos_aleatorios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="reference/metadatos_nh.html">metadatos_nh</a></span><span class="op">(</span><span class="op">)</span>, pp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">rgamma</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu"><a href="reference/metadatos_nh.html">metadatos_nh</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>, <span class="fl">0.5</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">70</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">abril</span> <span class="op">&lt;-</span> <span class="va">datos_nh_mensual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mes</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">#datos del cuarto mes en la base, abril.</span></span>
 <span></span>
-<span><span class="va">datos_aleatorios</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">pp</span>, <span class="va">lon</span>, <span class="va">lat</span>, cordillera <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>              escala <span class="op">=</span> <span class="va">escala_pp_diaria</span>,</span>
-<span>              titulo <span class="op">=</span> <span class="st">"Precipitación aleatoria"</span>, </span>
-<span>              fuente <span class="op">=</span> <span class="st">"Fuente: datos de ejemplo"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">abril</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span>, cordillera <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>              escala <span class="op">=</span> <span class="va">escala_pp_mensual</span>,</span>
+<span>              titulo <span class="op">=</span> <span class="st">"Precipitación en abril de 2019"</span>, </span>
+<span>              fuente <span class="op">=</span> <span class="st">"Fuente: INTA"</span>,</span>
+<span>              variable <span class="op">=</span> <span class="st">"pp"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 </div>
 </div>
