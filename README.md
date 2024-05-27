@@ -71,8 +71,8 @@ datos %>%
   filter(t_min <= 0) %>% 
   reframe(dias_promedio(fecha))
 #>     variable dia mes dia_juliano
-#> 1 primer_dia  15   5         135
-#> 2 ultimo_dia  13   9         256
+#> 1 primer_dia  16   5         136
+#> 2 ultimo_dia  14   9         257
 ```
 
 ### Mapear
