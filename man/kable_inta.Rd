@@ -2,7 +2,7 @@
 % Please edit documentation in R/kable.R
 \name{kable_inta}
 \alias{kable_inta}
-\title{Setear tablas en estilo INTA}
+\title{Formatea tablas con el estilo de INTA}
 \usage{
 kable_inta(x, ...)
 }
@@ -15,8 +15,8 @@ kable_inta(x, ...)
 tabla, objeto kbl.
 }
 \description{
-Llama a \code{\link[kableExtra:kbl]{kableExtra::kbl()}} con defaults apropiados para que siga el estilo
-INTA.
+Llama a \code{\link[kableExtra:kbl]{kableExtra::kbl()}} con valores por defecto apropiados acordes al
+estilo utilizado por INTA.
 }
 \examples{
 

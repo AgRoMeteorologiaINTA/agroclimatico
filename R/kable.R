@@ -1,7 +1,7 @@
-#' Setear tablas en estilo INTA
+#' Formatea tablas con el estilo de INTA
 #'
-#' Llama a [kableExtra::kbl()] con defaults apropiados para que siga el estilo
-#' INTA.
+#' Llama a [kableExtra::kbl()] con valores por defecto apropiados acordes al
+#' estilo utilizado por INTA.
 #'
 #' @param x Una tabla.
 #' @param ... Otros argumentos que se pasan a [kableExtra::kbl()]
