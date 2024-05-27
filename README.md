@@ -16,14 +16,21 @@ Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci
 El paquete {agroclimatico} incluye una serie de funciones para calcular
 índices y estadísticos climáticos e hidrológicos a partir de datos tidy.
 Por ejemplo `umbrales()` permite contar la cantidad de observaciones que
-cumplen una determinada condición y `dias_promedios()` devuelve el
-primer y último día del año promedio de ocurrencia de un evento.
+cumplen una determinada condición y `dias_promedio()` devuelve el primer
+y último día del año promedio de ocurrencia de un evento.
 
-Otras funciones como `spi()` funcionan como wrappers de funciones de
-otros paquetes y que buscan ser compatibles con el manejo de datos tidy.
+Otras funciones como `spi_indice()` funcionan como wrappers de funciones
+de otros paquetes y buscan ser compatibles con el manejo de datos
+[*tidy*](https://es.r4ds.hadley.nz/12-tidy.html) usando por ejemplo los
+verbos de dplyr.
 
 Finalmente el paquete incluye una función de graficado de datos
-georeferenciados `mapear()` con el estilo y logo propios de INTA.
+georeferenciados `mapear()` con el estilo y logo propios de [Instituto
+Nacional de Tecnología Agropecuaria](https://www.argentina.gob.ar/inta)
+(INTA). Como complementos el paquete también provee mapas de Argentina a
+nivel nacional, provincial y por departamentos que se pueden usar en el
+contexto de ggplot para graficar variables meteorológicas e índices
+agroclimáticos.
 
 ## Instalación
 
@@ -84,15 +91,15 @@ epígrafe y opcionamente se puede incluir la cordillara para enmascarar
 la variable a graficar.
 
 ``` r
-# Genero datos aleatorios 
-set.seed(496)
-datos_aleatorios <- data.frame(metadatos_nh(), pp = rgamma(nrow(metadatos_nh()), 0.5, scale = 1)*70)
+abril <- datos_nh_mensual %>%
+  filter(mes == unique(mes)[4]) #datos del cuarto mes en la base, abril.
 
-datos_aleatorios %>% 
-  with(mapear(pp, lon, lat, cordillera = TRUE,
-              escala = escala_pp_diaria,
-              titulo = "Precipitación aleatoria", 
-              fuente = "Fuente: datos de ejemplo"))
+abril %>% 
+  with(mapear(precipitacion_mensual, lon, lat, cordillera = TRUE,
+              escala = escala_pp_mensual,
+              titulo = "Precipitación en abril de 2019", 
+              fuente = "Fuente: INTA",
+              variable = "pp"))
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
