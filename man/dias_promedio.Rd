@@ -20,7 +20,7 @@ en el caso de hacer el cálculo para distintos grupos:
 }
 }
 \description{
-Calcula el primer y último día del año promedio a partir de una seria de fechas.
+Calcula el primer y último día del año promedio a partir de una serie de fechas.
 }
 \details{
 Esta función solo requiere un vector de fechas para calcular el primer y último
@@ -29,6 +29,10 @@ el resultado será el 1° de enero y el 31 de diciembre. Pero si solo se utiliza
 las fechas que cumplen con una determinada condición, por ejemplo aquellos
 días donde la temperatura mínima fue menor o igual a 0°C, entonces devuelve
 el primer y último día de ocurrencia en promedio para este evento.
+
+La función se puede usar tanto con la sintaxis de base como con dplyr (ver ejemplos).
+En el caso de dplyr es necesario usar la función \code{\link[dplyr:reframe]{dplyr::reframe()}} ya que \code{\link[=dias_promedio]{dias_promedio()}}
+devuelve un data.frame. Es posible hacer cálculos agrupando datos con \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \examples{
 data(NH0358)
@@ -41,5 +45,13 @@ library(dplyr)
 NH0358 \%>\%
   filter(t_min <= 0) \%>\%
   summarise(dias_promedio(fecha))
+
+# Por grupos, si tenemos por ejemplo más de una estación
+data(NH0144)
+
+rbind(NH0358, NH0114) \%>\%
+  filter(t_min <= 0) \%>\%
+  group_by(codigo_nh) \%>\%
+  reframe(dias_promedio(fecha))
 
 }

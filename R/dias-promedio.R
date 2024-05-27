@@ -1,6 +1,6 @@
 #' Días Promedio
 #'
-#' Calcula el primer y último día del año promedio a partir de una seria de fechas.
+#' Calcula el primer y último día del año promedio a partir de una serie de fechas.
 #'
 #' Esta función solo requiere un vector de fechas para calcular el primer y último
 #' día del año en promedio. Si este vector incluye todos los días de muchos años
@@ -18,6 +18,11 @@
 #' * `mes` (numérico) mes de ocurrencia
 #' * `dia_juliano` (numérico) día del año
 #'
+#' @details
+#' La función se puede usar tanto con la sintaxis de base como con dplyr (ver ejemplos).
+#' En el caso de dplyr es necesario usar la función [dplyr::reframe()] ya que [dias_promedio()]
+#' devuelve un data.frame. Es posible hacer cálculos agrupando datos con [dplyr::group_by()].
+#'
 #' @examples
 #' data(NH0358)
 #'
@@ -29,6 +34,14 @@
 #' NH0358 %>%
 #'   filter(t_min <= 0) %>%
 #'   summarise(dias_promedio(fecha))
+#'
+#' # Por grupos, si tenemos por ejemplo más de una estación
+#' data(NH0144)
+#'
+#' rbind(NH0358, NH0114) %>%
+#'   filter(t_min <= 0) %>%
+#'   group_by(codigo_nh) %>%
+#'   reframe(dias_promedio(fecha))
 #'
 #' @export
 dias_promedio <- function(fechas) {
