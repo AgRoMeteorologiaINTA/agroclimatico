@@ -31,9 +31,6 @@
     <loc>https://agrometeorologiainta.github.io/agromet/news/index.html</loc>
   </url>
   <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/NH0358.html</loc>
-  </url>
-  <url>
     <loc>https://agrometeorologiainta.github.io/agromet/reference/agroclimatico-package.html</loc>
   </url>
   <url>
@@ -41,6 +38,9 @@
   </url>
   <url>
     <loc>https://agrometeorologiainta.github.io/agromet/reference/completar_serie.html</loc>
+  </url>
+  <url>
+    <loc>https://agrometeorologiainta.github.io/agromet/reference/datos_nh.html</loc>
   </url>
   <url>
     <loc>https://agrometeorologiainta.github.io/agromet/reference/datos_nh_mensual.html</loc>
