@@ -2,11 +2,11 @@
 library(magrittr)
 
 mapa_argentina_limitrofes_data <- rnaturalearth::ne_countries(scale = 50, country = c("chile", "uruguay",
-                                                "paraguay", "brazil", "bolivia"),
-                                    returnclass = "sf")
+                                                                                      "paraguay", "brazil", "bolivia"),
+                                                              returnclass = "sf")
 
 mapa_argentina_limitrofes_data <- sf::st_crop(mapa_argentina_limitrofes_data,
-            xmin = -77, xmax = 0, ymin = -57, ymax = 20)
+                                              xmin = -77, xmax = 0, ymin = -57, ymax = 20)
 mapa_argentina_limitrofes_data <- mapa_argentina_limitrofes_data[, c("name", "geometry")]
 
 
@@ -84,7 +84,7 @@ datos_nh_mensual <- Sys.glob("data-raw/NH*csv") |>
   rbindlist() |>
   _[year(fecha) == 2019] |>
   _[, .(precipitacion_mensual = sum(precipitacion_pluviometrica, na.rm = TRUE),
-           temperatura_media_mensual = mean(temperatura_abrigo_150cm, na.rm = TRUE)),
+        temperatura_media_mensual = mean(temperatura_abrigo_150cm, na.rm = TRUE)),
     by = .(id, mes = lubridate::floor_date(fecha, "month"))] |>
   _[, codigo_nh := gsub("NH", "", id)] |>
   _[, id := NULL] |>
