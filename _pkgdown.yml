@@ -2,3 +2,47 @@ url: https://agrometeorologiainta.github.io/agromet/
 template:
   bootstrap: 5
 lang: es
+
+reference:
+- title: Índices y estadísticas
+
+  desc: >
+    Funciones para calcular índices y estadísticas.
+  contents:
+  - decil
+  - dias_promedio
+  - umbrales
+  - olas
+  - ith
+  - pdsi
+  - spi_indice
+  - completar_serie
+
+- title: Visualización de datos geoespaciales
+
+  desc: >
+    Funciones para visualizar datos.
+  contents:
+  - mapear
+  - mapa_argentina
+  - scale_fill_inta
+  - escala_temp_min
+  - leer_surfer
+
+- title: Datos meteorológicos y asociados
+
+  desc: >
+    Set de datos incluidos en el paquete.
+  contents:
+  - NH0358
+  - datos_nh_mensual
+  - leer_nh
+  - metadatos_nh
+
+- title: Reportes
+
+  desc: >
+    Funciones útiles para generar un reporte.
+  contents:
+  - agromet_informe
+  - kable_inta
