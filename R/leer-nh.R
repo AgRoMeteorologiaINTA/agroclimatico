@@ -92,11 +92,11 @@ leer_nh <- function(archivos) {
 #' longitud) y el nombre.
 #'
 #' Esta función por defecto devuelve la lista completa de estaciones pero alternativamente
-#' se puede devolver estaciones especificar a partir de sus códigos o todas las estaciones
+#' se puede devolver estaciones específicas a partir de sus códigos o todas las estaciones
 #' incluidas en una región. Además incluye un método plot para visualizar rápidamente
 #' la ubicación de las estaciones.
 #'
-#' @param codigo,provincia,organismo carácter o vector de caracteres para filtrar según código de estación, provincia o provincia.
+#' @param codigo,provincia,organismo carácter o vector de caracteres para filtrar según código de estación, provincia u organismo.
 #' @param lat vector numérico con las latitudes límite de la región de interés.
 #' @param lon vector numérico con las longitudes límite de la región de interés
 #' (entre -180 y 180).
