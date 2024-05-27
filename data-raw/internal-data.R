@@ -76,3 +76,18 @@ argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitrofes_data,
                   arg_topo, estaciones_nh, surfer_colors, argentina, argentina_provincias,
                   overwrite = TRUE, internal = TRUE)
+
+## code to prepare `datos_nh_mensual` dataset goes here
+
+datos_nh_mensual <- Sys.glob("data-raw/NH*csv") |>
+  lapply(fread) |>
+  rbindlist() |>
+  _[year(fecha) == 2019] |>
+  _[, .(precipitacion_mensual = sum(precipitacion_pluviometrica, na.rm = TRUE),
+           temperatura_media_mensual = mean(temperatura_abrigo_150cm, na.rm = TRUE)),
+    by = .(id, mes = lubridate::floor_date(fecha, "month"))] |>
+  _[, codigo_nh := gsub("NH", "", id)] |>
+  _[, id := NULL] |>
+  _[metadatos_nh(), on = .NATURAL]
+
+usethis::use_data(datos_nh_mensual)
