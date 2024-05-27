@@ -1,5 +1,7 @@
+#' Observaciones Meteorológicas
+#'
 #' Datos mensuales de temperatura y precipitación en estaciones meteorológicas
-#' en Argentina
+#' en Argentina.
 #'
 #' @format Un data.table con 381 filas y 10 columnas
 #'

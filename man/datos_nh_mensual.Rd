@@ -3,8 +3,7 @@
 \docType{data}
 \name{datos_nh_mensual}
 \alias{datos_nh_mensual}
-\title{Datos mensuales de temperatura y precipitación en estaciones meteorológicas
-en Argentina}
+\title{Observaciones Meteorológicas}
 \format{
 Un data.table con 381 filas y 10 columnas
 
@@ -26,6 +25,6 @@ datos_nh_mensual
 }
 \description{
 Datos mensuales de temperatura y precipitación en estaciones meteorológicas
-en Argentina
+en Argentina.
 }
 \keyword{datasets}
