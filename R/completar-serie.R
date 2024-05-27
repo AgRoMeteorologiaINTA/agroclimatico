@@ -34,7 +34,11 @@ completar_serie <- function(datos, fecha, resolucion, rango = range(fecha)) {
   resolution <- resolve_resolucion(resolucion)
 
   fecha_string <- deparse(substitute(fecha))
+
+  # El default de rango es range(fecha), asi que esta variable
+  # tiene que existir.
   fecha <- datos[[fecha_string]]
+  force(rango)
 
   fecha <- seq(min(rango, na.rm = TRUE), max(rango, na.rm = TRUE), by = resolution)
 
