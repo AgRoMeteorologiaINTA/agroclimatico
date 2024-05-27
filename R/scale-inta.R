@@ -1,4 +1,6 @@
-#' Escalas para precipitacion
+#' Escalas de colores para precipitacion y temperatura
+#'
+#' Escalas para `color` y `fill` para variables discretas.
 #'
 #' @param escala escala de colores. Puede ser
 #' * una lista con elementos `niveles` y `paleta` (ver `[leer_surfer()]` y [escala_temp_min]).
@@ -7,26 +9,28 @@
 #' de la escala.)
 #' @param name nombre de la escala.
 #' @param breaks niveles de la escala. Si no es `waiver()`, tiene prioridad por sobre
-#' los niveles deinidos en `escala`.
+#' los niveles definidos en `escala`.
 #' @param drop lógico que indica si se muestran todos los valores o sólo los
 #' presentes en los datos. Por defecto, es `FALSE` si la escala define los niveles usando
 #' `breaks` o `escala`.
-#' @param ... otros argumentos que se padan a [ggplot2::scale_fill_manual()] o [ggplot2::discrete_scale()].
+#' @param ... otros argumentos que se pasan a [ggplot2::scale_fill_manual()] o [ggplot2::discrete_scale()].
 #'
 #' @return objeto ggproto compatible con ggplot2.
 #'
 #' @examples
-#' \dontrun{
 #' library(ggplot2)
-#' set.seed(496)
-#' datos_aleatorios <- subset(metadatos_nh())
-#' datos_aleatorios <- data.frame(datos_aleatorios,
-#' pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*70)
+#' library(dplyr)
 #'
-#' ggplot(datos_aleatorios, aes(lon, lat)) +
-#' geom_contour(aes(z = pp, fill = after_stat(level))) +
-#' scale_fill_inta(escala = escala_pp_diaria)
-#' }
+#' pp_enero <- datos_nh_mensual |>
+#'   filter(mes == unique(mes)[1])
+#'
+#' # Los contornos llenos requieren que los datos estén en una grilla
+#' # regular, necesitamos hacer una interpolación con kriging.
+#' with(pp_enero, agroclimatico:::kringe(precipitacion_mensual, lon, lat)) |>
+#' ggplot(aes(lon, lat)) +
+#'  geom_contour(aes(z = var1.pred)) +
+#'  geom_contour_filled(aes(z = var1.pred)) +
+#'  scale_fill_inta(escala = escala_pp_mensual)
 #'
 #' @rdname scale_inta
 #' @export

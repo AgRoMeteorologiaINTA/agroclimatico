@@ -1,6 +1,6 @@
-#' Escalas comunes del INTA
+#' Escalas de colores usadas por el INTA
 #'
-#' Escalas típicas usadas por INTA para distintas variables.
+#' Escalas de colores típicas usadas por INTA para distintas variables.
 #'
 #' @format
 #' Listas en el mismo formato que devuelve `leer_surfer()` con elementos:
@@ -24,4 +24,25 @@
 #' @format NULL
 #' @rdname escalas
 "escala_pp_diaria"
+
+#' @examples
+#'
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' pp_enero <- datos_nh_mensual |>
+#'   filter(mes == unique(mes)[1])
+#'
+#' # En el contexto de la función mapear():
+#' with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE))
+#'
+#' # Con ggplot2
+#' # Los contornos llenos requieren que los datos estén en una grilla
+#' # regular, necesitamos hacer una interpolación con kriging.
+#' with(pp_enero, agroclimatico:::kringe(precipitacion_mensual, lon, lat)) |>
+#' ggplot(aes(lon, lat)) +
+#'  geom_contour(aes(z = var1.pred)) +
+#'  geom_contour_filled(aes(z = var1.pred)) +
+#'  scale_fill_inta(escala = escala_pp_mensual)
+
 

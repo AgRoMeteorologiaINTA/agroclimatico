@@ -6,7 +6,7 @@
 \alias{escala_temp_max}
 \alias{escala_pp_mensual}
 \alias{escala_pp_diaria}
-\title{Escalas comunes del INTA}
+\title{Escalas de colores usadas por el INTA}
 \format{
 Listas en el mismo formato que devuelve \code{leer_surfer()} con elementos:
 \itemize{
@@ -27,6 +27,6 @@ escala_pp_mensual
 escala_pp_diaria
 }
 \description{
-Escalas típicas usadas por INTA para distintas variables.
+Escalas de colores típicas usadas por INTA para distintas variables.
 }
 \keyword{datasets}

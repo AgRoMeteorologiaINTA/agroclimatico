@@ -3,7 +3,7 @@
 \name{scale_fill_inta}
 \alias{scale_fill_inta}
 \alias{scale_color_inta}
-\title{Escalas para precipitacion}
+\title{Escalas de colores para precipitacion y temperatura}
 \usage{
 scale_fill_inta(
   escala,
@@ -33,31 +33,33 @@ de la escala.)
 \item{name}{nombre de la escala.}
 
 \item{breaks}{niveles de la escala. Si no es \code{waiver()}, tiene prioridad por sobre
-los niveles deinidos en \code{escala}.}
+los niveles definidos en \code{escala}.}
 
 \item{drop}{lógico que indica si se muestran todos los valores o sólo los
 presentes en los datos. Por defecto, es \code{FALSE} si la escala define los niveles usando
 \code{breaks} o \code{escala}.}
 
-\item{...}{otros argumentos que se padan a \code{\link[ggplot2:scale_manual]{ggplot2::scale_fill_manual()}} o \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
+\item{...}{otros argumentos que se pasan a \code{\link[ggplot2:scale_manual]{ggplot2::scale_fill_manual()}} o \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
 }
 \value{
 objeto ggproto compatible con ggplot2.
 }
 \description{
-Escalas para precipitacion
+Escalas para \code{color} y \code{fill} para variables discretas.
 }
 \examples{
-\dontrun{
 library(ggplot2)
-set.seed(496)
-datos_aleatorios <- subset(metadatos_nh())
-datos_aleatorios <- data.frame(datos_aleatorios,
-pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*70)
+library(dplyr)
 
-ggplot(datos_aleatorios, aes(lon, lat)) +
-geom_contour(aes(z = pp, fill = after_stat(level))) +
-scale_fill_inta(escala = escala_pp_diaria)
-}
+pp_enero <- datos_nh_mensual |>
+  filter(mes == unique(mes)[1])
+
+# Los contornos llenos requieren que los datos estén en una grilla
+# regular, necesitamos hacer una interpolación con kriging.
+with(pp_enero, agroclimatico:::kringe(precipitacion_mensual, lon, lat)) |>
+ggplot(aes(lon, lat)) +
+ geom_contour(aes(z = var1.pred)) +
+ geom_contour_filled(aes(z = var1.pred)) +
+ scale_fill_inta(escala = escala_pp_mensual)
 
 }
