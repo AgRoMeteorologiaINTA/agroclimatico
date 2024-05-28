@@ -9,7 +9,7 @@ completar_serie(datos, fecha, resolucion, rango = range(fecha))
 \arguments{
 \item{datos}{tabla (data.frame, data.table, tibble) a completar.}
 
-\item{fecha}{variable de fechas.}
+\item{fecha}{variable tipo fecha (Date, IDate, POSIXct, etc).}
 
 \item{resolucion}{texto que define resolución de salida de los datos. Puede ser
 cualquier valor aceptado por el argumento \code{by} de la función \code{\link[=seq.Date]{seq.Date()}}
@@ -17,7 +17,9 @@ o su traducción al español. Es decir, "día" (o "dia"),
 "semana", "mes", "trimestre" o "año", así como los plurales.}
 
 \item{rango}{un vector cuyo rango define el período a completar. Es útil si
-se quiere que múltiples grupos de datos tengan el mismo rango de fechas.}
+se quiere que múltiples grupos de datos tengan el mismo rango de fechas. Es
+posible definir un rango por fuera del rango original de los datos para homogeneizar
+series temporales.}
 }
 \value{
 Devuelve un data.frame con las mismas variables de origen. La variable

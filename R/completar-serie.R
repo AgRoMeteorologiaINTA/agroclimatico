@@ -4,13 +4,15 @@
 #' resolución disponible. Es compatible con datos agrupados por [dplyr::group_by()].
 #'
 #' @param datos tabla (data.frame, data.table, tibble) a completar.
-#' @param fecha variable de fechas.
+#' @param fecha variable tipo fecha (Date, IDate, POSIXct, etc).
 #' @param resolucion texto que define resolución de salida de los datos. Puede ser
 #' cualquier valor aceptado por el argumento `by` de la función [seq.Date()]
 #' o su traducción al español. Es decir, "día" (o "dia"),
 #' "semana", "mes", "trimestre" o "año", así como los plurales.
 #' @param rango un vector cuyo rango define el período a completar. Es útil si
-#' se quiere que múltiples grupos de datos tengan el mismo rango de fechas.
+#' se quiere que múltiples grupos de datos tengan el mismo rango de fechas. Es
+#' posible definir un rango por fuera del rango original de los datos para homogeneizar
+#' series temporales.
 #'
 #' @return Devuelve un data.frame con las mismas variables de origen. La variable
 #' asociada a las fechas ahora se encuentra completa para la resolución indicada
