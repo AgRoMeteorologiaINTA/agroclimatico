@@ -14,7 +14,8 @@ argentina_provincias <- rnaturalearth::ne_states(country = c("argentina", "falkl
                                                  returnclass = "sf")
 argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 
-# argentina_provincias$name <- enc2utf8(argentina_provincias$name)
+argentina_provincias$name <- ifelse(argentina_provincias$name == "Falkland Islands",
+                                    "Islas Malvinas", argentina_provincias$name)
 
 argentina <- rnaturalearth::ne_countries(country = c("argentina"), returnclass = "sf",
                                          scale = 10)
@@ -70,8 +71,6 @@ points <- expand.grid(lon = lons,
 points_sf <- sf::st_as_sf(points, coords = c("lon", "lat"), crs = 4326)
 inside <-  lengths(suppressMessages(sf::st_intersects(points_sf, frame))) != 0
 arg_grid <- points[inside, ]
-
-argentina_provincias <- argentina_provincias[, c("name", "geometry")]
 
 usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitrofes_data,
                   arg_topo, estaciones_nh, surfer_colors, argentina, argentina_provincias,
