@@ -24,7 +24,9 @@ spi_referencia(fecha, precipitacion)
 
 \item{precipitacion}{vector de precipitacion.}
 
-\item{escalas}{vector numérico con las escalas requeridas}
+\item{escalas}{vector numérico con las escalas requeridas. La unidad de la escala
+está dada por el vector de fechas. Si \code{escalas = 6} y los datos son mensuales
+entonces el cálculo del indice se hará en escalas de 6 meses.}
 
 \item{referencia}{serie de precipitación para usar de referencia en el ajuste
 a la distribución teórica. Puede ser:
@@ -50,10 +52,16 @@ Un data.frame con columnas
 }
 }
 \description{
-Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El \code{spi_indice} toma valores
-de precipitación mientras que el \code{spei_indice} toma valores del balance entre precipitación y evapotranspiración
-potencial. Internamente hacen lo mismo; la única diferencia es la distribución teórica
+Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El
+\code{spi_indice} toma valores de precipitación mientras que el \code{spei_indice} toma
+valores del balance entre precipitación y evapotranspiración potencial.
+Internamente hacen lo mismo; la única diferencia es la distribución teórica
 usada por defecto para ajustar los datos.
+}
+\details{
+Estas funciones usan internamente a la función \link[SPEI:Drought-indices]{SPEI::spi} pero tienen la ventaja
+de devolver el resultado como un data.frame que se puede usar de manera directa
+para el análisis de datos con dplyr.
 }
 \examples{
 # datos aleatorios
@@ -80,4 +88,11 @@ with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
                        referencia = spi_referencia(datos$fecha, datos$pp)))
 
 
+}
+\references{
+Vicente-Serrano, S. M., Beguería, S. and López-Moreno, J. I.: A multiscalar
+drought index sensitive to global warming: The standardized precipitation
+evapotranspiration index, J. Clim., 23(7), \doi{10.1175/2009JCLI2909.1}, 2010.
+
+R Package \href{https://cran.r-project.org/package=SPEI}{SPEI: Calculation of the Standardized Precipitation-Evapotranspiration Index}
 }
