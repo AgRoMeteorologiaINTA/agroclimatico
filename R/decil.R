@@ -12,8 +12,16 @@
 #' @param na.rm lógico. Define si se utilizan o no valores faltantes en el cálculo
 #' de la anomalía porcentual.
 #'
-#' @return Devuelve un data.frame con el valor del decil o la anomalía porcentual
-#' según sea el caso. Es compatible con [dplyr::group_by()] y [dplyr::mutate()].
+#' @return Devuelve un vector numérico con el decil asociado a cada valor de la variable.
+#' En este caso la columna `deciles` es de tipo doble ya que devuelve el valor exacto
+#' del decil sin redondoes. Para el cálculo de la anomalía porcentual también
+#' devuelve un vector numérico. Las funciones son compatibles con
+#' [dplyr::group_by()] y [dplyr::mutate()].
+#'
+#' @details
+#' Para recuperar el valor de la variable asociado a determinado decil se puede
+#' utilizar la función [stats::quantile()].
+#'
 #'
 #' @examples
 #' library(dplyr)

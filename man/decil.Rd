@@ -28,12 +28,19 @@ a la distribución teórica. Puede ser:
 de la anomalía porcentual.}
 }
 \value{
-Devuelve un data.frame con el valor del decil o la anomalía porcentual
-según sea el caso. Es compatible con \code{\link[dplyr:group_by]{dplyr::group_by()}} y \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+Devuelve un vector numérico con el decil asociado a cada valor de la variable.
+En este caso la columna \code{deciles} es de tipo doble ya que devuelve el valor exacto
+del decil sin redondoes. Para el cálculo de la anomalía porcentual también
+devuelve un vector numérico. Las funciones son compatibles con
+\code{\link[dplyr:group_by]{dplyr::group_by()}} y \code{\link[dplyr:mutate]{dplyr::mutate()}}.
 }
 \description{
 Las funciones \code{decil()} y \code{anomalia_porcentual()} devuelven estos estadísticos
 para alguna variable dado un periodo de referencia especificado.
+}
+\details{
+Para recuperar el valor de la variable asociado a determinado decil se puede
+utilizar la función \code{\link[stats:quantile]{stats::quantile()}}.
 }
 \examples{
 library(dplyr)
