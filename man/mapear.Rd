@@ -7,6 +7,7 @@
 \title{Grafica variables en Argentina}
 \usage{
 mapear(
+  data,
   valor,
   lon,
   lat,
@@ -28,18 +29,20 @@ theme_inta_mapa(...)
 
 \item{lon, lat}{vectores de ubicación en longitud y latitud.}
 
-\item{breaks}{valores donde graficar los contornos. Si es\code{NULL} hace 10 contornos.}
+\item{breaks}{vector numérico que define para que valores se graficará los
+contornos. Si es\code{NULL} hace 10 contornos calculados a partir el rango de los datos.}
 
 \item{escala}{paleta de colores a usar. Tiene que ser una función que reciba un número
 y devuelva esa cantidad de colores. Por ejemplo \link{escala_temp_min}.}
 
-\item{cordillera}{lógico indicando si hay que tapar los datos donde está
+\item{cordillera}{valor lógico indicando si hay que tapar los datos donde está
 la coordillera (donde el kriging es particularmente problemático). Si es \code{TRUE}
-pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
-indicando el valor mínimo desde donde empezar a pintar.}
+pinta con gris donde la altura de la topografía es mayor a 1500 m. También
+puede ser un número, indicando el valor mínimo desde donde empezar a graficar
+la cordillera.}
 
 \item{titulo, subtitulo, fuente, variable}{texto para usar como título, subtítulo,
-epígrafe y nombre de la guía.}
+epígrafe y nombre de la leyenda.}
 
 \item{xlim, ylim}{límites en longitud y latitud.}
 
@@ -49,21 +52,22 @@ epígrafe y nombre de la guía.}
 Un objeto ggplot2.
 }
 \description{
-Dadas mediciones de una veriable en puntos ubicados en Argentina,
-interpola a el resto del territorio usando kriging y grafica con contornos
+Dadas mediciones de una variable en puntos ubicados en Argentina,
+interpola al resto del territorio usando kriging y grafica con contornos
+Las funciones secundarias \code{\link[=coord_argentina]{coord_argentina()}} y \code{\link[=theme_inta_mapa]{theme_inta_mapa()}} permiten
+generar un mapa en la región de Argentina (definida por \code{xlim} y \code{ylim}) con
+el estilo específico usando por INTA.
 }
 \examples{
 \dontrun{
-set.seed(934)
-datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
-datos_aleatorios <- data.frame(datos_aleatorios,
-                               pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*25)
 
-with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
-                              escala = escala_pp_diaria,
-                              variable = "mm",
-                              titulo = "Precipitación aleatoria",
-                              fuente = "Fuente: datos de ejemplo"))
+data(datos_nh_mensual)
+
+with(datos_nh_mensual |> filter(mes == unique(mes)[4]), kringe(precipitacion_mensual, lon, lat)) |>
+ggplot(aes(lon, lat)) +
+  geom_contour(aes(z = var1.pred)) +
+  geom_contour_filled(aes(z = var1.pred)) +
+  scale_fill_inta(escala = escala_pp_mensual)
 }
 
 }

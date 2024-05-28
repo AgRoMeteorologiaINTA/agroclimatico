@@ -1,19 +1,24 @@
 #' Grafica variables en Argentina
 #'
-#' Dadas mediciones de una veriable en puntos ubicados en Argentina,
-#' interpola a el resto del territorio usando kriging y grafica con contornos
+#' Dadas mediciones de una variable en puntos ubicados en Argentina,
+#' interpola al resto del territorio usando kriging y grafica con contornos
+#' Las funciones secundarias [coord_argentina()] y [theme_inta_mapa()] permiten
+#' generar un mapa en la región de Argentina (definida por `xlim` y `ylim`) con
+#' el estilo específico usando por INTA.
 #'
 #' @param valor vector con los valores medidos.
 #' @param lon,lat vectores de ubicación en longitud y latitud.
-#' @param breaks valores donde graficar los contornos. Si es`NULL` hace 10 contornos.
+#' @param breaks vector numérico que define para que valores se graficará los
+#' contornos. Si es`NULL` hace 10 contornos calculados a partir el rango de los datos.
 #' @param escala paleta de colores a usar. Tiene que ser una función que reciba un número
 #' y devuelva esa cantidad de colores. Por ejemplo [escala_temp_min].
-#' @param cordillera lógico indicando si hay que tapar los datos donde está
+#' @param cordillera valor lógico indicando si hay que tapar los datos donde está
 #' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
-#' pinta con gris donde las alturas son masyores a 1500m. También puede ser un número,
-#' indicando el valor mínimo desde donde empezar a pintar.
+#' pinta con gris donde la altura de la topografía es mayor a 1500 m. También
+#' puede ser un número, indicando el valor mínimo desde donde empezar a graficar
+#' la cordillera.
 #' @param titulo,subtitulo,fuente,variable texto para usar como título, subtítulo,
-#' epígrafe y nombre de la guía.
+#' epígrafe y nombre de la leyenda.
 #' @param xlim,ylim límites en longitud y latitud.
 #' @param ... otros argumentos que se pasan a [ggplot2::coord_sf()] o [ggplot2::theme_linedraw()].
 #'
@@ -23,21 +28,19 @@
 #'
 #' @examples
 #' \dontrun{
-#' set.seed(934)
-#' datos_aleatorios <- subset(metadatos_nh(), codigo_nh != "0226")
-#' datos_aleatorios <- data.frame(datos_aleatorios,
-#'                                pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*25)
 #'
-#' with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE,
-#'                               escala = escala_pp_diaria,
-#'                               variable = "mm",
-#'                               titulo = "Precipitación aleatoria",
-#'                               fuente = "Fuente: datos de ejemplo"))
+#' data(datos_nh_mensual)
+#'
+#' with(datos_nh_mensual |> filter(mes == unique(mes)[4]), kringe(precipitacion_mensual, lon, lat)) |>
+#' ggplot(aes(lon, lat)) +
+#'   geom_contour(aes(z = var1.pred)) +
+#'   geom_contour_filled(aes(z = var1.pred)) +
+#'   scale_fill_inta(escala = escala_pp_mensual)
 #' }
 #'
 #' @export
 #' @import ggplot2
-mapear <- function(valor, lon, lat,
+mapear <- function(data, valor, lon, lat,
                    breaks = waiver(),
                    escala = scales::viridis_pal(),
                    cordillera = FALSE,
@@ -46,7 +49,17 @@ mapear <- function(valor, lon, lat,
                    subtitulo = NULL,
                    fuente = NULL) {
 
+
+  if (is.null(variable)) {
+    variable <- deparse(substitute(valor))
+  }
+
+  valor <- eval(substitute(valor), data)
+  lon <- eval(substitute(lon), data)
+  lat <- eval(substitute(lat), data)
+
   h <- level_mid <- var1.pred <- NULL
+
   datos <- data.frame(valor = valor, lon = lon, lat = lat)
   sink <- utils::capture.output(campo <- suppressWarnings(kringe(valor, lon, lat)))
 
@@ -90,9 +103,6 @@ mapear <- function(valor, lon, lat,
                                  barwidth = grid::unit(.015, "npc"),
                                  show.limits = FALSE)
 
-  if (is.null(variable)) {
-    variable <- deparse(substitute(valor))
-  }
 
   ggplot(campo, aes(lon, lat)) +
     geom_contour_filled(aes(z = var1.pred),
