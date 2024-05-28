@@ -13,6 +13,14 @@
 #' @return Devuelve una tibble con las variables necesarias para generar un mapa
 #' utilizando [ggplot2] y [sf].
 #'
+#' @details
+#' Los nombres de las provincias e [mapa_provincias()] son: Buenos Aires, Catamarca,
+#' Chaco, Chubut, Ciudad de Buenos Aires, Corrientes, Córdoba, Entre Ríos, Formosa,
+#' Islas Malvinas (geometria separada de Tierra del fuego), Jujuy, La Pampa, La Rioja,
+#' Mendoza, Misiones, Neuquén, Río Negro, Salta, San Juan, San Luis, Santa Cruz,
+#' Santa Fe, Santiago del Estero, Tierra del Fuego y Tucumán y se pueden utilizar para
+#' graficarlas individualmente.
+#'
 #' @examples
 #' library(ggplot2)
 #'

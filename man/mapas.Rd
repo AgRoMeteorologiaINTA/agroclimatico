@@ -32,6 +32,14 @@ público del \href{https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespa
 mientas que el mapa de países limítrofes, Argentina y sus provincias son parte del repositorio
 \href{https://www.naturalearthdata.com/}{Natural Earth}.
 }
+\details{
+Los nombres de las provincias e \code{\link[=mapa_provincias]{mapa_provincias()}} son: Buenos Aires, Catamarca,
+Chaco, Chubut, Ciudad de Buenos Aires, Corrientes, Córdoba, Entre Ríos, Formosa,
+Islas Malvinas (geometria separada de Tierra del fuego), Jujuy, La Pampa, La Rioja,
+Mendoza, Misiones, Neuquén, Río Negro, Salta, San Juan, San Luis, Santa Cruz,
+Santa Fe, Santiago del Estero, Tierra del Fuego y Tucumán y se pueden utilizar para
+graficarlas individualmente.
+}
 \examples{
 library(ggplot2)
 
