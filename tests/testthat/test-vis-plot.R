@@ -18,38 +18,38 @@ datos_aleatorios <- data.frame(datos_aleatorios,
 
 test_that("mapear", {
   expect_doppelganger("mapear-default",
-                      with(datos_aleatorios, mapear(pp, lon, lat))
+                      mapear(datos_aleatorios, pp, lon, lat)
   )
 
 
   expect_doppelganger("mapear-cordillera",
-                      with(datos_aleatorios, mapear(pp, lon, lat, cordillera = TRUE))
+                      mapear(datos_aleatorios, pp, lon, lat, cordillera = TRUE)
   )
 
   expect_doppelganger("mapear-cordillera-2000",
-                      with(datos_aleatorios, mapear(pp, lon, lat, cordillera = 2000))
+                      mapear(datos_aleatorios, pp, lon, lat, cordillera = 2000)
   )
 
   expect_doppelganger("mapear-escala",
-                      with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria))
+                      mapear(datos_aleatorios, pp, lon, lat, escala = escala_pp_diaria)
   )
   expect_doppelganger("mapear-breaks",
-                      with(datos_aleatorios, mapear(pp, lon, lat, breaks = escala_pp_diaria$niveles))
+                      mapear(datos_aleatorios, pp, lon, lat, breaks = escala_pp_diaria$niveles)
   )
 
   expect_doppelganger("mapear-breaks-escala",
-                      with(datos_aleatorios, mapear(pp, lon, lat,
-                                                    breaks = escala_pp_diaria$niveles,
-                                                    escala = escala_pp_diaria$paleta
-                      ))
+                      mapear(datos_aleatorios, pp, lon, lat,
+                             breaks = escala_pp_diaria$niveles,
+                             escala = escala_pp_diaria$paleta
+                      )
   )
 
 
   expect_doppelganger("mapear-detalles",
-                      with(datos_aleatorios, mapear(pp, lon, lat,titulo = "Título",
-                                                    variable = "mm",
-                                                    subtitulo = "Subtítulo",
-                                                    fuente = "Fuente"))
+                      mapear(datos_aleatorios, pp, lon, lat,titulo = "Título",
+                             variable = "mm",
+                             subtitulo = "Subtítulo",
+                             fuente = "Fuente")
   )
 
 
