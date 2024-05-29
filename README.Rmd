@@ -78,11 +78,11 @@ abril <- datos_nh_mensual %>%
   filter(mes == unique(mes)[4]) #datos del cuarto mes en la base, abril.
 
 abril %>% 
-  with(mapear(precipitacion_mensual, lon, lat, cordillera = TRUE,
+  mapear(precipitacion_mensual, lon, lat, cordillera = TRUE,
               escala = escala_pp_mensual,
               titulo = "Precipitación en abril de 2019", 
               fuente = "Fuente: INTA",
-              variable = "pp"))
+              variable = "pp")
 ```
 
 

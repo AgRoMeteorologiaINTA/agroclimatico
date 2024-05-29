@@ -76,7 +76,6 @@ scale_inta <- function(aes, escala, name = waiver(), breaks = waiver(), drop = w
   } else {
     discrete_scale(aes,
                    name = name,
-                   scale_name = "precipitacion",
                    palette = palette,
                    breaks = breaks,
                    drop = drop,

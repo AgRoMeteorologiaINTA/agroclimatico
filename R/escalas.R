@@ -34,7 +34,8 @@
 #'   filter(mes == unique(mes)[1])
 #'
 #' # En el contexto de la función mapear():
-#' with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE))
+#' mapear(pp_enero, precipitacion_mensual, lon, lat,
+#' escala = escala_pp_mensual, cordillera = TRUE)
 #'
 #' # Con ggplot2
 #' # Los contornos llenos requieren que los datos estén en una grilla

@@ -69,15 +69,15 @@ datos_aleatorios <- metadatos_nh() %>%
          t_min = rnorm(n(), mean = (lat - min(lat)), sd = 10))
 
 datos_aleatorios %>% 
-  with(mapear(t_max, lon, lat, cordillera = TRUE,
+  mapear(t_max, lon, lat, cordillera = TRUE,
               escala = escala_temp_max,
               variable = "ºC",
-              fuente = "Fuente: datos de ejemplo"))
+              fuente = "Fuente: datos de ejemplo")
 
 datos_aleatorios %>% 
-  with(mapear(t_min, lon, lat, cordillera = TRUE,
+  mapear(t_min, lon, lat, cordillera = TRUE,
               escala = escala_temp_min,
-              variable = "ºC", fuente = "Fuente: datos de ejemplo"))
+              variable = "ºC", fuente = "Fuente: datos de ejemplo")
 ```
 
 ## Tablas
