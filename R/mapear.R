@@ -29,13 +29,19 @@
 #' @examples
 #' \dontrun{
 #'
+#' library(dplyr)
+#'
 #' data(datos_nh_mensual)
 #'
-#' with(datos_nh_mensual |> filter(mes == unique(mes)[4]), kringe(precipitacion_mensual, lon, lat)) |>
-#' ggplot(aes(lon, lat)) +
-#'   geom_contour(aes(z = var1.pred)) +
-#'   geom_contour_filled(aes(z = var1.pred)) +
-#'   scale_fill_inta(escala = escala_pp_mensual)
+#' abril <- datos_nh_mensual %>%
+#'   filter(mes == unique(mes)[4]) #datos del cuarto mes en la base, abril.
+#'
+#' abril %>%
+#'   mapear(precipitacion_mensual, lon, lat, cordillera = TRUE,
+#'               escala = escala_pp_mensual,
+#'               titulo = "Precipitación en abril de 2019",
+#'               fuente = "Fuente: INTA",
+#'               variable = "pp")
 #' }
 #'
 #' @export
