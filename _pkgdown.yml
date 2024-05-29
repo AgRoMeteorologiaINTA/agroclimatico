@@ -15,6 +15,7 @@ reference:
   - olas
   - ith
   - pdsi
+  - pdsi_coeficientes
   - spi_indice
   - completar_serie
 
@@ -35,6 +36,7 @@ reference:
     Set de datos incluidos en el paquete.
   contents:
   - NH0358
+  - NH0114
   - datos_nh_mensual
   - leer_nh
   - metadatos_nh
