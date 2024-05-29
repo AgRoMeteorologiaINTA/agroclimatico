@@ -9,7 +9,7 @@ olas(fecha, ...)
 \arguments{
 \item{fecha}{vector de fechas.}
 
-\item{...}{mbral o umbrales a calcular utilizando operadores lógicos.}
+\item{...}{umbral o umbrales a calcular utilizando operadores lógicos.}
 }
 \value{
 Devuelve un data.frame con 3 variables fijas y las posibles variables
@@ -19,10 +19,10 @@ asociadas al agrupamiento:
 (si los argumentos de \code{...} no tienen nombre, se usa \code{V1}, \code{V2}, etc...)
 \item \code{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
 \item \code{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
-\item \code{longitud} (diferencia de fechas, drtn) duración de la ola
+\item \code{longitud} (diferencia de fechas, tipo drtn) duración de la ola
 }
 
-Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.
+Si una ola todavía no terminó, fin y longitud son NA.
 }
 \description{
 Identifica periodos de persistencia de un evento definido a partir de alguna
@@ -32,8 +32,8 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.
 \details{
 La función es sensible a los datos faltantes, esto quiere decir que si se
 encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y \code{\link[dplyr:group_by]{dplyr::group_by()}} para hacer
-este cálculo por grupos.
+Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y \code{\link[dplyr:group_by]{dplyr::group_by()}}
+para hacer este cálculo por grupos.
 }
 \examples{
 data(NH0358)

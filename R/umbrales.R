@@ -14,13 +14,14 @@
 #' Variables fijas
 #' * `extremo` (caracter) nombre del extremo definido por el usuario
 #' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
-#' * `N`` (numérico) ocurrencia del evento
+#' * `N` (numérico) ocurrencia del evento
 #' *`prop` (numérico) proporción eventos respecto del total de observaciones
 #' * `na` (numérico)  proporción de datos faltantes respecto del total de observaciones
 #'
 #' @examples
 #' data(NH0358)
 #' library(dplyr)
+#'
 #' # Sin agrupar devuelve un único valor
 #' NH0358 %>%
 #'  summarise(umbrales(t_30 = t_max >= 30))

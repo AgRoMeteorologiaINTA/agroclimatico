@@ -6,11 +6,11 @@
 #'
 #' La función es sensible a los datos faltantes, esto quiere decir que si se
 #' encuentra con un dato faltante la función "corta" el periodo de persistencia.
-#' Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()] para hacer
-#' este cálculo por grupos.
+#' Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()]
+#' para hacer este cálculo por grupos.
 #'
 #' @param fecha vector de fechas.
-#' @param ... mbral o umbrales a calcular utilizando operadores lógicos.
+#' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #'
 #' @return Devuelve un data.frame con 3 variables fijas y las posibles variables
 #' asociadas al agrupamiento:
@@ -18,9 +18,9 @@
 #' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
 #' * `inicio` (fecha) fecha de inicio de la ola o periodo de persistencia
 #' * `fin` (fecha) fecha de finalización de la ola o periodo de persistencia
-#' * `longitud` (diferencia de fechas, drtn) duración de la ola
+#' * `longitud` (diferencia de fechas, tipo drtn) duración de la ola
 #'
-#' Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.
+#' Si una ola todavía no terminó, fin y longitud son NA.
 #'
 #' @examples
 #' data(NH0358)
