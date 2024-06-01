@@ -69,7 +69,8 @@ datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by
 set.seed(42)
 datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
 
-with(datos, spi_indice(fecha, pp, escalas = 1:5))
+with(datos, spi_indice(fecha, pp, escalas = 1:5)) \%>\%
+slice_head(n = 10)
 
 # Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
 # cambien los valores viejos, hay que usar `referencia`
@@ -81,11 +82,13 @@ nuevos_datos <- rbind(datos, nuevos_datos)
 
 # Usando un vector lógico
 with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
-                       referencia = data.table::year(fecha) < 2016))
+                       referencia = data.table::year(fecha) < 2016)) \%>\%
+slice_head(n = 10)
 
 # O un data.frame
 with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
-                       referencia = spi_referencia(datos$fecha, datos$pp)))
+                       referencia = spi_referencia(datos$fecha, datos$pp))) \%>\%
+slice_head(n = 10)
 
 
 }

@@ -29,7 +29,8 @@
 #' datos$pp[datos_perdidos] <- NA
 #' datos_incompletos <- na.omit(datos) #Serie de datos a completar
 #'
-#' completar_serie(datos_incompletos, fechas, resolucion = "1 mes")
+#' completar_serie(datos_incompletos, fechas, resolucion = "1 mes") %>%
+#' slice_head(n = 10)
 #'
 #' @export
 completar_serie <- function(datos, fecha, resolucion, rango = range(fecha)) {

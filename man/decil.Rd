@@ -48,7 +48,8 @@ data(NH0358)
 
 # Deciles de precipitación usando como referencia la serie completa
 NH0358 \%>\%
-  mutate(deciles = decil(precip))
+  mutate(deciles = decil(precip)) \%>\%
+  slice_head(n = 10)
 
 # Deciles mensuales
 precip_mensual <- NH0358 \%>\%
