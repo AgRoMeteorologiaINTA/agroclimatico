@@ -79,7 +79,8 @@ posibles variables asociadas a los agrupamientos.</p>
 
 <p>Variables fijas</p><ul><li><p><code>extremo</code> (caracter) nombre del extremo definido por el usuario
 (si los argumentos de <code>...</code> no tienen nombre, se usa <code>V1</code>, <code>V2</code>, etc...)</p></li>
-<li><p><code>N`` (numérico) ocurrencia del evento *</code>prop` (numérico) proporción eventos respecto del total de observaciones</p></li>
+<li><p><code>N</code> (numérico) ocurrencia del evento
+*<code>prop</code> (numérico) proporción eventos respecto del total de observaciones</p></li>
 <li><p><code>na</code> (numérico)  proporción de datos faltantes respecto del total de observaciones</p></li>
 </ul></div>
     <div class="section level2">
@@ -92,6 +93,7 @@ Esto permite calcular distintos umbrales y obtener resultados para distintos gru
     <h2 id="ref-examples">Ejemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NH0358</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Sin agrupar devuelve un único valor</span></span></span>
 <span class="r-in"><span><span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu">umbrales</span><span class="op">(</span>t_30 <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></span>

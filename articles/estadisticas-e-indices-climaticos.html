@@ -166,11 +166,14 @@ ubicación de las estaciones.</p>
 <div class="section level2">
 <h2 id="análisis-de-la-precipitación">Análisis de la precipitación<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-de-la-precipitaci%C3%B3n"></a>
 </h2>
+<p>Trabajaremos con los datos de ejemplo provistos por el paquete, en
+este caso de la estación meteorológica Castelar (NH0358). Para eso
+calculamos los valores mensuales.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_mensuales</span> <span class="op">&lt;-</span> <span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>fecha <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/round_date.html" class="external-link">round_date</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="st">"month"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span>precip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">precip</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>            etp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">etp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>          etp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">etp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datos_mensuales</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
@@ -208,20 +211,20 @@ similar a su valor promedio. 1 indica que llovió el doble de lo normal,
 mientras que -0.5 significa que en ese mes llovió la mitad de lo que
 suele llover.</p>
 <p>Si la idea es usar esta medición para monitoreo, es importante fijar
-el período de referencia sobre el cual se calcula la precipitación
-media. De otra forma, a medida que se recolectan más datos, los
-promedios van a variar y con ellos los valores calculados. Entonces,
+el período de referencia sobre el cual se calcula la precipitación media
+(o climatología). De otra forma, a medida que se recolectan más datos,
+los promedios van a variar y con ellos los valores calculados. Entonces,
 para asegurarse de que los datos futuros no modifiquen los percentiles
 pasados, se puede especificar el período de referencia con el argumento
-<code>referencia</code>. Por ejemplo, este código devuelve el desvío de
-cada mes con respecto a la media anterior a 1980.</p>
+<code>referencia</code>. Por ejemplo, este código devuelve la anomalía
+porcentual de cada mes con respecto a la media anterior a 1980.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_mensuales</span> <span class="op">&lt;-</span> <span class="va">datos_mensuales</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>mes <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>anomalia <span class="op">=</span> <span class="fu"><a href="../reference/decil.html">anomalia_porcentual</a></span><span class="op">(</span><span class="va">precip</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, referencia <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">1980</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><code>referencia</code> también puede ser un vector numérico de
-precipitación. Esto es útil si se calcula el valor de referencia a parte
+precipitación. Esto es útil si se calcula el valor de referencia aparte
 y luego sólo se leen los nuevos datos.</p>
 <p>Otras funciones de agroclimatico tienen este argumento, así que para
 mantener este período fijo, se puede crear una nueva columna.</p>
@@ -243,7 +246,7 @@ mantener este período fijo, se puede crear una nueva columna.</p>
 <div class="section level3">
 <h3 id="deciles">Deciles<a class="anchor" aria-label="anchor" href="#deciles"></a>
 </h3>
-<p>Otor indicador que puede analizarse es el decil al que pertenece la
+<p>Otro indicador que puede analizarse es el decil al que pertenece la
 precipitación de cada mes.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_mensuales</span> <span class="op">&lt;-</span> <span class="va">datos_mensuales</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -261,8 +264,11 @@ precipitación de cada mes.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1951-04-01   2.00   <span style="color: #BB0000;">NaN</span>     4  -<span style="color: #BB0000;">0.456</span>  TRUE        2.07</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1951-05-01   7.47   <span style="color: #BB0000;">NaN</span>     5   2.52   TRUE        9.66</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1951-06-01   0.44   <span style="color: #BB0000;">NaN</span>     6  -<span style="color: #BB0000;">0.798</span>  TRUE        1.72</span></span></code></pre></div>
-<p>En este caso, si un mes cae en el decil 5, significa que la mitad de
-los meses (en el período de referencia) tiene menor precipitación.</p>
+<p>El resultado es el valor del decil exacto al que corresponde el valor
+de la precipitación teniendo en cuenta el periodo de referencia. Esto
+significa que decil podria ser un valor con decimales. En este caso, si
+un mes cae en el decil 5, significa que la mitad de los meses (en el
+período de referencia) tiene menor precipitación.</p>
 </div>
 <div class="section level3">
 <h3 id="índice-de-intensidad-de-sequía-de-palmer">Índice de intensidad de sequía de Palmer<a class="anchor" aria-label="anchor" href="#%C3%ADndice-de-intensidad-de-sequ%C3%ADa-de-palmer"></a>
@@ -291,16 +297,23 @@ el PSDI usando los coeficientes originales de Palmer y una función
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">datos_mensuales</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">pdsi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<p>Teniendo en cuenta que este indice usa coeficientes calculados a
+partir de observaciones en ubicaciones específicas en Estados Unidos, es
+posible definir nuevos coeficientes con la función
+<code><a href="../reference/pdsi_coeficientes.html">pdsi_coeficientes()</a></code>.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="índice-estandarizado-de-precipitación">Índice Estandarizado de Precipitación<a class="anchor" aria-label="anchor" href="#%C3%ADndice-estandarizado-de-precipitaci%C3%B3n"></a>
 </h2>
 <p>A diferencia de los otros índices en el Índice Estandarizado de
-Precipitación, a cada observación le puede corresponder más de un valor
-(uno por cada escala) y además devuelve una serie completa (es decir,
-sin datos faltanes implícitos). Por lo tanto, en vez de usarla con
-<code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, se usa con <code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code>.</p>
+Precipitación (SPI), a cada observación le puede corresponder más de un
+valor (uno por cada escala temporal usada) y además devuelve una serie
+completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez
+de usarla con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, se usa con <code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code>
+ya que devuelve un data.frame.</p>
+<p>En este caso calculamos el spi para escalas de 1 a 12 meses ya que la
+variable de precipitación tiene resolución mensual.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spi</span> <span class="op">&lt;-</span> <span class="va">datos_mensuales</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/spi_indice.html">spi_indice</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">precip</span>, escalas <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, referencia <span class="op">=</span> <span class="va">referencia</span><span class="op">)</span><span class="op">)</span></span>
@@ -316,13 +329,14 @@ sin datos faltanes implícitos). Por lo tanto, en vez de usarla con
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1951-05-01      1  1.98 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1951-06-01      1 -<span style="color: #BB0000;">1.07</span></span></span></code></pre></div>
 <p>Para seguir la serie temporal en una escala en particular, primero
-hay que filtrarla (o calcular el spi sólo para esa escala)</p>
+hay que filtrarla (o calcular el spi sólo para esa escala). Veamos que
+sucede con el SPI para una escala de 3 meses.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">spi</span>, <span class="va">escala</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">spi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-15-1.png" width="672"></p>
 <p>Para visualizar todas las escalas computadas, se puede usar
-<code><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour_filled()</a></code></p>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour_filled()</a></code>:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">spi</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">escala</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour_filled</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">spi</span>, fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html" class="external-link">after_stat</a></span><span class="op">(</span><span class="va">level_mid</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -332,11 +346,15 @@ hay que filtrarla (o calcular el spi sólo para esa escala)</p>
 <div class="section level2">
 <h2 id="análisis-de-extremos">Análisis de extremos<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-de-extremos"></a>
 </h2>
+<p>Una de las principales funciones para analizar extremos es
+<code><a href="../reference/umbrales.html">umbrales()</a></code> que devuelve la cantidad de observaciones que
+cumplen con un determinado umbral, en general un extremo de temperatura
+o precipitación.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">extremos</span> <span class="op">&lt;-</span> <span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>anio <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/umbrales.html">umbrales</a></span><span class="op">(</span>helada <span class="op">=</span> <span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span>,</span>
-<span>                     mucho_calor <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span>
+<span>                   mucho_calor <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">extremos</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
 <span><span class="co">#&gt;    anio extremo         N   prop      na</span></span>
@@ -365,10 +383,13 @@ series estén completas. Es decir, sin datos faltanes implícitos. Para
 completar la serie, se puede usar la función
 <code><a href="../reference/completar_serie.html">completar_serie()</a></code>. Ësta función toma un vector de fechas y
 la resolución esperada de los datos y agrega las filas faltantes,
-poniendo <code>NA</code> en las columnas. Para tablas con datos para
-múltiples estaciones o localidades, conviene primero agrupar.</p>
+poniendo <code>NA</code> en las columnas asociadas a las variables
+observadas. Para tablas con datos para múltiples estaciones o
+localidades, conviene primero agrupar.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">completa</span> <span class="op">&lt;-</span> <span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="va">dos_estaciones</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">NH0358</span>, <span class="va">NH0114</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">completa</span> <span class="op">&lt;-</span> <span class="va">dos_estaciones</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">codigo_nh</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/completar_serie.html">completar_serie</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="st">"1 dia"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -387,6 +408,20 @@ la primera y la última helada, para eso se puede usar la función
 <span><span class="co">#&gt; 2 ultimo_dia  31   8         243</span></span></code></pre></div>
 <p>La primera helada se da, en promedio, el 25 de junio y la úĺtima el
 30 de agosto.</p>
+<p>De igual manera, es posible calcular días promedio para grupos. En
+este caso estaciones.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dos_estaciones</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">codigo_nh</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/dias_promedio.html">dias_promedio</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
+<span><span class="co">#&gt;   codigo_nh variable     dia   mes dia_juliano</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0114      primer_dia    30     6         181</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0114      ultimo_dia     7     8         219</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0358      primer_dia    28     5         148</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0358      ultimo_dia    31     8         243</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="persistencia">Persistencia<a class="anchor" aria-label="anchor" href="#persistencia"></a>
 </h3>
@@ -394,11 +429,11 @@ la primera y la última helada, para eso se puede usar la función
 consecutivos con el extremo. La función <code>olas</code> (olas de
 calor, olas de frío) divide una serie de fechas en eventos de
 observaciones consecutivas donde se se da una condición lógica.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">olas_de_temperatura</span> <span class="op">&lt;-</span> <span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu"><a href="../reference/olas.html">olas</a></span><span class="op">(</span><span class="va">fecha</span>, </span>
-<span>                 mucho_calor <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">25</span>, </span>
-<span>                 helada <span class="op">=</span> <span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span>               mucho_calor <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">25</span>, </span>
+<span>               helada <span class="op">=</span> <span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">olas_de_temperatura</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           ola     inicio        fin longitud</span></span>
@@ -410,7 +445,7 @@ observaciones consecutivas donde se se da una condición lógica.</p>
 <span><span class="co">#&gt; 6 mucho_calor 1951-03-01 1951-03-03   3 days</span></span></code></pre></div>
 <p>Nuevamente, se podría visualizar el cambio en la longitud promedio de
 las olas de calor y de olas de heladas de esta forma:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">olas_de_temperatura</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ola</span>, anio <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">inicio</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>longitud <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">longitud</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -418,7 +453,7 @@ las olas de calor y de olas de heladas de esta forma:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"glm"</span>, method.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"quasipoisson"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">ola</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> </span></code></pre></div>
-<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-22-1.png" width="672"></p>
+<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-23-1.png" width="672"></p>
 </div>
 </div>
 <div class="section level2">
@@ -427,22 +462,44 @@ las olas de calor y de olas de heladas de esta forma:</p>
 <p>Si se tienen observaciones en estaciones, la función
 <code><a href="../reference/mapear.html">mapear()</a></code> genera un mapa de contornos llenos con el mapa de
 Argentina, países limítrofes y logo del INTA.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">496</span><span class="op">)</span></span>
-<span><span class="va">datos_aleatorios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="fu"><a href="../reference/metadatos_nh.html">metadatos_nh</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">datos_aleatorios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">datos_aleatorios</span>, pp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">rgamma</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">datos_aleatorios</span><span class="op">)</span>, <span class="fl">0.5</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">70</span><span class="op">)</span></span></code></pre></div>
+<p>Usamos los datos mensuales en estaciones meteorológicas provistos por
+el paquete.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">datos_aleatorios</span>, <span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">pp</span>, <span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-24-1.png" width="672"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datos_nh_mensual</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           mes precipitacion_mensual temperatura_media_mensual codigo_nh</span></span>
+<span><span class="co">#&gt;        &lt;Date&gt;                 &lt;num&gt;                     &lt;num&gt;    &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1: 2019-01-01                  96.1                 22.612903      0446</span></span>
+<span><span class="co">#&gt; 2: 2019-02-01                   8.2                 21.348214      0446</span></span>
+<span><span class="co">#&gt; 3: 2019-03-01                  58.8                 18.064516      0446</span></span>
+<span><span class="co">#&gt; 4: 2019-04-01                  10.0                 16.658333      0446</span></span>
+<span><span class="co">#&gt; 5: 2019-05-01                  61.0                 12.196774      0446</span></span>
+<span><span class="co">#&gt; 6: 2019-06-01                  31.4                  9.471667      0446</span></span>
+<span><span class="co">#&gt;    estacion provincia organismo   lat    lon altura</span></span>
+<span><span class="co">#&gt;      &lt;char&gt;    &lt;char&gt;    &lt;char&gt; &lt;num&gt;  &lt;num&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span>
+<span><span class="co">#&gt; 2:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span>
+<span><span class="co">#&gt; 3:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span>
+<span><span class="co">#&gt; 4:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span>
+<span><span class="co">#&gt; 5:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span>
+<span><span class="co">#&gt; 6:   Anguil  La Pampa      INTA -36.5 -63.98    165</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">abril</span> <span class="op">&lt;-</span> <span class="va">datos_nh_mensual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mes</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">#datos del cuarto mes en la base, abril.</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">abril</span>, <span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span>, variable <span class="op">=</span> <span class="st">"pp"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-25-1.png" width="672"></p>
 <p>Con el argumento <code>escala</code> se puede definir la escala de
 colores y, opcionalmente, los niveles en los niveles a graficar. Esto
 permite tener mapas consistentes. El paquete viene con una serie de
 escalas ya definidas (ver ?escalas) y la función
 <code><a href="../reference/leer_surfer.html">leer_surfer()</a></code> que permite generar estas escalas a partir de
 los archivos .lvl que usa el programa Surfer.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">datos_aleatorios</span>, <span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">pp</span>, <span class="va">lon</span>, <span class="va">lat</span>, escala <span class="op">=</span> <span class="va">escala_pp_diaria</span>, cordillera <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-25-1.png" width="672"></p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">abril</span>, <span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span>, </span>
+<span>       escala <span class="op">=</span> <span class="va">escala_pp_diaria</span>, </span>
+<span>       cordillera <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>       variable <span class="op">=</span> <span class="st">"pp"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-26-1.png" width="672"></p>
 <p>El argumento <code>cordillera</code> controla si se va a pintar de
 gris las regiones de altura, donde el kriging que se usa para interpolar
 los datos entre los puntos observados posiblemente sea aún menos válido
@@ -450,12 +507,15 @@ que en el resto del territorio.</p>
 <p>Finalmente, los argumentos <code>titulo</code>,
 <code>subtitulo</code> y <code>fuente</code> permiten agregar
 información extra.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">datos_aleatorios</span>, <span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">pp</span>, <span class="va">lon</span>, <span class="va">lat</span>, escala <span class="op">=</span> <span class="va">escala_pp_diaria</span>, cordillera <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                              titulo <span class="op">=</span> <span class="st">"Precipitación"</span>, </span>
-<span>                              subtitulo <span class="op">=</span> <span class="st">"Para algún día"</span>,</span>
-<span>                              fuente <span class="op">=</span> <span class="st">"Fuente: rgamma"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-26-1.png" width="672"></p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/mapear.html">mapear</a></span><span class="op">(</span><span class="va">abril</span>, <span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span>, </span>
+<span>       escala <span class="op">=</span> <span class="va">escala_pp_diaria</span>, </span>
+<span>       cordillera <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>       titulo <span class="op">=</span> <span class="st">"Precipitación"</span>, </span>
+<span>       subtitulo <span class="op">=</span> <span class="st">"Para algún día"</span>,</span>
+<span>       fuente <span class="op">=</span> <span class="st">"Fuente: INTA"</span>,</span>
+<span>       variable <span class="op">=</span> <span class="st">"pp"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="estadisticas-e-indices-climaticos_files/figure-html/unnamed-chunk-27-1.png" width="672"></p>
 <p>Como <code><a href="../reference/mapear.html">mapear()</a></code> devuelve un objeto de ggplot2, se puede
 seguir customizando con cualquier función de ese paquete.</p>
 </div>

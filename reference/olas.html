@@ -73,7 +73,7 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.</p>
 
 
 <dt>...</dt>
-<dd><p>mbral o umbrales a calcular utilizando operadores lógicos.</p></dd>
+<dd><p>umbral o umbrales a calcular utilizando operadores lógicos.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -85,15 +85,15 @@ asociadas al agrupamiento:</p><ul><li><p><code>ola</code> (caracter) nombre de l
 (si los argumentos de <code>...</code> no tienen nombre, se usa <code>V1</code>, <code>V2</code>, etc...)</p></li>
 <li><p><code>inicio</code> (fecha) fecha de inicio de la ola o periodo de persistencia</p></li>
 <li><p><code>fin</code> (fecha) fecha de finalización de la ola o periodo de persistencia</p></li>
-<li><p><code>longitud</code> (diferencia de fechas, drtn) duración de la ola</p></li>
-</ul><p>Si una ola todavía no terminó, su día de fin es NA y su longitud es NA.</p>
+<li><p><code>longitud</code> (diferencia de fechas, tipo drtn) duración de la ola</p></li>
+</ul><p>Si una ola todavía no terminó, fin y longitud son NA.</p>
     </div>
     <div class="section level2">
     <h2 id="detalles">Detalles<a class="anchor" aria-label="anchor" href="#detalles"></a></h2>
     <p>La función es sensible a los datos faltantes, esto quiere decir que si se
 encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">dplyr::summarise()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code> para hacer
-este cálculo por grupos.</p>
+Puede utilizarse en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">dplyr::summarise()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code>
+para hacer este cálculo por grupos.</p>
     </div>
 
     <div class="section level2">

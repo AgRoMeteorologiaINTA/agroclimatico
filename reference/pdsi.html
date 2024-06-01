@@ -60,24 +60,15 @@ psdi_ac() calcula la versión autocalibrada."><meta property="og:image" content=
 
     <div class="section level2">
     <h2 id="ref-usage">Uso<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pdsi</span><span class="op">(</span><span class="va">precipitacion</span>, <span class="va">etp</span>, cc <span class="op">=</span> <span class="fl">100</span>, coeficientes <span class="op">=</span> <span class="fu">pdsi_coeficientes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pdsi</span><span class="op">(</span><span class="va">precipitacion</span>, <span class="va">etp</span>, cc <span class="op">=</span> <span class="fl">100</span>, coeficientes <span class="op">=</span> <span class="fu"><a href="pdsi_coeficientes.html">pdsi_coeficientes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pdsi_ac</span><span class="op">(</span><span class="va">precipitacion</span>, <span class="va">etp</span>, cc <span class="op">=</span> <span class="fl">100</span>, coeficientes <span class="op">=</span> <span class="fu">pdsi_coeficientes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">pdsi_coeficientes</span><span class="op">(</span></span>
-<span>  p <span class="op">=</span> <span class="fl">0.897</span>,</span>
-<span>  q <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
-<span>  K1.1 <span class="op">=</span> <span class="fl">1.5</span>,</span>
-<span>  K1.2 <span class="op">=</span> <span class="fl">2.8</span>,</span>
-<span>  K1.3 <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  K2 <span class="op">=</span> <span class="fl">17.67</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pdsi_ac</span><span class="op">(</span><span class="va">precipitacion</span>, <span class="va">etp</span>, cc <span class="op">=</span> <span class="fl">100</span>, coeficientes <span class="op">=</span> <span class="fu"><a href="pdsi_coeficientes.html">pdsi_coeficientes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="argumentos">Argumentos<a class="anchor" aria-label="anchor" href="#argumentos"></a></h2>
     <dl><dt>precipitacion</dt>
-<dd><p>serie de precipitación sin datos faltantes.</p></dd>
+<dd><p>serie de precipitación sin datos faltantes (en mm).</p></dd>
 
 
 <dt>etp</dt>
@@ -89,15 +80,7 @@ psdi_ac() calcula la versión autocalibrada."><meta property="og:image" content=
 
 
 <dt>coeficientes</dt>
-<dd><p>list de coeficientes que devuelve <code>pdsi_coeficientes()</code></p></dd>
-
-
-<dt>p, q</dt>
-<dd><p>factores de duración</p></dd>
-
-
-<dt>K1.1, K1.2, K1.3, K2</dt>
-<dd><p>coeficientes de características climáticas</p></dd>
+<dd><p>lista de coeficientes que devuelve <code><a href="pdsi_coeficientes.html">pdsi_coeficientes()</a></code></p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -108,13 +91,21 @@ psdi_ac() calcula la versión autocalibrada."><meta property="og:image" content=
     </div>
     <div class="section level2">
     <h2 id="detalles">Detalles<a class="anchor" aria-label="anchor" href="#detalles"></a></h2>
-    <p>El Índice de Severidad de Sequía de Palmer, propuesto por Palmer (1965) es usado como indicador para
-cuantificar las condiciones de sequía a largo plazo. El el cálculo usa constantes definidas empíricamente,
-originalmente utilizando datos meteorológicos de Kansas y de Iowa en Estados Unidos. Estas constantes no
-representan necesariamente cualquier región del planeta por lo que puede ser redefinidas para el cálculo
-del índice usando la función <code>pdsi_coeficientes()</code>.</p>
+    <p>El Índice de Severidad de Sequía de Palmer, propuesto por Palmer (1965) es usado
+como indicador para cuantificar las condiciones de sequía a largo plazo. El
+cálculo usa constantes definidas empíricamente, originalmente utilizando datos
+meteorológicos de Kansas y de Iowa en Estados Unidos. Estas constantes no
+representan necesariamente cualquier región del planeta por lo que puede ser
+redefinidas para el cálculo del índice usando la función
+del índice usando la función <code><a href="pdsi_coeficientes.html">pdsi_coeficientes()</a></code>.</p>
 <p>Alternativamente, Wells et al. (2004) propuso el Indice de Severidad de Sequía de Palmer Autocalibrado
 que tiene la capacidad de ajustar las constantes empíricas durante el cálculo del indice.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="referencias">Referencias<a class="anchor" aria-label="anchor" href="#referencias"></a></h2>
+    <p>Palmer (1965), Meteorological Drought. U.S Weather Bureau, Washington, D.C. (book).</p>
+<p>Wells et. al. (2004), A Self-Calibrating Palmer Drought Severity Index. Journal
+of Climate <a href="https://doi.org/10.1175/1520-0442%282004%29017%3C2335%3AASPDSI%3E2.0.CO%3B2" class="external-link">doi:10.1175/1520-0442(2004)017&lt;2335:ASPDSI&gt;2.0.CO;2</a></p>
     </div>
 
     <div class="section level2">
