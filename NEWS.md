@@ -1,5 +1,19 @@
 # agroclimatico 1.0.0 
 
+## 29/05/2024 - [Revisión para rOpenSci](https://github.com/ropensci/software-review/issues/599)
+
+* Mejora la documentación de casi todas las funciones:
+  * Ahora hay menos errores de tipeo
+  * Hay más ejemplos con datos reales
+  * Referencias a papers y fuentes de información
+
+* Agrega datos de una segunda estación meteorológica  para calculos por grupo y
+datos mensuales para mapas.
+
+* Ahora `mapear()` recibe el data.frame de datos como primer argumento
+
+* Arregla error en `compeltar_serie()` para que acepte tanto "dia" como "1 dia"
+
 ## 04/12/2023
 
 * Cambia el nombre del paquete a agroclimatico
