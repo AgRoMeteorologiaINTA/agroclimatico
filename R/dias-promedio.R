@@ -33,10 +33,10 @@
 #' library(dplyr)
 #' NH0358 %>%
 #'   filter(t_min <= 0) %>%
-#'   summarise(dias_promedio(fecha))
+#'   reframe(dias_promedio(fecha))
 #'
 #' # Por grupos, si tenemos por ejemplo más de una estación
-#' data(NH0144)
+#' data(NH0114)
 #'
 #' rbind(NH0358, NH0114) %>%
 #'   filter(t_min <= 0) %>%
