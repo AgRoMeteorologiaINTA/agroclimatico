@@ -77,6 +77,15 @@ usethis::use_data(arg_buffer, arg_buffer_limite, arg_grid, mapa_argentina_limitr
                   overwrite = TRUE, internal = TRUE)
 
 ## code to prepare `datos_nh_mensual` dataset goes here
+library(data.table)
+
+escape_unicode <- function(x) {
+  if (!is.character(x)) {
+    return(x)
+  }
+
+  stringi::stri_escape_unicode(x)
+}
 
 datos_nh_mensual <- Sys.glob("data-raw/NH*csv") |>
   lapply(fread) |>
@@ -87,6 +96,9 @@ datos_nh_mensual <- Sys.glob("data-raw/NH*csv") |>
     by = .(id, mes = lubridate::floor_date(fecha, "month"))] |>
   _[, codigo_nh := gsub("NH", "", id)] |>
   _[, id := NULL] |>
-  _[metadatos_nh(), on = .NATURAL]
+  _[metadatos_nh(), on = .NATURAL] |>
+  _[, lapply(.SD, escape_unicode)]
 
-usethis::use_data(datos_nh_mensual)
+
+
+usethis::use_data(datos_nh_mensual, overwrite = TRUE)
