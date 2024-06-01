@@ -25,7 +25,7 @@ void pdsi::Rext_init(NumericVector& P, NumericVector& PE,
   calibrationEndYear = calib_e_yr;
 
   if(input_len != PE.length())
-    Rf_error("Length of input P (%d) is not equal to input PE (%lld).",
+    Rf_error("Length of input P (%d) is not equal to input PE (%ld).",
              input_len, PE.length());
 
   if(calibrationStartYear < startyear) {

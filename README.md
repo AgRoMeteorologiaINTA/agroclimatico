@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions)
+[![R-CMD-check](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master)
 [![Status at rOpenSci Software Peer
@@ -87,7 +86,7 @@ datos %>%
 La función `mapear()` grafica una variable dada en puntos discretos e
 irregulares (en general observaciones o datos derivados de estaciones
 meteorológicas) utilizando kriging. Se puede definir el título y
-epígrafe y opcionamente se puede incluir la cordillara para enmascarar
+epígrafe y opcionamente se puede incluir la cordillera para enmascarar
 la variable a graficar.
 
 ``` r

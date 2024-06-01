@@ -17,10 +17,9 @@ knitr::opts_chunk$set(
 
 
 <!-- badges: start -->
-[![R build status](https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions)
+[![R-CMD-check](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci/software-review/issues/599)
-[![R-CMD-check](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo `umbrales()` permite contar la cantidad de observaciones que cumplen una determinada condición y `dias_promedio()` devuelve el primer y último día del año promedio de ocurrencia de un evento. 
