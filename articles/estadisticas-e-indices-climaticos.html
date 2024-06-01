@@ -188,8 +188,8 @@ calculamos los valores mensuales.</p>
 <div class="section level3">
 <h3 id="anomalía-porcentual">Anomalía porcentual<a class="anchor" aria-label="anchor" href="#anomal%C3%ADa-porcentual"></a>
 </h3>
-<p>Una primera aproximacion es calcular cuánto se desvía la
-precipitación cada mes de su valor típico en procentaje.</p>
+<p>Una primera aproximación es calcular cuánto se desvía la
+precipitación cada mes de su valor típico en porcentaje.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_mensuales</span> <span class="op">&lt;-</span> <span class="va">datos_mensuales</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>mes <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -309,9 +309,9 @@ posible definir nuevos coeficientes con la función
 <p>A diferencia de los otros índices en el Índice Estandarizado de
 Precipitación (SPI), a cada observación le puede corresponder más de un
 valor (uno por cada escala temporal usada) y además devuelve una serie
-completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez
-de usarla con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, se usa con <code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code>
-ya que devuelve un data.frame.</p>
+completa (es decir, sin datos faltantes implícitos). Por lo tanto, en
+vez de usarla con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, se usa con
+<code><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe()</a></code> ya que devuelve un data.frame.</p>
 <p>En este caso calculamos el spi para escalas de 1 a 12 meses ya que la
 variable de precipitación tiene resolución mensual.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -406,7 +406,7 @@ la primera y la última helada, para eso se puede usar la función
 <span><span class="co">#&gt;     variable dia mes dia_juliano</span></span>
 <span><span class="co">#&gt; 1 primer_dia  28   5         148</span></span>
 <span><span class="co">#&gt; 2 ultimo_dia  31   8         243</span></span></code></pre></div>
-<p>La primera helada se da, en promedio, el 25 de junio y la úĺtima el
+<p>La primera helada se da, en promedio, el 25 de junio y la última el
 30 de agosto.</p>
 <p>De igual manera, es posible calcular días promedio para grupos. En
 este caso estaciones.</p>
