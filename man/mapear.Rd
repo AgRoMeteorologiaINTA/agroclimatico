@@ -25,6 +25,8 @@ coord_argentina(xlim = c(-77, -50), ylim = c(-57, -20), ...)
 theme_inta_mapa(...)
 }
 \arguments{
+\item{data}{data.frame o similar con las variables a utilizar.}
+
 \item{valor}{vector con los valores medidos.}
 
 \item{lon, lat}{vectores de ubicación en longitud y latitud.}

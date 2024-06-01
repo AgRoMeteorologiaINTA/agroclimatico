@@ -6,6 +6,7 @@
 #' generar un mapa en la región de Argentina (definida por `xlim` y `ylim`) con
 #' el estilo específico usando por INTA.
 #'
+#' @param data data.frame o similar con las variables a utilizar.
 #' @param valor vector con los valores medidos.
 #' @param lon,lat vectores de ubicación en longitud y latitud.
 #' @param breaks vector numérico que define para que valores se graficará los
