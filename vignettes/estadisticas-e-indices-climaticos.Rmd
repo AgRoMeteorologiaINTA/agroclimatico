@@ -2,11 +2,11 @@
 title: "Estadísticas e índices climáticos"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Estadísticas e índices climáticos}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+ %\VignetteIndexEntry{Estadísticas e índices climáticos}
+ %\VignetteEngine{knitr::rmarkdown}
+ %\VignetteEncoding{UTF-8}
 ---
-
+  
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
 collapse = TRUE,
@@ -60,13 +60,15 @@ plot(metadatos_nh(lon = c(-75, -71)))
 
 ## Análisis de la precipitación
 
-
+Trabajaremos con los datos de ejemplo provistos por el paquete, en este caso 
+de la estación meteorológica Castelar (NH0358). Para eso calculamos los valores
+mensuales.
 
 ```{r}
 datos_mensuales <- NH0358 %>% 
   group_by(fecha = lubridate::round_date(fecha, "month")) %>% 
   reframe(precip = mean(precip, na.rm = TRUE),
-            etp = mean(etp, na.rm = TRUE))
+          etp = mean(etp, na.rm = TRUE))
 
 head(datos_mensuales)
 ```
@@ -87,7 +89,7 @@ head(datos_mensuales)
 
 Valores cercanos a cero implican que la precipitación de ese mes fue similar a su valor promedio. 1 indica que llovió el doble de lo normal, mientras que -0.5 significa que en ese mes llovió la mitad de lo que suele llover. 
 
-Si la idea es usar esta medición para monitoreo, es importante fijar el período de referencia sobre el cual se calcula la precipitación media. De otra forma, a medida que se recolectan más datos, los promedios van a variar y con ellos los valores calculados. Entonces, para asegurarse de que los datos futuros no modifiquen los percentiles pasados, se puede especificar el período de referencia con el argumento `referencia`. Por ejemplo, este código devuelve el desvío de cada mes con respecto a la media anterior a 1980. 
+Si la idea es usar esta medición para monitoreo, es importante fijar el período de referencia sobre el cual se calcula la precipitación media (o climatología). De otra forma, a medida que se recolectan más datos, los promedios van a variar y con ellos los valores calculados. Entonces, para asegurarse de que los datos futuros no modifiquen los percentiles pasados, se puede especificar el período de referencia con el argumento `referencia`. Por ejemplo, este código devuelve la anomalía porcentual de cada mes con respecto a la media anterior a 1980. 
 
 ```{r}
 datos_mensuales <- datos_mensuales %>% 
@@ -96,7 +98,7 @@ datos_mensuales <- datos_mensuales %>%
   ungroup()
 ```
 
-`referencia` también puede ser un vector numérico de precipitación. Esto es útil si se calcula el valor de referencia a parte y luego sólo se leen los nuevos datos. 
+`referencia` también puede ser un vector numérico de precipitación. Esto es útil si se calcula el valor de referencia aparte y luego sólo se leen los nuevos datos. 
 
 Otras funciones de agroclimatico tienen este argumento, así que para mantener este período fijo, se puede crear una nueva columna. 
 
@@ -109,7 +111,7 @@ head(datos_mensuales)
 
 ### Deciles
 
-Otor indicador que puede analizarse es el decil al que pertenece la precipitación de cada mes. 
+Otro indicador que puede analizarse es el decil al que pertenece la precipitación de cada mes. 
 
 ```{r}
 datos_mensuales <- datos_mensuales %>% 
@@ -120,6 +122,7 @@ datos_mensuales <- datos_mensuales %>%
 head(datos_mensuales)
 ```
 
+El resultado es el valor del decil exacto al que corresponde el valor de la precipitación teniendo en cuenta el periodo de referencia. Esto significa que decil podria ser un valor con decimales.
 En este caso, si un mes cae en el decil 5, significa que la mitad de los meses (en el período de referencia) tiene menor precipitación. 
 
 
@@ -140,14 +143,14 @@ ggplot(datos_mensuales, aes(fecha, pdsi)) +
   geom_line()
 ```
 
-
+Teniendo en cuenta que este indice usa coeficientes calculados a partir de observaciones en ubicaciones específicas en Estados Unidos, es posible definir nuevos coeficientes con la función `pdsi_coeficientes()`.
 
 
 ## Índice Estandarizado de Precipitación
 
-A diferencia de los otros índices en el Índice Estandarizado de Precipitación, a cada observación le puede corresponder más de un valor (uno por cada escala) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `reframe()`.
+A diferencia de los otros índices en el Índice Estandarizado de Precipitación (SPI), a cada observación le puede corresponder más de un valor (uno por cada escala temporal usada) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `reframe()` ya que devuelve un data.frame.
 
-
+En este caso calculamos el spi para escalas de 1 a 12 meses ya que la variable de precipitación tiene resolución mensual. 
 
 ```{r}
 spi <- datos_mensuales %>% 
@@ -156,14 +159,14 @@ spi <- datos_mensuales %>%
 head(spi)
 ```
 
-Para seguir la serie temporal en una escala en particular, primero hay que filtrarla (o calcular el spi sólo para esa escala)
+Para seguir la serie temporal en una escala en particular, primero hay que filtrarla (o calcular el spi sólo para esa escala). Veamos que sucede con el SPI para una escala de 3 meses.
 
 ```{r}
 ggplot(filter(spi, escala == 3), aes(fecha, spi)) +
   geom_line()
 ```
 
-Para visualizar todas las escalas computadas, se puede usar `geom_contour_filled()`
+Para visualizar todas las escalas computadas, se puede usar `geom_contour_filled()`:
 
 
 ```{r}
@@ -174,13 +177,13 @@ ggplot(spi, aes(fecha, escala)) +
 
 ## Análisis de extremos
 
-
+Una de las principales funciones para analizar extremos es `umbrales()` que devuelve la cantidad de observaciones que cumplen con un determinado umbral, en general un extremo de temperatura o precipitación. 
 
 ```{r}
 extremos <- NH0358 %>% 
   group_by(anio = year(fecha)) %>% 
   reframe(umbrales(helada = t_min <= 0,
-                     mucho_calor = t_max >= 25))
+                   mucho_calor = t_max >= 25))
 head(extremos)
 ```
 
@@ -196,14 +199,15 @@ extremos %>%
   facet_wrap(~extremo, scales = "free")
 ```
 
-Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltanes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Ësta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
+Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltanes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Ësta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas asociadas a las variables observadas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
 
 ```{r}
-completa <- NH0358 %>% 
+dos_estaciones <- rbind(NH0358, NH0114)
+
+completa <- dos_estaciones %>% 
   group_by(codigo_nh) %>% 
   completar_serie(fecha, "1 dia")
 ```
-
 
 
 ## Dia promedio de inicio y fin
@@ -217,6 +221,16 @@ NH0358 %>%
 ```
 La primera helada se da, en promedio, el 25 de junio y la úĺtima el 30 de agosto.
 
+De igual manera, es posible calcular días promedio para grupos. En este caso estaciones.
+
+```{r}
+dos_estaciones %>% 
+  filter(t_min <= 0) %>%
+  group_by(codigo_nh) %>% 
+  reframe(dias_promedio(fecha))
+```
+
+
 
 ### Persistencia 
 
@@ -225,8 +239,8 @@ Un dato importante para cualquier extremo es la longitud de días consecutivos c
 ```{r}
 olas_de_temperatura <- NH0358 %>% 
   reframe(olas(fecha, 
-                 mucho_calor = t_max >= 25, 
-                 helada = t_min <= 0))
+               mucho_calor = t_max >= 25, 
+               helada = t_min <= 0))
 
 head(olas_de_temperatura)
 ```
@@ -247,21 +261,27 @@ olas_de_temperatura %>%
 
 Si se tienen observaciones en estaciones, la función `mapear()` genera un mapa de contornos llenos con el mapa de Argentina, países limítrofes y logo del INTA. 
 
+Usamos los datos mensuales en estaciones meteorológicas provistos por el paquete.
+
 ```{r}
-set.seed(496)
-datos_aleatorios <- subset(metadatos_nh())
-datos_aleatorios <- data.frame(datos_aleatorios, pp = rgamma(nrow(datos_aleatorios), 0.5, scale = 1)*70)
+head(datos_nh_mensual)
 ```
 
 ```{r}
-with(datos_aleatorios, mapear(pp, lon, lat))
+abril <- datos_nh_mensual %>%
+  filter(mes == unique(mes)[4]) #datos del cuarto mes en la base, abril.
+
+mapear(abril, precipitacion_mensual, lon, lat, variable = "pp")
 ```
 
 Con el argumento `escala` se puede definir la escala de colores y, opcionalmente, los niveles en los niveles a graficar. Esto permite tener mapas consistentes. El paquete viene con una serie de escalas ya definidas (ver ?escalas) y la función `leer_surfer()` que permite generar estas escalas a partir de los archivos .lvl que usa el programa Surfer. 
 
 
 ```{r}
-with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE))
+mapear(abril, precipitacion_mensual, lon, lat, 
+       escala = escala_pp_diaria, 
+       cordillera = TRUE,
+       variable = "pp")
 ```
 
 El argumento `cordillera` controla si se va a pintar de gris las regiones de altura, donde el kriging que se usa para interpolar los datos entre los puntos observados posiblemente sea aún menos válido que en el resto del territorio. 
@@ -269,10 +289,13 @@ El argumento `cordillera` controla si se va a pintar de gris las regiones de alt
 Finalmente, los argumentos `titulo`, `subtitulo` y `fuente` permiten agregar información extra.
 
 ```{r}
-with(datos_aleatorios, mapear(pp, lon, lat, escala = escala_pp_diaria, cordillera = TRUE,
-                              titulo = "Precipitación", 
-                              subtitulo = "Para algún día",
-                              fuente = "Fuente: rgamma"))
+mapear(abril, precipitacion_mensual, lon, lat, 
+       escala = escala_pp_diaria, 
+       cordillera = TRUE,
+       titulo = "Precipitación", 
+       subtitulo = "Para algún día",
+       fuente = "Fuente: INTA",
+       variable = "pp")
 ```
 
 Como `mapear()` devuelve un objeto de ggplot2, se puede seguir customizando con cualquier función de ese paquete.
