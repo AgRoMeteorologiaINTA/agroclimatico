@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' # Datos de prueba completos
-#' datos <- data.frame(fechas = seq(as.Date("1985-01-01"), as.Date("2015-12-01"),
+#' datos <- data.frame(fechas = seq(as.Date("2013-01-01"), as.Date("2015-12-01"),
 #'                              by = "1 month"),
 #'                     pp = 1)
 #'
@@ -29,8 +29,7 @@
 #' datos$pp[datos_perdidos] <- NA
 #' datos_incompletos <- na.omit(datos) #Serie de datos a completar
 #'
-#' completar_serie(datos_incompletos, fechas, resolucion = "1 mes") %>%
-#' slice_head(n = 10)
+#' completar_serie(datos_incompletos, fechas, resolucion = "1 mes")
 #'
 #' @export
 completar_serie <- function(datos, fecha, resolucion, rango = range(fecha)) {

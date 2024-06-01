@@ -41,6 +41,9 @@
 #' R Package [SPEI: Calculation of the Standardized Precipitation-Evapotranspiration Index](https://cran.r-project.org/package=SPEI)
 ##
 #' @examples
+#'
+#' library(dplyr)
+#'
 #' # datos aleatorios
 #' datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
 #' set.seed(42)

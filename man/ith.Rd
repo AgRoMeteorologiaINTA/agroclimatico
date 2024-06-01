@@ -28,8 +28,7 @@ que se encuentra expuesto el animal. Para bovinos se categoriza como:
 Calcula el índice de temperatura y humedad (ITH)
 }
 \examples{
-ith(temperatura = 23, hr = 65) \%>\%
-slice_head(n = 10)
+ith(temperatura = 23, hr = 65)
 
 data(NH0358)
 

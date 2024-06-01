@@ -21,8 +21,7 @@
 #' * Armstrong, DV. 1994. Heat stress interaction with shade and cooling. J. Diary Sci. 77:2004-2050
 #'
 #' @examples
-#' ith(temperatura = 23, hr = 65) %>%
-#' slice_head(n = 10)
+#' ith(temperatura = 23, hr = 65)
 #'
 #' data(NH0358)
 #'
