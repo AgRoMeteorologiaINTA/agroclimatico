@@ -21,7 +21,16 @@ metadatos_nh(
 (entre -180 y 180).}
 }
 \value{
-data.frame con los metadatos de las estaciones.
+data.frame con los metadatos de las estaciones cuyas columnas incluye:
+\itemize{
+\item \code{codigo_nh} (caracter), variable llave para acceder a los metadatos de estaciones
+\item \code{estacion} (caracter), nombre de la estación
+\item \code{provincia} (caracter), provincia donde se encuentra la estación
+\item \code{organismo} (caracter), organismo a cargo de la estación
+\item \code{lat} (numérico), longitud
+\item \code{lon} (numérico), latitud
+\item \code{altura} (numérico), altura sobre el nivel del mar de la estación
+}
 }
 \description{
 Devuelve los metadatos de estaciones incluyendo el código único, ubicación (latitud y
@@ -35,7 +44,7 @@ la ubicación de las estaciones.
 }
 \examples{
 # listado completo de estaciones
-metadatos_nh()
+head(metadatos_nh(), n = 10)
 
 # listado de estaciones específicas
 metadatos_nh(codigo = c("0001", "0011"))

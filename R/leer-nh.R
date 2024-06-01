@@ -101,11 +101,18 @@ leer_nh <- function(archivos) {
 #' @param lon vector numérico con las longitudes límite de la región de interés
 #' (entre -180 y 180).
 #'
-#' @return data.frame con los metadatos de las estaciones.
+#' @return data.frame con los metadatos de las estaciones cuyas columnas incluye:
+#' * `codigo_nh` (caracter), variable llave para acceder a los metadatos de estaciones
+#' * `estacion` (caracter), nombre de la estación
+#' * `provincia` (caracter), provincia donde se encuentra la estación
+#' * `organismo` (caracter), organismo a cargo de la estación
+#' * `lat` (numérico), longitud
+#' * `lon` (numérico), latitud
+#' * `altura` (numérico), altura sobre el nivel del mar de la estación
 #'
 #' @examples
 #' # listado completo de estaciones
-#' metadatos_nh()
+#' head(metadatos_nh(), n = 10)
 #'
 #' # listado de estaciones específicas
 #' metadatos_nh(codigo = c("0001", "0011"))
