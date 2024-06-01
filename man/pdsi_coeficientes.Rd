@@ -23,8 +23,8 @@ Una lista con los coeficientes climáticos.
 }
 \description{
 Funcion que devuelve los coeficientes de características climáticas necesarios
-para calcular el Índice de Severidad de Sequía de Palmer con \code{\link[=psdi]{psdi()}} o su
-versión autocalibrada \code{\link[=psdi_ac]{psdi_ac()}}.
+para calcular el Índice de Severidad de Sequía de Palmer con \code{\link[=pdsi]{pdsi()}} o su
+versión autocalibrada \code{\link[=pdsi_ac]{pdsi_ac()}}.
 }
 \details{
 El cálculo usa constantes definidas empíricamente, originalmente utilizando datos

@@ -1,8 +1,8 @@
 #' Coeficientes de características climáticas
 #'
 #' Funcion que devuelve los coeficientes de características climáticas necesarios
-#' para calcular el Índice de Severidad de Sequía de Palmer con [psdi()] o su
-#' versión autocalibrada [psdi_ac()].
+#' para calcular el Índice de Severidad de Sequía de Palmer con [pdsi()] o su
+#' versión autocalibrada [pdsi_ac()].
 #'
 #' @param p,q factores de duración
 #' @param K1.1,K1.2,K1.3,K2 coeficientes de características climáticas
