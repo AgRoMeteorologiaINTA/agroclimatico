@@ -41,7 +41,7 @@ correcto a las variables.
 
 \item{...}{argumentos pasados a \link[SPEI:Drought-indices]{SPEI::spi}}
 
-\item{balance}{balance entre precipitación y evapotaranspiración potencial.}
+\item{balance}{balance entre precipitación y evapotranspiración potencial.}
 }
 \value{
 Un data.frame con columnas

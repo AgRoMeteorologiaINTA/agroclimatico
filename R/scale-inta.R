@@ -1,4 +1,4 @@
-#' Escalas de colores para precipitacion y temperatura
+#' Escalas de colores para precipitación y temperatura
 #'
 #' Escalas para `color` y `fill` para variables discretas.
 #'

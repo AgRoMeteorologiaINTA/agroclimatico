@@ -2,7 +2,7 @@
 #'
 #' Lee uno o más archivos siempre que mantengan el formato NH de ancho fijo.
 #'
-#' La función está preparada para leer datos díarios con el formato NH que incluye
+#' La función está preparada para leer datos diarios con el formato NH que incluye
 #' 25 variables:
 #' * `codigo` (caracter)
 #' * `codigo_nh` (caracter), variable llave para acceder a los metadatos de estaciones

@@ -77,7 +77,7 @@ head(datos_mensuales)
 
 ### Anomalía porcentual
 
-Una primera aproximacion es calcular cuánto se desvía la precipitación cada mes de su valor típico en procentaje.
+Una primera aproximación es calcular cuánto se desvía la precipitación cada mes de su valor típico en porcentaje.
 
 ```{r}
 datos_mensuales <- datos_mensuales %>% 
@@ -148,7 +148,7 @@ Teniendo en cuenta que este indice usa coeficientes calculados a partir de obser
 
 ## Índice Estandarizado de Precipitación
 
-A diferencia de los otros índices en el Índice Estandarizado de Precipitación (SPI), a cada observación le puede corresponder más de un valor (uno por cada escala temporal usada) y además devuelve una serie completa (es decir, sin datos faltanes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `reframe()` ya que devuelve un data.frame.
+A diferencia de los otros índices en el Índice Estandarizado de Precipitación (SPI), a cada observación le puede corresponder más de un valor (uno por cada escala temporal usada) y además devuelve una serie completa (es decir, sin datos faltantes implícitos). Por lo tanto, en vez de usarla con `mutate()`, se usa con `reframe()` ya que devuelve un data.frame.
 
 En este caso calculamos el spi para escalas de 1 a 12 meses ya que la variable de precipitación tiene resolución mensual. 
 
@@ -219,7 +219,7 @@ NH0358 %>%
   filter(t_min <= 0) %>%          # filtrar sólo los días donde hay heladas.
   reframe(dias_promedio(fecha))
 ```
-La primera helada se da, en promedio, el 25 de junio y la úĺtima el 30 de agosto.
+La primera helada se da, en promedio, el 25 de junio y la última el 30 de agosto.
 
 De igual manera, es posible calcular días promedio para grupos. En este caso estaciones.
 

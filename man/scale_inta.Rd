@@ -3,7 +3,7 @@
 \name{scale_fill_inta}
 \alias{scale_fill_inta}
 \alias{scale_color_inta}
-\title{Escalas de colores para precipitacion y temperatura}
+\title{Escalas de colores para precipitación y temperatura}
 \usage{
 scale_fill_inta(
   escala,

@@ -14,7 +14,7 @@
 #'
 #' @return Devuelve un vector numérico con el decil asociado a cada valor de la variable.
 #' En este caso la columna `deciles` es de tipo doble ya que devuelve el valor exacto
-#' del decil sin redondoes. Para el cálculo de la anomalía porcentual también
+#' del decil sin redondeos. Para el cálculo de la anomalía porcentual también
 #' devuelve un vector numérico. Las funciones son compatibles con
 #' [dplyr::group_by()] y [dplyr::mutate()].
 #'

@@ -14,7 +14,7 @@
 #' @param escala paleta de colores a usar. Tiene que ser una función que reciba un número
 #' y devuelva esa cantidad de colores. Por ejemplo [escala_temp_min].
 #' @param cordillera valor lógico indicando si hay que tapar los datos donde está
-#' la coordillera (donde el kriging es particularmente problemático). Si es `TRUE`
+#' la cordillera (donde el kriging es particularmente problemático). Si es `TRUE`
 #' pinta con gris donde la altura de la topografía es mayor a 1500 m. También
 #' puede ser un número, indicando el valor mínimo desde donde empezar a graficar
 #' la cordillera.

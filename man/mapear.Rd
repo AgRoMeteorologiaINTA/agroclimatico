@@ -38,7 +38,7 @@ contornos. Si es\code{NULL} hace 10 contornos calculados a partir el rango de lo
 y devuelva esa cantidad de colores. Por ejemplo \link{escala_temp_min}.}
 
 \item{cordillera}{valor lógico indicando si hay que tapar los datos donde está
-la coordillera (donde el kriging es particularmente problemático). Si es \code{TRUE}
+la cordillera (donde el kriging es particularmente problemático). Si es \code{TRUE}
 pinta con gris donde la altura de la topografía es mayor a 1500 m. También
 puede ser un número, indicando el valor mínimo desde donde empezar a graficar
 la cordillera.}

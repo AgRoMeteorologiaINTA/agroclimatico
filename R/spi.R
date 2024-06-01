@@ -14,7 +14,7 @@
 #'
 #' @param fecha vector de fechas.
 #' @param precipitacion vector de precipitacion.
-#' @param balance balance entre precipitación y evapotaranspiración potencial.
+#' @param balance balance entre precipitación y evapotranspiración potencial.
 #' @param escalas vector numérico con las escalas requeridas. La unidad de la escala
 #' está dada por el vector de fechas. Si `escalas = 6` y los datos son mensuales
 #' entonces el cálculo del indice se hará en escalas de 6 meses.

@@ -33,6 +33,19 @@ representan necesariamente cualquier región del planeta por lo que puede ser
 redefinidas para el cálculo del índice usando la función
 del índice usando la función \code{pdsi_coeficientes()}.
 }
+\examples{
+
+# datos aleatorios
+datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+set.seed(42)
+datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
+datos$etp <- rgamma(nrow(datos), shape = 1, scale = 3)
+
+datos$pdsi_ac <- with(datos, pdsi(pp, etp),
+   coeficientes = pdsi_coeficientes(p = 0.9, q = 1/3))
+
+
+}
 \references{
 Palmer (1965), Meteorological Drought. U.S Weather Bureau, Washington, D.C. (book).
 

@@ -18,7 +18,7 @@ las 25 variables presentes.
 Lee uno o más archivos siempre que mantengan el formato NH de ancho fijo.
 }
 \details{
-La función está preparada para leer datos díarios con el formato NH que incluye
+La función está preparada para leer datos diarios con el formato NH que incluye
 25 variables:
 \itemize{
 \item \code{codigo} (caracter)
