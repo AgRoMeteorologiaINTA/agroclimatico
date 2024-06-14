@@ -120,7 +120,7 @@
 <div class="section level3">
 <h3 id="mapear">Mapear<a class="anchor" aria-label="anchor" href="#mapear"></a>
 </h3>
-<p>La función <code><a href="reference/mapear.html">mapear()</a></code> grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillara para enmascarar la variable a graficar.</p>
+<p>La función <code><a href="reference/mapear.html">mapear()</a></code> grafica una variable dada en puntos discretos e irregulares (en general observaciones o datos derivados de estaciones meteorológicas) utilizando kriging. Se puede definir el título y epígrafe y opcionamente se puede incluir la cordillera para enmascarar la variable a graficar.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">abril</span> <span class="op">&lt;-</span> <span class="va">datos_nh_mensual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mes</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="co">#datos del cuarto mes en la base, abril.</span></span>
@@ -184,7 +184,7 @@
 <div class="estado-de-desarrollo">
 <h2 data-toc-skip>Estado de desarrollo</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions" class="external-link"><img src="https://github.com/AgRoMeteorologiaINTA/agroclimatico/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master" class="external-link"><img src="https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/ropensci/software-review/issues/599" class="external-link"><img src="https://badges.ropensci.org/599_status.svg" alt="Status at rOpenSci Software Peer Review"></a></li>
 </ul>

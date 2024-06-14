@@ -68,13 +68,46 @@
 
     <div class="section level2">
     <h2 id="formato">Formato<a class="anchor" aria-label="anchor" href="#formato"></a></h2>
-    <p>Listas en el mismo formato que devuelve <code><a href="leer_surfer.html">leer_surfer()</a></code> con elementos:</p><ul><li><p><code>niveles</code> (numérico), el nivel a que corresopnde cada color.</p></li>
+    <p>Objeto tipo lista con 3 elementos.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="valor">Valor<a class="anchor" aria-label="anchor" href="#valor"></a></h2>
+    
+
+<p>Lista en el mismo formato que devuelve <code><a href="leer_surfer.html">leer_surfer()</a></code> con elementos:</p><ul><li><p><code>niveles</code> (numérico), el nivel a que corresopnde cada color.</p></li>
 <li><p><code>colores</code> (caracter), la representación hexadecimal del color de cada break.</p></li>
 <li><p><code>paleta</code> (función), una función que toma un entero <code>n</code> y devuelve
 un vector de caracter con <code>n</code> colores interpolados a partir de los colores
 de la escala.</p></li>
 </ul></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Ejemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pp_enero</span> <span class="op">&lt;-</span> <span class="va">datos_nh_mensual</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mes</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># En el contexto de la función mapear():</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="mapear.html">mapear</a></span><span class="op">(</span><span class="va">pp_enero</span>, <span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span>,</span></span>
+<span class="r-in"><span>escala <span class="op">=</span> <span class="va">escala_pp_mensual</span>, cordillera <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="escalas-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Con ggplot2</span></span></span>
+<span class="r-in"><span><span class="co"># Los contornos llenos requieren que los datos estén en una grilla</span></span></span>
+<span class="r-in"><span><span class="co"># regular, necesitamos hacer una interpolación con kriging.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">pp_enero</span>, <span class="fu">agroclimatico</span><span class="fu">:::</span><span class="fu">kringe</span><span class="op">(</span><span class="va">precipitacion_mensual</span>, <span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour_filled</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="scale_inta.html">scale_fill_inta</a></span><span class="op">(</span>escala <span class="op">=</span> <span class="va">escala_pp_mensual</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [using ordinary kriging]</span>
+<span class="r-plt img"><img src="escalas-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>En esta página</h2>
     </nav></aside></div>
 
