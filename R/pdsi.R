@@ -9,7 +9,7 @@
 #' @param coeficientes lista de coeficientes que devuelve `pdsi_coeficientes()`
 #'
 #' @return
-#' Un vector de la misma longitud que `precipitacion` con el PSDI correspondiente a cada caso.
+#' Un vector de la misma longitud que `precipitacion` con el PDSI correspondiente a cada caso.
 #'
 #' @details
 #'
