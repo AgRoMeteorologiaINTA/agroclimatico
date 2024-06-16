@@ -15,7 +15,7 @@
 #' * `extremo` (caracter) nombre del extremo definido por el usuario
 #' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
 #' * `N` (numérico) ocurrencia del evento
-#' *`prop` (numérico) proporción eventos respecto del total de observaciones
+#' * `prop` (numérico) proporción de eventos respecto del total de observaciones
 #' * `na` (numérico)  proporción de datos faltantes respecto del total de observaciones
 #'
 #' @examples

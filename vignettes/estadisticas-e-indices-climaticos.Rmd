@@ -189,7 +189,7 @@ head(extremos)
 
 El resultado es un data frame con columnas `extremo` (el nombre del extremo), `N` (número de observaciones para las cuales se dio el extremo), `prop` (proporción de observaciones) y `na` (proporción de valores faltantes),
 
-Una posible visualización de la candidad de días con heladas y calor sofocante podría ser esta:
+Una posible visualización de la cantidad de días con heladas y calor sofocante podría ser esta:
 
 ```{r}
 extremos %>% 
@@ -199,7 +199,7 @@ extremos %>%
   facet_wrap(~extremo, scales = "free")
 ```
 
-Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltanes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Ësta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas asociadas a las variables observadas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
+Dado que esta función cuenta observaciones, es importante que las series estén completas. Es decir, sin datos faltantes implícitos. Para completar la serie, se puede usar la función `completar_serie()`. Esta función toma un vector de fechas y la resolución esperada de los datos y agrega las filas faltantes, poniendo `NA` en las columnas asociadas a las variables observadas. Para tablas con datos para múltiples estaciones o localidades, conviene primero agrupar. 
 
 ```{r}
 dos_estaciones <- rbind(NH0358, NH0114)
