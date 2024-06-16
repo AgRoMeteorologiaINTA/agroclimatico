@@ -1,6 +1,6 @@
 #' Calcula el SPI
 #'
-#' Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El
+#' Calcula el Índice Estandarizado de Precipitación para distintas escalas. El
 #' `spi_indice` toma valores de precipitación mientras que el `spei_indice` toma
 #' valores del balance entre precipitación y evapotranspiración potencial.
 #' Internamente hacen lo mismo; la única diferencia es la distribución teórica
