@@ -32,12 +32,14 @@
 #'
 #' @examples
 #' # datos aleatorios
-#' datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
 #' set.seed(42)
-#' datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
-#' datos$etp <- rgamma(nrow(datos), shape = 1, scale = 3)
 #'
-#' datos$pdsi_ac <- with(datos, pdsi(pp, etp))
+#' datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+#' datos |>
+#'   mutate(pp = rgamma(nrow(datos), shape = 2, scale = 10),
+#'          etp = rgamma(nrow(datos), shape = 1, scale = 3),
+#'          pdsi_ac = pdsi(pp, etp)) |>
+#'   slice_head(n = 10)
 #'
 #'
 #' @export
