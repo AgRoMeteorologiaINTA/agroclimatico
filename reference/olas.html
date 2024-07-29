@@ -48,7 +48,7 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Uso<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">olas</span><span class="op">(</span><span class="va">fecha</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">olas</span><span class="op">(</span><span class="va">fecha</span>, <span class="va">...</span>, remplaza.na <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -56,11 +56,19 @@ fue igual o menor a 0°C para calcular días acumulados de heladas.</p>
 
 
 <dl><dt id="arg-fecha">fecha<a class="anchor" aria-label="anchor" href="#arg-fecha"></a></dt>
-<dd><p>vector de fechas.</p></dd>
+<dd><p>vector de fechas, la serie temporal debe estar completa, sin datos
+faltantes implicitos.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>umbral o umbrales a calcular utilizando operadores lógicos.</p></dd>
+
+
+<dt id="arg-remplaza-na">remplaza.na<a class="anchor" aria-label="anchor" href="#arg-remplaza-na"></a></dt>
+<dd><p>lógico. Por defecto es FALSE, es decír que si la función
+encuentra un dato faltante "corta" la ola o periodo de persitencia. Si es
+TRUE, la función reemplaza cada NA por el valor previo en la serie, por lo tanto
+la ola no se interrumpe si hay NAs.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -70,14 +78,12 @@ asociadas al agrupamiento:</p><ul><li><p><code>ola</code> (caracter) nombre de l
 (si los argumentos de <code>...</code> no tienen nombre, se usa <code>V1</code>, <code>V2</code>, etc...)</p></li>
 <li><p><code>inicio</code> (fecha) fecha de inicio de la ola o periodo de persistencia</p></li>
 <li><p><code>fin</code> (fecha) fecha de finalización de la ola o periodo de persistencia</p></li>
-<li><p><code>longitud</code> (diferencia de fechas, tipo drtn) duración de la ola</p></li>
+<li><p><code>duracion</code> (diferencia de fechas, tipo drtn) duración de la ola</p></li>
 </ul><p>Si una ola todavía no terminó, fin y longitud son NA.</p>
     </div>
     <div class="section level2">
     <h2 id="detalles">Detalles<a class="anchor" aria-label="anchor" href="#detalles"></a></h2>
-    <p>La función es sensible a los datos faltantes, esto quiere decir que si se
-encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">dplyr::summarise()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code>
+    <p>La función Puede utilizarse en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">dplyr::summarise()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code>
 para hacer este cálculo por grupos.</p>
     </div>
 
@@ -89,7 +95,7 @@ para hacer este cálculo por grupos.</p>
 <span class="r-in"><span><span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu">olas</span><span class="op">(</span><span class="va">fecha</span>, calor <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;</span> <span class="fl">20</span>, frio <span class="op">=</span> <span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ola     inicio        fin longitud</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ola     inicio        fin duracion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  calor 1951-01-01 1951-01-22  22 days</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  calor 1951-01-24 1951-02-13  21 days</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3  calor 1951-02-15 1951-03-31  45 days</span>

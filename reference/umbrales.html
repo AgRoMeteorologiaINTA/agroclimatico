@@ -62,8 +62,8 @@ partir de uno o más umbrales.</p>
 posibles variables asociadas a los agrupamientos.</p>
 <p>Variables fijas</p><ul><li><p><code>extremo</code> (caracter) nombre del extremo definido por el usuario
 (si los argumentos de <code>...</code> no tienen nombre, se usa <code>V1</code>, <code>V2</code>, etc...)</p></li>
-<li><p><code>N</code> (numérico) ocurrencia del evento
-*<code>prop</code> (numérico) proporción eventos respecto del total de observaciones</p></li>
+<li><p><code>N</code> (numérico) ocurrencia del evento</p></li>
+<li><p><code>prop</code> (numérico) proporción de eventos respecto del total de observaciones</p></li>
 <li><p><code>na</code> (numérico)  proporción de datos faltantes respecto del total de observaciones</p></li>
 </ul></div>
     <div class="section level2">
@@ -104,13 +104,8 @@ Esto permite calcular distintos umbrales y obtener resultados para distintos gru
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Se pueden calcular varios umbrales al mismo tiempo</span></span></span>
 <span class="r-in"><span><span class="va">NH0358</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu">umbrales</span><span class="op">(</span>t_30 <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">30</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span><span class="fu">umbrales</span><span class="op">(</span>t_30 <span class="op">=</span> <span class="va">t_max</span> <span class="op">&gt;=</span> <span class="fl">30</span>,</span></span>
 <span class="r-in"><span>                    t_0  <span class="op">=</span> <span class="va">t_min</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Returning more (or less) than 1 row per `summarise()` group was deprecated in</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> dplyr 1.1.0.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> When switching from `summarise()` to `reframe()`, remember that `reframe()`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   always returns an ungrouped data frame and adjust accordingly.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   extremo    N       prop          na</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    t_30 3389 0.13303761 0.001606898</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     t_0  914 0.03588254 0.001685283</span>
