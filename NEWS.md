@@ -1,5 +1,13 @@
 # agroclimatico 1.0.0 
 
+## 29/07/2024- [Revisión para rOpenSci, 2](https://github.com/ropensci/software-review/issues/599)
+
+* Mejora ejemplos en: `ith()`, `spi_indice()`, `pdsi()`, `umbrales()`
+
+* Resuelve bug en `olas()` cuando la serie no está completa
+
+* Agrega argumento `remplaza.na` a la función `olas()` para remplazar `NA`s e incluirlos en la ola.
+
 ## 29/05/2024 - [Revisión para rOpenSci](https://github.com/ropensci/software-review/issues/599)
 
 * Mejora la documentación de casi todas las funciones:
