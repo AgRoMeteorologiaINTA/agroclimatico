@@ -9,11 +9,11 @@
 #'
 #' @param fecha vector de fechas, la serie temporal debe estar completa, sin datos
 #' faltantes implicitos.
+#' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #' @param remplaza.na lógico. Por defecto es FALSE, es decír que si la función
 #' encuentra un dato faltante "corta" la ola o periodo de persitencia. Si es
 #' TRUE, la función reemplaza cada NA por el valor previo en la serie, por lo tanto
 #' la ola no se interrumpe si hay NAs.
-#' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #'
 #' @return Devuelve un data.frame con 3 variables fijas y las posibles variables
 #' asociadas al agrupamiento:
@@ -34,7 +34,7 @@
 #'   slice_head(n = 10)
 #'
 #' @export
-olas <- function(fecha, remplaza.na = FALSE, ...) {
+olas <- function(fecha, ..., remplaza.na = FALSE) {
 
   # Revisa que la serie temporal este completa, sin NA implicitos
   diff <- fecha - data.table::shift(fecha, 1)
