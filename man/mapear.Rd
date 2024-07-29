@@ -55,7 +55,7 @@ Un objeto ggplot2.
 }
 \description{
 Dadas mediciones de una variable en puntos ubicados en Argentina,
-interpola al resto del territorio usando kriging y grafica con contornos
+interpola al resto del territorio usando kriging y grafica con contornos.
 Las funciones secundarias \code{\link[=coord_argentina]{coord_argentina()}} y \code{\link[=theme_inta_mapa]{theme_inta_mapa()}} permiten
 generar un mapa en la región de Argentina (definida por \code{xlim} y \code{ylim}) con
 el estilo específico usando por INTA.

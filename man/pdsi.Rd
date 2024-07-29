@@ -19,7 +19,7 @@ pdsi_ac(precipitacion, etp, cc = 100, coeficientes = pdsi_coeficientes())
 \item{coeficientes}{lista de coeficientes que devuelve \code{pdsi_coeficientes()}}
 }
 \value{
-Un vector de la misma longitud que \code{precipitacion} con el PSDI correspondiente a cada caso.
+Un vector de la misma longitud que \code{precipitacion} con el PDSI correspondiente a cada caso.
 }
 \description{
 Calcula el Indice de Severidad de Sequía de Palmer.
@@ -38,13 +38,18 @@ Alternativamente, Wells et al. (2004) propuso el Indice de Severidad de Sequía 
 que tiene la capacidad de ajustar las constantes empíricas durante el cálculo del indice.
 }
 \examples{
-# datos aleatorios
-datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
-set.seed(42)
-datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
-datos$etp <- rgamma(nrow(datos), shape = 1, scale = 3)
 
-datos$pdsi_ac <- with(datos, pdsi(pp, etp))
+library(dplyr)
+
+# datos aleatorios
+set.seed(42)
+
+datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
+datos |>
+  mutate(pp = rgamma(nrow(datos), shape = 2, scale = 10),
+         etp = rgamma(nrow(datos), shape = 1, scale = 3),
+         pdsi_ac = pdsi(pp, etp)) |>
+  slice_head(n = 10)
 
 
 }

@@ -18,7 +18,7 @@ Variables fijas
 \item \code{extremo} (caracter) nombre del extremo definido por el usuario
 (si los argumentos de \code{...} no tienen nombre, se usa \code{V1}, \code{V2}, etc...)
 \item \code{N} (numérico) ocurrencia del evento
-*\code{prop} (numérico) proporción eventos respecto del total de observaciones
+\item \code{prop} (numérico) proporción de eventos respecto del total de observaciones
 \item \code{na} (numérico)  proporción de datos faltantes respecto del total de observaciones
 }
 }
@@ -45,7 +45,7 @@ NH0358 \%>\%
 
 # Se pueden calcular varios umbrales al mismo tiempo
 NH0358 \%>\%
- summarise(umbrales(t_30 = t_max >= 30,
+ reframe(umbrales(t_30 = t_max >= 30,
                     t_0  = t_min <= 0))
 
 }

@@ -52,7 +52,7 @@ Un data.frame con columnas
 }
 }
 \description{
-Calcula esl Índice Estandarizado de Precipitación para distintas escalas. El
+Calcula el Índice Estandarizado de Precipitación para distintas escalas. El
 \code{spi_indice} toma valores de precipitación mientras que el \code{spei_indice} toma
 valores del balance entre precipitación y evapotranspiración potencial.
 Internamente hacen lo mismo; la única diferencia es la distribución teórica
@@ -67,31 +67,34 @@ para el análisis de datos con dplyr.
 
 library(dplyr)
 
-# datos aleatorios
-datos <- data.frame(fecha = seq(as.Date("1985-01-01"), as.Date("2015-12-01"), by = "1 month"))
-set.seed(42)
-datos$pp <- rgamma(nrow(datos), shape = 2, scale = 10)
+datos_mensuales <- NH0358 \%>\%
+  group_by(fecha = lubridate::round_date(fecha, "month")) \%>\%
+  reframe(precip = mean(precip, na.rm = TRUE),
+          etp = mean(etp, na.rm = TRUE))
 
-with(datos, spi_indice(fecha, pp, escalas = 1:5)) \%>\%
-slice_head(n = 10)
+# Para escalas de 1 a 12 meses
+datos_mensuales \%>\%
+  reframe(spi_indice(fecha, precip, escalas = 1:12)) \%>\%
+  slice_head(n = 10)
 
-# Si entran nuevos datos y hay que calcular el spi nuevamente pero sin que
-# cambien los valores viejos, hay que usar `referencia`
-
-nuevos_datos <- data.frame(fecha = seq(as.Date("2016-01-01"),
-                                       as.Date("2017-12-01"), by = "1 month"))
-nuevos_datos$pp <- rgamma(nrow(nuevos_datos), shape = 2, scale = 10)
-nuevos_datos <- rbind(datos, nuevos_datos)
+# Si tenemos nuevos datos y hay que calcular el spi nuevamente pero sin que
+# cambien los valores previos, hay que usar `referencia`, por ejemplo usando
+# los datos desde el comienzo de la seria hasta 2016
 
 # Usando un vector lógico
-with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
-                       referencia = data.table::year(fecha) < 2016)) \%>\%
-slice_head(n = 10)
+datos_mensuales \%>\%
+  reframe(spi_indice(fecha, precip, escalas = 1:12,
+                     referencia = lubridate::year(fecha) < 2016)) \%>\%
+  slice_head(n = 10)
 
 # O un data.frame
-with(nuevos_datos, spi_indice(fecha, pp, escalas = 1:5,
-                       referencia = spi_referencia(datos$fecha, datos$pp))) \%>\%
-slice_head(n = 10)
+datos_2016 <- datos \%>\%
+ filter(lubridate::year(fecha) < 2016)
+
+datos_mensuales \%>\%
+reframe(spi_indice(fecha, precip, escalas = 1:12,
+                   referencia = spi_referencia(datos_2016$fecha, datos_2016$pp)) \%>\%
+  slice_head(n = 10)
 
 
 }

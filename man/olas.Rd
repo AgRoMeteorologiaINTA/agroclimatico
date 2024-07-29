@@ -4,12 +4,18 @@
 \alias{olas}
 \title{Olas}
 \usage{
-olas(fecha, ...)
+olas(fecha, ..., remplaza.na = FALSE)
 }
 \arguments{
-\item{fecha}{vector de fechas.}
+\item{fecha}{vector de fechas, la serie temporal debe estar completa, sin datos
+faltantes implicitos.}
 
 \item{...}{umbral o umbrales a calcular utilizando operadores lógicos.}
+
+\item{remplaza.na}{lógico. Por defecto es FALSE, es decír que si la función
+encuentra un dato faltante "corta" la ola o periodo de persitencia. Si es
+TRUE, la función reemplaza cada NA por el valor previo en la serie, por lo tanto
+la ola no se interrumpe si hay NAs.}
 }
 \value{
 Devuelve un data.frame con 3 variables fijas y las posibles variables
@@ -19,7 +25,7 @@ asociadas al agrupamiento:
 (si los argumentos de \code{...} no tienen nombre, se usa \code{V1}, \code{V2}, etc...)
 \item \code{inicio} (fecha) fecha de inicio de la ola o periodo de persistencia
 \item \code{fin} (fecha) fecha de finalización de la ola o periodo de persistencia
-\item \code{longitud} (diferencia de fechas, tipo drtn) duración de la ola
+\item \code{duracion} (diferencia de fechas, tipo drtn) duración de la ola
 }
 
 Si una ola todavía no terminó, fin y longitud son NA.
@@ -30,9 +36,7 @@ condición lógica, por ejemplo días consecutivos donde la temperatura mínima
 fue igual o menor a 0°C para calcular días acumulados de heladas.
 }
 \details{
-La función es sensible a los datos faltantes, esto quiere decir que si se
-encuentra con un dato faltante la función "corta" el periodo de persistencia.
-Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y \code{\link[dplyr:group_by]{dplyr::group_by()}}
+La función Puede utilizarse en el contexto de \code{\link[dplyr:summarise]{dplyr::summarise()}} y \code{\link[dplyr:group_by]{dplyr::group_by()}}
 para hacer este cálculo por grupos.
 }
 \examples{

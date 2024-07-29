@@ -35,9 +35,10 @@ data(NH0358)
 # En el contexto de mutate
 library(dplyr)
 NH0358 \%>\%
+  filter(!is.na(hr)) |>
   mutate(t_media = (t_max + t_min)/2) \%>\%
   mutate(ith = ith(t_media, hr)) \%>\%
-slice_head(n = 10)
+  slice_head(n = 10)
 
 }
 \references{
