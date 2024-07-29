@@ -4,13 +4,15 @@
 #' condición lógica, por ejemplo días consecutivos donde la temperatura mínima
 #' fue igual o menor a 0°C para calcular días acumulados de heladas.
 #'
-#' La función es sensible a los datos faltantes, esto quiere decir que si se
-#' encuentra con un dato faltante la función "corta" el periodo de persistencia.
-#' Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()]
+#' La función Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()]
 #' para hacer este cálculo por grupos.
 #'
 #' @param fecha vector de fechas, la serie temporal debe estar completa, sin datos
 #' faltantes implicitos.
+#' @param remplaza.na lógico. Por defecto es FALSE, es decír que si la función
+#' encuentra un dato faltante "corta" la ola o periodo de persitencia. Si es
+#' TRUE, la función reemplaza cada NA por el valor previo en la serie, por lo tanto
+#' la ola no se interrumpe si hay NAs.
 #' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #'
 #' @return Devuelve un data.frame con 3 variables fijas y las posibles variables
@@ -32,7 +34,7 @@
 #'   slice_head(n = 10)
 #'
 #' @export
-olas <- function(fecha, ...) {
+olas <- function(fecha, remplaza.na = FALSE, ...) {
 
   # Revisa que la serie temporal este completa, sin NA implicitos
   diff <- fecha - data.table::shift(fecha, 1)
@@ -55,10 +57,17 @@ olas <- function(fecha, ...) {
     names(condiciones)[names(condiciones) == ""] <- names[names(condiciones) == ""]
   }
 
-  data.table::rbindlist(lapply(condiciones, computar_olas, fecha = fecha), idcol = "ola")
+  data.table::rbindlist(lapply(condiciones, computar_olas, fecha = fecha, remplaza.na = remplaza.na),
+                        idcol = "ola")
 }
 
-computar_olas <- function(fecha, condicion) {
+computar_olas <- function(fecha, condicion, remplaza.na) {
+
+  # Reemplaza NA por el valor previo (locf). NA no interrumpen la ola
+  if (remplaza.na) {
+   condicion <- as.logical(data.table::nafill(as.numeric(condicion), "locf"))
+  }
+
   ola <- rle(condicion)
 
   fin <- fecha[cumsum(ola$lengths)]
@@ -72,3 +81,4 @@ computar_olas <- function(fecha, condicion) {
   data <- data[ola$values == TRUE & !is.na(ola$values), ]
   data
 }
+
