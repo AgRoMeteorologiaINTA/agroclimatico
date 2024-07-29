@@ -29,6 +29,11 @@ test_that("ith", {
 
 file <- system.file("extdata", "NH0358.DAT", package = "agroclimatico")
 datos <- leer_nh(file)
+
+datos_perdidos <- sample(nrow(datos), nrow(datos)/10)
+datos$t_max[datos_perdidos] <- NA
+datos_incompletos <- dplyr::filter(datos, !is.na(t_max))
+
 test_that("umbrales", {
   expect_warning(cuenta <- umbrales(datos$t_max > 17,
                                     datos$t_min < 10),
@@ -48,9 +53,13 @@ test_that("umbrales", {
 
 test_that("olas", {
   expect_s3_class(calor <- olas(datos$fecha, datos$t_max > 17), "data.frame")
-  expect_equal(colnames(calor), c("ola", "inicio", "fin", "longitud"))
+  expect_equal(colnames(calor), c("ola", "inicio", "fin", "duracion"))
   expect_equal(nrow(olas(datos$fecha, datos$t_max > 47)), 0)
 
+})
+
+test_that("olas con na implicitos", {
+  expect_error(calor <- olas(datos_incompletos$fecha, datos_incompletos$t_max > 17), "La serie temporal debe estar completa:")
 })
 
 test_that("dias_promedio", {

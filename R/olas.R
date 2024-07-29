@@ -9,7 +9,8 @@
 #' Puede utilizarse en el contexto de [dplyr::summarise()] y [dplyr::group_by()]
 #' para hacer este cálculo por grupos.
 #'
-#' @param fecha vector de fechas.
+#' @param fecha vector de fechas, la serie temporal debe estar completa, sin datos
+#' faltantes implicitos.
 #' @param ... umbral o umbrales a calcular utilizando operadores lógicos.
 #'
 #' @return Devuelve un data.frame con 3 variables fijas y las posibles variables
@@ -18,7 +19,7 @@
 #' (si los argumentos de `...` no tienen nombre, se usa `V1`, `V2`, etc...)
 #' * `inicio` (fecha) fecha de inicio de la ola o periodo de persistencia
 #' * `fin` (fecha) fecha de finalización de la ola o periodo de persistencia
-#' * `longitud` (diferencia de fechas, tipo drtn) duración de la ola
+#' * `duracion` (diferencia de fechas, tipo drtn) duración de la ola
 #'
 #' Si una ola todavía no terminó, fin y longitud son NA.
 #'
@@ -32,6 +33,20 @@
 #'
 #' @export
 olas <- function(fecha, ...) {
+
+  # Revisa que la serie temporal este completa, sin NA implicitos
+  diff <- fecha - data.table::shift(fecha, 1)
+  diff <- c(0, diff[-c(1)])
+
+  na_implicitos <- sum(diff[diff - 1 > 0] - 1)
+
+  if (any(diff > 1)) {
+    cli::cli_abort(c(
+      "La serie temporal debe estar completa:",
+      "i" = "falta{?n} {na_implicitos} tiempo{?s}. Pod\u00F3s usar agroclimatico::completar_serie()."
+    ))
+  }
+
   condiciones <- list(...)
   names <- paste0("V", seq_along(condiciones))
   if (is.null(names(condiciones))) {
@@ -53,7 +68,7 @@ computar_olas <- function(fecha, condicion) {
     fin = fin)
 
   data[nrow(data), ]$fin <- NA   # La última ola todavía no termino. Su longitud es NA.
-  data$longitud <- data$fin - data$inicio + 1
+  data$duracion <- data$fin - data$inicio + 1
   data <- data[ola$values == TRUE & !is.na(ola$values), ]
   data
 }
