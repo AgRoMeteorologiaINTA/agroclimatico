@@ -1,10 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   estadisticas-e-indices-climaticos: estadisticas-e-indices-climaticos.html
-last_built: 2024-06-14T06:31Z
+last_built: 2024-07-29T06:42Z
 urls:
-  reference: https://agrometeorologiainta.github.io/agromet/reference
-  article: https://agrometeorologiainta.github.io/agromet/articles
-
+  reference: https://agrometeorologiainta.github.io/agroclimatico/reference
+  article: https://agrometeorologiainta.github.io/agroclimatico/articles

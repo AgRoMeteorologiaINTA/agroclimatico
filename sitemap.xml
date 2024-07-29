@@ -1,99 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/404.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/articles/estadisticas-e-indices-climaticos.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/agroclimatico-package.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/agromet_informe.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/completar_serie.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/datos_nh.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/datos_nh_mensual.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/decil.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/dias_promedio.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/escalas.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/ith.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/kable_inta.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/leer_nh.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/leer_surfer.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/mapas.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/mapear.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/metadatos_nh.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/olas.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/pdsi.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/pdsi_coeficientes.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/scale_inta.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/spi_indice.html</loc>
-  </url>
-  <url>
-    <loc>https://agrometeorologiainta.github.io/agromet/reference/umbrales.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/404.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/CONTRIBUTING.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/LICENSE-text.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/LICENSE.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/articles/estadisticas-e-indices-climaticos.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/articles/index.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/authors.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/index.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/news/index.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/agroclimatico-package.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/agromet_informe.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/completar_serie.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/datos_nh.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/datos_nh_mensual.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/decil.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/dias_promedio.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/escalas.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/index.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/ith.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/kable_inta.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/leer_nh.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/leer_surfer.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/mapas.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/mapear.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/metadatos_nh.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/olas.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/pdsi.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/pdsi_coeficientes.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/scale_inta.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/spi_indice.html</loc></url>
+<url><loc>https://agrometeorologiainta.github.io/agroclimatico/reference/umbrales.html</loc></url>
 </urlset>
+
