@@ -250,8 +250,8 @@ Nuevamente, se podría visualizar el cambio en la longitud promedio de las olas 
 ```{r}
 olas_de_temperatura %>% 
   group_by(ola, anio = year(inicio)) %>% 
-  summarise(longitud = mean(longitud)) %>% 
-  ggplot(aes(anio, longitud)) +
+  summarise(duracion = mean(duracion)) %>% 
+  ggplot(aes(anio, duracion)) +
   geom_line() +
   geom_smooth(method = "glm", method.args = list(family = "quasipoisson")) +
   facet_wrap(~ola, scales = "free") 
