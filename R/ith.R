@@ -31,7 +31,7 @@
 #'   filter(!is.na(hr)) |>
 #'   mutate(t_media = (t_max + t_min)/2) %>%
 #'   mutate(ith = ith(t_media, hr)) %>%
-#' slice_head(n = 10)
+#'   slice_head(n = 10)
 #'
 #' @export
 ith <- function(temperatura, hr) {

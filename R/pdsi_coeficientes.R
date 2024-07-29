@@ -26,6 +26,8 @@
 #'
 #' @examples
 #'
+#' library(dplyr)
+#'
 #' # datos aleatorios
 #' set.seed(42)
 #'

@@ -31,6 +31,9 @@
 #' of Climate \doi{10.1175/1520-0442(2004)017<2335:ASPDSI>2.0.CO;2}
 #'
 #' @examples
+#'
+#' library(dplyr)
+#'
 #' # datos aleatorios
 #' set.seed(42)
 #'

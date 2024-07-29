@@ -61,12 +61,12 @@
 #' # Usando un vector lógico
 #' datos_mensuales %>%
 #'   reframe(spi_indice(fecha, precip, escalas = 1:12,
-#'                      referencia = data.table::year(fecha) < 2016)) %>%
+#'                      referencia = lubridate::year(fecha) < 2016)) %>%
 #'   slice_head(n = 10)
 #'
 #' # O un data.frame
 #' datos_2016 <- datos %>%
-#'  filter(data.table::year(fecha) < 2016)
+#'  filter(lubridate::year(fecha) < 2016)
 #'
 #' datos_mensuales %>%
 #' reframe(spi_indice(fecha, precip, escalas = 1:12,
