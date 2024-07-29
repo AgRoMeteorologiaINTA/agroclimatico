@@ -33,7 +33,7 @@
 #'
 #' # Se pueden calcular varios umbrales al mismo tiempo
 #' NH0358 %>%
-#'  summarise(umbrales(t_30 = t_max >= 30,
+#'  reframe(umbrales(t_30 = t_max >= 30,
 #'                     t_0  = t_min <= 0))
 #'
 #' @export
