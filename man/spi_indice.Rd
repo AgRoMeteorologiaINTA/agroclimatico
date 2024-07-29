@@ -66,6 +66,7 @@ para el análisis de datos con dplyr.
 \examples{
 
 library(dplyr)
+data(NH0358)
 
 datos_mensuales <- NH0358 \%>\%
   group_by(fecha = lubridate::round_date(fecha, "month")) \%>\%
@@ -84,16 +85,16 @@ datos_mensuales \%>\%
 # Usando un vector lógico
 datos_mensuales \%>\%
   reframe(spi_indice(fecha, precip, escalas = 1:12,
-                     referencia = lubridate::year(fecha) < 2016)) \%>\%
+                     referencia = data.table::year(fecha) < 2016)) \%>\%
   slice_head(n = 10)
 
 # O un data.frame
-datos_2016 <- datos \%>\%
- filter(lubridate::year(fecha) < 2016)
+datos_2016 <- datos_mensuales \%>\%
+ filter(data.table::year(fecha) < 2016)
 
 datos_mensuales \%>\%
 reframe(spi_indice(fecha, precip, escalas = 1:12,
-                   referencia = spi_referencia(datos_2016$fecha, datos_2016$pp)) \%>\%
+                   referencia = spi_referencia(datos_2016$fecha, datos_2016$precip))) \%>\%
   slice_head(n = 10)
 
 
