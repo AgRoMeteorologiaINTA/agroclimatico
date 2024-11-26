@@ -30,7 +30,11 @@
 #'
 #' library(dplyr)
 #' NH0358 %>%
-#'   reframe(olas(fecha, calor = t_max > 20, frio = t_min <= 0)) %>%
+#'   reframe(olas(fecha, calor = t_max > 20)) %>%
+#'   slice_head(n = 10)
+#'
+#' NH0358 %>%
+#'   reframe(olas(fecha, frio = t_min <= 0)) %>%
 #'   slice_head(n = 10)
 #'
 #' @export
