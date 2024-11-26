@@ -22,9 +22,9 @@ knitr::opts_chunk$set(
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci/software-review/issues/599)
 <!-- badges: end -->
 
-El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos tidy. Por ejemplo `umbrales()` permite contar la cantidad de observaciones que cumplen una determinada condición y `dias_promedio()` devuelve el primer y último día del año promedio de ocurrencia de un evento. 
+El paquete {agroclimatico} incluye una serie de funciones para calcular índices y estadísticos climáticos e hidrológicos a partir de datos [*tidy*](https://es.r4ds.hadley.nz/12-tidy.html)tidy. Por ejemplo `umbrales()` permite contar la cantidad de observaciones que cumplen una determinada condición y `dias_promedio()` devuelve el primer y último día del año promedio de ocurrencia de un evento. 
 
-Otras funciones como `spi_indice()` funcionan como wrappers de funciones de otros paquetes y buscan ser compatibles con el manejo de datos [*tidy*](https://es.r4ds.hadley.nz/12-tidy.html) usando por ejemplo los verbos de dplyr. 
+Otras funciones como `spi_indice()` funcionan como wrappers de funciones de otros paquetes y buscan ser compatibles con el manejo de datos tidy usando por ejemplo los verbos de dplyr. 
 
 
 Finalmente el paquete incluye una función de graficado de datos georeferenciados `mapear()` con el estilo y logo propios de [Instituto Nacional de Tecnología Agropecuaria](https://www.argentina.gob.ar/inta) (INTA). Como complementos el paquete también provee mapas de Argentina a nivel nacional, provincial y por departamentos que se pueden usar en el contexto de ggplot para graficar variables meteorológicas e índices agroclimáticos. 

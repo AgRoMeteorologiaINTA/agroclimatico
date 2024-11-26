@@ -13,15 +13,15 @@ Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci
 <!-- badges: end -->
 
 El paquete {agroclimatico} incluye una serie de funciones para calcular
-índices y estadísticos climáticos e hidrológicos a partir de datos tidy.
-Por ejemplo `umbrales()` permite contar la cantidad de observaciones que
-cumplen una determinada condición y `dias_promedio()` devuelve el primer
-y último día del año promedio de ocurrencia de un evento.
+índices y estadísticos climáticos e hidrológicos a partir de datos
+[*tidy*](https://es.r4ds.hadley.nz/12-tidy.html)tidy. Por ejemplo
+`umbrales()` permite contar la cantidad de observaciones que cumplen una
+determinada condición y `dias_promedio()` devuelve el primer y último
+día del año promedio de ocurrencia de un evento.
 
 Otras funciones como `spi_indice()` funcionan como wrappers de funciones
-de otros paquetes y buscan ser compatibles con el manejo de datos
-[*tidy*](https://es.r4ds.hadley.nz/12-tidy.html) usando por ejemplo los
-verbos de dplyr.
+de otros paquetes y buscan ser compatibles con el manejo de datos tidy
+usando por ejemplo los verbos de dplyr.
 
 Finalmente el paquete incluye una función de graficado de datos
 georeferenciados `mapear()` con el estilo y logo propios de [Instituto
