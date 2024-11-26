@@ -10,9 +10,9 @@ pdsi(precipitacion, etp, cc = 100, coeficientes = pdsi_coeficientes())
 pdsi_ac(precipitacion, etp, cc = 100, coeficientes = pdsi_coeficientes())
 }
 \arguments{
-\item{precipitacion}{serie de precipitación sin datos faltantes (en mm).}
+\item{precipitacion}{serie de precipitación sin datos faltantes (en mm). Ver sección Details.}
 
-\item{etp}{serie de evapotranspiración potencial sin datos faltantes.}
+\item{etp}{serie de evapotranspiración potencial sin datos faltantes. Ver sección Details.}
 
 \item{cc}{capacidad de campo (en mm).}
 
@@ -36,6 +36,10 @@ del índice usando la función \code{\link[=pdsi_coeficientes]{pdsi_coeficientes
 
 Alternativamente, Wells et al. (2004) propuso el Indice de Severidad de Sequía de Palmer Autocalibrado
 que tiene la capacidad de ajustar las constantes empíricas durante el cálculo del indice.
+
+Si bien el cálculo de este indice funcionará para series de datos cortas (datos
+diarios para un mes o datos mensuales para un año), es necesario contar con una
+climatología, es decir 30 años para que el resultado sea confiable.
 }
 \examples{
 

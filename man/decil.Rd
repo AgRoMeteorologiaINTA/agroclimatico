@@ -28,9 +28,10 @@ a la distribución teórica. Puede ser:
 de la anomalía porcentual.}
 }
 \value{
-Devuelve un vector numérico con el decil asociado a cada valor de la variable.
-En este caso la columna \code{deciles} es de tipo doble ya que devuelve el valor exacto
-del decil sin redondeos. Para el cálculo de la anomalía porcentual también
+Para el cálculo de los deciles, devuelve un vector numérico con el decil
+asociado a cada valor de la variable. En este caso la columna \code{deciles} es de
+tipo doble ya que devuelve el valor exacto del decil sin redondeos.
+Para el cálculo de la anomalía porcentual también
 devuelve un vector numérico. Las funciones son compatibles con
 \code{\link[dplyr:group_by]{dplyr::group_by()}} y \code{\link[dplyr:mutate]{dplyr::mutate()}}.
 }
@@ -59,9 +60,19 @@ precip_mensual <- NH0358 \%>\%
 precip_mensual \%>\%
   mutate(deciles = decil(precip))
 
-# Definiendo un periodo de referencia
+# Deciles definiendo un periodo de referencia
 precip_mensual \%>\%
   mutate(deciles = decil(precip,
+                         referencia = lubridate::year(fecha) <= 1958))
+
+# Anomalia porcentual usando como referencia la serie completa
+NH0358 \%>\%
+  mutate(anomalia = anomalia_porcentual(precip)) \%>\%
+  slice_head(n = 10)
+
+#  Anomalia porcentual definiendo un periodo de referencia
+precip_mensual \%>\%
+  mutate(deciles = anomalia_porcentual(precip,
                          referencia = lubridate::year(fecha) <= 1958))
 
 }

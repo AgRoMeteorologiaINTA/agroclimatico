@@ -52,16 +52,16 @@ Un data.frame con columnas
 }
 }
 \description{
-Calcula el Índice Estandarizado de Precipitación para distintas escalas. El
-\code{spi_indice} toma valores de precipitación mientras que el \code{spei_indice} toma
+Calcula el Índice Estandarizado de Precipitación para distintas escalas. Las
+funciones \code{spi_indice} y \code{spei_indice} usan internamente a la función \link[SPEI:Drought-indices]{SPEI::spi}
+pero tienen la ventaja de devolver el resultado como un data.frame que se
+puede usar de manera directa para el análisis de datos con dplyr.
+}
+\details{
+La función \code{spi_indice} toma valores de precipitación mientras que \code{spei_indice} toma
 valores del balance entre precipitación y evapotranspiración potencial.
 Internamente hacen lo mismo; la única diferencia es la distribución teórica
 usada por defecto para ajustar los datos.
-}
-\details{
-Estas funciones usan internamente a la función \link[SPEI:Drought-indices]{SPEI::spi} pero tienen la ventaja
-de devolver el resultado como un data.frame que se puede usar de manera directa
-para el análisis de datos con dplyr.
 }
 \examples{
 
