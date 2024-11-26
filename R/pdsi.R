@@ -3,8 +3,8 @@
 #' Calcula el Indice de Severidad de Sequía de Palmer.
 #' `psdi_ac()` calcula la versión autocalibrada.
 #'
-#' @param precipitacion serie de precipitación sin datos faltantes (en mm).
-#' @param etp serie de evapotranspiración potencial sin datos faltantes.
+#' @param precipitacion serie de precipitación sin datos faltantes (en mm). Ver sección Details.
+#' @param etp serie de evapotranspiración potencial sin datos faltantes. Ver sección Details.
 #' @param cc capacidad de campo (en mm).
 #' @param coeficientes lista de coeficientes que devuelve `pdsi_coeficientes()`
 #'
@@ -23,6 +23,10 @@
 #'
 #' Alternativamente, Wells et al. (2004) propuso el Indice de Severidad de Sequía de Palmer Autocalibrado
 #' que tiene la capacidad de ajustar las constantes empíricas durante el cálculo del indice.
+#'
+#' Si bien el cálculo de este indice funcionará para series de datos cortas (datos
+#' diarios para un mes o datos mensuales para un año), es necesario contar con una
+#' climatología, es decir 30 años para que el resultado sea confiable.
 #'
 #' @references
 #' Palmer (1965), Meteorological Drought. U.S Weather Bureau, Washington, D.C. (book).
