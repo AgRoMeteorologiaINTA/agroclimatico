@@ -133,7 +133,9 @@ mapear <- function(data, valor, lon, lat,
     scale_y_continuous(labels = lat_label) +
     coord_argentina() +
     theme_inta_mapa() +
-    theme(legend.position = c(0.85, 0.3), legend.text = element_text(size = 7),
+    theme(legend.position = "inside",
+          legend.position.inside = c(0.85, 0.3),
+          legend.text = element_text(size = 7),
           legend.background = element_blank()) +
     labs(title = titulo,
          subtitle = subtitulo,
