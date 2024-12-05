@@ -4,69 +4,17 @@
   "identifier": "agroclimatico",
   "description": "Conjunto de funciones para calcular índices y estadísticos climáticos hidrológicos a partir de datos tidy. Incluye una función para graficar resultados georeferenciados y e información cartográfica.",
   "name": "agroclimatico: Índices y Estadísticos Climáticos e Hidrológicos",
+  "relatedLink": "https://agrometeorologiainta.github.io/agroclimatico/",
   "codeRepository": "https://github.com/AgRoMeteorologiaINTA/agroclimatico",
   "issueTracker": "https://github.com/AgRoMeteorologiaINTA/agroclimatico/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.0.0.9000",
+  "version": "1.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
-  "author": [
-    {
-      "@type": "Person",
-      "givenName": "Elio",
-      "familyName": "Campitelli",
-      "email": "elio.campitelli@cima.fcen.uba.ar",
-      "@id": "https://orcid.org/0000-0002-7742-9230"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Paola",
-      "familyName": "Corrales",
-      "email": "paola.corrales@cima.fcen.uba.ar"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Natalia",
-      "familyName": "Gattinoni",
-      "email": "gattinoni.natalia@inta.gob.ar"
-    }
-  ],
-  "contributor": [
-    {
-      "@type": "Person",
-      "givenName": "Yanina",
-      "familyName": "Bellini Saibene",
-      "email": "yabellini@gmail.com"
-    }
-  ],
-  "copyrightHolder": [
-    {
-      "@type": "Organization",
-      "name": "INTA"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Ruida",
-      "familyName": "Zhong"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Santiago",
-      "familyName": "Beguería"
-    }
-  ],
-  "maintainer": [
-    {
-      "@type": "Person",
-      "givenName": "Yanina",
-      "familyName": "Bellini Saibene",
-      "email": "yabellini@gmail.com"
-    }
-  ],
+  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
@@ -361,8 +309,14 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "10606.073KB",
-  "readme": "https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/README.md",
-  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions", "https://codecov.io/gh/AgRoMeteorologiaINTA/agromet?branch=master"],
+  "fileSize": "6442.5KB",
+  "releaseNotes": "https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/agroclimatico/blob/master/README.md",
+  "contIntegration": ["https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml", "https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master"],
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/599",
+    "provider": "https://ropensci.org"
+  },
   "keywords": ["agrometeo", "meteorologia"]
 }
