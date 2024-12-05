@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AgRoMeteorologiaINTA/agroclimatico/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/ropensci/agroclimatico/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/agroclimatico/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/AgRoMeteorologiaINTA/agroclimatico?branch=master)
+coverage](https://codecov.io/gh/ropensci/agroclimatico/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/agroclimatico?branch=master)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci/software-review/issues/599)
 <!-- badges: end -->
