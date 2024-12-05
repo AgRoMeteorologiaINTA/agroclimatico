@@ -33,6 +33,7 @@ Other contributors:
   \item Yanina Bellini Saibene \email{yabellini@gmail.com} [contributor]
   \item  INTA [copyright holder]
   \item Ruida Zhong [copyright holder]
+  \item Verónica Cruz-Alonso (Verónica revisó el paquete (v. 1.1.0) para rOpenSci, <https://github.com/ropensci/software-review/issues/599>) [reviewer]
 }
 
 }
