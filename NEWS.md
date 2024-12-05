@@ -1,4 +1,14 @@
-# agroclimatico 1.0.0 
+# agroclimatico 1.1.0 
+
+## 05/12/2023
+
+El paquete pasá la revisión de rOpenSci, cambia la subservsión a 1.1.0 
+
+## 26/11/2024- [Revisión para rOpenSci, 2](https://github.com/ropensci/software-review/issues/599)
+
+* Mejora en ejemplos de: `decil()`, `anomalia_porcentual()`, `olas()`.
+
+* Mejoras en la documentación de: `pdsi()`, `spi_indice()`.
 
 ## 29/07/2024- [Revisión para rOpenSci, 2](https://github.com/ropensci/software-review/issues/599)
 
