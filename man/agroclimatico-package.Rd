@@ -13,9 +13,9 @@ Conjunto de funciones para calcular índices y estadísticos climáticos hidrol�
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/AgRoMeteorologiaINTA/agroclimatico}
-  \item \url{https://agrometeorologiainta.github.io/agroclimatico/}
-  \item Report bugs at \url{https://github.com/AgRoMeteorologiaINTA/agroclimatico/issues}
+  \item \url{https://github.com/ropensci/agroclimatico}
+  \item \url{https://docs.ropensci.org/agroclimatico/}
+  \item Report bugs at \url{https://github.com/ropensci/agroclimatico/issues}
 }
 
 }
