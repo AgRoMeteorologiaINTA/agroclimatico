@@ -14,7 +14,7 @@ Review](https://badges.ropensci.org/599_status.svg)](https://github.com/ropensci
 
 El paquete {agroclimatico} incluye una serie de funciones para calcular
 índices y estadísticos climáticos e hidrológicos a partir de datos
-[*tidy*](https://es.r4ds.hadley.nz/12-tidy.html)tidy. Por ejemplo
+[*tidy*](https://es.r4ds.hadley.nz/12-tidy.html). Por ejemplo
 `umbrales()` permite contar la cantidad de observaciones que cumplen una
 determinada condición y `dias_promedio()` devuelve el primer y último
 día del año promedio de ocurrencia de un evento.
@@ -33,12 +33,17 @@ agroclimáticos.
 
 ## Instalación
 
-Para instalar la versión de desarrollo desde
-[GitHub](https://github.com/), usá:
+Para instalar la versión actual del paquete podés usar:
+
+``` r
+install.packages("agroclimatico", repos = "https://ropensci.r-universe.dev")
+```
+
+O ussando `remotes`:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("AgRoMeteorologiaINTA/agroclimatico", build_vignettes = TRUE)
+remotes::install_github("ropensci/agroclimatico", build_vignettes = TRUE)
 ```
 
 ## Ejemplos
@@ -106,6 +111,5 @@ abril %>%
 ## Cómo contribuir
 
 Para contribuir con este paquete podés leer la siguiente [guía para
-contribuir](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/.github/CONTRIBUTING.md).
-Te pedimos también que revises nuestro [Código de
-Conducta](https://www.contributor-covenant.org/es/version/2/0/code_of_conduct/code_of_conduct.md).
+contribuir](https://github.com/ropensci/agroclimatico/blob/master/.github/CONTRIBUTING.md).
+Te pedimos también que revises nuestro Código de Conducta.
